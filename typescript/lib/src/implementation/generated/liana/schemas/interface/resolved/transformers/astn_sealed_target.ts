@@ -47,7 +47,7 @@ export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', _p.di
     )],
 )]
 
-export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dictionary.literal(
+export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.literal.dictionary(
     {
         "imports": _p_change_context(
             $['imports'],
@@ -83,7 +83,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                                     'value': ['dictionary', _p.dictionary.from.dictionary(
                                         $,
                                     ).map(
-                                        ($, id) => ['group', ['verbose', _p.dictionary.literal(
+                                        ($, id) => ['group', ['verbose', _p.literal.dictionary(
                                             {
                                                 "result": _p_change_context(
                                                     $['result'],
@@ -116,7 +116,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                                                                         $,
                                                                         ($) => ({
                                                                             'option': 'refiner',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                 {
                                                                                     "error": _p_change_context(
                                                                                         $['error'],
@@ -225,7 +225,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
 export const Imports: t_signatures.Imports = ($) => ['dictionary', _p.dictionary.from.dictionary(
     $,
 ).map(
-    ($, id) => ['group', ['verbose', _p.dictionary.literal(
+    ($, id) => ['group', ['verbose', _p.literal.dictionary(
         {
             "type": _p_change_context(
                 $['type'],
@@ -249,7 +249,7 @@ export const Imports: t_signatures.Imports = ($) => ['dictionary', _p.dictionary
                                     $,
                                     ($) => ({
                                         'option': 'ancestor',
-                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                             {
                                                 "number of steps": _p_change_context(
                                                     $['number of steps'],
@@ -322,7 +322,7 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'component',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "location": _p_change_context(
                                     $['location'],
@@ -451,7 +451,7 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'reference',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "location": _p_change_context(
                                     $['location'],
@@ -575,7 +575,7 @@ export const Module_Reference: t_signatures.Module_Reference = ($) => ['state', 
                     $,
                     ($) => ({
                         'option': 'import',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "import": _p_change_context(
                                     $['import'],

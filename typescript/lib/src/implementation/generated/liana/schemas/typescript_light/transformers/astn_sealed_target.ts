@@ -23,7 +23,7 @@ export const Directory: t_signatures.Directory = ($) => ['dictionary', _p.dictio
                         $,
                         ($) => ({
                             'option': 'file',
-                            'value': ['group', ['verbose', _p.dictionary.literal(
+                            'value': ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "statements": _p_change_context(
                                         $['statements'],
@@ -80,7 +80,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                         $,
                         ($) => ({
                             'option': 'export',
-                            'value': ['group', ['verbose', _p.dictionary.literal(
+                            'value': ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "type": _p_change_context(
                                         $['type'],
@@ -93,14 +93,14 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                                                             $,
                                                             ($) => ({
                                                                 'option': 'named exports',
-                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                     {
                                                                         "specifiers": _p_change_context(
                                                                             $['specifiers'],
                                                                             ($) => ['list', _p.list.from.list(
                                                                                 $,
                                                                             ).map(
-                                                                                ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                                ($) => ['group', ['verbose', _p.literal.dictionary(
                                                                                     {
                                                                                         "name": _p_change_context(
                                                                                             $['name'],
@@ -163,7 +163,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                         $,
                         ($) => ({
                             'option': 'import',
-                            'value': ['group', ['verbose', _p.dictionary.literal(
+                            'value': ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "type": _p_change_context(
                                         $['type'],
@@ -196,14 +196,14 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                                                             $,
                                                             ($) => ({
                                                                 'option': 'named',
-                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                     {
                                                                         "specifiers": _p_change_context(
                                                                             $['specifiers'],
                                                                             ($) => ['list', _p.list.from.list(
                                                                                 $,
                                                                             ).map(
-                                                                                ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                                ($) => ['group', ['verbose', _p.literal.dictionary(
                                                                                     {
                                                                                         "name": _p_change_context(
                                                                                             $['name'],
@@ -252,7 +252,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                         $,
                         ($) => ({
                             'option': 'module declaration',
-                            'value': ['group', ['verbose', _p.dictionary.literal(
+                            'value': ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "export": _p_change_context(
                                         $['export'],
@@ -298,7 +298,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                         $,
                         ($) => ({
                             'option': 'switch',
-                            'value': ['group', ['verbose', _p.dictionary.literal(
+                            'value': ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "expression": _p_change_context(
                                         $['expression'],
@@ -311,7 +311,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                                         ($) => ['list', _p.list.from.list(
                                             $,
                                         ).map(
-                                            ($) => ['group', ['verbose', _p.dictionary.literal(
+                                            ($) => ['group', ['verbose', _p.literal.dictionary(
                                                 {
                                                     "type": _p_change_context(
                                                         $['type'],
@@ -364,7 +364,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                         $,
                         ($) => ({
                             'option': 'type alias declaration',
-                            'value': ['group', ['verbose', _p.dictionary.literal(
+                            'value': ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "export": _p_change_context(
                                         $['export'],
@@ -406,7 +406,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                         $,
                         ($) => ({
                             'option': 'variable',
-                            'value': ['group', ['verbose', _p.dictionary.literal(
+                            'value': ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "export": _p_change_context(
                                         $['export'],
@@ -482,7 +482,7 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'function',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "type parameters": _p_change_context(
                                     $['type parameters'],
@@ -557,7 +557,7 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'tuple',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "readonly": _p_change_context(
                                     $['readonly'],
@@ -587,14 +587,14 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'type literal',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "properties": _p_change_context(
                                     $['properties'],
                                     ($) => ['list', _p.list.from.list(
                                         $,
                                     ).map(
-                                        ($) => ['group', ['verbose', _p.dictionary.literal(
+                                        ($) => ['group', ['verbose', _p.literal.dictionary(
                                             {
                                                 "key": _p_change_context(
                                                     $['key'],
@@ -658,7 +658,7 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'type reference',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "start": _p_change_context(
                                     $['start'],
@@ -723,7 +723,7 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
 export const Function_Parameters: t_signatures.Function_Parameters = ($) => ['list', _p.list.from.list(
     $,
 ).map(
-    ($) => ['group', ['verbose', _p.dictionary.literal(
+    ($) => ['group', ['verbose', _p.literal.dictionary(
         {
             "name": _p_change_context(
                 $['name'],
@@ -768,7 +768,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'arrow function',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "parameters": _p_change_context(
                                     $['parameters'],
@@ -829,7 +829,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'assignment',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "left": _p_change_context(
                                     $['left'],
@@ -852,7 +852,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'call',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "function selection": _p_change_context(
                                     $['function selection'],
@@ -879,7 +879,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'compare',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "left": _p_change_context(
                                     $['left'],
@@ -980,7 +980,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'conditional',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "condition": _p_change_context(
                                     $['condition'],
@@ -1009,7 +1009,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'element access',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "collection": _p_change_context(
                                     $['collection'],
@@ -1074,14 +1074,14 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'object literal',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "properties": _p_change_context(
                                     $['properties'],
                                     ($) => ['list', _p.list.from.list(
                                         $,
                                     ).map(
-                                        ($) => ['group', ['verbose', _p.dictionary.literal(
+                                        ($) => ['group', ['verbose', _p.literal.dictionary(
                                             {
                                                 "key": _p_change_context(
                                                     $['key'],
@@ -1146,7 +1146,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'property access',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "object": _p_change_context(
                                     $['object'],
@@ -1187,7 +1187,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'unary operation',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "operator": _p_change_context(
                                     $['operator'],
@@ -1237,7 +1237,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
     },
 )]
 
-export const String_Literal: t_signatures.String_Literal = ($) => ['group', ['verbose', _p.dictionary.literal(
+export const String_Literal: t_signatures.String_Literal = ($) => ['group', ['verbose', _p.literal.dictionary(
     {
         "delimiter": _p_change_context(
             $['delimiter'],
@@ -1279,7 +1279,7 @@ export const String_Literal: t_signatures.String_Literal = ($) => ['group', ['ve
     },
 )]]
 
-export const Identifier: t_signatures.Identifier = ($) => ['group', ['verbose', _p.dictionary.literal(
+export const Identifier: t_signatures.Identifier = ($) => ['group', ['verbose', _p.literal.dictionary(
     {
         "value": _p_change_context(
             $['value'],

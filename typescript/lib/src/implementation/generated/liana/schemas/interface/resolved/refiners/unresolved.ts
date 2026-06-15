@@ -64,7 +64,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.di
     ),
 )
 
-export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.literal.resolve(
+export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.group_resolve(
     () => {
         
         const prop_imports = _p_change_context(
@@ -116,7 +116,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                         ).resolve_static(
                                             ($, id, $a, $c): t_out.Package.content.functions.D => _p_change_context(
                                                 $['l entry'],
-                                                ($) => _p.group.literal.resolve(
+                                                ($) => _p.literal.group_resolve(
                                                     () => {
                                                         
                                                         const prop_result = _p_change_context(
@@ -161,7 +161,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                                 case 'refiner':
                                                                                     return _p.ss(
                                                                                         $,
-                                                                                        ($) => ['refiner', _p.group.literal.resolve(
+                                                                                        ($) => ['refiner', _p.literal.group_resolve(
                                                                                             () => {
                                                                                                 
                                                                                                 const prop_error = _p_change_context(
@@ -320,7 +320,7 @@ export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p.dictionary
 ).resolve_static(
     ($, id, $a, $c): t_out.Imports.D => _p_change_context(
         $['l entry'],
-        ($) => _p.group.literal.resolve(
+        ($) => _p.literal.group_resolve(
             () => {
                 
                 const prop_type = _p_change_context(
@@ -341,7 +341,7 @@ export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p.dictionary
                                         case 'ancestor':
                                             return _p.ss(
                                                 $,
-                                                ($) => ['ancestor', _p.group.literal.resolve(
+                                                ($) => ['ancestor', _p.literal.group_resolve(
                                                     () => {
                                                         
                                                         const prop_number_of_steps = _p_change_context(
@@ -412,7 +412,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                     case 'component':
                         return _p.ss(
                             $,
-                            ($) => ['component', _p.group.literal.resolve(
+                            ($) => ['component', _p.literal.group_resolve(
                                 () => {
                                     
                                     const prop_location = _p_change_context(
@@ -552,7 +552,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                     case 'reference':
                         return _p.ss(
                             $,
-                            ($) => ['reference', _p.group.literal.resolve(
+                            ($) => ['reference', _p.literal.group_resolve(
                                 () => {
                                     
                                     const prop_location = _p_change_context(
@@ -677,7 +677,7 @@ export const Module_Reference: t_signatures.Module_Reference = ($, abort, $l, $p
                     case 'import':
                         return _p.ss(
                             $,
-                            ($) => ['import', _p.group.literal.resolve(
+                            ($) => ['import', _p.literal.group_resolve(
                                 () => {
                                     
                                     const prop_import = _p_change_context(

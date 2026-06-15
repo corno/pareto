@@ -1,5 +1,4 @@
 import * as pt from 'pareto-core-shorthands/dist/unconstrained'
-import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as d_out from "../interface/generated/liana/schemas/interface/data/resolved"
 
@@ -12,7 +11,7 @@ export namespace m {
     export const set = (
         entries: pt.Raw_Or_Normal_Dictionary<d_out.Package_Set.D>
     ): d_out.Package_Set.D => {
-        return wrap_state(['set', pt.dictionary.literal(entries)])
+        return wrap_state(['set', pt.dictionary(entries)])
     }
 
     export const package_data = (
@@ -20,8 +19,8 @@ export namespace m {
         types: pt.Raw_Or_Normal_Dictionary<d_out.Package.content.data_modules.D>,
     ): d_out.Package_Set.D => {
         return wrap_state(['package', {
-            'imports': pt.dictionary.literal(imports),
-            'content': wrap_state(['data modules', pt.dictionary.literal(types)]),
+            'imports': pt.dictionary(imports),
+            'content': wrap_state(['data modules', pt.dictionary(types)]),
         }])
     }
 
@@ -30,8 +29,8 @@ export namespace m {
         types: pt.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D>,
     ): d_out.Package_Set.D => {
         return wrap_state(['package', {
-            'imports': pt.dictionary.literal(imports),
-            'content': wrap_state(['functions', pt.dictionary.literal(types)]),
+            'imports': pt.dictionary(imports),
+            'content': wrap_state(['functions', pt.dictionary(types)]),
         }])
     }
 
@@ -44,7 +43,7 @@ export namespace import_ {
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['external', id]),
-            'tail': pt.list.literal(tail),
+            'tail': pt.list(tail),
         }
     }
 
@@ -54,7 +53,7 @@ export namespace import_ {
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['sibling', id]),
-            'tail': pt.list.literal(tail),
+            'tail': pt.list(tail),
         }
     }
     export const ancestor = (
@@ -67,7 +66,7 @@ export namespace import_ {
                 'number of steps': number_of_steps,
                 'dependency': id,
             }]),
-            'tail': pt.list.literal(tail),
+            'tail': pt.list(tail),
         }
     }
 }
@@ -138,7 +137,7 @@ export namespace t {
     export const group = (
         properties: pt.Raw_Or_Normal_Dictionary<d_out.Value>
     ): d_out.Value => {
-        return wrap_state(['group', pt.dictionary.literal(properties)])
+        return wrap_state(['group', pt.dictionary(properties)])
     }
 
     export const list = (
@@ -176,7 +175,7 @@ export namespace t {
     ): d_out.Value => {
         return wrap_state(['reference', {
             'location': location,
-            'sub selection': pt.list.literal(sub_selection),
+            'sub selection': pt.list(sub_selection),
             'cyclic': cyclic === undefined
                 ? false
                 : cyclic === 'cyclic' ? true : false,
@@ -189,7 +188,7 @@ export namespace t {
     // ): d_out.Value => {
     //     return wrap_state(['reference', ['acyclic', {
     //         'location': wrap_state(['local', sibling]),
-    //         'sub selection': pt.list.literal(sub_selection)
+    //         'sub selection': pt.list(sub_selection)
     //     }]])
     // }
 
@@ -211,7 +210,7 @@ export namespace t {
     //             'import': imp,
     //             'type': type,
     //         }]),
-    //         'sub selection': pt.list.literal(sub_selection)
+    //         'sub selection': pt.list(sub_selection)
 
     //     }]])
     // }
@@ -219,7 +218,7 @@ export namespace t {
     export const state = (
         states: pt.Raw_Or_Normal_Dictionary<d_out.Value>
     ): d_out.Value => {
-        return wrap_state(['state', pt.dictionary.literal(states)])
+        return wrap_state(['state', pt.dictionary(states)])
     }
 
     export const text = (): d_out.Value => {
@@ -246,7 +245,7 @@ export namespace type {
             'context': context,
             'result': result,
             'type': wrap_state(['transformer', null]),
-            'parameters': parameters === null ? pt.optional.literal.not_set() : pt.optional.literal.set(pt.dictionary.literal(parameters)),
+            'parameters': parameters === null ? pt.optional.not_set() : pt.optional.set(pt.dictionary(parameters)),
         }
     }
 
@@ -259,11 +258,11 @@ export namespace type {
     ): d_out.Package.content.functions.D => {
         return {
             'context': context,
-            'parameters': parameters === null ? pt.optional.literal.not_set() : pt.optional.literal.set(pt.dictionary.literal(parameters)),
+            'parameters': parameters === null ? pt.optional.not_set() : pt.optional.set(pt.dictionary(parameters)),
             'result': result,
             'type': wrap_state(['refiner', {
-                'error': error === null ? pt.optional.literal.not_set() : pt.optional.literal.set(error),
-                'lookups': lookups === null ? pt.optional.literal.not_set() : pt.optional.literal.set(pt.dictionary.literal(lookups)),
+                'error': error === null ? pt.optional.not_set() : pt.optional.set(error),
+                'lookups': lookups === null ? pt.optional.not_set() : pt.optional.set(pt.dictionary(lookups)),
             }]),
         }
     }

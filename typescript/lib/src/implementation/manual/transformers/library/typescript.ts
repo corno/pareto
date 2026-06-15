@@ -32,7 +32,7 @@ export const Temp_Library: p_ri.Refiner<
 > = (
     $,
     abort
-) => pt.dictionary.literal<d_out.Directory.D>({
+) => pt.literal.dictionary<d_out.Directory.D>({
     "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
         $.interface,
         abort,

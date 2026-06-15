@@ -52,7 +52,7 @@ const temp_rename: p_ri.Refiner<
         renamed[new_id] = $
         return null
     })
-    return pt.dictionary.literal(renamed)
+    return pt.literal.dictionary(renamed)
 }
 
 
@@ -68,7 +68,7 @@ export const Package_Set: p_ri.Refiner<
         switch ($[0]) {
             case 'package': return pt.ss($, ($): d_out.Directory.D => {
 
-                const y: d_out.Statements = pt.list.nested_literal_old([
+                const y: d_out.Statements = pt.literal.nested_list([
                     [
                         sh.s.import_namespace(
                             sh.identifier_raw("pt"),
@@ -103,7 +103,7 @@ export const Package_Set: p_ri.Refiner<
                         : [],
                     $.specials.lookups
                         ? [sh.s.import_namespace(
-                            sh.identifier_raw("_p_sl"),
+                            sh.identifier_raw("p_sl"),
                             sh.string_literal("pareto-core/dist/select_static_lookup", 'apostrophe')
                         )]
                         : [],
@@ -129,7 +129,7 @@ export const Package_Set: p_ri.Refiner<
                         $['type imports'],
                     ).convert(
                         ($, id) => sh.s.import_namespace(
-                            sh.identifier_escaped(join(pt.list.literal(["t ", id]))),
+                            sh.identifier_escaped(join(pt.literal.list(["t ", id]))),
                             temp_create_file_path($, 'quote')
                         )
                     ),
@@ -137,7 +137,7 @@ export const Package_Set: p_ri.Refiner<
                         $['variable imports'],
                     ).convert(
                         ($, id) => sh.s.import_namespace(
-                            sh.identifier_escaped(join(pt.list.literal(["v ", id]))),
+                            sh.identifier_escaped(join(pt.literal.list(["v ", id]))),
                             temp_create_file_path($, 'quote')
                         )
                     ),
@@ -150,13 +150,13 @@ export const Package_Set: p_ri.Refiner<
                             sh.identifier_escaped(id),
                             sh.t.type_reference(
                                 sh.identifier_escaped("t " + $.type.import),
-                                pt.list.literal([
+                                pt.literal.list([
                                     sh.identifier_escaped($.type.type)
                                 ]),
                                 []
                             ),
                             sh.e.arrow_function_with_expression(
-                                pt.list.nested_literal_old([
+                                pt.literal.nested_list([
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null),
                                     ],
@@ -197,8 +197,8 @@ export const Temp_Value_Type_Specification = (
     return sh.t.type_reference(
         sh.identifier_escaped("t " + $.type.import),
         //tail
-        pt.list.nested_literal_old([
-            pt.list.literal([
+        pt.literal.nested_list([
+            pt.literal.list([
                 sh.identifier_escaped($.type.type)
             ]),
             pt.list.from.list(
@@ -206,11 +206,11 @@ export const Temp_Value_Type_Specification = (
             ).flatten(
                 ($) => pt.decide.state($, ($): p_di.List<d_out.Identifier> => {
                     switch ($[0]) {
-                        case 'dictionary': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("D")]))
-                        case 'group': return pt.ss($, ($) => pt.list.literal([sh.identifier_escaped($)]))
-                        case 'list': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("L")]))
-                        case 'optional': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("O")]))
-                        case 'state': return pt.ss($, ($) => pt.list.literal([sh.identifier_escaped($)]))
+                        case 'dictionary': return pt.ss($, ($) => pt.literal.list([sh.identifier_raw("D")]))
+                        case 'group': return pt.ss($, ($) => pt.literal.list([sh.identifier_escaped($)]))
+                        case 'list': return pt.ss($, ($) => pt.literal.list([sh.identifier_raw("L")]))
+                        case 'optional': return pt.ss($, ($) => pt.literal.list([sh.identifier_raw("O")]))
+                        case 'state': return pt.ss($, ($) => pt.literal.list([sh.identifier_escaped($)]))
                         default: return pt.au($[0])
                     }
                 }),
@@ -288,7 +288,7 @@ export const Assign = (
                                             sh.e.identifier_raw("$"),
                                             sh.e.number_literal(0)
                                         ),
-                                        pt.list.nested_literal_old([
+                                        pt.literal.nested_list([
                                             pt.decide.state($.type, ($): d_in.Assign.decide.type_.state.type_.partial.options => {
                                                 switch ($[0]) {
                                                     case 'partial': return pt.ss($, ($) => $.options)
@@ -296,7 +296,7 @@ export const Assign = (
                                                     case 'single': return pt.ss($, ($) => {
                                                         const temp: { [id: string]: d_in.Assign.decide.type_.state.type_.partial.options.D } = {}
                                                         temp[$.option] = $['if true']
-                                                        return pt.dictionary.literal(temp)
+                                                        return pt.literal.dictionary(temp)
                                                     })
                                                     default: return pt.au($[0])
                                                 }
@@ -374,7 +374,7 @@ export const Assign = (
                                 [
                                     sh.s.switch_(
                                         sh.e.identifier_raw("$t"),
-                                        pt.list.nested_literal_old([
+                                        pt.literal.nested_list([
                                             $.cases.__to_list(
                                                 ($, id) => sh.sw.case_(
                                                     sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
@@ -564,7 +564,7 @@ export const Assign = (
                                         sh.e.arrow_function_with_block(
                                             [],
                                             null,
-                                            pt.list.nested_literal_old([
+                                            pt.literal.nested_list([
                                                 $.properties.__to_list(($, id) => sh.s.variable(
                                                     false,
                                                     true,
@@ -908,7 +908,7 @@ export const Assign = (
                             [
                             ],
                             null,
-                            pt.list.nested_literal_old([
+                            pt.literal.nested_list([
                                 $.variables.__to_list(
                                     ($, id) => sh.s.variable(
                                         false,
@@ -973,18 +973,18 @@ export const Select_Value = (
                             switch ($[0]) {
                                 case 'local': return pt.ss($, ($) => sh.e.identifier_escaped($))
                                 case 'imported': return pt.ss($, ($) => sh.e.property_access(
-                                    sh.e.identifier_escaped(join(pt.list.literal(["v ", $.import]))),
+                                    sh.e.identifier_escaped(join(pt.literal.list(["v ", $.import]))),
                                     sh.identifier_escaped($.variable)
                                 ))
                                 default: return pt.au($[0])
                             }
                         }),
-                        pt.list.nested_literal_old([
+                        pt.literal.nested_list([
                             [
                                 Assign($.context),
                             ],
                             $.abort.__decide(
-                                ($) => pt.list.literal([
+                                ($) => pt.literal.list([
                                     sh.e.arrow_function_with_expression(
                                         [
                                             sh.parameter(sh.identifier_raw("$"), null)
@@ -998,16 +998,16 @@ export const Select_Value = (
                                         )
                                     )
                                 ]),
-                                () => pt.list.literal([])
+                                () => pt.literal.list([])
                             ),
                             $.lookups.__decide(
                                 ($) => pt.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'initialize': return pt.ss($, ($) => pt.boolean.from.dictionary($).is_empty()
-                                            ? pt.list.literal([
+                                            ? pt.literal.list([
                                                 sh.e.null_(),
                                             ])
-                                            : pt.list.literal([
+                                            : pt.literal.list([
                                                 sh.e.object_literal(
                                                     $.__to_list(($, id) => sh.object_property(
                                                         id,
@@ -1016,22 +1016,22 @@ export const Select_Value = (
                                                     ))
                                                 )
                                             ]))
-                                        case 'pass through': return pt.ss($, ($) => pt.list.literal([
+                                        case 'pass through': return pt.ss($, ($) => pt.literal.list([
                                             sh.e.identifier_raw("$l")
                                         ]))
                                         default: return pt.au($[0])
                                     }
                                 }),
-                                () => pt.list.literal([])
+                                () => pt.literal.list([])
                             ),
                             $.arguments.__decide(
                                 ($) => pt.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'initialize': return pt.ss($, ($) => pt.boolean.from.dictionary($).is_empty()
-                                            ? pt.list.literal([
+                                            ? pt.literal.list([
                                                 sh.e.null_(),
                                             ])
-                                            : pt.list.literal([
+                                            : pt.literal.list([
                                                 sh.e.object_literal(
                                                     $.__to_list(($, id) => sh.object_property(
                                                         id,
@@ -1040,13 +1040,13 @@ export const Select_Value = (
                                                     ))
                                                 )
                                             ]))
-                                        case 'pass through': return pt.ss($, ($) => pt.list.literal([
+                                        case 'pass through': return pt.ss($, ($) => pt.literal.list([
                                             sh.e.identifier_raw("$p")
                                         ]))
                                         default: return pt.au($[0])
                                     }
                                 }),
-                                () => pt.list.literal([])
+                                () => pt.literal.list([])
                             ),
                         ]),
 
@@ -1356,7 +1356,7 @@ export const Select_Lookup = (
                 case 'not set': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_sl"),
+                            sh.e.identifier_raw("p_sl"),
                             sh.identifier_raw("acyclic")
                         ),
                         sh.identifier_raw("not_set")
@@ -1368,7 +1368,7 @@ export const Select_Lookup = (
                 case 'resolved dictionary': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_sl"),
+                            sh.e.identifier_raw("p_sl"),
                             sh.identifier_raw("acyclic")
                         ),
                         sh.identifier_raw("from_resolved_dictionary")
@@ -1389,7 +1389,7 @@ export const Select_Lookup = (
                 case 'empty': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_sl"),
+                            sh.e.identifier_raw("p_sl"),
                             sh.identifier_raw("stack")
                         ),
                         sh.identifier_raw("empty")
@@ -1400,7 +1400,7 @@ export const Select_Lookup = (
                 case 'push': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_sl"),
+                            sh.e.identifier_raw("p_sl"),
                             sh.identifier_raw("stack")
                         ),
                         sh.identifier_raw("push")
@@ -1418,7 +1418,7 @@ export const Select_Lookup = (
                 case 'not set': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_sl"),
+                            sh.e.identifier_raw("p_sl"),
                             sh.identifier_raw("cyclic")
                         ),
                         sh.identifier_raw("not_set")

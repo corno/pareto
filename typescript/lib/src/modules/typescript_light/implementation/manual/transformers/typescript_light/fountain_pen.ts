@@ -26,52 +26,52 @@ export const escaped_text = (
     ($): p_di.List<number> => {
         switch ($) {
             // case 0x2F: // slash (\/)
-            //     return pt.list.literal([
+            //     return pt.literal.list([
             //         0x5c, // \
             //         0x2f, // /
             //     ])
             case 0x22: // " (\")
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x22, // "
                 ])
             case 0x5C: // \ (\\)
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x5C, // \
                 ])
             case 0x08: // backspace (\b)
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x62, // b
                 ])
             case 0x0C: // form feed (\f)
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x66, // f
                 ])
             case 0x0A: // line feed (\n)
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x6E, // n
                 ])
             case 0x0D: // carriage return (\r)
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x72, // r
                 ])
             case 0x09: // horizontal tab (\t)
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x74, // t
                 ])
             case 0x0B: // vertical tab (\v)
-                return pt.list.literal([
+                return pt.literal.list([
                     0x5C, // \
                     0x76, // v
                 ])
             default: {
-                return pt.list.literal([
+                return pt.literal.list([
                     $,
                 ])
             }
@@ -79,7 +79,7 @@ export const escaped_text = (
     }
 )
 
-export const apostrophed_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
+export const apostrophed_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
     [
         0x27, // '
     ],
@@ -91,7 +91,7 @@ export const apostrophed_text: p_ti.Transformer<string, d_loc.List_of_Characters
     ]
 ])
 
-export const backticked_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
+export const backticked_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
     [
         0x60, // `
     ],
@@ -103,7 +103,7 @@ export const backticked_text: p_ti.Transformer<string, d_loc.List_of_Characters>
     ]
 ])
 
-export const quoted_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
+export const quoted_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
     [
         0x22, // "
     ],

@@ -24,14 +24,14 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
             $,
         ),
         {
-            'subdocument context': _p.optional.literal.not_set(),
+            'subdocument context': _p.literal.not_set(),
         },
     ),
     ($) => ({
         'l location': v_parse_tree_to_location.Value(
             $['value'],
             {
-                'subdocument context': _p.optional.literal.not_set(),
+                'subdocument context': _p.literal.not_set(),
             },
         ),
         'l dictionary': _p.dictionary.from.dictionary(
@@ -41,7 +41,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                 'l location': v_parse_tree_to_location.Value(
                     $,
                     {
-                        'subdocument context': _p.optional.literal.not_set(),
+                        'subdocument context': _p.literal.not_set(),
                     },
                 ),
                 'l entry': _p_change_context(
@@ -62,7 +62,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                                             'l location': v_parse_tree_to_location.Value(
                                                 $,
                                                 {
-                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                    'subdocument context': _p.literal.not_set(),
                                                 },
                                             ),
                                             'l state': ['package', Package(
@@ -80,7 +80,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                                             'l location': v_parse_tree_to_location.Value(
                                                 $,
                                                 {
-                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                    'subdocument context': _p.literal.not_set(),
                                                 },
                                             ),
                                             'l state': ['set', Package_Set(
@@ -98,7 +98,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                                             'range': v_parse_tree_to_location.Value(
                                                 $['value'],
                                                 {
-                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                    'subdocument context': _p.literal.not_set(),
                                                 },
                                             ),
                                         }],
@@ -119,7 +119,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
             $,
         ),
         {
-            'expected properties': _p.dictionary.literal(
+            'expected properties': _p.literal.dictionary(
                 {
                     "specials": null,
                     "type imports": null,
@@ -127,7 +127,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                     "functions": null,
                 },
             ),
-            'subdocument context': _p.optional.literal.not_set(),
+            'subdocument context': _p.literal.not_set(),
         },
     ),
     ($) => _p_variables(
@@ -136,7 +136,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
             const var_verbose_group_range = v_parse_tree_to_location.Value(
                 $['value'],
                 {
-                    'subdocument context': _p.optional.literal.not_set(),
+                    'subdocument context': _p.literal.not_set(),
                 },
             )
             return {
@@ -148,7 +148,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'specials',
-                            'subdocument context': _p.optional.literal.not_set(),
+                            'subdocument context': _p.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -158,7 +158,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                 $,
                             ),
                             {
-                                'expected properties': _p.dictionary.literal(
+                                'expected properties': _p.literal.dictionary(
                                     {
                                         "abort": null,
                                         "change context": null,
@@ -171,7 +171,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                         "variables": null,
                                     },
                                 ),
-                                'subdocument context': _p.optional.literal.not_set(),
+                                'subdocument context': _p.literal.not_set(),
                             },
                         ),
                         ($) => _p_variables(
@@ -180,7 +180,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                     $['value'],
                                     {
-                                        'subdocument context': _p.optional.literal.not_set(),
+                                        'subdocument context': _p.literal.not_set(),
                                     },
                                 )
                                 return {
@@ -192,7 +192,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'abort',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -202,7 +202,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -214,7 +214,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'change context',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -224,7 +224,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -236,7 +236,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'implement me',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -246,7 +246,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -258,7 +258,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'iterate',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -268,7 +268,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -280,7 +280,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'lookups',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -290,7 +290,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -302,7 +302,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'list from text',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -312,7 +312,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -324,7 +324,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'text from list',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -334,7 +334,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -346,7 +346,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'unreachable code path',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -356,7 +356,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -368,7 +368,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'variables',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -378,7 +378,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -395,7 +395,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'type imports',
-                            'subdocument context': _p.optional.literal.not_set(),
+                            'subdocument context': _p.literal.not_set(),
                         },
                     ),
                     ($) => v_external_interface.Imports(
@@ -413,7 +413,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'variable imports',
-                            'subdocument context': _p.optional.literal.not_set(),
+                            'subdocument context': _p.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -423,14 +423,14 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                 $,
                             ),
                             {
-                                'subdocument context': _p.optional.literal.not_set(),
+                                'subdocument context': _p.literal.not_set(),
                             },
                         ),
                         ($) => ({
                             'l location': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l dictionary': _p.dictionary.from.dictionary(
@@ -440,7 +440,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     'l location': v_parse_tree_to_location.Value(
                                         $,
                                         {
-                                            'subdocument context': _p.optional.literal.not_set(),
+                                            'subdocument context': _p.literal.not_set(),
                                         },
                                     ),
                                     'l entry': _p_change_context(
@@ -450,13 +450,13 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                 $,
                                             ),
                                             {
-                                                'expected properties': _p.dictionary.literal(
+                                                'expected properties': _p.literal.dictionary(
                                                     {
                                                         "tail": null,
                                                         "type": null,
                                                     },
                                                 ),
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => _p_variables(
@@ -465,7 +465,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                     $['value'],
                                                     {
-                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                        'subdocument context': _p.literal.not_set(),
                                                     },
                                                 )
                                                 return {
@@ -477,14 +477,14 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'tail',
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => ({
                                                             'l location': v_parse_tree_to_location.Value(
                                                                 $,
                                                                 {
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             'l list': _p.list.from.list(
@@ -494,7 +494,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                         $,
                                                                     ),
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 )['items'],
                                                             ).map(
@@ -504,7 +504,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                         'l location': v_parse_tree_to_location.Value(
                                                                             $,
                                                                             {
-                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                'subdocument context': _p.literal.not_set(),
                                                                             },
                                                                         ),
                                                                         'l item': v_unmarshalled_from_parse_tree.Text(
@@ -526,7 +526,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'type',
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => _p_change_context(
@@ -547,7 +547,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['ancestor', _p_change_context(
@@ -557,13 +557,13 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "dependency": null,
                                                                                                         "number of steps": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -572,7 +572,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -584,7 +584,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'dependency',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -602,7 +602,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'number of steps',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Number(
@@ -612,7 +612,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'type': ['decimal', null],
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                     ),
@@ -629,7 +629,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['external', v_unmarshalled_from_parse_tree.Text(
@@ -647,7 +647,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['sibling', v_unmarshalled_from_parse_tree.Text(
@@ -665,7 +665,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -692,7 +692,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'functions',
-                            'subdocument context': _p.optional.literal.not_set(),
+                            'subdocument context': _p.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -702,14 +702,14 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                 $,
                             ),
                             {
-                                'subdocument context': _p.optional.literal.not_set(),
+                                'subdocument context': _p.literal.not_set(),
                             },
                         ),
                         ($) => ({
                             'l location': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l dictionary': _p.dictionary.from.dictionary(
@@ -719,7 +719,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     'l location': v_parse_tree_to_location.Value(
                                         $,
                                         {
-                                            'subdocument context': _p.optional.literal.not_set(),
+                                            'subdocument context': _p.literal.not_set(),
                                         },
                                     ),
                                     'l entry': _p_change_context(
@@ -729,7 +729,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                 $,
                                             ),
                                             {
-                                                'expected properties': _p.dictionary.literal(
+                                                'expected properties': _p.literal.dictionary(
                                                     {
                                                         "type": null,
                                                         "expression": null,
@@ -738,7 +738,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                         "temp has parameters": null,
                                                     },
                                                 ),
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => _p_variables(
@@ -747,7 +747,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                     $['value'],
                                                     {
-                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                        'subdocument context': _p.literal.not_set(),
                                                     },
                                                 )
                                                 return {
@@ -759,7 +759,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'type',
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => _p_change_context(
@@ -769,13 +769,13 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                     $,
                                                                 ),
                                                                 {
-                                                                    'expected properties': _p.dictionary.literal(
+                                                                    'expected properties': _p.literal.dictionary(
                                                                         {
                                                                             "import": null,
                                                                             "type": null,
                                                                         },
                                                                     ),
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -784,7 +784,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                            'subdocument context': _p.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -796,7 +796,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'import',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => v_unmarshalled_from_parse_tree.Text(
@@ -814,7 +814,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'type',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => v_unmarshalled_from_parse_tree.Text(
@@ -837,7 +837,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'expression',
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => Assign(
@@ -855,7 +855,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'temp has abort',
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -865,7 +865,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'type': ['true/false', null],
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     ),
@@ -877,7 +877,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'temp has lookups',
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -887,7 +887,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'type': ['true/false', null],
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     ),
@@ -899,7 +899,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'temp has parameters',
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -909,7 +909,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'type': ['true/false', null],
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     ),
@@ -934,13 +934,13 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
             $,
         ),
         {
-            'expected properties': _p.dictionary.literal(
+            'expected properties': _p.literal.dictionary(
                 {
                     "type": null,
                     "sub selection": null,
                 },
             ),
-            'subdocument context': _p.optional.literal.not_set(),
+            'subdocument context': _p.literal.not_set(),
         },
     ),
     ($) => _p_variables(
@@ -949,7 +949,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
             const var_verbose_group_range = v_parse_tree_to_location.Value(
                 $['value'],
                 {
-                    'subdocument context': _p.optional.literal.not_set(),
+                    'subdocument context': _p.literal.not_set(),
                 },
             )
             return {
@@ -961,7 +961,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         ),
                         {
                             'id': 'type',
-                            'subdocument context': _p.optional.literal.not_set(),
+                            'subdocument context': _p.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -971,13 +971,13 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                 $,
                             ),
                             {
-                                'expected properties': _p.dictionary.literal(
+                                'expected properties': _p.literal.dictionary(
                                     {
                                         "import": null,
                                         "type": null,
                                     },
                                 ),
-                                'subdocument context': _p.optional.literal.not_set(),
+                                'subdocument context': _p.literal.not_set(),
                             },
                         ),
                         ($) => _p_variables(
@@ -986,7 +986,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                     $['value'],
                                     {
-                                        'subdocument context': _p.optional.literal.not_set(),
+                                        'subdocument context': _p.literal.not_set(),
                                     },
                                 )
                                 return {
@@ -998,7 +998,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                             ),
                                             {
                                                 'id': 'import',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -1016,7 +1016,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                             ),
                                             {
                                                 'id': 'type',
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -1039,14 +1039,14 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         ),
                         {
                             'id': 'sub selection',
-                            'subdocument context': _p.optional.literal.not_set(),
+                            'subdocument context': _p.literal.not_set(),
                         },
                     ),
                     ($) => ({
                         'l location': v_parse_tree_to_location.Value(
                             $,
                             {
-                                'subdocument context': _p.optional.literal.not_set(),
+                                'subdocument context': _p.literal.not_set(),
                             },
                         ),
                         'l list': _p.list.from.list(
@@ -1056,7 +1056,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     $,
                                 ),
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             )['items'],
                         ).map(
@@ -1066,7 +1066,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     'l location': v_parse_tree_to_location.Value(
                                         $,
                                         {
-                                            'subdocument context': _p.optional.literal.not_set(),
+                                            'subdocument context': _p.literal.not_set(),
                                         },
                                     ),
                                     'l item': _p_change_context(
@@ -1087,7 +1087,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['dictionary', v_unmarshalled_from_parse_tree.Nothing(
@@ -1105,7 +1105,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['group', v_unmarshalled_from_parse_tree.Text(
@@ -1123,7 +1123,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['list', v_unmarshalled_from_parse_tree.Nothing(
@@ -1141,7 +1141,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['optional', v_unmarshalled_from_parse_tree.Nothing(
@@ -1159,7 +1159,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['state', v_unmarshalled_from_parse_tree.Text(
@@ -1177,7 +1177,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'range': v_parse_tree_to_location.Value(
                                                                     $['value'],
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 ),
                                                             }],
@@ -1214,7 +1214,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['decide', _p_change_context(
@@ -1224,13 +1224,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                         $,
                                     ),
                                     {
-                                        'expected properties': _p.dictionary.literal(
+                                        'expected properties': _p.literal.dictionary(
                                             {
                                                 "source": null,
                                                 "type": null,
                                             },
                                         ),
-                                        'subdocument context': _p.optional.literal.not_set(),
+                                        'subdocument context': _p.literal.not_set(),
                                     },
                                 ),
                                 ($) => _p_variables(
@@ -1239,7 +1239,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                             $['value'],
                                             {
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         )
                                         return {
@@ -1251,7 +1251,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                     ),
                                                     {
                                                         'id': 'source',
-                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                        'subdocument context': _p.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => Select_Value(
@@ -1269,7 +1269,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                     ),
                                                     {
                                                         'id': 'type',
-                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                        'subdocument context': _p.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => _p_change_context(
@@ -1290,7 +1290,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['boolean', _p_change_context(
@@ -1300,14 +1300,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "temp resulting node": null,
                                                                                                 "if false": null,
                                                                                                 "if true": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1316,7 +1316,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1328,7 +1328,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1355,7 +1355,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if false',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1373,7 +1373,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if true',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1396,7 +1396,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['optional', _p_change_context(
@@ -1406,14 +1406,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "temp resulting node": null,
                                                                                                 "if not set": null,
                                                                                                 "if set": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1422,7 +1422,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1434,7 +1434,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1461,7 +1461,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if not set',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1479,7 +1479,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if set',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1502,7 +1502,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['state', _p_change_context(
@@ -1512,13 +1512,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "temp resulting node": null,
                                                                                                 "type": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1527,7 +1527,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1539,7 +1539,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1566,7 +1566,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'type',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -1587,7 +1587,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['partial', _p_change_context(
@@ -1597,13 +1597,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         $,
                                                                                                                                     ),
                                                                                                                                     {
-                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                        'expected properties': _p.literal.dictionary(
                                                                                                                                             {
                                                                                                                                                 "options": null,
                                                                                                                                                 "default": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -1612,7 +1612,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -1624,7 +1624,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'options',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -1634,14 +1634,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             $,
                                                                                                                                                         ),
                                                                                                                                                         {
-                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => ({
                                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                                             $['value'],
                                                                                                                                                             {
-                                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                                             },
                                                                                                                                                         ),
                                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -1651,7 +1651,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l entry': Assign(
@@ -1673,7 +1673,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'default',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => Assign(
@@ -1696,7 +1696,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['full', _p_change_context(
@@ -1706,12 +1706,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         $,
                                                                                                                                     ),
                                                                                                                                     {
-                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                        'expected properties': _p.literal.dictionary(
                                                                                                                                             {
                                                                                                                                                 "options": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -1720,7 +1720,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -1732,7 +1732,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'options',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -1742,14 +1742,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             $,
                                                                                                                                                         ),
                                                                                                                                                         {
-                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => ({
                                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                                             $['value'],
                                                                                                                                                             {
-                                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                                             },
                                                                                                                                                         ),
                                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -1759,7 +1759,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l entry': Assign(
@@ -1786,7 +1786,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['single', _p_change_context(
@@ -1796,14 +1796,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         $,
                                                                                                                                     ),
                                                                                                                                     {
-                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                        'expected properties': _p.literal.dictionary(
                                                                                                                                             {
                                                                                                                                                 "option": null,
                                                                                                                                                 "if true": null,
                                                                                                                                                 "if false": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -1812,7 +1812,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -1824,7 +1824,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'option',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => v_unmarshalled_from_parse_tree.Text(
@@ -1842,7 +1842,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'if true',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => Assign(
@@ -1860,7 +1860,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'if false',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => Assign(
@@ -1883,7 +1883,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'range': v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                         }],
@@ -1906,7 +1906,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['text', _p_change_context(
@@ -1916,14 +1916,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "temp resulting node": null,
                                                                                                 "cases": null,
                                                                                                 "default": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1932,7 +1932,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1944,7 +1944,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1971,7 +1971,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'cases',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -1981,14 +1981,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             $,
                                                                                                         ),
                                                                                                         {
-                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     ($) => ({
                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                             $['value'],
                                                                                                             {
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -1998,7 +1998,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l entry': Assign(
@@ -2020,7 +2020,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'default',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -2043,7 +2043,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'range': v_parse_tree_to_location.Value(
                                                                                 $['value'],
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                         }],
@@ -2066,7 +2066,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['construct', _p_change_context(
@@ -2087,7 +2087,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['boolean', _p_change_context(
@@ -2108,7 +2108,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -2129,7 +2129,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['false', v_unmarshalled_from_parse_tree.Nothing(
@@ -2147,7 +2147,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['true', v_unmarshalled_from_parse_tree.Nothing(
@@ -2165,7 +2165,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -2183,7 +2183,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -2193,13 +2193,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "selection": null,
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -2208,7 +2208,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -2220,7 +2220,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -2238,7 +2238,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -2259,7 +2259,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['boolean', _p_change_context(
@@ -2280,7 +2280,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['not', v_unmarshalled_from_parse_tree.Nothing(
@@ -2298,7 +2298,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['copy', v_unmarshalled_from_parse_tree.Nothing(
@@ -2316,7 +2316,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2334,7 +2334,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['dictionary', _p_change_context(
@@ -2355,7 +2355,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['is empty', v_unmarshalled_from_parse_tree.Nothing(
@@ -2373,7 +2373,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2391,7 +2391,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['list', _p_change_context(
@@ -2412,7 +2412,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['is empty', v_unmarshalled_from_parse_tree.Nothing(
@@ -2430,7 +2430,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2448,7 +2448,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -2471,7 +2471,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -2489,7 +2489,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['dictionary', _p_change_context(
@@ -2510,7 +2510,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -2520,14 +2520,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                 $['value'],
                                                                                                 {
-                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                 },
                                                                                             ),
                                                                                             'l dictionary': _p.dictionary.from.dictionary(
@@ -2537,7 +2537,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                         $,
                                                                                                         {
-                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     'l entry': Assign(
@@ -2559,7 +2559,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -2569,13 +2569,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "selection": null,
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -2584,7 +2584,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -2596,7 +2596,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -2614,7 +2614,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -2635,7 +2635,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['dictionary', _p_change_context(
@@ -2656,7 +2656,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['filter', _p_change_context(
@@ -2666,12 +2666,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2680,7 +2680,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2692,7 +2692,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2715,7 +2715,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map', _p_change_context(
@@ -2725,12 +2725,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2739,7 +2739,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2751,7 +2751,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2774,7 +2774,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['resolve', _p_change_context(
@@ -2784,13 +2784,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                     "temp resulting entry node": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2799,7 +2799,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2811,7 +2811,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2829,7 +2829,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'temp resulting entry node',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Temp_Value_Type_Specification(
@@ -2852,7 +2852,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2870,7 +2870,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['list', _p_change_context(
@@ -2891,7 +2891,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['convert', _p_change_context(
@@ -2901,14 +2901,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign id": null,
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                     "abort": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2917,7 +2917,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2929,7 +2929,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign id',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2947,7 +2947,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2965,7 +2965,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'abort',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2988,7 +2988,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -3006,7 +3006,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -3029,7 +3029,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -3047,7 +3047,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['group', _p_change_context(
@@ -3068,7 +3068,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -3078,13 +3078,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "properties": null,
                                                                                                         "have dependencies": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -3093,7 +3093,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -3105,7 +3105,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'properties',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -3115,14 +3115,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     $,
                                                                                                                 ),
                                                                                                                 {
-                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                 },
                                                                                                             ),
                                                                                                             ($) => ({
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l dictionary': _p.dictionary.from.dictionary(
@@ -3132,7 +3132,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                             $,
                                                                                                                             {
-                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                             },
                                                                                                                         ),
                                                                                                                         'l entry': Assign(
@@ -3154,7 +3154,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'have dependencies',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -3164,7 +3164,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'type': ['true/false', null],
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                     ),
@@ -3181,7 +3181,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -3199,7 +3199,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['list', _p_change_context(
@@ -3220,14 +3220,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', {
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $,
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         'l list': _p.list.from.list(
@@ -3237,7 +3237,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     $,
                                                                                                 ),
                                                                                                 {
-                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                 },
                                                                                             )['items'],
                                                                                         ).map(
@@ -3247,7 +3247,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                         $,
                                                                                                         {
-                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     'l item': Assign(
@@ -3269,7 +3269,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -3279,13 +3279,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "selection": null,
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -3294,7 +3294,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -3306,7 +3306,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -3324,7 +3324,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -3345,7 +3345,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['dictionary', _p_change_context(
@@ -3366,7 +3366,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['convert', _p_change_context(
@@ -3376,12 +3376,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3390,7 +3390,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3402,7 +3402,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3425,7 +3425,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -3443,7 +3443,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['list', _p_change_context(
@@ -3464,7 +3464,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['filter', _p_change_context(
@@ -3474,12 +3474,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign item": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3488,7 +3488,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3500,7 +3500,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3523,7 +3523,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map', _p_change_context(
@@ -3533,12 +3533,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign item": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3547,7 +3547,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3559,7 +3559,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3582,7 +3582,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map with state', _p_change_context(
@@ -3592,7 +3592,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "initialize state": null,
                                                                                                                                                                                     "assign item": null,
@@ -3600,7 +3600,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "wrap up": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3609,7 +3609,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3621,7 +3621,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'initialize state',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3639,7 +3639,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3657,7 +3657,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'update state',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3675,7 +3675,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'wrap up',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3698,7 +3698,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['reduce', _p_change_context(
@@ -3708,13 +3708,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "initialize state": null,
                                                                                                                                                                                     "assign item": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3723,7 +3723,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3735,7 +3735,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'initialize state',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3753,7 +3753,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3776,7 +3776,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['reverse', v_unmarshalled_from_parse_tree.Nothing(
@@ -3794,7 +3794,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -3812,7 +3812,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -3835,7 +3835,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -3853,7 +3853,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['nothing', v_unmarshalled_from_parse_tree.Nothing(
@@ -3871,7 +3871,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['number', _p_change_context(
@@ -3892,7 +3892,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['approximation', _p_change_context(
@@ -3913,7 +3913,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['literal', v_unmarshalled_from_parse_tree.Number(
@@ -3925,7 +3925,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                         'type': ['scientific notation', {
                                                                                                                             'precision': 10,
                                                                                                                         }],
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 )],
                                                                                                             }),
@@ -3937,7 +3937,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['copy', Select_Value(
@@ -3955,7 +3955,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -3973,7 +3973,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['integer', _p_change_context(
@@ -3994,7 +3994,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['copy', Select_Value(
@@ -4012,7 +4012,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['divide', _p_change_context(
@@ -4022,14 +4022,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             $,
                                                                                                                         ),
                                                                                                                         {
-                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                 {
                                                                                                                                     "assign dividend": null,
                                                                                                                                     "assign divisor": null,
                                                                                                                                     "abort": null,
                                                                                                                                 },
                                                                                                                             ),
-                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => _p_variables(
@@ -4038,7 +4038,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             )
                                                                                                                             return {
@@ -4050,7 +4050,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'assign dividend',
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4068,7 +4068,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'assign divisor',
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4086,7 +4086,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'abort',
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Assign(
@@ -4109,7 +4109,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['literal', v_unmarshalled_from_parse_tree.Number(
@@ -4119,7 +4119,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     {
                                                                                                                         'type': ['decimal', null],
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 )],
                                                                                                             }),
@@ -4131,7 +4131,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -4149,7 +4149,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['natural', _p_change_context(
@@ -4170,7 +4170,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['literal', v_unmarshalled_from_parse_tree.Number(
@@ -4180,7 +4180,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     {
                                                                                                                         'type': ['decimal', null],
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 )],
                                                                                                             }),
@@ -4192,7 +4192,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['copy', Select_Value(
@@ -4210,7 +4210,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['number of dictionary entries', _p_change_context(
@@ -4220,12 +4220,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             $,
                                                                                                                         ),
                                                                                                                         {
-                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                 {
                                                                                                                                     "dictionary": null,
                                                                                                                                 },
                                                                                                                             ),
-                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => _p_variables(
@@ -4234,7 +4234,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             )
                                                                                                                             return {
@@ -4246,7 +4246,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'dictionary',
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4269,7 +4269,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['number of list items', _p_change_context(
@@ -4279,12 +4279,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             $,
                                                                                                                         ),
                                                                                                                         {
-                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                 {
                                                                                                                                     "list": null,
                                                                                                                                 },
                                                                                                                             ),
-                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => _p_variables(
@@ -4293,7 +4293,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             )
                                                                                                                             return {
@@ -4305,7 +4305,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'list',
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4328,7 +4328,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['source column', v_unmarshalled_from_parse_tree.Nothing(
@@ -4346,7 +4346,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['source line', v_unmarshalled_from_parse_tree.Nothing(
@@ -4364,7 +4364,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -4382,7 +4382,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -4400,7 +4400,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['optional', _p_change_context(
@@ -4421,7 +4421,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -4442,7 +4442,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['not set', v_unmarshalled_from_parse_tree.Nothing(
@@ -4460,7 +4460,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['set', Assign(
@@ -4478,7 +4478,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -4496,7 +4496,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -4506,13 +4506,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "selection": null,
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -4521,7 +4521,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -4533,7 +4533,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -4551,7 +4551,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -4572,7 +4572,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['boolean', _p_change_context(
@@ -4593,7 +4593,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['convert', _p_change_context(
@@ -4603,12 +4603,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign set": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -4617,7 +4617,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -4629,7 +4629,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign set',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -4652,7 +4652,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -4670,7 +4670,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['optional', _p_change_context(
@@ -4691,7 +4691,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map', _p_change_context(
@@ -4701,12 +4701,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             $,
                                                                                                                                                                         ),
                                                                                                                                                                         {
-                                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                                 {
                                                                                                                                                                                     "assign set": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -4715,7 +4715,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -4727,7 +4727,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign set',
-                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -4750,7 +4750,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -4768,7 +4768,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -4791,7 +4791,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -4809,7 +4809,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['state', _p_change_context(
@@ -4830,7 +4830,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -4840,13 +4840,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "option": null,
                                                                                                         "assign option": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -4855,7 +4855,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -4867,7 +4867,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'option',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -4885,7 +4885,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'assign option',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Assign(
@@ -4908,7 +4908,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -4926,7 +4926,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['text', _p_change_context(
@@ -4947,7 +4947,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -4957,13 +4957,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "type": null,
                                                                                                         "value": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -4972,7 +4972,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -4984,7 +4984,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -5005,7 +5005,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['identifier', v_unmarshalled_from_parse_tree.Nothing(
@@ -5023,7 +5023,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['freeform', v_unmarshalled_from_parse_tree.Nothing(
@@ -5041,7 +5041,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -5059,7 +5059,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'value',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -5082,7 +5082,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -5092,13 +5092,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'expected properties': _p.dictionary.literal(
+                                                                                                'expected properties': _p.literal.dictionary(
                                                                                                     {
                                                                                                         "selection": null,
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -5107,7 +5107,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -5119,7 +5119,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -5137,7 +5137,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -5158,7 +5158,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['text', _p_change_context(
@@ -5179,7 +5179,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['copy', v_unmarshalled_from_parse_tree.Nothing(
@@ -5197,7 +5197,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -5215,7 +5215,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -5238,7 +5238,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['source document', v_unmarshalled_from_parse_tree.Nothing(
@@ -5256,7 +5256,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['entry id', v_unmarshalled_from_parse_tree.Nothing(
@@ -5274,7 +5274,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['option name', v_unmarshalled_from_parse_tree.Nothing(
@@ -5292,7 +5292,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -5310,7 +5310,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -5328,7 +5328,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['select', Select_Value(
@@ -5346,7 +5346,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['special', _p_change_context(
@@ -5367,7 +5367,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['abort', Assign(
@@ -5385,7 +5385,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['assert', _p_change_context(
@@ -5395,13 +5395,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     $,
                                                                 ),
                                                                 {
-                                                                    'expected properties': _p.dictionary.literal(
+                                                                    'expected properties': _p.literal.dictionary(
                                                                         {
                                                                             "tester": null,
                                                                             "normal flow": null,
                                                                         },
                                                                     ),
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5410,7 +5410,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                            'subdocument context': _p.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5422,7 +5422,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'tester',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5440,7 +5440,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'normal flow',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5463,7 +5463,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['change context', _p_change_context(
@@ -5473,13 +5473,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     $,
                                                                 ),
                                                                 {
-                                                                    'expected properties': _p.dictionary.literal(
+                                                                    'expected properties': _p.literal.dictionary(
                                                                         {
                                                                             "new context": null,
                                                                             "expression": null,
                                                                         },
                                                                     ),
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5488,7 +5488,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                            'subdocument context': _p.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5500,7 +5500,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'new context',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Value(
@@ -5518,7 +5518,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'expression',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5541,7 +5541,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['variables', _p_change_context(
@@ -5551,13 +5551,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     $,
                                                                 ),
                                                                 {
-                                                                    'expected properties': _p.dictionary.literal(
+                                                                    'expected properties': _p.literal.dictionary(
                                                                         {
                                                                             "variables": null,
                                                                             "assign": null,
                                                                         },
                                                                     ),
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5566,7 +5566,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                            'subdocument context': _p.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5578,7 +5578,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'variables',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => _p_change_context(
@@ -5588,14 +5588,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l dictionary': _p.dictionary.from.dictionary(
@@ -5605,7 +5605,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                 $,
                                                                                                 {
-                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                 },
                                                                                             ),
                                                                                             'l entry': Assign(
@@ -5627,7 +5627,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'assign',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5650,7 +5650,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
@@ -5668,7 +5668,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['iterate', _p_change_context(
@@ -5678,13 +5678,13 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     $,
                                                                 ),
                                                                 {
-                                                                    'expected properties': _p.dictionary.literal(
+                                                                    'expected properties': _p.literal.dictionary(
                                                                         {
                                                                             "list": null,
                                                                             "assign": null,
                                                                         },
                                                                     ),
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5693,7 +5693,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                            'subdocument context': _p.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5705,7 +5705,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'list',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Value(
@@ -5723,7 +5723,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'assign',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5746,7 +5746,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['unreachable', _p_change_context(
@@ -5756,12 +5756,12 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     $,
                                                                 ),
                                                                 {
-                                                                    'expected properties': _p.dictionary.literal(
+                                                                    'expected properties': _p.literal.dictionary(
                                                                         {
                                                                             "explanation": null,
                                                                         },
                                                                     ),
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5770,7 +5770,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                            'subdocument context': _p.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5782,7 +5782,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'explanation',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => v_unmarshalled_from_parse_tree.Text(
@@ -5805,7 +5805,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -5823,7 +5823,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'range': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                         }],
@@ -5851,7 +5851,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
@@ -5869,7 +5869,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['regular', _p_change_context(
@@ -5879,13 +5879,13 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                         $,
                                     ),
                                     {
-                                        'expected properties': _p.dictionary.literal(
+                                        'expected properties': _p.literal.dictionary(
                                             {
                                                 "start": null,
                                                 "tail": null,
                                             },
                                         ),
-                                        'subdocument context': _p.optional.literal.not_set(),
+                                        'subdocument context': _p.literal.not_set(),
                                     },
                                 ),
                                 ($) => _p_variables(
@@ -5894,7 +5894,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                             $['value'],
                                             {
-                                                'subdocument context': _p.optional.literal.not_set(),
+                                                'subdocument context': _p.literal.not_set(),
                                             },
                                         )
                                         return {
@@ -5906,7 +5906,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                     ),
                                                     {
                                                         'id': 'start',
-                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                        'subdocument context': _p.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => _p_change_context(
@@ -5927,7 +5927,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['call', _p_change_context(
@@ -5937,7 +5937,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "source": null,
                                                                                                 "context": null,
@@ -5946,7 +5946,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                 "arguments": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -5955,7 +5955,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -5967,7 +5967,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'source',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -5988,7 +5988,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['local', v_unmarshalled_from_parse_tree.Text(
@@ -6006,7 +6006,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['imported', _p_change_context(
@@ -6016,13 +6016,13 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         $,
                                                                                                                                     ),
                                                                                                                                     {
-                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                        'expected properties': _p.literal.dictionary(
                                                                                                                                             {
                                                                                                                                                 "import": null,
                                                                                                                                                 "variable": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6031,7 +6031,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6043,7 +6043,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'import',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => v_unmarshalled_from_parse_tree.Text(
@@ -6061,7 +6061,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'variable',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => v_unmarshalled_from_parse_tree.Text(
@@ -6084,7 +6084,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'range': v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                         }],
@@ -6102,7 +6102,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'context',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6120,7 +6120,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'abort',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -6147,7 +6147,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'lookups',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -6176,7 +6176,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['initialize', _p_change_context(
@@ -6186,14 +6186,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => ({
                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         ),
                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -6203,7 +6203,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                     $,
                                                                                                                                                     {
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 'l entry': Select_Lookup(
@@ -6225,7 +6225,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
@@ -6243,7 +6243,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                     $['value'],
                                                                                                                                     {
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                             }],
@@ -6262,7 +6262,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'arguments',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -6291,7 +6291,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['initialize', _p_change_context(
@@ -6301,14 +6301,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                         {
-                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => ({
                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         ),
                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -6318,7 +6318,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                     $,
                                                                                                                                                     {
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 'l entry': Assign(
@@ -6340,7 +6340,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
@@ -6358,7 +6358,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                     $['value'],
                                                                                                                                     {
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                             }],
@@ -6382,7 +6382,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['context', v_unmarshalled_from_parse_tree.Nothing(
@@ -6400,7 +6400,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['dictionary entry', _p_change_context(
@@ -6410,14 +6410,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "dictionary": null,
                                                                                                 "id": null,
                                                                                                 "no such entry handler": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -6426,7 +6426,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -6438,7 +6438,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'dictionary',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Value(
@@ -6456,7 +6456,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'id',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6474,7 +6474,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'no such entry handler',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6497,7 +6497,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['list from text', _p_change_context(
@@ -6507,13 +6507,13 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "source": null,
                                                                                                 "assign item": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -6522,7 +6522,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -6534,7 +6534,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'source',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Value(
@@ -6552,7 +6552,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'assign item',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6575,7 +6575,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['lookup entry', _p_change_context(
@@ -6585,14 +6585,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "lookup": null,
                                                                                                 "id": null,
                                                                                                 "type": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -6601,7 +6601,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -6613,7 +6613,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'lookup',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Lookup(
@@ -6631,7 +6631,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'id',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6649,7 +6649,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'type',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -6670,7 +6670,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['acyclic', _p_change_context(
@@ -6680,12 +6680,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         $,
                                                                                                                                     ),
                                                                                                                                     {
-                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                        'expected properties': _p.literal.dictionary(
                                                                                                                                             {
                                                                                                                                                 "abort handlers": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6694,7 +6694,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6706,7 +6706,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'abort handlers',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -6716,14 +6716,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             $,
                                                                                                                                                         ),
                                                                                                                                                         {
-                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                 {
                                                                                                                                                                     "no such entry": null,
                                                                                                                                                                     "no context lookup": null,
                                                                                                                                                                     "cycle detected": null,
                                                                                                                                                                 },
                                                                                                                                                             ),
-                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => _p_variables(
@@ -6732,7 +6732,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                 $['value'],
                                                                                                                                                                 {
-                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                 },
                                                                                                                                                             )
                                                                                                                                                             return {
@@ -6744,7 +6744,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no such entry',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6762,7 +6762,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no context lookup',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6780,7 +6780,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'cycle detected',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6808,7 +6808,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['cyclic', _p_change_context(
@@ -6818,12 +6818,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         $,
                                                                                                                                     ),
                                                                                                                                     {
-                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                        'expected properties': _p.literal.dictionary(
                                                                                                                                             {
                                                                                                                                                 "abort handlers": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6832,7 +6832,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6844,7 +6844,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'abort handlers',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -6854,14 +6854,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             $,
                                                                                                                                                         ),
                                                                                                                                                         {
-                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                 {
                                                                                                                                                                     "no such entry": null,
                                                                                                                                                                     "no context lookup": null,
                                                                                                                                                                     "accessing cyclic sibling before it is resolved": null,
                                                                                                                                                                 },
                                                                                                                                                             ),
-                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => _p_variables(
@@ -6870,7 +6870,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                 $['value'],
                                                                                                                                                                 {
-                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                 },
                                                                                                                                                             )
                                                                                                                                                             return {
@@ -6882,7 +6882,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no such entry',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6900,7 +6900,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no context lookup',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6918,7 +6918,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'accessing cyclic sibling before it is resolved',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6946,7 +6946,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['stack', _p_change_context(
@@ -6956,12 +6956,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         $,
                                                                                                                                     ),
                                                                                                                                     {
-                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                        'expected properties': _p.literal.dictionary(
                                                                                                                                             {
                                                                                                                                                 "abort handlers": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6970,7 +6970,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6982,7 +6982,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'abort handlers',
-                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -6992,14 +6992,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             $,
                                                                                                                                                         ),
                                                                                                                                                         {
-                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                                                                 {
                                                                                                                                                                     "no such entry": null,
                                                                                                                                                                     "no context lookup": null,
                                                                                                                                                                     "cycle detected": null,
                                                                                                                                                                 },
                                                                                                                                                             ),
-                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => _p_variables(
@@ -7008,7 +7008,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                 $['value'],
                                                                                                                                                                 {
-                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                                                 },
                                                                                                                                                             )
                                                                                                                                                             return {
@@ -7020,7 +7020,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no such entry',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -7038,7 +7038,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no context lookup',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -7056,7 +7056,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'cycle detected',
-                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -7084,7 +7084,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'range': v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                         }],
@@ -7107,7 +7107,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['lookup entry depth', _p_change_context(
@@ -7117,14 +7117,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "lookup": null,
                                                                                                 "id": null,
                                                                                                 "abort handlers": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -7133,7 +7133,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -7145,7 +7145,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'lookup',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Lookup(
@@ -7163,7 +7163,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'id',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -7181,7 +7181,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'abort handlers',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -7191,14 +7191,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                             $,
                                                                                                         ),
                                                                                                         {
-                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                            'expected properties': _p.literal.dictionary(
                                                                                                                 {
                                                                                                                     "no such entry": null,
                                                                                                                     "no context lookup": null,
                                                                                                                     "cycle detected": null,
                                                                                                                 },
                                                                                                             ),
-                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     ($) => _p_variables(
@@ -7207,7 +7207,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                 $['value'],
                                                                                                                 {
-                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                                                 },
                                                                                                             )
                                                                                                             return {
@@ -7219,7 +7219,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                         ),
                                                                                                                         {
                                                                                                                             'id': 'no such entry',
-                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => Assign(
@@ -7237,7 +7237,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                         ),
                                                                                                                         {
                                                                                                                             'id': 'no context lookup',
-                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => Assign(
@@ -7255,7 +7255,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                         ),
                                                                                                                         {
                                                                                                                             'id': 'cycle detected',
-                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                                                                            'subdocument context': _p.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => Assign(
@@ -7283,7 +7283,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['parameter', v_unmarshalled_from_parse_tree.Text(
@@ -7301,7 +7301,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['parent sibling', v_unmarshalled_from_parse_tree.Text(
@@ -7319,7 +7319,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['sibling', v_unmarshalled_from_parse_tree.Text(
@@ -7337,7 +7337,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['state', v_unmarshalled_from_parse_tree.Nothing(
@@ -7355,7 +7355,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['text from list', _p_change_context(
@@ -7365,13 +7365,13 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                        'expected properties': _p.literal.dictionary(
                                                                                             {
                                                                                                 "source": null,
                                                                                                 "assign character": null,
                                                                                             },
                                                                                         ),
-                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -7380,7 +7380,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                                                'subdocument context': _p.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -7392,7 +7392,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'source',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Value(
@@ -7410,7 +7410,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'assign character',
-                                                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                                                        'subdocument context': _p.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -7433,7 +7433,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['variable', v_unmarshalled_from_parse_tree.Text(
@@ -7451,7 +7451,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'range': v_parse_tree_to_location.Value(
                                                                                 $['value'],
                                                                                 {
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                         }],
@@ -7469,14 +7469,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                     ),
                                                     {
                                                         'id': 'tail',
-                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                        'subdocument context': _p.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => ({
                                                     'l location': v_parse_tree_to_location.Value(
                                                         $,
                                                         {
-                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                            'subdocument context': _p.literal.not_set(),
                                                         },
                                                     ),
                                                     'l list': _p.list.from.list(
@@ -7486,7 +7486,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                 $,
                                                             ),
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         )['items'],
                                                     ).map(
@@ -7496,7 +7496,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'subdocument context': _p.optional.literal.not_set(),
+                                                                        'subdocument context': _p.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l item': v_unmarshalled_from_parse_tree.Text(
@@ -7523,7 +7523,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                             'range': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                         }],
@@ -7551,7 +7551,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
@@ -7569,7 +7569,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['from parameter', v_unmarshalled_from_parse_tree.Text(
@@ -7587,7 +7587,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['stack', _p_change_context(
@@ -7608,7 +7608,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['empty', v_unmarshalled_from_parse_tree.Nothing(
@@ -7626,7 +7626,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['push', _p_change_context(
@@ -7636,13 +7636,13 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                     $,
                                                                 ),
                                                                 {
-                                                                    'expected properties': _p.dictionary.literal(
+                                                                    'expected properties': _p.literal.dictionary(
                                                                         {
                                                                             "stack": null,
                                                                             "acyclic": null,
                                                                         },
                                                                     ),
-                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                    'subdocument context': _p.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -7651,7 +7651,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'subdocument context': _p.optional.literal.not_set(),
+                                                                            'subdocument context': _p.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -7663,7 +7663,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                                 ),
                                                                                 {
                                                                                     'id': 'stack',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Lookup(
@@ -7681,7 +7681,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                                 ),
                                                                                 {
                                                                                     'id': 'acyclic',
-                                                                                    'subdocument context': _p.optional.literal.not_set(),
+                                                                                    'subdocument context': _p.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Lookup(
@@ -7704,7 +7704,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -7722,7 +7722,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['acyclic', _p_change_context(
@@ -7743,7 +7743,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['not set', v_unmarshalled_from_parse_tree.Nothing(
@@ -7761,7 +7761,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['siblings', v_unmarshalled_from_parse_tree.Nothing(
@@ -7779,7 +7779,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['resolved dictionary', Select_Value(
@@ -7797,7 +7797,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -7815,7 +7815,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                             'l state': ['cyclic', _p_change_context(
@@ -7836,7 +7836,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['not set', v_unmarshalled_from_parse_tree.Nothing(
@@ -7854,7 +7854,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['siblings', v_unmarshalled_from_parse_tree.Nothing(
@@ -7872,7 +7872,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'subdocument context': _p.optional.literal.not_set(),
+                                                                'subdocument context': _p.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -7890,7 +7890,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'range': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'subdocument context': _p.optional.literal.not_set(),
+                                    'subdocument context': _p.literal.not_set(),
                                 },
                             ),
                         }],

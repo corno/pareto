@@ -12,7 +12,7 @@ export const Identifier = ($: string): d_loc.List_of_Characters => {
     if (the_string === "") {
         return temp_literal_to_text("_empty")
     }
-    const reserved_keywords = pt.dictionary.literal({
+    const reserved_keywords = pt.literal.dictionary({
         //Reserved Words
         "arguments": null,
         "break": null,

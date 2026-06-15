@@ -49,11 +49,11 @@ export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', _p.di
     )],
 )]
 
-export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dictionary.literal(
+export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.literal.dictionary(
     {
         "specials": _p_change_context(
             $['specials'],
-            ($) => ['group', ['verbose', _p.dictionary.literal(
+            ($) => ['group', ['verbose', _p.literal.dictionary(
                 {
                     "abort": _p_change_context(
                         $['abort'],
@@ -150,7 +150,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
             ($) => ['dictionary', _p.dictionary.from.dictionary(
                 $,
             ).map(
-                ($, id) => ['group', ['verbose', _p.dictionary.literal(
+                ($, id) => ['group', ['verbose', _p.literal.dictionary(
                     {
                         "tail": _p_change_context(
                             $['tail'],
@@ -174,7 +174,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                                                 $,
                                                 ($) => ({
                                                     'option': 'ancestor',
-                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                         {
                                                             "dependency": _p_change_context(
                                                                 $['dependency'],
@@ -235,11 +235,11 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
             ($) => ['dictionary', _p.dictionary.from.dictionary(
                 $,
             ).map(
-                ($, id) => ['group', ['verbose', _p.dictionary.literal(
+                ($, id) => ['group', ['verbose', _p.literal.dictionary(
                     {
                         "type": _p_change_context(
                             $['type'],
-                            ($) => ['group', ['verbose', _p.dictionary.literal(
+                            ($) => ['group', ['verbose', _p.literal.dictionary(
                                 {
                                     "import": _p_change_context(
                                         $['import'],
@@ -298,11 +298,11 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
     },
 )]]
 
-export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specification = ($) => ['group', ['verbose', _p.dictionary.literal(
+export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specification = ($) => ['group', ['verbose', _p.literal.dictionary(
     {
         "type": _p_change_context(
             $['type'],
-            ($) => ['group', ['verbose', _p.dictionary.literal(
+            ($) => ['group', ['verbose', _p.literal.dictionary(
                 {
                     "import": _p_change_context(
                         $['import'],
@@ -397,7 +397,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'decide',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "source": _p_change_context(
                                     $['source'],
@@ -416,7 +416,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                         $,
                                                         ($) => ({
                                                             'option': 'boolean',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "temp resulting node": _p_change_context(
                                                                         $['temp resulting node'],
@@ -449,7 +449,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                         $,
                                                         ($) => ({
                                                             'option': 'optional',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "temp resulting node": _p_change_context(
                                                                         $['temp resulting node'],
@@ -482,7 +482,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                         $,
                                                         ($) => ({
                                                             'option': 'state',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "temp resulting node": _p_change_context(
                                                                         $['temp resulting node'],
@@ -505,7 +505,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'partial',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "options": _p_change_context(
                                                                                                             $['options'],
@@ -532,7 +532,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'full',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "options": _p_change_context(
                                                                                                             $['options'],
@@ -553,7 +553,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'single',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "option": _p_change_context(
                                                                                                             $['option'],
@@ -595,7 +595,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                         $,
                                                         ($) => ({
                                                             'option': 'text',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "temp resulting node": _p_change_context(
                                                                         $['temp resulting node'],
@@ -696,7 +696,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "selection": _p_change_context(
                                                                                     $['selection'],
@@ -845,7 +845,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "selection": _p_change_context(
                                                                                     $['selection'],
@@ -873,7 +873,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'filter',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign entry": _p_change_context(
                                                                                                                                                 $['assign entry'],
@@ -890,7 +890,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign entry": _p_change_context(
                                                                                                                                                 $['assign entry'],
@@ -907,7 +907,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'resolve',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign entry": _p_change_context(
                                                                                                                                                 $['assign entry'],
@@ -948,7 +948,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'convert',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign id": _p_change_context(
                                                                                                                                                 $['assign id'],
@@ -1016,7 +1016,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "properties": _p_change_context(
                                                                                     $['properties'],
@@ -1078,7 +1078,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "selection": _p_change_context(
                                                                                     $['selection'],
@@ -1106,7 +1106,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'convert',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign entry": _p_change_context(
                                                                                                                                                 $['assign entry'],
@@ -1141,7 +1141,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'filter',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign item": _p_change_context(
                                                                                                                                                 $['assign item'],
@@ -1158,7 +1158,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign item": _p_change_context(
                                                                                                                                                 $['assign item'],
@@ -1175,7 +1175,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map with state',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "initialize state": _p_change_context(
                                                                                                                                                 $['initialize state'],
@@ -1210,7 +1210,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'reduce',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "initialize state": _p_change_context(
                                                                                                                                                 $['initialize state'],
@@ -1351,7 +1351,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'divide',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "assign dividend": _p_change_context(
                                                                                                             $['assign dividend'],
@@ -1434,7 +1434,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'number of dictionary entries',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "dictionary": _p_change_context(
                                                                                                             $['dictionary'],
@@ -1451,7 +1451,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'number of list items',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "list": _p_change_context(
                                                                                                             $['list'],
@@ -1547,7 +1547,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "selection": _p_change_context(
                                                                                     $['selection'],
@@ -1575,7 +1575,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'convert',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign set": _p_change_context(
                                                                                                                                                 $['assign set'],
@@ -1610,7 +1610,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map',
-                                                                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                    'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                                                         {
                                                                                                                                             "assign set": _p_change_context(
                                                                                                                                                 $['assign set'],
@@ -1666,7 +1666,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "option": _p_change_context(
                                                                                     $['option'],
@@ -1708,7 +1708,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "type": _p_change_context(
                                                                                     $['type'],
@@ -1756,7 +1756,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
-                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                        'value': ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "selection": _p_change_context(
                                                                                     $['selection'],
@@ -1884,7 +1884,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'assert',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                     {
                                                         "tester": _p_change_context(
                                                             $['tester'],
@@ -1907,7 +1907,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'change context',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                     {
                                                         "new context": _p_change_context(
                                                             $['new context'],
@@ -1930,7 +1930,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'variables',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                     {
                                                         "variables": _p_change_context(
                                                             $['variables'],
@@ -1968,7 +1968,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'iterate',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                     {
                                                         "list": _p_change_context(
                                                             $['list'],
@@ -1991,7 +1991,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                             $,
                                             ($) => ({
                                                 'option': 'unreachable',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                     {
                                                         "explanation": _p_change_context(
                                                             $['explanation'],
@@ -2041,7 +2041,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                     $,
                     ($) => ({
                         'option': 'regular',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
+                        'value': ['group', ['verbose', _p.literal.dictionary(
                             {
                                 "start": _p_change_context(
                                     $['start'],
@@ -2054,7 +2054,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                         $,
                                                         ($) => ({
                                                             'option': 'call',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "source": _p_change_context(
                                                                         $['source'],
@@ -2078,7 +2078,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'imported',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "import": _p_change_context(
                                                                                                             $['import'],
@@ -2219,7 +2219,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                         $,
                                                         ($) => ({
                                                             'option': 'dictionary entry',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "dictionary": _p_change_context(
                                                                         $['dictionary'],
@@ -2248,7 +2248,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                         $,
                                                         ($) => ({
                                                             'option': 'list from text',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "source": _p_change_context(
                                                                         $['source'],
@@ -2271,7 +2271,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                         $,
                                                         ($) => ({
                                                             'option': 'lookup entry',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "lookup": _p_change_context(
                                                                         $['lookup'],
@@ -2296,11 +2296,11 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'acyclic',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "abort handlers": _p_change_context(
                                                                                                             $['abort handlers'],
-                                                                                                            ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                                                            ($) => ['group', ['verbose', _p.literal.dictionary(
                                                                                                                 {
                                                                                                                     "no such entry": _p_change_context(
                                                                                                                         $['no such entry'],
@@ -2332,11 +2332,11 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'cyclic',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "abort handlers": _p_change_context(
                                                                                                             $['abort handlers'],
-                                                                                                            ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                                                            ($) => ['group', ['verbose', _p.literal.dictionary(
                                                                                                                 {
                                                                                                                     "no such entry": _p_change_context(
                                                                                                                         $['no such entry'],
@@ -2368,11 +2368,11 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'stack',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                                                                     {
                                                                                                         "abort handlers": _p_change_context(
                                                                                                             $['abort handlers'],
-                                                                                                            ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                                                            ($) => ['group', ['verbose', _p.literal.dictionary(
                                                                                                                 {
                                                                                                                     "no such entry": _p_change_context(
                                                                                                                         $['no such entry'],
@@ -2416,7 +2416,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                         $,
                                                         ($) => ({
                                                             'option': 'lookup entry depth',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "lookup": _p_change_context(
                                                                         $['lookup'],
@@ -2432,7 +2432,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                                     ),
                                                                     "abort handlers": _p_change_context(
                                                                         $['abort handlers'],
-                                                                        ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                        ($) => ['group', ['verbose', _p.literal.dictionary(
                                                                             {
                                                                                 "no such entry": _p_change_context(
                                                                                     $['no such entry'],
@@ -2505,7 +2505,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                         $,
                                                         ($) => ({
                                                             'option': 'text from list',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                            'value': ['group', ['verbose', _p.literal.dictionary(
                                                                 {
                                                                     "source": _p_change_context(
                                                                         $['source'],
@@ -2613,7 +2613,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', _p.dec
                                             $,
                                             ($) => ({
                                                 'option': 'push',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                'value': ['group', ['verbose', _p.literal.dictionary(
                                                     {
                                                         "stack": _p_change_context(
                                                             $['stack'],
