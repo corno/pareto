@@ -7,7 +7,7 @@ import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/un
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
-import * as d_out_fs from "pareto-fountain-pen-file-structure/dist/interface/to_be_generated/file-system"
+import * as d_out_fs from "pareto-fountain-pen-file-structure/dist/interface/data/file-system"
 
 import * as d_in from "../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
