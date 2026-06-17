@@ -5,19 +5,98 @@ import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from
 import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
 import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 
+//data types
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 import * as d_out_fs from "pareto-fountain-pen-file-structure/dist/interface/data/file-system"
-
 import * as d_in from "../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
+//shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
+export namespace interface_ {
 
+    export type escaped_text = p_i.Transformer<
+        string,
+        d_loc.List_of_Characters
+    >
 
-export const escaped_text = (
-    $: string,
-): d_loc.List_of_Characters => p_.list.from.list(
+    export type apostrophed_text = p_i.Transformer<
+        string,
+        d_loc.List_of_Characters
+    >
+
+    export type backticked_text = p_i.Transformer<
+        string,
+        d_loc.List_of_Characters
+    >
+
+    export type quoted_text = p_i.Transformer<
+        string,
+        d_loc.List_of_Characters
+    >
+
+    export type decimal = p_i.Transformer<
+        number,
+        d_loc.List_of_Characters
+    >
+
+    export type float = p_i.Transformer<
+        number,
+        d_loc.List_of_Characters
+    >
+
+    export type Directory = p_i.Transformer<
+        d_in.Directory,
+        d_out_fs.Directory
+    >
+
+    export type Identifier = p_i.Transformer<
+        d_in.Identifier,
+        d_out.Phrase
+    >
+
+    export type String_Literal_pseudo = p_i.Transformer_With_Parameter<
+        string,
+        d_out.Phrase,
+        {
+            'delimiter': "quote" | "apostrophe"
+        }
+    >
+
+    export type String_Literal = p_i.Transformer<
+        d_in.String_Literal,
+        d_out.Phrase
+    >
+
+    export type Statements = p_i.Transformer_With_Parameter<
+        d_in.Statements,
+        d_out.Paragraph,
+        {
+            'replace empty type literals by symbol': boolean
+        }
+    >
+
+    export type Expression = p_i.Transformer_With_Parameter<
+        d_in.Expression_,
+        d_out.Phrase,
+        {
+            'replace empty type literals by symbol': boolean
+            'object literal needs parentheses': boolean
+        }
+    >
+
+    export type Type = p_i.Transformer_With_Parameter<
+        d_in.Type,
+        d_out.Phrase,
+        {
+            'replace empty type literals by symbol': boolean
+        }
+    >
+
+}
+
+export const escaped_text: interface_.escaped_text = ($) => p_.list.from.list(
     p_list_from_text(
         $,
         ($) => $
@@ -79,7 +158,7 @@ export const escaped_text = (
     }
 )
 
-export const apostrophed_text: p_i.Transformer<string, d_loc.List_of_Characters> = ($) => p_.literal.nested_list([
+export const apostrophed_text: interface_.apostrophed_text = ($) => p_.literal.nested_list([
     [
         0x27, // '
     ],
@@ -91,7 +170,7 @@ export const apostrophed_text: p_i.Transformer<string, d_loc.List_of_Characters>
     ]
 ])
 
-export const backticked_text: p_i.Transformer<string, d_loc.List_of_Characters> = ($) => p_.literal.nested_list([
+export const backticked_text: interface_.backticked_text = ($) => p_.literal.nested_list([
     [
         0x60, // `
     ],
@@ -103,7 +182,7 @@ export const backticked_text: p_i.Transformer<string, d_loc.List_of_Characters> 
     ]
 ])
 
-export const quoted_text: p_i.Transformer<string, d_loc.List_of_Characters> = ($) => p_.literal.nested_list([
+export const quoted_text: interface_.quoted_text = ($) => p_.literal.nested_list([
     [
         0x22, // "
     ],
@@ -116,7 +195,7 @@ export const quoted_text: p_i.Transformer<string, d_loc.List_of_Characters> = ($
 ])
 
 
-export const decimal: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => p_list_build_deprecated(($i) => {
+export const decimal: interface_.decimal = ($) => p_list_build_deprecated(($i) => {
     if ($ < 0) {
         $i['add item'](45) // '-'
         $ = -$
@@ -128,7 +207,7 @@ export const decimal: p_i.Transformer<number, d_loc.List_of_Characters> = ($) =>
             $ = p_.number.from.number.divide(
                 $,
                 10,
-            ['towards zero', null],
+                ['towards zero', null],
                 {
                     divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10"),
                 }
@@ -146,7 +225,7 @@ export const decimal: p_i.Transformer<number, d_loc.List_of_Characters> = ($) =>
 })
 
 
-export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
+export const float: interface_.float = ($) => {
     return p_list_build_deprecated(($i) => {
         // Handle special case for zero
         if ($ === 0) {
@@ -181,7 +260,7 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
         const use_exponential = exponent < -6 || exponent >= 21
 
         const fixme_digits = 16
-        
+
         // Create scale factor
         let scale_factor = 1
         for (let i = 0; i < fixme_digits - 1; i++) {
@@ -206,7 +285,7 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 t = p_.number.from.number.divide(
                     t,
                     10,
-            ['towards zero', null],
+                    ['towards zero', null],
                     {
                         divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10"),
                     }
@@ -288,7 +367,7 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
         } else {
             // OUTPUT IN FIXED-POINT NOTATION
             let digit_count = digits.__get_number_of_items()
-            
+
             // Find first (lowest index) nonzero digit to know when to stop
             let first_nonzero = digit_count  // Initialize beyond range
             for (let j = 0; j < digit_count; j++) {
@@ -303,7 +382,7 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
             }
 
             const decimal_pos = exponent + 1  // Number of digits to the left of decimal
-            
+
             if (first_nonzero === digit_count) {
                 // All zeros
                 $i['add item'](48) // '0'
@@ -311,7 +390,7 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 // Like 0.00123 - need leading zeros
                 $i['add item'](48) // '0'
                 $i['add item'](46) // '.'
-                
+
                 for (let z = 0; z < -decimal_pos; z++) {
                     $i['add item'](48)
                 }
@@ -327,10 +406,10 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
             } else {
                 // Like 123 or 123.45
                 let digits_output = 0
-                
+
                 // Output all digits from highest, but ensure we output at least decimal_pos digits before decimal
                 let min_digits_needed = decimal_pos
-                
+
                 for (let i = digit_count - 1; i >= 0; i--) {
                     // Stop after we've output all significant fractional digits
                     if (i < first_nonzero && digits_output >= decimal_pos) {
@@ -341,7 +420,7 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
                         ($) => $,
                         () => p_unreachable_code_path("index cannot be out of bounds")
                     )
-                    
+
                     // Check if we need to insert decimal before this digit
                     if (digits_output === decimal_pos && digits_output > 0) {
                         $i['add item'](46) // '.'
@@ -356,7 +435,7 @@ export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
 }
 
 
-export const Directory = ($: d_in.Directory): d_out_fs.Directory => {
+export const Directory: interface_.Directory = ($) => {
     return $.__d_map(($, id) => p_.decide.state($, ($) => {
         switch ($[0]) {
             case 'file': return p_.ss($, ($) => ['file', Statements(
@@ -369,79 +448,65 @@ export const Directory = ($: d_in.Directory): d_out_fs.Directory => {
     }))
 }
 
-export const Identifier = (
-    $: d_in.Identifier
-): d_out.Phrase => {
+export const Identifier: interface_.Identifier = ($) => {
     return sh.ph.literal($.value)
 }
 
 
-export const String_Literal_pseudo = (
-    $: string,
-    $p: {
-        'delimiter': "quote" | "apostrophe"
-    }
-): d_out.Phrase => {
+export const String_Literal_pseudo: interface_.String_Literal_pseudo = ($, $p) => {
     return sh.ph.serialize($p.delimiter === "quote" ? quoted_text($) : apostrophed_text($))
 }
 
-export const String_Literal = (
-    $: d_in.String_Literal,
-): d_out.Phrase => {
+export const String_Literal: interface_.String_Literal = ($) => {
     return sh.ph.serialize($.delimiter[0] === "quote" ? quoted_text($.value) : apostrophed_text($.value))
 }
 
-export const Statements = (
-    $: d_in.Statements,
-    $p: {
-        'replace empty type literals by symbol': boolean
-    }
-): d_out.Paragraph => sh.pg.composed($.__l_map(($) =>
+export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l_map(($) =>
     p_.decide.state($, ($): d_out.Paragraph => {
         switch ($[0]) {
             case 'block': return p_.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
-                    sh.sentence([
-                        sh.ph.literal("{"),
-                        sh.ph.indent(
-                            Statements($, $p),
-                        ),
-                        sh.ph.literal("}"),
+                sh.sentence([
+                    sh.ph.literal("{"),
+                    sh.ph.indent(
+                        Statements($, $p),
+                    ),
+                    sh.ph.literal("}"),
                 ])
             ]))
             case 'export': return p_.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
                 sh.sentence([
-                        sh.ph.literal("export "),
-                        p_.decide.state($.type, ($) => {
-                            switch ($[0]) {
-                                case 'named exports': return p_.ss($, ($) => sh.ph.composed([
-                                    sh.ph.literal("{ "),
-                                    sh.ph.indent(
-                                        sh.pg.sentences($.specifiers.__l_map(($) => sh.sentence([
-                                            Identifier($.name),
-                                            $.as.__decide(
-                                                ($) => sh.ph.composed([
-                                                    sh.ph.literal(" as "),
-                                                    Identifier($),
-                                                ]),
-                                                () => sh.ph.nothing(),
-                                            ),
-                                            sh.ph.literal(", ")
-                                        ]))),
-                                    ),
-                                    sh.ph.literal("}"),
-                                    $.from.__decide(
-                                        ($) => sh.ph.composed([
-                                            sh.ph.literal(" from "),
-                                            String_Literal($),
-                                        ]),
-                                        () => sh.ph.nothing()
-                                    )
-                                ]))
-                                default: return p_.au($[0])
-                            }
-                        }),
+                    sh.ph.literal("export "),
+                    p_.decide.state($.type, ($) => {
+                        switch ($[0]) {
+                            case 'named exports': return p_.ss($, ($) => sh.ph.composed([
+                                sh.ph.literal("{ "),
+                                sh.ph.indent(
+                                    sh.pg.sentences($.specifiers.__l_map(($) => sh.sentence([
+                                        Identifier($.name),
+                                        $.as.__decide(
+                                            ($) => sh.ph.composed([
+                                                sh.ph.literal(" as "),
+                                                Identifier($),
+                                            ]),
+                                            () => sh.ph.nothing(),
+                                        ),
+                                        sh.ph.literal(", ")
+                                    ]))),
+                                ),
+                                sh.ph.literal("}"),
+                                $.from.__decide(
+                                    ($) => sh.ph.composed([
+                                        sh.ph.literal(" from "),
+                                        String_Literal($),
+                                    ]),
+                                    () => sh.ph.nothing()
+                                )
+                            ]))
+                            default: return p_.au($[0])
+                        }
+                    }),
                 ])
             ]))
             case 'expression': return p_.ss($, ($) => sh.pg.sentences([
@@ -615,13 +680,7 @@ export const Statements = (
     })
 ))
 
-export const Expression = (
-    $: d_in.Expression_,
-    $p: {
-        'replace empty type literals by symbol': boolean
-        'object literal needs parentheses': boolean
-    }
-): d_out.Phrase => p_.decide.state($, ($) => {
+export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, ($) => {
     switch ($[0]) {
         case 'assignment': return p_.ss($, ($) => sh.ph.composed([
             Expression($.left, $p),
@@ -829,12 +888,7 @@ export const Expression = (
     }
 })
 
-export const Type = (
-    $: d_in.Type,
-    $p: {
-        'replace empty type literals by symbol': boolean
-    }
-): d_out.Phrase => p_.decide.state($, ($) => {
+export const Type: interface_.Type = ($, $p) => p_.decide.state($, ($) => {
     switch ($[0]) {
         case 'boolean': return p_.ss($, ($) => sh.ph.literal("boolean"))
         case 'function': return p_.ss($, ($) => sh.ph.composed([

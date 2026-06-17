@@ -1,4 +1,5 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
+import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as p_ri from 'pareto-core/dist/interface/refiner'
 import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
 import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
@@ -18,7 +19,11 @@ import * as sh from "../../../../modules/typescript_light/shorthands/typescript_
 
 export const temp_create_file_path = (
     $: d_in.Imports.D,
-    delimiter: 'apostrophe' | 'quote',
+    $p: {
+        'delimiter': 
+        | ['apostrophe', null]
+        | ['quote', null]
+    },
 ): d_out.String_Literal => {
     const valid_file_name = ($: string): string => {
         return p_text_from_list(
@@ -55,7 +60,7 @@ export const temp_create_file_path = (
                 default: return p_.au($[0])
             }
         }),
-        'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
+        'delimiter': $p.delimiter
     }
 }
 
@@ -110,7 +115,12 @@ export const Package_Set: p_ri.Refiner<
 
                         p_.list.from.dictionary($.imports,).convert(($, id): d_out.Statements_.L => sh.s.import_namespace(
                             sh.identifier_escaped(`i ${id}`),
-                            temp_create_file_path($, 'quote')
+                            temp_create_file_path(
+                                $,
+                                {
+                                    'delimiter': ['apostrophe', null]
+                                }
+                            )
                         )),
 
                         p_.decide.state($.content, ($) => {
@@ -353,12 +363,11 @@ export const Package_Set: p_ri.Refiner<
         }))
     }
 
-export const Value = (
-    $: d_in.Value,
-    $p: {
-        'name': string
-    }
-): d_out.Statements => {
+export const Value: p_i.Transformer_With_Parameter<
+    d_in.Value,
+    d_out.Statements,
+    { 'name': string }
+> = ($, $p) => {
     return p_.decide.state($, ($): d_out.Statements => {
         switch ($[0]) {
 

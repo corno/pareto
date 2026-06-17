@@ -1,4 +1,5 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
+import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as p_di from 'pareto-core/dist/interface/data'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
 import p_variables from 'pareto-core/dist/implementation/specials/variables'
@@ -130,7 +131,12 @@ export const Package_Set: p_ri.Refiner<
                     ).convert(
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(p_.literal.list(["t ", id]))),
-                            temp_create_file_path($, 'quote')
+                            temp_create_file_path(
+                                $,
+                                {
+                                    'delimiter': ['quote', null]
+                                }
+                            )
                         )
                     ),
                     p_.list.from.dictionary(
@@ -138,7 +144,12 @@ export const Package_Set: p_ri.Refiner<
                     ).convert(
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(p_.literal.list(["v ", id]))),
-                            temp_create_file_path($, 'quote')
+                            temp_create_file_path(
+                                $,
+                                {
+                                    'delimiter': ['quote', null]
+                                }
+                            )
                         )
                     ),
                     p_.list.from.dictionary(
@@ -221,9 +232,10 @@ export const Temp_Value_Type_Specification = (
     )
 }
 
-export const Assign = (
-    $: d_in.Assign
-): d_out.Expression => p_.decide.state($, ($) => {
+export const Assign: p_i.Transformer<
+    d_in.Assign,
+    d_out.Expression
+> = ($) => p_.decide.state($, ($) => {
     switch ($[0]) {
         case 'decide': return p_.ss($, ($) => p_variables(() => {
             const selection = Select_Value($.source)
