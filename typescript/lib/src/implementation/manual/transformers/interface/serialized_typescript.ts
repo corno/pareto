@@ -16,7 +16,7 @@ export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
     return t_typescript_light_to_fountain_pen_block.Directory(
         t_typescript.Package_Set(
             $,
-            ($) => p_.decide.state($, ($) => {
+            ($) => p_.from.state($).decide(($) => {
                 switch ($[0]) {
                     case 'directory name ending with ts': return p_.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
                     default: return p_.au($[0])

@@ -1,24 +1,28 @@
 
-import * as _p from 'pareto-core/dist/assign'
+import * as p_ from 'pareto-core/dist/implementation/transformer'
+import * as p_di from 'pareto-core/dist/interface/data'
+const p_decide_state = <State, B>($: State,  assign: ($: State) => B) => assign($)
+const p_decide_optional = <OV extends p_di.Value, B extends p_di.Value>($: p_di.Optional_Value<OV>,  assign: ($: OV) => B,  otherwise: () => B) => $.__decide(assign, otherwise)
+const p_decide_text = <B>($: string,  assign: ($: string) => B) => assign($)
 
-import _p_change_context from 'pareto-core/dist/implementation/specials/change_context'
+import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
 
 import * as t_signatures from "../../../../../../interface/generated/liana/schemas/typescript_light/signatures/transformers/boilerplate_for_migrate"
 
 import * as t_out from "../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
-export const Directory: t_signatures.Directory = ($) => _p.dictionary.from.dictionary(
+export const Directory: t_signatures.Directory = ($) => p_.from.dictionary(
     $,
 ).map(
-    ($, id) => _p.decide.state(
+    ($, id) => p_decide_state(
         $,
         ($): t_out.Directory.D => {
             switch ($[0]) {
                 case 'file':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['file', {
-                            'statements': _p_change_context(
+                            'statements': p_change_context(
                                 $['statements'],
                                 ($) => Statements(
                                     $,
@@ -27,14 +31,14 @@ export const Directory: t_signatures.Directory = ($) => _p.dictionary.from.dicti
                         }],
                     )
                 case 'directory':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['directory', Directory(
                             $,
                         )],
                     )
                 default:
-                    return _p.au(
+                    return p_.au(
                         $[0],
                     )
             }
@@ -46,49 +50,49 @@ export const Block: t_signatures.Block = ($) => Statements(
     $,
 )
 
-export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
+export const Statements: t_signatures.Statements = ($) => p_.from.list(
     $,
 ).map(
-    ($) => _p.decide.state(
+    ($) => p_decide_state(
         $,
         ($): t_out.Statements.L => {
             switch ($[0]) {
                 case 'block':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['block', Block(
                             $,
                         )],
                     )
                 case 'export':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['export', {
-                            'type': _p_change_context(
+                            'type': p_change_context(
                                 $['type'],
-                                ($) => _p.decide.state(
+                                ($) => p_decide_state(
                                     $,
                                     ($): t_out.Statements.L.export_.type_ => {
                                         switch ($[0]) {
                                             case 'named exports':
-                                                return _p.ss(
+                                                return p_.ss(
                                                     $,
                                                     ($) => ['named exports', {
-                                                        'specifiers': _p_change_context(
+                                                        'specifiers': p_change_context(
                                                             $['specifiers'],
-                                                            ($) => _p.list.from.list(
+                                                            ($) => p_.from.list(
                                                                 $,
                                                             ).map(
                                                                 ($) => ({
-                                                                    'name': _p_change_context(
+                                                                    'name': p_change_context(
                                                                         $['name'],
                                                                         ($) => Identifier(
                                                                             $,
                                                                         ),
                                                                     ),
-                                                                    'as': _p_change_context(
+                                                                    'as': p_change_context(
                                                                         $['as'],
-                                                                        ($) => _p.optional.from.optional(
+                                                                        ($) => p_.from.optional(
                                                                             $,
                                                                         ).map(
                                                                             ($) => Identifier(
@@ -99,9 +103,9 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                                                                 }),
                                                             ),
                                                         ),
-                                                        'from': _p_change_context(
+                                                        'from': p_change_context(
                                                             $['from'],
-                                                            ($) => _p.optional.from.optional(
+                                                            ($) => p_.from.optional(
                                                                 $,
                                                             ).map(
                                                                 ($) => String_Literal(
@@ -112,7 +116,7 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                                                     }],
                                                 )
                                             default:
-                                                return _p.au(
+                                                return p_.au(
                                                     $[0],
                                                 )
                                         }
@@ -122,55 +126,55 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                         }],
                     )
                 case 'expression':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['expression', Expression(
                             $,
                         )],
                     )
                 case 'import':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['import', {
-                            'type': _p_change_context(
+                            'type': p_change_context(
                                 $['type'],
-                                ($) => _p.decide.state(
+                                ($) => p_decide_state(
                                     $,
                                     ($): t_out.Statements.L.import_.type_ => {
                                         switch ($[0]) {
                                             case 'default':
-                                                return _p.ss(
+                                                return p_.ss(
                                                     $,
                                                     ($) => ['default', Identifier(
                                                         $,
                                                     )],
                                                 )
                                             case 'namespace':
-                                                return _p.ss(
+                                                return p_.ss(
                                                     $,
                                                     ($) => ['namespace', Identifier(
                                                         $,
                                                     )],
                                                 )
                                             case 'named':
-                                                return _p.ss(
+                                                return p_.ss(
                                                     $,
                                                     ($) => ['named', {
-                                                        'specifiers': _p_change_context(
+                                                        'specifiers': p_change_context(
                                                             $['specifiers'],
-                                                            ($) => _p.list.from.list(
+                                                            ($) => p_.from.list(
                                                                 $,
                                                             ).map(
                                                                 ($) => ({
-                                                                    'name': _p_change_context(
+                                                                    'name': p_change_context(
                                                                         $['name'],
                                                                         ($) => Identifier(
                                                                             $,
                                                                         ),
                                                                     ),
-                                                                    'as': _p_change_context(
+                                                                    'as': p_change_context(
                                                                         $['as'],
-                                                                        ($) => _p.optional.from.optional(
+                                                                        ($) => p_.from.optional(
                                                                             $,
                                                                         ).map(
                                                                             ($) => Identifier(
@@ -184,14 +188,14 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                                                     }],
                                                 )
                                             default:
-                                                return _p.au(
+                                                return p_.au(
                                                     $[0],
                                                 )
                                         }
                                     },
                                 ),
                             ),
-                            'from': _p_change_context(
+                            'from': p_change_context(
                                 $['from'],
                                 ($) => String_Literal(
                                     $,
@@ -200,20 +204,20 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                         }],
                     )
                 case 'module declaration':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['module declaration', {
-                            'export': _p_change_context(
+                            'export': p_change_context(
                                 $['export'],
                                 ($) => $,
                             ),
-                            'name': _p_change_context(
+                            'name': p_change_context(
                                 $['name'],
                                 ($) => Identifier(
                                     $,
                                 ),
                             ),
-                            'block': _p_change_context(
+                            'block': p_change_context(
                                 $['block'],
                                 ($) => Block(
                                     $,
@@ -222,9 +226,9 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                         }],
                     )
                 case 'return':
-                    return _p.ss(
+                    return p_.ss(
                         $,
-                        ($) => ['return', _p.optional.from.optional(
+                        ($) => ['return', p_.from.optional(
                             $,
                         ).map(
                             ($) => Expression(
@@ -233,48 +237,48 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                         )],
                     )
                 case 'switch':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['switch', {
-                            'expression': _p_change_context(
+                            'expression': p_change_context(
                                 $['expression'],
                                 ($) => Expression(
                                     $,
                                 ),
                             ),
-                            'clauses': _p_change_context(
+                            'clauses': p_change_context(
                                 $['clauses'],
-                                ($) => _p.list.from.list(
+                                ($) => p_.from.list(
                                     $,
                                 ).map(
                                     ($) => ({
-                                        'type': _p_change_context(
+                                        'type': p_change_context(
                                             $['type'],
-                                            ($) => _p.decide.state(
+                                            ($) => p_decide_state(
                                                 $,
                                                 ($): t_out.Statements.L.switch_.clauses.L.type_ => {
                                                     switch ($[0]) {
                                                         case 'case':
-                                                            return _p.ss(
+                                                            return p_.ss(
                                                                 $,
                                                                 ($) => ['case', Expression(
                                                                     $,
                                                                 )],
                                                             )
                                                         case 'default':
-                                                            return _p.ss(
+                                                            return p_.ss(
                                                                 $,
                                                                 ($) => ['default', null],
                                                             )
                                                         default:
-                                                            return _p.au(
+                                                            return p_.au(
                                                                 $[0],
                                                             )
                                                     }
                                                 },
                                             ),
                                         ),
-                                        'statements': _p_change_context(
+                                        'statements': p_change_context(
                                             $['statements'],
                                             ($) => Statements(
                                                 $,
@@ -286,22 +290,22 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                         }],
                     )
                 case 'type alias declaration':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['type alias declaration', {
-                            'export': _p_change_context(
+                            'export': p_change_context(
                                 $['export'],
                                 ($) => $,
                             ),
-                            'name': _p_change_context(
+                            'name': p_change_context(
                                 $['name'],
                                 ($) => Identifier(
                                     $,
                                 ),
                             ),
-                            'parameters': _p_change_context(
+                            'parameters': p_change_context(
                                 $['parameters'],
-                                ($) => _p.list.from.list(
+                                ($) => p_.from.list(
                                     $,
                                 ).map(
                                     ($) => Identifier(
@@ -309,7 +313,7 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                                     ),
                                 ),
                             ),
-                            'type': _p_change_context(
+                            'type': p_change_context(
                                 $['type'],
                                 ($) => Type(
                                     $,
@@ -318,26 +322,26 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                         }],
                     )
                 case 'variable':
-                    return _p.ss(
+                    return p_.ss(
                         $,
                         ($) => ['variable', {
-                            'export': _p_change_context(
+                            'export': p_change_context(
                                 $['export'],
                                 ($) => $,
                             ),
-                            'const': _p_change_context(
+                            'const': p_change_context(
                                 $['const'],
                                 ($) => $,
                             ),
-                            'name': _p_change_context(
+                            'name': p_change_context(
                                 $['name'],
                                 ($) => Identifier(
                                     $,
                                 ),
                             ),
-                            'type': _p_change_context(
+                            'type': p_change_context(
                                 $['type'],
-                                ($) => _p.optional.from.optional(
+                                ($) => p_.from.optional(
                                     $,
                                 ).map(
                                     ($) => Type(
@@ -345,9 +349,9 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                                     ),
                                 ),
                             ),
-                            'expression': _p_change_context(
+                            'expression': p_change_context(
                                 $['expression'],
-                                ($) => _p.optional.from.optional(
+                                ($) => p_.from.optional(
                                     $,
                                 ).map(
                                     ($) => Expression(
@@ -358,7 +362,7 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
                         }],
                     )
                 default:
-                    return _p.au(
+                    return p_.au(
                         $[0],
                     )
             }
@@ -366,22 +370,22 @@ export const Statements: t_signatures.Statements = ($) => _p.list.from.list(
     ),
 )
 
-export const Type: t_signatures.Type = ($) => _p.decide.state(
+export const Type: t_signatures.Type = ($) => p_decide_state(
     $,
     ($): t_out.Type => {
         switch ($[0]) {
             case 'boolean':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['boolean', null],
                 )
             case 'function':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['function', {
-                        'type parameters': _p_change_context(
+                        'type parameters': p_change_context(
                             $['type parameters'],
-                            ($) => _p.list.from.list(
+                            ($) => p_.from.list(
                                 $,
                             ).map(
                                 ($) => Type(
@@ -389,13 +393,13 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                                 ),
                             ),
                         ),
-                        'parameters': _p_change_context(
+                        'parameters': p_change_context(
                             $['parameters'],
                             ($) => Function_Parameters(
                                 $,
                             ),
                         ),
-                        'return': _p_change_context(
+                        'return': p_change_context(
                             $['return'],
                             ($) => Type(
                                 $,
@@ -404,43 +408,43 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                     }],
                 )
             case 'literal type':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['literal type', String_Literal(
                         $,
                     )],
                 )
             case 'never':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['never', null],
                 )
             case 'null':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['null', null],
                 )
             case 'number':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['number', null],
                 )
             case 'string':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['string', null],
                 )
             case 'tuple':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['tuple', {
-                        'readonly': _p_change_context(
+                        'readonly': p_change_context(
                             $['readonly'],
                             ($) => $,
                         ),
-                        'elements': _p_change_context(
+                        'elements': p_change_context(
                             $['elements'],
-                            ($) => _p.list.from.list(
+                            ($) => p_.from.list(
                                 $,
                             ).map(
                                 ($) => Type(
@@ -451,48 +455,48 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                     }],
                 )
             case 'type literal':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['type literal', {
-                        'properties': _p_change_context(
+                        'properties': p_change_context(
                             $['properties'],
-                            ($) => _p.list.from.list(
+                            ($) => p_.from.list(
                                 $,
                             ).map(
                                 ($) => ({
-                                    'key': _p_change_context(
+                                    'key': p_change_context(
                                         $['key'],
-                                        ($) => _p.decide.state(
+                                        ($) => p_decide_state(
                                             $,
                                             ($): t_out.Type.type_literal.properties.L.key => {
                                                 switch ($[0]) {
                                                     case 'identifier':
-                                                        return _p.ss(
+                                                        return p_.ss(
                                                             $,
                                                             ($) => ['identifier', Identifier(
                                                                 $,
                                                             )],
                                                         )
                                                     case 'string literal':
-                                                        return _p.ss(
+                                                        return p_.ss(
                                                             $,
                                                             ($) => ['string literal', String_Literal(
                                                                 $,
                                                             )],
                                                         )
                                                     default:
-                                                        return _p.au(
+                                                        return p_.au(
                                                             $[0],
                                                         )
                                                 }
                                             },
                                         ),
                                     ),
-                                    'readonly': _p_change_context(
+                                    'readonly': p_change_context(
                                         $['readonly'],
                                         ($) => $,
                                     ),
-                                    'type': _p_change_context(
+                                    'type': p_change_context(
                                         $['type'],
                                         ($) => Type(
                                             $,
@@ -504,18 +508,18 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                     }],
                 )
             case 'type reference':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['type reference', {
-                        'start': _p_change_context(
+                        'start': p_change_context(
                             $['start'],
                             ($) => Identifier(
                                 $,
                             ),
                         ),
-                        'tail': _p_change_context(
+                        'tail': p_change_context(
                             $['tail'],
-                            ($) => _p.list.from.list(
+                            ($) => p_.from.list(
                                 $,
                             ).map(
                                 ($) => Identifier(
@@ -523,9 +527,9 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                                 ),
                             ),
                         ),
-                        'type arguments': _p_change_context(
+                        'type arguments': p_change_context(
                             $['type arguments'],
-                            ($) => _p.list.from.list(
+                            ($) => p_.from.list(
                                 $,
                             ).map(
                                 ($) => Type(
@@ -536,9 +540,9 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                     }],
                 )
             case 'union':
-                return _p.ss(
+                return p_.ss(
                     $,
-                    ($) => ['union', _p.list.from.list(
+                    ($) => ['union', p_.from.list(
                         $,
                     ).map(
                         ($) => Type(
@@ -547,31 +551,31 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                     )],
                 )
             case 'void':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['void', null],
                 )
             default:
-                return _p.au(
+                return p_.au(
                     $[0],
                 )
         }
     },
 )
 
-export const Function_Parameters: t_signatures.Function_Parameters = ($) => _p.list.from.list(
+export const Function_Parameters: t_signatures.Function_Parameters = ($) => p_.from.list(
     $,
 ).map(
     ($) => ({
-        'name': _p_change_context(
+        'name': p_change_context(
             $['name'],
             ($) => Identifier(
                 $,
             ),
         ),
-        'type': _p_change_context(
+        'type': p_change_context(
             $['type'],
-            ($) => _p.optional.from.optional(
+            ($) => p_.from.optional(
                 $,
             ).map(
                 ($) => Type(
@@ -582,14 +586,14 @@ export const Function_Parameters: t_signatures.Function_Parameters = ($) => _p.l
     }),
 )
 
-export const Expression: t_signatures.Expression = ($) => _p.decide.state(
+export const Expression: t_signatures.Expression = ($) => p_decide_state(
     $,
     ($): t_out.Expression => {
         switch ($[0]) {
             case 'array literal':
-                return _p.ss(
+                return p_.ss(
                     $,
-                    ($) => ['array literal', _p.list.from.list(
+                    ($) => ['array literal', p_.from.list(
                         $,
                     ).map(
                         ($) => Expression(
@@ -598,18 +602,18 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     )],
                 )
             case 'arrow function':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['arrow function', {
-                        'parameters': _p_change_context(
+                        'parameters': p_change_context(
                             $['parameters'],
                             ($) => Function_Parameters(
                                 $,
                             ),
                         ),
-                        'return type': _p_change_context(
+                        'return type': p_change_context(
                             $['return type'],
-                            ($) => _p.optional.from.optional(
+                            ($) => p_.from.optional(
                                 $,
                             ).map(
                                 ($) => Type(
@@ -617,28 +621,28 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 ),
                             ),
                         ),
-                        'body': _p_change_context(
+                        'body': p_change_context(
                             $['body'],
-                            ($) => _p.decide.state(
+                            ($) => p_decide_state(
                                 $,
                                 ($): t_out.Expression.arrow_function.body => {
                                     switch ($[0]) {
                                         case 'block':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['block', Block(
                                                     $,
                                                 )],
                                             )
                                         case 'expression':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['expression', Expression(
                                                     $,
                                                 )],
                                             )
                                         default:
-                                            return _p.au(
+                                            return p_.au(
                                                 $[0],
                                             )
                                     }
@@ -648,16 +652,16 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'assignment':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['assignment', {
-                        'left': _p_change_context(
+                        'left': p_change_context(
                             $['left'],
                             ($) => Expression(
                                 $,
                             ),
                         ),
-                        'right': _p_change_context(
+                        'right': p_change_context(
                             $['right'],
                             ($) => Expression(
                                 $,
@@ -666,18 +670,18 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'call':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['call', {
-                        'function selection': _p_change_context(
+                        'function selection': p_change_context(
                             $['function selection'],
                             ($) => Expression(
                                 $,
                             ),
                         ),
-                        'arguments': _p_change_context(
+                        'arguments': p_change_context(
                             $['arguments'],
-                            ($) => _p.list.from.list(
+                            ($) => p_.from.list(
                                 $,
                             ).map(
                                 ($) => Expression(
@@ -688,70 +692,70 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'compare':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['compare', {
-                        'left': _p_change_context(
+                        'left': p_change_context(
                             $['left'],
                             ($) => Expression(
                                 $,
                             ),
                         ),
-                        'operator': _p_change_context(
+                        'operator': p_change_context(
                             $['operator'],
-                            ($) => _p.decide.state(
+                            ($) => p_decide_state(
                                 $,
                                 ($): t_out.Expression.compare.operator => {
                                     switch ($[0]) {
                                         case 'loosely equal':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['loosely equal', null],
                                             )
                                         case 'strictly equal':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['strictly equal', null],
                                             )
                                         case 'loosely not equal':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['loosely not equal', null],
                                             )
                                         case 'strictly not equal':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['strictly not equal', null],
                                             )
                                         case 'smaller than':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['smaller than', null],
                                             )
                                         case 'smaller than or equal':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['smaller than or equal', null],
                                             )
                                         case 'greater than':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['greater than', null],
                                             )
                                         case 'greater than or equal':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['greater than or equal', null],
                                             )
                                         default:
-                                            return _p.au(
+                                            return p_.au(
                                                 $[0],
                                             )
                                     }
                                 },
                             ),
                         ),
-                        'right': _p_change_context(
+                        'right': p_change_context(
                             $['right'],
                             ($) => Expression(
                                 $,
@@ -760,22 +764,22 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'conditional':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['conditional', {
-                        'condition': _p_change_context(
+                        'condition': p_change_context(
                             $['condition'],
                             ($) => Expression(
                                 $,
                             ),
                         ),
-                        'if true': _p_change_context(
+                        'if true': p_change_context(
                             $['if true'],
                             ($) => Expression(
                                 $,
                             ),
                         ),
-                        'if false': _p_change_context(
+                        'if false': p_change_context(
                             $['if false'],
                             ($) => Expression(
                                 $,
@@ -784,16 +788,16 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'element access':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['element access', {
-                        'collection': _p_change_context(
+                        'collection': p_change_context(
                             $['collection'],
                             ($) => Expression(
                                 $,
                             ),
                         ),
-                        'index': _p_change_context(
+                        'index': p_change_context(
                             $['index'],
                             ($) => Expression(
                                 $,
@@ -802,66 +806,66 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'identifier':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['identifier', Identifier(
                         $,
                     )],
                 )
             case 'false':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['false', null],
                 )
             case 'null':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['null', null],
                 )
             case 'number literal':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['number literal', $],
                 )
             case 'object literal':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['object literal', {
-                        'properties': _p_change_context(
+                        'properties': p_change_context(
                             $['properties'],
-                            ($) => _p.list.from.list(
+                            ($) => p_.from.list(
                                 $,
                             ).map(
                                 ($) => ({
-                                    'key': _p_change_context(
+                                    'key': p_change_context(
                                         $['key'],
-                                        ($) => _p.decide.state(
+                                        ($) => p_decide_state(
                                             $,
                                             ($): t_out.Expression.object_literal.properties.L.key => {
                                                 switch ($[0]) {
                                                     case 'identifier':
-                                                        return _p.ss(
+                                                        return p_.ss(
                                                             $,
                                                             ($) => ['identifier', Identifier(
                                                                 $,
                                                             )],
                                                         )
                                                     case 'string literal':
-                                                        return _p.ss(
+                                                        return p_.ss(
                                                             $,
                                                             ($) => ['string literal', String_Literal(
                                                                 $,
                                                             )],
                                                         )
                                                     default:
-                                                        return _p.au(
+                                                        return p_.au(
                                                             $[0],
                                                         )
                                                 }
                                             },
                                         ),
                                     ),
-                                    'value': _p_change_context(
+                                    'value': p_change_context(
                                         $['value'],
                                         ($) => Expression(
                                             $,
@@ -873,23 +877,23 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'parenthesized':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['parenthesized', Expression(
                         $,
                     )],
                 )
             case 'property access':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['property access', {
-                        'object': _p_change_context(
+                        'object': p_change_context(
                             $['object'],
                             ($) => Expression(
                                 $,
                             ),
                         ),
-                        'property': _p_change_context(
+                        'property': p_change_context(
                             $['property'],
                             ($) => Identifier(
                                 $,
@@ -898,46 +902,46 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             case 'string literal':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['string literal', String_Literal(
                         $,
                     )],
                 )
             case 'true':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['true', null],
                 )
             case 'unary operation':
-                return _p.ss(
+                return p_.ss(
                     $,
                     ($) => ['unary operation', {
-                        'operator': _p_change_context(
+                        'operator': p_change_context(
                             $['operator'],
-                            ($) => _p.decide.state(
+                            ($) => p_decide_state(
                                 $,
                                 ($): t_out.Expression.unary_operation.operator => {
                                     switch ($[0]) {
                                         case 'negation':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['negation', null],
                                             )
                                         case 'logical not':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['logical not', null],
                                             )
                                         default:
-                                            return _p.au(
+                                            return p_.au(
                                                 $[0],
                                             )
                                     }
                                 },
                             ),
                         ),
-                        'operand': _p_change_context(
+                        'operand': p_change_context(
                             $['operand'],
                             ($) => Expression(
                                 $,
@@ -946,7 +950,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                     }],
                 )
             default:
-                return _p.au(
+                return p_.au(
                     $[0],
                 )
         }
@@ -954,38 +958,38 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
 )
 
 export const String_Literal: t_signatures.String_Literal = ($) => ({
-    'delimiter': _p_change_context(
+    'delimiter': p_change_context(
         $['delimiter'],
-        ($) => _p.decide.state(
+        ($) => p_decide_state(
             $,
             ($): t_out.String_Literal.delimiter => {
                 switch ($[0]) {
                     case 'quote':
-                        return _p.ss(
+                        return p_.ss(
                             $,
                             ($) => ['quote', null],
                         )
                     case 'apostrophe':
-                        return _p.ss(
+                        return p_.ss(
                             $,
                             ($) => ['apostrophe', null],
                         )
                     default:
-                        return _p.au(
+                        return p_.au(
                             $[0],
                         )
                 }
             },
         ),
     ),
-    'value': _p_change_context(
+    'value': p_change_context(
         $['value'],
         ($) => $,
     ),
 })
 
 export const Identifier: t_signatures.Identifier = ($) => ({
-    'value': _p_change_context(
+    'value': p_change_context(
         $['value'],
         ($) => $,
     ),

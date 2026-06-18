@@ -20,7 +20,7 @@ import * as sh from "../../../../modules/typescript_light/shorthands/typescript_
 export const temp_create_file_path = (
     $: d_in.Imports.D,
     $p: {
-        'delimiter': 
+        'delimiter':
         | ['apostrophe', null]
         | ['quote', null]
     },
@@ -33,8 +33,8 @@ export const temp_create_file_path = (
     }
     const do_tail = (): string => {
         return p_text_from_list(
-            p_.list.from.list(
-                $.tail.__l_map(($) => `/${valid_file_name($)}`),
+            p_.from.list(
+                $.tail.__l_map_deprecated(($) => `/${valid_file_name($)}`),
             ).flatten(
                 ($) => p_list_from_text(
                     $,
@@ -45,11 +45,11 @@ export const temp_create_file_path = (
         )
     }
     return {
-        'value': p_.decide.state($.type, ($): string => {
+        'value': p_.from.state($.type).decide(($): string => {
             switch ($[0]) {
                 case 'external': return p_.ss($, ($) => valid_file_name($) + do_tail())
                 case 'ancestor': return p_.ss($, ($) => p_text_from_list(
-                    p_.list.from.list(
+                    p_.from.list(
                         p_.literal.repeat(
                             p_list_from_text(
                                 "../",
@@ -79,8 +79,8 @@ const temp_rename: p_ri.Refiner<
     abort
 ) => {
         const renamed: { [id: string]: d_in.Package_Set.D } = {}
-        $.__d_map(($, id) => {
-            const new_id: string = p_.decide.state($, ($) => {
+        $.__d_map_deprecated(($, id) => {
+            const new_id: string = p_.from.state($).decide(($) => {
                 switch ($[0]) {
                     case 'package': return p_.ss($, ($) => id + ".ts")
                     case 'set': return p_.ss($, ($) => {
@@ -110,7 +110,7 @@ export const Package_Set: p_ri.Refiner<
     $,
     abort
 ) => {
-        return temp_rename($, abort).__d_map(($) => p_.decide.state($, ($) => {
+        return temp_rename($, abort).__d_map_deprecated(($) => p_.from.state($).decide(($) => {
             switch ($[0]) {
                 case 'package': return p_.ss($, ($) => {
 
@@ -119,7 +119,7 @@ export const Package_Set: p_ri.Refiner<
                             sh.s.import_namespace(sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
                         ],
 
-                        p_.list.from.dictionary($.imports,).convert(($, id): d_out.Statements_.L => sh.s.import_namespace(
+                        p_.from.dictionary($.imports,).convert_to_list(($, id): d_out.Statements_.L => sh.s.import_namespace(
                             sh.identifier_escaped(`i ${id}`),
                             temp_create_file_path(
                                 $,
@@ -129,11 +129,11 @@ export const Package_Set: p_ri.Refiner<
                             )
                         )),
 
-                        p_.decide.state($.content, ($) => {
+                        p_.from.state($.content).decide(($) => {
                             switch ($[0]) {
-                                case 'data modules': return p_.ss($, ($) => p_.list.from.dictionary(
+                                case 'data modules': return p_.ss($, ($) => p_.from.dictionary(
                                     $,
-                                ).flatten(
+                                ).flatten_to_list(
                                     ($, id): d_out.Statements => Value(
                                         $,
                                         {
@@ -142,9 +142,9 @@ export const Package_Set: p_ri.Refiner<
                                         }
                                     )
                                 ))
-                                case 'functions': return p_.ss($, ($) => p_.list.from.dictionary(
+                                case 'functions': return p_.ss($, ($) => p_.from.dictionary(
                                     $
-                                ).flatten(
+                                ).flatten_to_list(
                                     ($, id): d_out.Statements => {
                                         const name = id + " "
                                         return p_.literal.list([
@@ -164,7 +164,7 @@ export const Package_Set: p_ri.Refiner<
                                                             'name': "O",
                                                         }
                                                     ),
-                                                    p_.decide.state($.type, ($): d_out.Statements => {
+                                                    p_.from.state($.type).decide( ($): d_out.Statements => {
                                                         switch ($[0]) {
                                                             case 'transformer': return p_.ss($, ($) => p_.literal.list([]))
                                                             case 'refiner': return p_.ss($, ($): d_out.Statements => p_.literal.nested_list<d_out.Statements.L>([
@@ -185,14 +185,14 @@ export const Package_Set: p_ri.Refiner<
 
                                                                 $.lookups.__decide<d_out.Statements>(
                                                                     ($) => {
-                                                                        return p_.list.from.dictionary(
+                                                                        return p_.from.dictionary(
                                                                             $,
-                                                                        ).convert(
+                                                                        ).convert_to_list(
                                                                             ($, id) => sh.s.namespace(
                                                                                 true,
                                                                                 sh.identifier_raw("L"),
                                                                                 Value(
-                                                                                    p_.decide.state($, ($) => {
+                                                                                    p_.from.state($).decide(($) => {
                                                                                         switch ($[0]) {
                                                                                             case 'acyclic': return p_.ss($, ($) => $)
                                                                                             case 'cyclic': return p_.ss($, ($) => $)
@@ -220,9 +220,9 @@ export const Package_Set: p_ri.Refiner<
                                                             true,
                                                             sh.identifier_raw("P"),
                                                             $.parameters.__decide(
-                                                                ($) => p_.list.from.dictionary(
+                                                                ($) => p_.from.dictionary(
                                                                     $,
-                                                                ).flatten(
+                                                                ).flatten_to_list(
                                                                     ($, id) => Value(
                                                                         $,
                                                                         {
@@ -250,7 +250,7 @@ export const Package_Set: p_ri.Refiner<
                                                             ),
                                                         ],
 
-                                                        p_.decide.state($.type, ($) => {
+                                                        p_.from.state($.type).decide(($) => {
                                                             switch ($[0]) {
                                                                 case 'transformer': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.list([]))
                                                                 case 'refiner': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.nested_list([
@@ -279,14 +279,14 @@ export const Package_Set: p_ri.Refiner<
                                                                             sh.parameter(
                                                                                 sh.identifier_raw("lookups"),
                                                                                 sh.t.type_literal(
-                                                                                    $.__to_list(($, id) => sh.tl_propery(
+                                                                                    p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
                                                                                         id,
                                                                                         'apostrophized string literal',
                                                                                         true,
                                                                                         sh.t.type_reference(
                                                                                             sh.identifier_raw("pi"),
                                                                                             [
-                                                                                                sh.identifier_raw(p_.decide.state($, ($) => {
+                                                                                                sh.identifier_raw(p_.from.state($).decide(($) => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'acyclic': return p_.ss($, ($) => "static_lookup.Acyclic")
                                                                                                         case 'cyclic': return p_.ss($, ($) => "static_lookup.Cyclic")
@@ -316,7 +316,7 @@ export const Package_Set: p_ri.Refiner<
                                                                 sh.parameter(
                                                                     sh.identifier_raw("parameters"),
                                                                     sh.t.type_literal(
-                                                                        $.__to_list(($, id) => sh.tl_propery(
+                                                                        p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
                                                                             id,
                                                                             'apostrophized string literal',
                                                                             true,
@@ -341,16 +341,16 @@ export const Package_Set: p_ri.Refiner<
 
                         [
                             sh.s.export_(
-                                p_.decide.state($.content, ($) => {
+                                p_.from.state($.content).decide(($) => {
                                     switch ($[0]) {
-                                        case 'data modules': return p_.ss($, ($) => p_.list.from.dictionary(
+                                        case 'data modules': return p_.ss($, ($) => p_.from.dictionary(
                                             $,
-                                        ).convert(
+                                        ).convert_to_list(
                                             ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
-                                        case 'functions': return p_.ss($, ($) => p_.list.from.dictionary(
+                                        case 'functions': return p_.ss($, ($) => p_.from.dictionary(
                                             $,
-                                        ).convert(
+                                        ).convert_to_list(
                                             ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
                                         default: return p_.au($[0])
@@ -374,7 +374,7 @@ export const Value: p_i.Transformer_With_Parameter<
     d_out.Statements,
     { 'name': string }
 > = ($, $p) => {
-    return p_.decide.state($, ($): d_out.Statements => {
+    return p_.from.state($).decide(($): d_out.Statements => {
         switch ($[0]) {
 
 
@@ -392,7 +392,7 @@ export const Value: p_i.Transformer_With_Parameter<
                     true,
                     sh.identifier_escaped($p.name),
                     p_.literal.list([]),
-                    p_.decide.state($.location, ($) => {
+                    p_.from.state($.location).decide(($) => {
                         switch ($[0]) {
                             case 'import': return p_.ss($, ($) => sh.t.type_reference(
                                 sh.identifier_escaped("i " + $.import),
@@ -441,9 +441,9 @@ export const Value: p_i.Transformer_With_Parameter<
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        p_.list.from.dictionary(
+                        p_.from.dictionary(
                             $
-                        ).flatten(
+                        ).flatten_to_list(
                             ($, id) => Value(
                                 $,
                                 {
@@ -456,7 +456,7 @@ export const Value: p_i.Transformer_With_Parameter<
                         true,
                         sh.identifier_escaped($p.name),
                         p_.literal.list([]),
-                        sh.t.type_literal($.__to_list(($, id) => sh.tl_propery(
+                        sh.t.type_literal(p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
                             id,
                             'apostrophized string literal',
                             true,
@@ -534,7 +534,7 @@ export const Value: p_i.Transformer_With_Parameter<
                         const foo = sh.t.type_reference(
 
                             //start
-                            p_.decide.state($.location, ($) => {
+                            p_.from.state($.location).decide(($) => {
                                 switch ($[0]) {
                                     case 'import': return p_.ss($, ($) => sh.identifier_escaped("i " + $.import))
                                     case 'local': return p_.ss($, ($) => sh.identifier_escaped($ + " "))
@@ -543,7 +543,7 @@ export const Value: p_i.Transformer_With_Parameter<
                             }),
                             //tail
                             p_.literal.nested_list([
-                                p_.decide.state($.location, ($) => {
+                                p_.from.state($.location).decide(($) => {
                                     switch ($[0]) {
                                         case 'import': return p_.ss($, ($) => p_.literal.list([
                                             sh.identifier_escaped($.type + " ")
@@ -552,10 +552,10 @@ export const Value: p_i.Transformer_With_Parameter<
                                         default: return p_.au($[0])
                                     }
                                 }),
-                                p_.list.from.list(
+                                p_.from.list(
                                     $['sub selection'],
                                 ).flatten(
-                                    ($) => p_.decide.state($, ($) => {
+                                    ($) => p_.from.state($).decide(($) => {
                                         switch ($[0]) {
                                             case 'dictionary': return p_.ss($, ($) => p_.literal.list([sh.identifier_raw("D")]))
                                             case 'group': return p_.ss($, ($) => p_.literal.list([sh.identifier_escaped($)]))
@@ -585,9 +585,9 @@ export const Value: p_i.Transformer_With_Parameter<
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        p_.list.from.dictionary(
+                        p_.from.dictionary(
                             $,
-                        ).flatten(
+                        ).flatten_to_list(
                             ($, id) => Value(
                                 $,
                                 {
@@ -600,10 +600,10 @@ export const Value: p_i.Transformer_With_Parameter<
                         true,
                         sh.identifier_escaped($p.name),
                         p_.literal.list([]),
-                        p_.boolean.from.dictionary($).is_empty()
+                        p_.from.dictionary($).is_empty()
                             ? sh.t.never()
                             : sh.t.union(
-                                $.__to_list(
+                                p_.from.dictionary($).convert_to_list(
                                     ($, id) => sh.t.tuple('readonly', [
                                         sh.t.literal_type(sh.string_literal(id, 'apostrophe')),
                                         sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])

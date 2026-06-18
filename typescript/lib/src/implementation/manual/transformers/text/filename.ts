@@ -13,7 +13,7 @@ export const $$: Signature = ($) => {
         p_list_from_text(
             $,
             ($) => $
-        ).__l_map(($) => {
+        ).__l_map_deprecated(($) => {
             if ($ === 36) { // $
                 $i['add item'](36) //dollar
                 $i['add item'](36) //dollar

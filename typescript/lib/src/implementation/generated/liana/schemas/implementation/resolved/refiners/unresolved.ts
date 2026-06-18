@@ -1,13 +1,17 @@
 
-import * as _p from 'pareto-core/dist/assign'
+import * as p_ from 'pareto-core/dist/implementation/refiner'
 
-import _p_change_context from 'pareto-core/dist/implementation/specials/change_context'
+import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
+import * as p_di from 'pareto-core/dist/interface/data'
+const p_decide_state = <State, B>($: State,  assign: ($: State) => B) => assign($)
+const p_decide_optional = <OV extends p_di.Value, B extends p_di.Value>($: p_di.Optional_Value<OV>,  assign: ($: OV) => B,  otherwise: () => B) => $.__decide(assign, otherwise)
+const p_decide_text = <B>($: string,  assign: ($: string) => B) => assign($)
 
 import * as _p_sl from 'pareto-core/dist/implementation/refiner/select_lookup'
 
 import _p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 
-import _p_variables from 'pareto-core/dist/implementation/specials/variables'
+import p_variables from 'pareto-core/dist/implementation/specials/variables'
 
 import _p_create_symbol from 'pareto-core/dist/implementation/specials/create_symbol'
 
@@ -17,21 +21,21 @@ import * as t_signatures from "../../../../../../../interface/generated/liana/sc
 
 import * as v_external_interface from "../../../interface/resolved/refiners/unresolved"
 
-export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.dictionary.from.dictionary(
+export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => p_.from.dictionary(
     $['l dictionary'],
-).resolve_refiner(
-    ($, id, $a, $c): t_out.Package_Set.D => _p_change_context(
+).resolve(
+    ($, id, $a, $c): t_out.Package_Set.D => p_change_context(
         $['l entry'],
-        ($) => _p_variables(
+        ($) => p_variables(
             () => {
                 
                 const var_location = $['l location']
-                return _p.decide.state(
+                return p_decide_state(
                     $['l state'],
                     ($): t_out.Package_Set.D => {
                         switch ($[0]) {
                             case 'package':
-                                return _p.ss(
+                                return p_.ss(
                                     $,
                                     ($) => ['package', Package(
                                         $,
@@ -43,7 +47,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.di
                                     )],
                                 )
                             case 'set':
-                                return _p.ss(
+                                return p_.ss(
                                     $,
                                     ($) => ['set', Package_Set(
                                         $,
@@ -55,7 +59,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.di
                                     )],
                                 )
                             default:
-                                return _p.au(
+                                return p_.au(
                                     $[0],
                                 )
                         }
@@ -66,55 +70,55 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.di
     ),
 )
 
-export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.group_resolve(
+export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.group_resolve(
     () => {
         
-        const prop_specials = _p_change_context(
+        const prop_specials = p_change_context(
             $['specials'],
-            ($) => _p.literal.group_resolve(
+            ($) => p_.literal.group_resolve(
                 () => {
                     
-                    const prop_abort = _p_change_context(
+                    const prop_abort = p_change_context(
                         $['abort'],
                         ($) => $,
                     )
                     
-                    const prop_change_context = _p_change_context(
+                    const prop_change_context = p_change_context(
                         $['change context'],
                         ($) => $,
                     )
                     
-                    const prop_implement_me = _p_change_context(
+                    const prop_implement_me = p_change_context(
                         $['implement me'],
                         ($) => $,
                     )
                     
-                    const prop_iterate = _p_change_context(
+                    const prop_iterate = p_change_context(
                         $['iterate'],
                         ($) => $,
                     )
                     
-                    const prop_lookups = _p_change_context(
+                    const prop_lookups = p_change_context(
                         $['lookups'],
                         ($) => $,
                     )
                     
-                    const prop_list_from_text = _p_change_context(
+                    const prop_list_from_text = p_change_context(
                         $['list from text'],
                         ($) => $,
                     )
                     
-                    const prop_text_from_list = _p_change_context(
+                    const prop_text_from_list = p_change_context(
                         $['text from list'],
                         ($) => $,
                     )
                     
-                    const prop_unreachable_code_path = _p_change_context(
+                    const prop_unreachable_code_path = p_change_context(
                         $['unreachable code path'],
                         ($) => $,
                     )
                     
-                    const prop_variables = _p_change_context(
+                    const prop_variables = p_change_context(
                         $['variables'],
                         ($) => $,
                     )
@@ -133,7 +137,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
             ),
         )
         
-        const prop_type_imports = _p_change_context(
+        const prop_type_imports = p_change_context(
             $['type imports'],
             ($) => v_external_interface.Imports(
                 $,
@@ -145,50 +149,50 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
             ),
         )
         
-        const prop_variable_imports = _p_change_context(
+        const prop_variable_imports = p_change_context(
             $['variable imports'],
-            ($) => _p.dictionary.from.dictionary(
+            ($) => p_.from.dictionary(
                 $['l dictionary'],
-            ).resolve_refiner(
-                ($, id, $a, $c): t_out.Package.variable_imports.D => _p_change_context(
+            ).resolve(
+                ($, id, $a, $c): t_out.Package.variable_imports.D => p_change_context(
                     $['l entry'],
-                    ($) => _p.literal.group_resolve(
+                    ($) => p_.literal.group_resolve(
                         () => {
                             
-                            const prop_tail = _p_change_context(
+                            const prop_tail = p_change_context(
                                 $['tail'],
-                                ($) => _p.list.from.list(
+                                ($) => p_.from.list(
                                     $['l list'],
                                 ).map(
-                                    ($) => _p_change_context(
+                                    ($) => p_change_context(
                                         $['l item'],
                                         ($) => $,
                                     ),
                                 ),
                             )
                             
-                            const prop_type = _p_change_context(
+                            const prop_type = p_change_context(
                                 $['type'],
-                                ($) => _p_variables(
+                                ($) => p_variables(
                                     () => {
                                         
                                         const var_location = $['l location']
-                                        return _p.decide.state(
+                                        return p_decide_state(
                                             $['l state'],
                                             ($): t_out.Package.variable_imports.D.type_ => {
                                                 switch ($[0]) {
                                                     case 'ancestor':
-                                                        return _p.ss(
+                                                        return p_.ss(
                                                             $,
-                                                            ($) => ['ancestor', _p.literal.group_resolve(
+                                                            ($) => ['ancestor', p_.literal.group_resolve(
                                                                 () => {
                                                                     
-                                                                    const prop_dependency = _p_change_context(
+                                                                    const prop_dependency = p_change_context(
                                                                         $['dependency'],
                                                                         ($) => $,
                                                                     )
                                                                     
-                                                                    const prop_number_of_steps = _p_change_context(
+                                                                    const prop_number_of_steps = p_change_context(
                                                                         $['number of steps'],
                                                                         ($) => $,
                                                                     )
@@ -200,17 +204,17 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
                                                             )],
                                                         )
                                                     case 'external':
-                                                        return _p.ss(
+                                                        return p_.ss(
                                                             $,
                                                             ($) => ['external', $],
                                                         )
                                                     case 'sibling':
-                                                        return _p.ss(
+                                                        return p_.ss(
                                                             $,
                                                             ($) => ['sibling', $],
                                                         )
                                                     default:
-                                                        return _p.au(
+                                                        return p_.au(
                                                             $[0],
                                                         )
                                                 }
@@ -229,27 +233,27 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
             ),
         )
         
-        const prop_functions = _p_change_context(
+        const prop_functions = p_change_context(
             $['functions'],
-            ($) => _p.dictionary.from.dictionary(
+            ($) => p_.from.dictionary(
                 $['l dictionary'],
-            ).resolve_refiner(
-                ($, id, $a, $c): t_out.Package.functions.D => _p_change_context(
+            ).resolve(
+                ($, id, $a, $c): t_out.Package.functions.D => p_change_context(
                     $['l entry'],
-                    ($) => _p.literal.group_resolve(
+                    ($) => p_.literal.group_resolve(
                         () => {
                             
-                            const prop_type = _p_change_context(
+                            const prop_type = p_change_context(
                                 $['type'],
-                                ($) => _p.literal.group_resolve(
+                                ($) => p_.literal.group_resolve(
                                     () => {
                                         
-                                        const prop_import = _p_change_context(
+                                        const prop_import = p_change_context(
                                             $['import'],
                                             ($) => $,
                                         )
                                         
-                                        const prop_type = _p_change_context(
+                                        const prop_type = p_change_context(
                                             $['type'],
                                             ($) => $,
                                         )
@@ -261,7 +265,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
                                 ),
                             )
                             
-                            const prop_expression = _p_change_context(
+                            const prop_expression = p_change_context(
                                 $['expression'],
                                 ($) => Assign(
                                     $,
@@ -273,17 +277,17 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
                                 ),
                             )
                             
-                            const prop_temp_has_abort = _p_change_context(
+                            const prop_temp_has_abort = p_change_context(
                                 $['temp has abort'],
                                 ($) => $,
                             )
                             
-                            const prop_temp_has_lookups = _p_change_context(
+                            const prop_temp_has_lookups = p_change_context(
                                 $['temp has lookups'],
                                 ($) => $,
                             )
                             
-                            const prop_temp_has_parameters = _p_change_context(
+                            const prop_temp_has_parameters = p_change_context(
                                 $['temp has parameters'],
                                 ($) => $,
                             )
@@ -308,20 +312,20 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
     },
 )
 
-export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specification = ($, abort, $l, $p) => _p.literal.group_resolve(
+export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specification = ($, abort, $l, $p) => p_.literal.group_resolve(
     () => {
         
-        const prop_type = _p_change_context(
+        const prop_type = p_change_context(
             $['type'],
-            ($) => _p.literal.group_resolve(
+            ($) => p_.literal.group_resolve(
                 () => {
                     
-                    const prop_import = _p_change_context(
+                    const prop_import = p_change_context(
                         $['import'],
                         ($) => $,
                     )
                     
-                    const prop_type = _p_change_context(
+                    const prop_type = p_change_context(
                         $['type'],
                         ($) => $,
                     )
@@ -333,48 +337,48 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
             ),
         )
         
-        const prop_sub_selection = _p_change_context(
+        const prop_sub_selection = p_change_context(
             $['sub selection'],
-            ($) => _p.list.from.list(
+            ($) => p_.from.list(
                 $['l list'],
             ).map(
-                ($) => _p_change_context(
+                ($) => p_change_context(
                     $['l item'],
-                    ($) => _p_variables(
+                    ($) => p_variables(
                         () => {
                             
                             const var_location = $['l location']
-                            return _p.decide.state(
+                            return p_decide_state(
                                 $['l state'],
                                 ($): t_out.Temp_Value_Type_Specification.sub_selection.L => {
                                     switch ($[0]) {
                                         case 'dictionary':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['dictionary', null],
                                             )
                                         case 'group':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['group', $],
                                             )
                                         case 'list':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['list', null],
                                             )
                                         case 'optional':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['optional', null],
                                             )
                                         case 'state':
-                                            return _p.ss(
+                                            return p_.ss(
                                                 $,
                                                 ($) => ['state', $],
                                             )
                                         default:
-                                            return _p.au(
+                                            return p_.au(
                                                 $[0],
                                             )
                                     }
@@ -392,21 +396,21 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
     },
 )
 
-export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
+export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
     () => {
         
         const var_location = $['l location']
-        return _p.decide.state(
+        return p_decide_state(
             $['l state'],
             ($): t_out.Assign => {
                 switch ($[0]) {
                     case 'decide':
-                        return _p.ss(
+                        return p_.ss(
                             $,
-                            ($) => ['decide', _p.literal.group_resolve(
+                            ($) => ['decide', p_.literal.group_resolve(
                                 () => {
                                     
-                                    const prop_source = _p_change_context(
+                                    const prop_source = p_change_context(
                                         $['source'],
                                         ($) => Select_Value(
                                             $,
@@ -418,25 +422,25 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                         ),
                                     )
                                     
-                                    const prop_type = _p_change_context(
+                                    const prop_type = p_change_context(
                                         $['type'],
-                                        ($) => _p_variables(
+                                        ($) => p_variables(
                                             () => {
                                                 
                                                 const var_location = $['l location']
-                                                return _p.decide.state(
+                                                return p_decide_state(
                                                     $['l state'],
                                                     ($): t_out.Assign.decide.type_ => {
                                                         switch ($[0]) {
                                                             case 'boolean':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['boolean', _p.literal.group_resolve(
+                                                                    ($) => ['boolean', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_temp_resulting_node = _p_change_context(
+                                                                            const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => _p.optional.from.optional(
+                                                                                ($) => p_.from.optional(
                                                                                     $,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
@@ -450,7 +454,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_if_false = _p_change_context(
+                                                                            const prop_if_false = p_change_context(
                                                                                 $['if false'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -462,7 +466,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_if_true = _p_change_context(
+                                                                            const prop_if_true = p_change_context(
                                                                                 $['if true'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -482,14 +486,14 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     )],
                                                                 )
                                                             case 'optional':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['optional', _p.literal.group_resolve(
+                                                                    ($) => ['optional', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_temp_resulting_node = _p_change_context(
+                                                                            const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => _p.optional.from.optional(
+                                                                                ($) => p_.from.optional(
                                                                                     $,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
@@ -503,7 +507,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_if_not_set = _p_change_context(
+                                                                            const prop_if_not_set = p_change_context(
                                                                                 $['if not set'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -515,7 +519,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_if_set = _p_change_context(
+                                                                            const prop_if_set = p_change_context(
                                                                                 $['if set'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -535,14 +539,14 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     )],
                                                                 )
                                                             case 'state':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['state', _p.literal.group_resolve(
+                                                                    ($) => ['state', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_temp_resulting_node = _p_change_context(
+                                                                            const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => _p.optional.from.optional(
+                                                                                ($) => p_.from.optional(
                                                                                     $,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
@@ -556,28 +560,28 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_type = _p_change_context(
+                                                                            const prop_type = p_change_context(
                                                                                 $['type'],
-                                                                                ($) => _p_variables(
+                                                                                ($) => p_variables(
                                                                                     () => {
                                                                                         
                                                                                         const var_location = $['l location']
-                                                                                        return _p.decide.state(
+                                                                                        return p_decide_state(
                                                                                             $['l state'],
                                                                                             ($): t_out.Assign.decide.type_.state.type_ => {
                                                                                                 switch ($[0]) {
                                                                                                     case 'partial':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
-                                                                                                            ($) => ['partial', _p.literal.group_resolve(
+                                                                                                            ($) => ['partial', p_.literal.group_resolve(
                                                                                                                 () => {
                                                                                                                     
-                                                                                                                    const prop_options = _p_change_context(
+                                                                                                                    const prop_options = p_change_context(
                                                                                                                         $['options'],
-                                                                                                                        ($) => _p.dictionary.from.dictionary(
+                                                                                                                        ($) => p_.from.dictionary(
                                                                                                                             $['l dictionary'],
-                                                                                                                        ).resolve_refiner(
-                                                                                                                            ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.partial.options.D => _p_change_context(
+                                                                                                                        ).resolve(
+                                                                                                                            ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.partial.options.D => p_change_context(
                                                                                                                                 $['l entry'],
                                                                                                                                 ($) => Assign(
                                                                                                                                     $,
@@ -591,7 +595,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                         ),
                                                                                                                     )
                                                                                                                     
-                                                                                                                    const prop_default = _p_change_context(
+                                                                                                                    const prop_default = p_change_context(
                                                                                                                         $['default'],
                                                                                                                         ($) => Assign(
                                                                                                                             $,
@@ -610,17 +614,17 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                             )],
                                                                                                         )
                                                                                                     case 'full':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
-                                                                                                            ($) => ['full', _p.literal.group_resolve(
+                                                                                                            ($) => ['full', p_.literal.group_resolve(
                                                                                                                 () => {
                                                                                                                     
-                                                                                                                    const prop_options = _p_change_context(
+                                                                                                                    const prop_options = p_change_context(
                                                                                                                         $['options'],
-                                                                                                                        ($) => _p.dictionary.from.dictionary(
+                                                                                                                        ($) => p_.from.dictionary(
                                                                                                                             $['l dictionary'],
-                                                                                                                        ).resolve_refiner(
-                                                                                                                            ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.full.options.D => _p_change_context(
+                                                                                                                        ).resolve(
+                                                                                                                            ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.full.options.D => p_change_context(
                                                                                                                                 $['l entry'],
                                                                                                                                 ($) => Assign(
                                                                                                                                     $,
@@ -640,17 +644,17 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                             )],
                                                                                                         )
                                                                                                     case 'single':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
-                                                                                                            ($) => ['single', _p.literal.group_resolve(
+                                                                                                            ($) => ['single', p_.literal.group_resolve(
                                                                                                                 () => {
                                                                                                                     
-                                                                                                                    const prop_option = _p_change_context(
+                                                                                                                    const prop_option = p_change_context(
                                                                                                                         $['option'],
                                                                                                                         ($) => $,
                                                                                                                     )
                                                                                                                     
-                                                                                                                    const prop_if_true = _p_change_context(
+                                                                                                                    const prop_if_true = p_change_context(
                                                                                                                         $['if true'],
                                                                                                                         ($) => Assign(
                                                                                                                             $,
@@ -662,7 +666,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                         ),
                                                                                                                     )
                                                                                                                     
-                                                                                                                    const prop_if_false = _p_change_context(
+                                                                                                                    const prop_if_false = p_change_context(
                                                                                                                         $['if false'],
                                                                                                                         ($) => Assign(
                                                                                                                             $,
@@ -682,7 +686,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                             )],
                                                                                                         )
                                                                                                     default:
-                                                                                                        return _p.au(
+                                                                                                        return p_.au(
                                                                                                             $[0],
                                                                                                         )
                                                                                                 }
@@ -699,14 +703,14 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     )],
                                                                 )
                                                             case 'text':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['text', _p.literal.group_resolve(
+                                                                    ($) => ['text', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_temp_resulting_node = _p_change_context(
+                                                                            const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => _p.optional.from.optional(
+                                                                                ($) => p_.from.optional(
                                                                                     $,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
@@ -720,12 +724,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_cases = _p_change_context(
+                                                                            const prop_cases = p_change_context(
                                                                                 $['cases'],
-                                                                                ($) => _p.dictionary.from.dictionary(
+                                                                                ($) => p_.from.dictionary(
                                                                                     $['l dictionary'],
-                                                                                ).resolve_refiner(
-                                                                                    ($, id, $a, $c): t_out.Assign.decide.type_.text.cases.D => _p_change_context(
+                                                                                ).resolve(
+                                                                                    ($, id, $a, $c): t_out.Assign.decide.type_.text.cases.D => p_change_context(
                                                                                         $['l entry'],
                                                                                         ($) => Assign(
                                                                                             $,
@@ -739,7 +743,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_default = _p_change_context(
+                                                                            const prop_default = p_change_context(
                                                                                 $['default'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -759,7 +763,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     )],
                                                                 )
                                                             default:
-                                                                return _p.au(
+                                                                return p_.au(
                                                                     $[0],
                                                                 )
                                                         }
@@ -776,50 +780,50 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                             )],
                         )
                     case 'construct':
-                        return _p.ss(
+                        return p_.ss(
                             $,
-                            ($) => ['construct', _p_variables(
+                            ($) => ['construct', p_variables(
                                 () => {
                                     
                                     const var_location = $['l location']
-                                    return _p.decide.state(
+                                    return p_decide_state(
                                         $['l state'],
                                         ($): t_out.Assign.construct => {
                                             switch ($[0]) {
                                                 case 'boolean':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['boolean', _p_variables(
+                                                        ($) => ['boolean', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.boolean_ => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', _p_variables(
+                                                                                    ($) => ['literal', p_variables(
                                                                                         () => {
                                                                                             
                                                                                             const var_location = $['l location']
-                                                                                            return _p.decide.state(
+                                                                                            return p_decide_state(
                                                                                                 $['l state'],
                                                                                                 ($): t_out.Assign.construct.boolean_.literal => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'false':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['false', null],
                                                                                                             )
                                                                                                         case 'true':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['true', null],
                                                                                                             )
                                                                                                         default:
-                                                                                                            return _p.au(
+                                                                                                            return p_.au(
                                                                                                                 $[0],
                                                                                                             )
                                                                                                     }
@@ -829,12 +833,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'from':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['from', _p.literal.group_resolve(
+                                                                                    ($) => ['from', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_selection = _p_change_context(
+                                                                                            const prop_selection = p_change_context(
                                                                                                 $['selection'],
                                                                                                 ($) => Select_Value(
                                                                                                     $,
@@ -846,39 +850,39 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 ),
                                                                                             )
                                                                                             
-                                                                                            const prop_type = _p_change_context(
+                                                                                            const prop_type = p_change_context(
                                                                                                 $['type'],
-                                                                                                ($) => _p_variables(
+                                                                                                ($) => p_variables(
                                                                                                     () => {
                                                                                                         
                                                                                                         const var_location = $['l location']
-                                                                                                        return _p.decide.state(
+                                                                                                        return p_decide_state(
                                                                                                             $['l state'],
                                                                                                             ($): t_out.Assign.construct.boolean_.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'boolean':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['boolean', _p_variables(
+                                                                                                                            ($) => ['boolean', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.boolean_.from_.type_.boolean_ => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'not':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
                                                                                                                                                         ($) => ['not', null],
                                                                                                                                                     )
                                                                                                                                                 case 'copy':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
                                                                                                                                                         ($) => ['copy', null],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -888,23 +892,23 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     case 'dictionary':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['dictionary', _p_variables(
+                                                                                                                            ($) => ['dictionary', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.boolean_.from_.type_.dictionary => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'is empty':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
                                                                                                                                                         ($) => ['is empty', null],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -914,23 +918,23 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     case 'list':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['list', _p_variables(
+                                                                                                                            ($) => ['list', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.boolean_.from_.type_.list => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'is empty':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
                                                                                                                                                         ($) => ['is empty', null],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -940,7 +944,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     default:
-                                                                                                                        return _p.au(
+                                                                                                                        return p_.au(
                                                                                                                             $[0],
                                                                                                                         )
                                                                                                                 }
@@ -957,7 +961,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -967,23 +971,23 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'dictionary':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['dictionary', _p_variables(
+                                                        ($) => ['dictionary', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.dictionary => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', _p.dictionary.from.dictionary(
+                                                                                    ($) => ['literal', p_.from.dictionary(
                                                                                         $['l dictionary'],
-                                                                                    ).resolve_refiner(
-                                                                                        ($, id, $a, $c): t_out.Assign.construct.dictionary.literal.D => _p_change_context(
+                                                                                    ).resolve(
+                                                                                        ($, id, $a, $c): t_out.Assign.construct.dictionary.literal.D => p_change_context(
                                                                                             $['l entry'],
                                                                                             ($) => Assign(
                                                                                                 $,
@@ -997,12 +1001,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'from':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['from', _p.literal.group_resolve(
+                                                                                    ($) => ['from', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_selection = _p_change_context(
+                                                                                            const prop_selection = p_change_context(
                                                                                                 $['selection'],
                                                                                                 ($) => Select_Value(
                                                                                                     $,
@@ -1014,34 +1018,34 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 ),
                                                                                             )
                                                                                             
-                                                                                            const prop_type = _p_change_context(
+                                                                                            const prop_type = p_change_context(
                                                                                                 $['type'],
-                                                                                                ($) => _p_variables(
+                                                                                                ($) => p_variables(
                                                                                                     () => {
                                                                                                         
                                                                                                         const var_location = $['l location']
-                                                                                                        return _p.decide.state(
+                                                                                                        return p_decide_state(
                                                                                                             $['l state'],
                                                                                                             ($): t_out.Assign.construct.dictionary.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'dictionary':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['dictionary', _p_variables(
+                                                                                                                            ($) => ['dictionary', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.dictionary.from_.type_.dictionary => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'filter':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['filter', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['filter', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_entry = _p_change_context(
+                                                                                                                                                                const prop_assign_entry = p_change_context(
                                                                                                                                                                     $['assign entry'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1059,12 +1063,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 case 'map':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['map', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['map', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_entry = _p_change_context(
+                                                                                                                                                                const prop_assign_entry = p_change_context(
                                                                                                                                                                     $['assign entry'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1082,12 +1086,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 case 'resolve':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['resolve', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['resolve', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_entry = _p_change_context(
+                                                                                                                                                                const prop_assign_entry = p_change_context(
                                                                                                                                                                     $['assign entry'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1099,7 +1103,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                                     ),
                                                                                                                                                                 )
                                                                                                                                                                 
-                                                                                                                                                                const prop_temp_resulting_entry_node = _p_change_context(
+                                                                                                                                                                const prop_temp_resulting_entry_node = p_change_context(
                                                                                                                                                                     $['temp resulting entry node'],
                                                                                                                                                                     ($) => Temp_Value_Type_Specification(
                                                                                                                                                                         $,
@@ -1118,7 +1122,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -1128,23 +1132,23 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     case 'list':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['list', _p_variables(
+                                                                                                                            ($) => ['list', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.dictionary.from_.type_.list => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'convert':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['convert', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['convert', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_id = _p_change_context(
+                                                                                                                                                                const prop_assign_id = p_change_context(
                                                                                                                                                                     $['assign id'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1156,7 +1160,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                                     ),
                                                                                                                                                                 )
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_entry = _p_change_context(
+                                                                                                                                                                const prop_assign_entry = p_change_context(
                                                                                                                                                                     $['assign entry'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1168,7 +1172,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                                     ),
                                                                                                                                                                 )
                                                                                                                                                                 
-                                                                                                                                                                const prop_abort = _p_change_context(
+                                                                                                                                                                const prop_abort = p_change_context(
                                                                                                                                                                     $['abort'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1188,7 +1192,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -1198,7 +1202,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     default:
-                                                                                                                        return _p.au(
+                                                                                                                        return p_.au(
                                                                                                                             $[0],
                                                                                                                         )
                                                                                                                 }
@@ -1215,7 +1219,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -1225,28 +1229,28 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'group':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['group', _p_variables(
+                                                        ($) => ['group', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.group => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', _p.literal.group_resolve(
+                                                                                    ($) => ['literal', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_properties = _p_change_context(
+                                                                                            const prop_properties = p_change_context(
                                                                                                 $['properties'],
-                                                                                                ($) => _p.dictionary.from.dictionary(
+                                                                                                ($) => p_.from.dictionary(
                                                                                                     $['l dictionary'],
-                                                                                                ).resolve_refiner(
-                                                                                                    ($, id, $a, $c): t_out.Assign.construct.group.literal.properties.D => _p_change_context(
+                                                                                                ).resolve(
+                                                                                                    ($, id, $a, $c): t_out.Assign.construct.group.literal.properties.D => p_change_context(
                                                                                                         $['l entry'],
                                                                                                         ($) => Assign(
                                                                                                             $,
@@ -1260,7 +1264,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 ),
                                                                                             )
                                                                                             
-                                                                                            const prop_have_dependencies = _p_change_context(
+                                                                                            const prop_have_dependencies = p_change_context(
                                                                                                 $['have dependencies'],
                                                                                                 ($) => $,
                                                                                             )
@@ -1272,7 +1276,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -1282,23 +1286,23 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'list':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['list', _p_variables(
+                                                        ($) => ['list', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.list => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', _p.list.from.list(
+                                                                                    ($) => ['literal', p_.from.list(
                                                                                         $['l list'],
                                                                                     ).map(
-                                                                                        ($) => _p_change_context(
+                                                                                        ($) => p_change_context(
                                                                                             $['l item'],
                                                                                             ($) => Assign(
                                                                                                 $,
@@ -1312,12 +1316,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'from':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['from', _p.literal.group_resolve(
+                                                                                    ($) => ['from', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_selection = _p_change_context(
+                                                                                            const prop_selection = p_change_context(
                                                                                                 $['selection'],
                                                                                                 ($) => Select_Value(
                                                                                                     $,
@@ -1329,34 +1333,34 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 ),
                                                                                             )
                                                                                             
-                                                                                            const prop_type = _p_change_context(
+                                                                                            const prop_type = p_change_context(
                                                                                                 $['type'],
-                                                                                                ($) => _p_variables(
+                                                                                                ($) => p_variables(
                                                                                                     () => {
                                                                                                         
                                                                                                         const var_location = $['l location']
-                                                                                                        return _p.decide.state(
+                                                                                                        return p_decide_state(
                                                                                                             $['l state'],
                                                                                                             ($): t_out.Assign.construct.list.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'dictionary':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['dictionary', _p_variables(
+                                                                                                                            ($) => ['dictionary', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.list.from_.type_.dictionary => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'convert':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['convert', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['convert', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_entry = _p_change_context(
+                                                                                                                                                                const prop_assign_entry = p_change_context(
                                                                                                                                                                     $['assign entry'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1374,7 +1378,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -1384,23 +1388,23 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     case 'list':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['list', _p_variables(
+                                                                                                                            ($) => ['list', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.list.from_.type_.list => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'filter':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['filter', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['filter', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_item = _p_change_context(
+                                                                                                                                                                const prop_assign_item = p_change_context(
                                                                                                                                                                     $['assign item'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1418,12 +1422,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 case 'map':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['map', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['map', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_item = _p_change_context(
+                                                                                                                                                                const prop_assign_item = p_change_context(
                                                                                                                                                                     $['assign item'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1441,12 +1445,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 case 'map with state':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['map with state', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['map with state', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_initialize_state = _p_change_context(
+                                                                                                                                                                const prop_initialize_state = p_change_context(
                                                                                                                                                                     $['initialize state'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1458,7 +1462,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                                     ),
                                                                                                                                                                 )
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_item = _p_change_context(
+                                                                                                                                                                const prop_assign_item = p_change_context(
                                                                                                                                                                     $['assign item'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1470,7 +1474,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                                     ),
                                                                                                                                                                 )
                                                                                                                                                                 
-                                                                                                                                                                const prop_update_state = _p_change_context(
+                                                                                                                                                                const prop_update_state = p_change_context(
                                                                                                                                                                     $['update state'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1482,7 +1486,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                                     ),
                                                                                                                                                                 )
                                                                                                                                                                 
-                                                                                                                                                                const prop_wrap_up = _p_change_context(
+                                                                                                                                                                const prop_wrap_up = p_change_context(
                                                                                                                                                                     $['wrap up'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1503,12 +1507,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 case 'reduce':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['reduce', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['reduce', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_initialize_state = _p_change_context(
+                                                                                                                                                                const prop_initialize_state = p_change_context(
                                                                                                                                                                     $['initialize state'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1520,7 +1524,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                                     ),
                                                                                                                                                                 )
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_item = _p_change_context(
+                                                                                                                                                                const prop_assign_item = p_change_context(
                                                                                                                                                                     $['assign item'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1539,12 +1543,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 case 'reverse':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
                                                                                                                                                         ($) => ['reverse', null],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -1554,7 +1558,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     default:
-                                                                                                                        return _p.au(
+                                                                                                                        return p_.au(
                                                                                                                             $[0],
                                                                                                                         )
                                                                                                                 }
@@ -1571,7 +1575,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -1581,34 +1585,34 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'nothing':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['nothing', null],
                                                     )
                                                 case 'number':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['number', _p_variables(
+                                                        ($) => ['number', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.number_ => {
                                                                         switch ($[0]) {
                                                                             case 'approximation':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['approximation', _p_variables(
+                                                                                    ($) => ['approximation', p_variables(
                                                                                         () => {
                                                                                             
                                                                                             const var_location = $['l location']
-                                                                                            return _p.decide.state(
+                                                                                            return p_decide_state(
                                                                                                 $['l state'],
                                                                                                 ($): t_out.Assign.construct.number_.approximation => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'copy':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['copy', Select_Value(
                                                                                                                     $,
@@ -1620,12 +1624,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'literal':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['literal', $],
                                                                                                             )
                                                                                                         default:
-                                                                                                            return _p.au(
+                                                                                                            return p_.au(
                                                                                                                 $[0],
                                                                                                             )
                                                                                                     }
@@ -1635,18 +1639,18 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'integer':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['integer', _p_variables(
+                                                                                    ($) => ['integer', p_variables(
                                                                                         () => {
                                                                                             
                                                                                             const var_location = $['l location']
-                                                                                            return _p.decide.state(
+                                                                                            return p_decide_state(
                                                                                                 $['l state'],
                                                                                                 ($): t_out.Assign.construct.number_.integer => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'copy':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['copy', Select_Value(
                                                                                                                     $,
@@ -1658,12 +1662,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'divide':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['divide', _p.literal.group_resolve(
+                                                                                                                ($) => ['divide', p_.literal.group_resolve(
                                                                                                                     () => {
                                                                                                                         
-                                                                                                                        const prop_assign_dividend = _p_change_context(
+                                                                                                                        const prop_assign_dividend = p_change_context(
                                                                                                                             $['assign dividend'],
                                                                                                                             ($) => Select_Value(
                                                                                                                                 $,
@@ -1675,7 +1679,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             ),
                                                                                                                         )
                                                                                                                         
-                                                                                                                        const prop_assign_divisor = _p_change_context(
+                                                                                                                        const prop_assign_divisor = p_change_context(
                                                                                                                             $['assign divisor'],
                                                                                                                             ($) => Select_Value(
                                                                                                                                 $,
@@ -1687,7 +1691,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             ),
                                                                                                                         )
                                                                                                                         
-                                                                                                                        const prop_abort = _p_change_context(
+                                                                                                                        const prop_abort = p_change_context(
                                                                                                                             $['abort'],
                                                                                                                             ($) => Assign(
                                                                                                                                 $,
@@ -1707,12 +1711,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'literal':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['literal', $],
                                                                                                             )
                                                                                                         default:
-                                                                                                            return _p.au(
+                                                                                                            return p_.au(
                                                                                                                 $[0],
                                                                                                             )
                                                                                                     }
@@ -1722,18 +1726,18 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'natural':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['natural', _p_variables(
+                                                                                    ($) => ['natural', p_variables(
                                                                                         () => {
                                                                                             
                                                                                             const var_location = $['l location']
-                                                                                            return _p.decide.state(
+                                                                                            return p_decide_state(
                                                                                                 $['l state'],
                                                                                                 ($): t_out.Assign.construct.number_.natural => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'copy':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['copy', Select_Value(
                                                                                                                     $,
@@ -1745,17 +1749,17 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'literal':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['literal', $],
                                                                                                             )
                                                                                                         case 'number of dictionary entries':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['number of dictionary entries', _p.literal.group_resolve(
+                                                                                                                ($) => ['number of dictionary entries', p_.literal.group_resolve(
                                                                                                                     () => {
                                                                                                                         
-                                                                                                                        const prop_dictionary = _p_change_context(
+                                                                                                                        const prop_dictionary = p_change_context(
                                                                                                                             $['dictionary'],
                                                                                                                             ($) => Select_Value(
                                                                                                                                 $,
@@ -1773,12 +1777,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'number of list items':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['number of list items', _p.literal.group_resolve(
+                                                                                                                ($) => ['number of list items', p_.literal.group_resolve(
                                                                                                                     () => {
                                                                                                                         
-                                                                                                                        const prop_list = _p_change_context(
+                                                                                                                        const prop_list = p_change_context(
                                                                                                                             $['list'],
                                                                                                                             ($) => Select_Value(
                                                                                                                                 $,
@@ -1796,17 +1800,17 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'source column':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['source column', null],
                                                                                                             )
                                                                                                         case 'source line':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['source line', null],
                                                                                                             )
                                                                                                         default:
-                                                                                                            return _p.au(
+                                                                                                            return p_.au(
                                                                                                                 $[0],
                                                                                                             )
                                                                                                     }
@@ -1816,7 +1820,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -1826,34 +1830,34 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'optional':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['optional', _p_variables(
+                                                        ($) => ['optional', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.optional => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', _p_variables(
+                                                                                    ($) => ['literal', p_variables(
                                                                                         () => {
                                                                                             
                                                                                             const var_location = $['l location']
-                                                                                            return _p.decide.state(
+                                                                                            return p_decide_state(
                                                                                                 $['l state'],
                                                                                                 ($): t_out.Assign.construct.optional.literal => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'not set':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['not set', null],
                                                                                                             )
                                                                                                         case 'set':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['set', Assign(
                                                                                                                     $,
@@ -1865,7 +1869,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                 )],
                                                                                                             )
                                                                                                         default:
-                                                                                                            return _p.au(
+                                                                                                            return p_.au(
                                                                                                                 $[0],
                                                                                                             )
                                                                                                     }
@@ -1875,12 +1879,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'from':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['from', _p.literal.group_resolve(
+                                                                                    ($) => ['from', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_selection = _p_change_context(
+                                                                                            const prop_selection = p_change_context(
                                                                                                 $['selection'],
                                                                                                 ($) => Select_Value(
                                                                                                     $,
@@ -1892,34 +1896,34 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 ),
                                                                                             )
                                                                                             
-                                                                                            const prop_type = _p_change_context(
+                                                                                            const prop_type = p_change_context(
                                                                                                 $['type'],
-                                                                                                ($) => _p_variables(
+                                                                                                ($) => p_variables(
                                                                                                     () => {
                                                                                                         
                                                                                                         const var_location = $['l location']
-                                                                                                        return _p.decide.state(
+                                                                                                        return p_decide_state(
                                                                                                             $['l state'],
                                                                                                             ($): t_out.Assign.construct.optional.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'boolean':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['boolean', _p_variables(
+                                                                                                                            ($) => ['boolean', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.optional.from_.type_.boolean_ => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'convert':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['convert', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['convert', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_set = _p_change_context(
+                                                                                                                                                                const prop_assign_set = p_change_context(
                                                                                                                                                                     $['assign set'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1937,7 +1941,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -1947,23 +1951,23 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     case 'optional':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['optional', _p_variables(
+                                                                                                                            ($) => ['optional', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.optional.from_.type_.optional => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'map':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['map', _p.literal.group_resolve(
+                                                                                                                                                        ($) => ['map', p_.literal.group_resolve(
                                                                                                                                                             () => {
                                                                                                                                                                 
-                                                                                                                                                                const prop_assign_set = _p_change_context(
+                                                                                                                                                                const prop_assign_set = p_change_context(
                                                                                                                                                                     $['assign set'],
                                                                                                                                                                     ($) => Assign(
                                                                                                                                                                         $,
@@ -1981,7 +1985,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                                                         )],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -1991,7 +1995,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     default:
-                                                                                                                        return _p.au(
+                                                                                                                        return p_.au(
                                                                                                                             $[0],
                                                                                                                         )
                                                                                                                 }
@@ -2008,7 +2012,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -2018,28 +2022,28 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'state':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['state', _p_variables(
+                                                        ($) => ['state', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.state => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', _p.literal.group_resolve(
+                                                                                    ($) => ['literal', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_option = _p_change_context(
+                                                                                            const prop_option = p_change_context(
                                                                                                 $['option'],
                                                                                                 ($) => $,
                                                                                             )
                                                                                             
-                                                                                            const prop_assign_option = _p_change_context(
+                                                                                            const prop_assign_option = p_change_context(
                                                                                                 $['assign option'],
                                                                                                 ($) => Assign(
                                                                                                     $,
@@ -2058,7 +2062,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -2068,44 +2072,44 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'text':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['text', _p_variables(
+                                                        ($) => ['text', p_variables(
                                                             () => {
                                                                 
                                                                 const var_location = $['l location']
-                                                                return _p.decide.state(
+                                                                return p_decide_state(
                                                                     $['l state'],
                                                                     ($): t_out.Assign.construct.text => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', _p.literal.group_resolve(
+                                                                                    ($) => ['literal', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_type = _p_change_context(
+                                                                                            const prop_type = p_change_context(
                                                                                                 $['type'],
-                                                                                                ($) => _p_variables(
+                                                                                                ($) => p_variables(
                                                                                                     () => {
                                                                                                         
                                                                                                         const var_location = $['l location']
-                                                                                                        return _p.decide.state(
+                                                                                                        return p_decide_state(
                                                                                                             $['l state'],
                                                                                                             ($): t_out.Assign.construct.text.literal.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'identifier':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
                                                                                                                             ($) => ['identifier', null],
                                                                                                                         )
                                                                                                                     case 'freeform':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
                                                                                                                             ($) => ['freeform', null],
                                                                                                                         )
                                                                                                                     default:
-                                                                                                                        return _p.au(
+                                                                                                                        return p_.au(
                                                                                                                             $[0],
                                                                                                                         )
                                                                                                                 }
@@ -2115,7 +2119,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 ),
                                                                                             )
                                                                                             
-                                                                                            const prop_value = _p_change_context(
+                                                                                            const prop_value = p_change_context(
                                                                                                 $['value'],
                                                                                                 ($) => $,
                                                                                             )
@@ -2127,12 +2131,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'from':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['from', _p.literal.group_resolve(
+                                                                                    ($) => ['from', p_.literal.group_resolve(
                                                                                         () => {
                                                                                             
-                                                                                            const prop_selection = _p_change_context(
+                                                                                            const prop_selection = p_change_context(
                                                                                                 $['selection'],
                                                                                                 ($) => Select_Value(
                                                                                                     $,
@@ -2144,34 +2148,34 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 ),
                                                                                             )
                                                                                             
-                                                                                            const prop_type = _p_change_context(
+                                                                                            const prop_type = p_change_context(
                                                                                                 $['type'],
-                                                                                                ($) => _p_variables(
+                                                                                                ($) => p_variables(
                                                                                                     () => {
                                                                                                         
                                                                                                         const var_location = $['l location']
-                                                                                                        return _p.decide.state(
+                                                                                                        return p_decide_state(
                                                                                                             $['l state'],
                                                                                                             ($): t_out.Assign.construct.text.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'text':
-                                                                                                                        return _p.ss(
+                                                                                                                        return p_.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['text', _p_variables(
+                                                                                                                            ($) => ['text', p_variables(
                                                                                                                                 () => {
                                                                                                                                     
                                                                                                                                     const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
+                                                                                                                                    return p_decide_state(
                                                                                                                                         $['l state'],
                                                                                                                                         ($): t_out.Assign.construct.text.from_.type_.text => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'copy':
-                                                                                                                                                    return _p.ss(
+                                                                                                                                                    return p_.ss(
                                                                                                                                                         $,
                                                                                                                                                         ($) => ['copy', null],
                                                                                                                                                     )
                                                                                                                                                 default:
-                                                                                                                                                    return _p.au(
+                                                                                                                                                    return p_.au(
                                                                                                                                                         $[0],
                                                                                                                                                     )
                                                                                                                                             }
@@ -2181,7 +2185,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                             )],
                                                                                                                         )
                                                                                                                     default:
-                                                                                                                        return _p.au(
+                                                                                                                        return p_.au(
                                                                                                                             $[0],
                                                                                                                         )
                                                                                                                 }
@@ -2198,22 +2202,22 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     )],
                                                                                 )
                                                                             case 'source document':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
                                                                                     ($) => ['source document', null],
                                                                                 )
                                                                             case 'entry id':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
                                                                                     ($) => ['entry id', null],
                                                                                 )
                                                                             case 'option name':
-                                                                                return _p.ss(
+                                                                                return p_.ss(
                                                                                     $,
                                                                                     ($) => ['option name', null],
                                                                                 )
                                                                             default:
-                                                                                return _p.au(
+                                                                                return p_.au(
                                                                                     $[0],
                                                                                 )
                                                                         }
@@ -2223,7 +2227,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 default:
-                                                    return _p.au(
+                                                    return p_.au(
                                                         $[0],
                                                     )
                                             }
@@ -2233,7 +2237,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                             )],
                         )
                     case 'select':
-                        return _p.ss(
+                        return p_.ss(
                             $,
                             ($) => ['select', Select_Value(
                                 $,
@@ -2245,18 +2249,18 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                             )],
                         )
                     case 'special':
-                        return _p.ss(
+                        return p_.ss(
                             $,
-                            ($) => ['special', _p_variables(
+                            ($) => ['special', p_variables(
                                 () => {
                                     
                                     const var_location = $['l location']
-                                    return _p.decide.state(
+                                    return p_decide_state(
                                         $['l state'],
                                         ($): t_out.Assign.special => {
                                             switch ($[0]) {
                                                 case 'abort':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['abort', Assign(
                                                             $,
@@ -2268,12 +2272,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'assert':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['assert', _p.literal.group_resolve(
+                                                        ($) => ['assert', p_.literal.group_resolve(
                                                             () => {
                                                                 
-                                                                const prop_tester = _p_change_context(
+                                                                const prop_tester = p_change_context(
                                                                     $['tester'],
                                                                     ($) => Assign(
                                                                         $,
@@ -2285,7 +2289,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     ),
                                                                 )
                                                                 
-                                                                const prop_normal_flow = _p_change_context(
+                                                                const prop_normal_flow = p_change_context(
                                                                     $['normal flow'],
                                                                     ($) => Assign(
                                                                         $,
@@ -2304,12 +2308,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'change context':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['change context', _p.literal.group_resolve(
+                                                        ($) => ['change context', p_.literal.group_resolve(
                                                             () => {
                                                                 
-                                                                const prop_new_context = _p_change_context(
+                                                                const prop_new_context = p_change_context(
                                                                     $['new context'],
                                                                     ($) => Select_Value(
                                                                         $,
@@ -2321,7 +2325,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     ),
                                                                 )
                                                                 
-                                                                const prop_expression = _p_change_context(
+                                                                const prop_expression = p_change_context(
                                                                     $['expression'],
                                                                     ($) => Assign(
                                                                         $,
@@ -2340,17 +2344,17 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'variables':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['variables', _p.literal.group_resolve(
+                                                        ($) => ['variables', p_.literal.group_resolve(
                                                             () => {
                                                                 
-                                                                const prop_variables = _p_change_context(
+                                                                const prop_variables = p_change_context(
                                                                     $['variables'],
-                                                                    ($) => _p.dictionary.from.dictionary(
+                                                                    ($) => p_.from.dictionary(
                                                                         $['l dictionary'],
-                                                                    ).resolve_refiner(
-                                                                        ($, id, $a, $c): t_out.Assign.special.variables.variables.D => _p_change_context(
+                                                                    ).resolve(
+                                                                        ($, id, $a, $c): t_out.Assign.special.variables.variables.D => p_change_context(
                                                                             $['l entry'],
                                                                             ($) => Assign(
                                                                                 $,
@@ -2364,7 +2368,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     ),
                                                                 )
                                                                 
-                                                                const prop_assign = _p_change_context(
+                                                                const prop_assign = p_change_context(
                                                                     $['assign'],
                                                                     ($) => Assign(
                                                                         $,
@@ -2383,17 +2387,17 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'implement me':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['implement me', $],
                                                     )
                                                 case 'iterate':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['iterate', _p.literal.group_resolve(
+                                                        ($) => ['iterate', p_.literal.group_resolve(
                                                             () => {
                                                                 
-                                                                const prop_list = _p_change_context(
+                                                                const prop_list = p_change_context(
                                                                     $['list'],
                                                                     ($) => Select_Value(
                                                                         $,
@@ -2405,7 +2409,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     ),
                                                                 )
                                                                 
-                                                                const prop_assign = _p_change_context(
+                                                                const prop_assign = p_change_context(
                                                                     $['assign'],
                                                                     ($) => Assign(
                                                                         $,
@@ -2424,12 +2428,12 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 case 'unreachable':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['unreachable', _p.literal.group_resolve(
+                                                        ($) => ['unreachable', p_.literal.group_resolve(
                                                             () => {
                                                                 
-                                                                const prop_explanation = _p_change_context(
+                                                                const prop_explanation = p_change_context(
                                                                     $['explanation'],
                                                                     ($) => $,
                                                                 )
@@ -2440,7 +2444,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                         )],
                                                     )
                                                 default:
-                                                    return _p.au(
+                                                    return p_.au(
                                                         $[0],
                                                     )
                                             }
@@ -2450,7 +2454,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                             )],
                         )
                     default:
-                        return _p.au(
+                        return p_.au(
                             $[0],
                         )
                 }
@@ -2459,68 +2463,68 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
     },
 )
 
-export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_variables(
+export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => p_variables(
     () => {
         
         const var_location = $['l location']
-        return _p.decide.state(
+        return p_decide_state(
             $['l state'],
             ($): t_out.Select_Value => {
                 switch ($[0]) {
                     case 'implement me':
-                        return _p.ss(
+                        return p_.ss(
                             $,
                             ($) => ['implement me', $],
                         )
                     case 'regular':
-                        return _p.ss(
+                        return p_.ss(
                             $,
-                            ($) => ['regular', _p.literal.group_resolve(
+                            ($) => ['regular', p_.literal.group_resolve(
                                 () => {
                                     
-                                    const prop_start = _p_change_context(
+                                    const prop_start = p_change_context(
                                         $['start'],
-                                        ($) => _p_variables(
+                                        ($) => p_variables(
                                             () => {
                                                 
                                                 const var_location = $['l location']
-                                                return _p.decide.state(
+                                                return p_decide_state(
                                                     $['l state'],
                                                     ($): t_out.Select_Value.regular.start => {
                                                         switch ($[0]) {
                                                             case 'call':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['call', _p.literal.group_resolve(
+                                                                    ($) => ['call', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_source = _p_change_context(
+                                                                            const prop_source = p_change_context(
                                                                                 $['source'],
-                                                                                ($) => _p_variables(
+                                                                                ($) => p_variables(
                                                                                     () => {
                                                                                         
                                                                                         const var_location = $['l location']
-                                                                                        return _p.decide.state(
+                                                                                        return p_decide_state(
                                                                                             $['l state'],
                                                                                             ($): t_out.Select_Value.regular.start.call.source => {
                                                                                                 switch ($[0]) {
                                                                                                     case 'local':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
                                                                                                             ($) => ['local', $],
                                                                                                         )
                                                                                                     case 'imported':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
-                                                                                                            ($) => ['imported', _p.literal.group_resolve(
+                                                                                                            ($) => ['imported', p_.literal.group_resolve(
                                                                                                                 () => {
                                                                                                                     
-                                                                                                                    const prop_import = _p_change_context(
+                                                                                                                    const prop_import = p_change_context(
                                                                                                                         $['import'],
                                                                                                                         ($) => $,
                                                                                                                     )
                                                                                                                     
-                                                                                                                    const prop_variable = _p_change_context(
+                                                                                                                    const prop_variable = p_change_context(
                                                                                                                         $['variable'],
                                                                                                                         ($) => $,
                                                                                                                     )
@@ -2532,7 +2536,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                             )],
                                                                                                         )
                                                                                                     default:
-                                                                                                        return _p.au(
+                                                                                                        return p_.au(
                                                                                                             $[0],
                                                                                                         )
                                                                                                 }
@@ -2542,7 +2546,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_context = _p_change_context(
+                                                                            const prop_context = p_change_context(
                                                                                 $['context'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -2554,9 +2558,9 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_abort = _p_change_context(
+                                                                            const prop_abort = p_change_context(
                                                                                 $['abort'],
-                                                                                ($) => _p.optional.from.optional(
+                                                                                ($) => p_.from.optional(
                                                                                     $,
                                                                                 ).map(
                                                                                     ($) => Assign(
@@ -2570,26 +2574,26 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_lookups = _p_change_context(
+                                                                            const prop_lookups = p_change_context(
                                                                                 $['lookups'],
-                                                                                ($) => _p.optional.from.optional(
+                                                                                ($) => p_.from.optional(
                                                                                     $,
                                                                                 ).map(
-                                                                                    ($) => _p_variables(
+                                                                                    ($) => p_variables(
                                                                                         () => {
                                                                                             
                                                                                             const var_location = $['l location']
-                                                                                            return _p.decide.state(
+                                                                                            return p_decide_state(
                                                                                                 $['l state'],
                                                                                                 ($): t_out.Select_Value.regular.start.call.lookups.O => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'initialize':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['initialize', _p.dictionary.from.dictionary(
+                                                                                                                ($) => ['initialize', p_.from.dictionary(
                                                                                                                     $['l dictionary'],
-                                                                                                                ).resolve_refiner(
-                                                                                                                    ($, id, $a, $c): t_out.Select_Value.regular.start.call.lookups.O.initialize.D => _p_change_context(
+                                                                                                                ).resolve(
+                                                                                                                    ($, id, $a, $c): t_out.Select_Value.regular.start.call.lookups.O.initialize.D => p_change_context(
                                                                                                                         $['l entry'],
                                                                                                                         ($) => Select_Lookup(
                                                                                                                             $,
@@ -2603,12 +2607,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'pass through':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['pass through', null],
                                                                                                             )
                                                                                                         default:
-                                                                                                            return _p.au(
+                                                                                                            return p_.au(
                                                                                                                 $[0],
                                                                                                             )
                                                                                                     }
@@ -2619,26 +2623,26 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_arguments = _p_change_context(
+                                                                            const prop_arguments = p_change_context(
                                                                                 $['arguments'],
-                                                                                ($) => _p.optional.from.optional(
+                                                                                ($) => p_.from.optional(
                                                                                     $,
                                                                                 ).map(
-                                                                                    ($) => _p_variables(
+                                                                                    ($) => p_variables(
                                                                                         () => {
                                                                                             
                                                                                             const var_location = $['l location']
-                                                                                            return _p.decide.state(
+                                                                                            return p_decide_state(
                                                                                                 $['l state'],
                                                                                                 ($): t_out.Select_Value.regular.start.call.arguments_.O => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'initialize':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['initialize', _p.dictionary.from.dictionary(
+                                                                                                                ($) => ['initialize', p_.from.dictionary(
                                                                                                                     $['l dictionary'],
-                                                                                                                ).resolve_refiner(
-                                                                                                                    ($, id, $a, $c): t_out.Select_Value.regular.start.call.arguments_.O.initialize.D => _p_change_context(
+                                                                                                                ).resolve(
+                                                                                                                    ($, id, $a, $c): t_out.Select_Value.regular.start.call.arguments_.O.initialize.D => p_change_context(
                                                                                                                         $['l entry'],
                                                                                                                         ($) => Assign(
                                                                                                                             $,
@@ -2652,12 +2656,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                 )],
                                                                                                             )
                                                                                                         case 'pass through':
-                                                                                                            return _p.ss(
+                                                                                                            return p_.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['pass through', null],
                                                                                                             )
                                                                                                         default:
-                                                                                                            return _p.au(
+                                                                                                            return p_.au(
                                                                                                                 $[0],
                                                                                                             )
                                                                                                     }
@@ -2678,17 +2682,17 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                     )],
                                                                 )
                                                             case 'context':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
                                                                     ($) => ['context', null],
                                                                 )
                                                             case 'dictionary entry':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['dictionary entry', _p.literal.group_resolve(
+                                                                    ($) => ['dictionary entry', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_dictionary = _p_change_context(
+                                                                            const prop_dictionary = p_change_context(
                                                                                 $['dictionary'],
                                                                                 ($) => Select_Value(
                                                                                     $,
@@ -2700,7 +2704,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_id = _p_change_context(
+                                                                            const prop_id = p_change_context(
                                                                                 $['id'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -2712,7 +2716,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_no_such_entry_handler = _p_change_context(
+                                                                            const prop_no_such_entry_handler = p_change_context(
                                                                                 $['no such entry handler'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -2732,12 +2736,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                     )],
                                                                 )
                                                             case 'list from text':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['list from text', _p.literal.group_resolve(
+                                                                    ($) => ['list from text', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_source = _p_change_context(
+                                                                            const prop_source = p_change_context(
                                                                                 $['source'],
                                                                                 ($) => Select_Value(
                                                                                     $,
@@ -2749,7 +2753,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_assign_item = _p_change_context(
+                                                                            const prop_assign_item = p_change_context(
                                                                                 $['assign item'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -2768,12 +2772,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                     )],
                                                                 )
                                                             case 'lookup entry':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['lookup entry', _p.literal.group_resolve(
+                                                                    ($) => ['lookup entry', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_lookup = _p_change_context(
+                                                                            const prop_lookup = p_change_context(
                                                                                 $['lookup'],
                                                                                 ($) => Select_Lookup(
                                                                                     $,
@@ -2785,7 +2789,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_id = _p_change_context(
+                                                                            const prop_id = p_change_context(
                                                                                 $['id'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -2797,28 +2801,28 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_type = _p_change_context(
+                                                                            const prop_type = p_change_context(
                                                                                 $['type'],
-                                                                                ($) => _p_variables(
+                                                                                ($) => p_variables(
                                                                                     () => {
                                                                                         
                                                                                         const var_location = $['l location']
-                                                                                        return _p.decide.state(
+                                                                                        return p_decide_state(
                                                                                             $['l state'],
                                                                                             ($): t_out.Select_Value.regular.start.lookup_entry.type_ => {
                                                                                                 switch ($[0]) {
                                                                                                     case 'acyclic':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
-                                                                                                            ($) => ['acyclic', _p.literal.group_resolve(
+                                                                                                            ($) => ['acyclic', p_.literal.group_resolve(
                                                                                                                 () => {
                                                                                                                     
-                                                                                                                    const prop_abort_handlers = _p_change_context(
+                                                                                                                    const prop_abort_handlers = p_change_context(
                                                                                                                         $['abort handlers'],
-                                                                                                                        ($) => _p.literal.group_resolve(
+                                                                                                                        ($) => p_.literal.group_resolve(
                                                                                                                             () => {
                                                                                                                                 
-                                                                                                                                const prop_no_such_entry = _p_change_context(
+                                                                                                                                const prop_no_such_entry = p_change_context(
                                                                                                                                     $['no such entry'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2830,7 +2834,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                                     ),
                                                                                                                                 )
                                                                                                                                 
-                                                                                                                                const prop_no_context_lookup = _p_change_context(
+                                                                                                                                const prop_no_context_lookup = p_change_context(
                                                                                                                                     $['no context lookup'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2842,7 +2846,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                                     ),
                                                                                                                                 )
                                                                                                                                 
-                                                                                                                                const prop_cycle_detected = _p_change_context(
+                                                                                                                                const prop_cycle_detected = p_change_context(
                                                                                                                                     $['cycle detected'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2868,17 +2872,17 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                             )],
                                                                                                         )
                                                                                                     case 'cyclic':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
-                                                                                                            ($) => ['cyclic', _p.literal.group_resolve(
+                                                                                                            ($) => ['cyclic', p_.literal.group_resolve(
                                                                                                                 () => {
                                                                                                                     
-                                                                                                                    const prop_abort_handlers = _p_change_context(
+                                                                                                                    const prop_abort_handlers = p_change_context(
                                                                                                                         $['abort handlers'],
-                                                                                                                        ($) => _p.literal.group_resolve(
+                                                                                                                        ($) => p_.literal.group_resolve(
                                                                                                                             () => {
                                                                                                                                 
-                                                                                                                                const prop_no_such_entry = _p_change_context(
+                                                                                                                                const prop_no_such_entry = p_change_context(
                                                                                                                                     $['no such entry'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2890,7 +2894,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                                     ),
                                                                                                                                 )
                                                                                                                                 
-                                                                                                                                const prop_no_context_lookup = _p_change_context(
+                                                                                                                                const prop_no_context_lookup = p_change_context(
                                                                                                                                     $['no context lookup'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2902,7 +2906,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                                     ),
                                                                                                                                 )
                                                                                                                                 
-                                                                                                                                const prop_accessing_cyclic_sibling_before_it_is_resolved = _p_change_context(
+                                                                                                                                const prop_accessing_cyclic_sibling_before_it_is_resolved = p_change_context(
                                                                                                                                     $['accessing cyclic sibling before it is resolved'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2928,17 +2932,17 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                             )],
                                                                                                         )
                                                                                                     case 'stack':
-                                                                                                        return _p.ss(
+                                                                                                        return p_.ss(
                                                                                                             $,
-                                                                                                            ($) => ['stack', _p.literal.group_resolve(
+                                                                                                            ($) => ['stack', p_.literal.group_resolve(
                                                                                                                 () => {
                                                                                                                     
-                                                                                                                    const prop_abort_handlers = _p_change_context(
+                                                                                                                    const prop_abort_handlers = p_change_context(
                                                                                                                         $['abort handlers'],
-                                                                                                                        ($) => _p.literal.group_resolve(
+                                                                                                                        ($) => p_.literal.group_resolve(
                                                                                                                             () => {
                                                                                                                                 
-                                                                                                                                const prop_no_such_entry = _p_change_context(
+                                                                                                                                const prop_no_such_entry = p_change_context(
                                                                                                                                     $['no such entry'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2950,7 +2954,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                                     ),
                                                                                                                                 )
                                                                                                                                 
-                                                                                                                                const prop_no_context_lookup = _p_change_context(
+                                                                                                                                const prop_no_context_lookup = p_change_context(
                                                                                                                                     $['no context lookup'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2962,7 +2966,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                                     ),
                                                                                                                                 )
                                                                                                                                 
-                                                                                                                                const prop_cycle_detected = _p_change_context(
+                                                                                                                                const prop_cycle_detected = p_change_context(
                                                                                                                                     $['cycle detected'],
                                                                                                                                     ($) => Assign(
                                                                                                                                         $,
@@ -2988,7 +2992,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                             )],
                                                                                                         )
                                                                                                     default:
-                                                                                                        return _p.au(
+                                                                                                        return p_.au(
                                                                                                             $[0],
                                                                                                         )
                                                                                                 }
@@ -3006,12 +3010,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                     )],
                                                                 )
                                                             case 'lookup entry depth':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['lookup entry depth', _p.literal.group_resolve(
+                                                                    ($) => ['lookup entry depth', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_lookup = _p_change_context(
+                                                                            const prop_lookup = p_change_context(
                                                                                 $['lookup'],
                                                                                 ($) => Select_Lookup(
                                                                                     $,
@@ -3023,7 +3027,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_id = _p_change_context(
+                                                                            const prop_id = p_change_context(
                                                                                 $['id'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -3035,12 +3039,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_abort_handlers = _p_change_context(
+                                                                            const prop_abort_handlers = p_change_context(
                                                                                 $['abort handlers'],
-                                                                                ($) => _p.literal.group_resolve(
+                                                                                ($) => p_.literal.group_resolve(
                                                                                     () => {
                                                                                         
-                                                                                        const prop_no_such_entry = _p_change_context(
+                                                                                        const prop_no_such_entry = p_change_context(
                                                                                             $['no such entry'],
                                                                                             ($) => Assign(
                                                                                                 $,
@@ -3052,7 +3056,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                             ),
                                                                                         )
                                                                                         
-                                                                                        const prop_no_context_lookup = _p_change_context(
+                                                                                        const prop_no_context_lookup = p_change_context(
                                                                                             $['no context lookup'],
                                                                                             ($) => Assign(
                                                                                                 $,
@@ -3064,7 +3068,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                             ),
                                                                                         )
                                                                                         
-                                                                                        const prop_cycle_detected = _p_change_context(
+                                                                                        const prop_cycle_detected = p_change_context(
                                                                                             $['cycle detected'],
                                                                                             ($) => Assign(
                                                                                                 $,
@@ -3092,32 +3096,32 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                     )],
                                                                 )
                                                             case 'parameter':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
                                                                     ($) => ['parameter', $],
                                                                 )
                                                             case 'parent sibling':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
                                                                     ($) => ['parent sibling', $],
                                                                 )
                                                             case 'sibling':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
                                                                     ($) => ['sibling', $],
                                                                 )
                                                             case 'state':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
                                                                     ($) => ['state', null],
                                                                 )
                                                             case 'text from list':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
-                                                                    ($) => ['text from list', _p.literal.group_resolve(
+                                                                    ($) => ['text from list', p_.literal.group_resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_source = _p_change_context(
+                                                                            const prop_source = p_change_context(
                                                                                 $['source'],
                                                                                 ($) => Select_Value(
                                                                                     $,
@@ -3129,7 +3133,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_assign_character = _p_change_context(
+                                                                            const prop_assign_character = p_change_context(
                                                                                 $['assign character'],
                                                                                 ($) => Assign(
                                                                                     $,
@@ -3148,12 +3152,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                     )],
                                                                 )
                                                             case 'variable':
-                                                                return _p.ss(
+                                                                return p_.ss(
                                                                     $,
                                                                     ($) => ['variable', $],
                                                                 )
                                                             default:
-                                                                return _p.au(
+                                                                return p_.au(
                                                                     $[0],
                                                                 )
                                                         }
@@ -3163,12 +3167,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                         ),
                                     )
                                     
-                                    const prop_tail = _p_change_context(
+                                    const prop_tail = p_change_context(
                                         $['tail'],
-                                        ($) => _p.list.from.list(
+                                        ($) => p_.from.list(
                                             $['l list'],
                                         ).map(
-                                            ($) => _p_change_context(
+                                            ($) => p_change_context(
                                                 $['l item'],
                                                 ($) => $,
                                             ),
@@ -3182,7 +3186,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                             )],
                         )
                     default:
-                        return _p.au(
+                        return p_.au(
                             $[0],
                         )
                 }
@@ -3191,47 +3195,47 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
     },
 )
 
-export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _p_variables(
+export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => p_variables(
     () => {
         
         const var_location = $['l location']
-        return _p.decide.state(
+        return p_decide_state(
             $['l state'],
             ($): t_out.Select_Lookup => {
                 switch ($[0]) {
                     case 'implement me':
-                        return _p.ss(
+                        return p_.ss(
                             $,
                             ($) => ['implement me', $],
                         )
                     case 'from parameter':
-                        return _p.ss(
+                        return p_.ss(
                             $,
                             ($) => ['from parameter', $],
                         )
                     case 'acyclic':
-                        return _p.ss(
+                        return p_.ss(
                             $,
-                            ($) => ['acyclic', _p_variables(
+                            ($) => ['acyclic', p_variables(
                                 () => {
                                     
                                     const var_location = $['l location']
-                                    return _p.decide.state(
+                                    return p_decide_state(
                                         $['l state'],
                                         ($): t_out.Select_Lookup.acyclic => {
                                             switch ($[0]) {
                                                 case 'not set':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['not set', null],
                                                     )
                                                 case 'siblings':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['siblings', null],
                                                     )
                                                 case 'resolved dictionary':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['resolved dictionary', Select_Value(
                                                             $,
@@ -3243,7 +3247,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _
                                                         )],
                                                     )
                                                 default:
-                                                    return _p.au(
+                                                    return p_.au(
                                                         $[0],
                                                     )
                                             }
@@ -3253,28 +3257,28 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _
                             )],
                         )
                     case 'cyclic':
-                        return _p.ss(
+                        return p_.ss(
                             $,
-                            ($) => ['cyclic', _p_variables(
+                            ($) => ['cyclic', p_variables(
                                 () => {
                                     
                                     const var_location = $['l location']
-                                    return _p.decide.state(
+                                    return p_decide_state(
                                         $['l state'],
                                         ($): t_out.Select_Lookup.cyclic => {
                                             switch ($[0]) {
                                                 case 'not set':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['not set', null],
                                                     )
                                                 case 'siblings':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['siblings', null],
                                                     )
                                                 default:
-                                                    return _p.au(
+                                                    return p_.au(
                                                         $[0],
                                                     )
                                             }
@@ -3284,28 +3288,28 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _
                             )],
                         )
                     case 'stack':
-                        return _p.ss(
+                        return p_.ss(
                             $,
-                            ($) => ['stack', _p_variables(
+                            ($) => ['stack', p_variables(
                                 () => {
                                     
                                     const var_location = $['l location']
-                                    return _p.decide.state(
+                                    return p_decide_state(
                                         $['l state'],
                                         ($): t_out.Select_Lookup.stack => {
                                             switch ($[0]) {
                                                 case 'empty':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
                                                         ($) => ['empty', null],
                                                     )
                                                 case 'push':
-                                                    return _p.ss(
+                                                    return p_.ss(
                                                         $,
-                                                        ($) => ['push', _p.literal.group_resolve(
+                                                        ($) => ['push', p_.literal.group_resolve(
                                                             () => {
                                                                 
-                                                                const prop_stack = _p_change_context(
+                                                                const prop_stack = p_change_context(
                                                                     $['stack'],
                                                                     ($) => Select_Lookup(
                                                                         $,
@@ -3317,7 +3321,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _
                                                                     ),
                                                                 )
                                                                 
-                                                                const prop_acyclic = _p_change_context(
+                                                                const prop_acyclic = p_change_context(
                                                                     $['acyclic'],
                                                                     ($) => Select_Lookup(
                                                                         $,
@@ -3336,7 +3340,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _
                                                         )],
                                                     )
                                                 default:
-                                                    return _p.au(
+                                                    return p_.au(
                                                         $[0],
                                                     )
                                             }
@@ -3346,7 +3350,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _
                             )],
                         )
                     default:
-                        return _p.au(
+                        return p_.au(
                             $[0],
                         )
                 }

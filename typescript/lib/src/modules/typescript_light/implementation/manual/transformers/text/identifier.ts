@@ -104,7 +104,7 @@ export const Identifier: p_i.Transformer<
             the_string,
             ($) => $
         )
-        const length = characters.__get_number_of_items()
+        const length =  p_.from.list(characters).amount_of_items()
 
         let position = 0
 

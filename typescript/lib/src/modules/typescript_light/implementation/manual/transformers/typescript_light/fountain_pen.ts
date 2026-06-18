@@ -96,7 +96,7 @@ export namespace interface_ {
 
 }
 
-export const escaped_text: interface_.escaped_text = ($) => p_.list.from.list(
+export const escaped_text: interface_.escaped_text = ($) => p_.from.list(
     p_list_from_text(
         $,
         ($) => $
@@ -204,8 +204,7 @@ export const decimal: interface_.decimal = ($) => p_list_build_deprecated(($i) =
         do {
             const digit = $ % 10
             $i['add item'](digit)
-            $ = p_.number.from.number.divide(
-                $,
+            $ = p_.from.number($).divide(
                 10,
                 ['towards zero', null],
                 {
@@ -216,7 +215,7 @@ export const decimal: interface_.decimal = ($) => p_list_build_deprecated(($i) =
 
     })
 
-    for (let j = digits.__get_number_of_items() - 1; j >= 0; j--) {
+    for (let j = p_.from.list(digits).amount_of_items() - 1; j >= 0; j--) {
         $i['add item'](48 + digits.__deprecated_get_possible_item_at(j).__decide(
             ($) => $,
             () => p_unreachable_code_path("index cannot be out of bounds")
@@ -267,8 +266,7 @@ export const float: interface_.float = ($) => {
             scale_factor = scale_factor * 10
         }
 
-        const mantissa_scaled = p_.number.from.number.divide(
-            mantissa * scale_factor + 0.5,
+        const mantissa_scaled = p_.from.number(mantissa * scale_factor + 0.5,).divide(
             1,
             ['towards zero', null],
             {
@@ -282,8 +280,7 @@ export const float: interface_.float = ($) => {
             do {
                 const digit = t % 10
                 $i['add item'](digit)
-                t = p_.number.from.number.divide(
-                    t,
+                t = p_.from.number(t).divide(
                     10,
                     ['towards zero', null],
                     {
@@ -295,7 +292,7 @@ export const float: interface_.float = ($) => {
 
         if (use_exponential) {
             // OUTPUT IN EXPONENTIAL NOTATION
-            const first_digit = digits.__deprecated_get_possible_item_at(digits.__get_number_of_items() - 1).__decide(
+            const first_digit = digits.__deprecated_get_possible_item_at(p_.from.list(digits).amount_of_items() - 1).__decide(
                 ($) => $,
                 () => p_unreachable_code_path("index cannot be out of bounds")
             )
@@ -303,8 +300,8 @@ export const float: interface_.float = ($) => {
 
             // Find first non-zero digit in fractional part
             let first_nonzero_index = -1
-            if (digits.__get_number_of_items() > 1) {
-                for (let j = 0; j < digits.__get_number_of_items() - 1; j++) {
+            if (p_.from.list(digits).amount_of_items() > 1) {
+                for (let j = 0; j < p_.from.list(digits).amount_of_items() - 1; j++) {
                     const digit = digits.__deprecated_get_possible_item_at(j).__decide(
                         ($) => $,
                         () => p_unreachable_code_path("index cannot be out of bounds")
@@ -319,7 +316,7 @@ export const float: interface_.float = ($) => {
 
             if (first_nonzero_index >= 0) {
                 $i['add item'](46) // '.'
-                for (let j = digits.__get_number_of_items() - 2; j >= first_nonzero_index; j--) {
+                for (let j = p_.from.list(digits).amount_of_items() - 2; j >= first_nonzero_index; j--) {
                     const digit = digits.__deprecated_get_possible_item_at(j).__decide(
                         ($) => $,
                         () => p_unreachable_code_path("index cannot be out of bounds")
@@ -345,8 +342,7 @@ export const float: interface_.float = ($) => {
                     do {
                         const digit = exp % 10
                         $i['add item'](digit)
-                        exp = p_.number.from.number.divide(
-                            exp,
+                        exp = p_.from.number(exp).divide(
                             10,
                             ['towards zero', null],
                             {
@@ -357,7 +353,7 @@ export const float: interface_.float = ($) => {
                 }
             })
 
-            for (let j = exp_digits.__get_number_of_items() - 1; j >= 0; j--) {
+            for (let j = p_.from.list(exp_digits).amount_of_items() - 1; j >= 0; j--) {
                 const digit = exp_digits.__deprecated_get_possible_item_at(j).__decide(
                     ($) => $,
                     () => p_unreachable_code_path("index cannot be out of bounds")
@@ -366,7 +362,7 @@ export const float: interface_.float = ($) => {
             }
         } else {
             // OUTPUT IN FIXED-POINT NOTATION
-            let digit_count = digits.__get_number_of_items()
+            let digit_count = p_.from.list(digits).amount_of_items()
 
             // Find first (lowest index) nonzero digit to know when to stop
             let first_nonzero = digit_count  // Initialize beyond range
@@ -436,7 +432,7 @@ export const float: interface_.float = ($) => {
 
 
 export const Directory: interface_.Directory = ($) => {
-    return $.__d_map(($, id) => p_.decide.state($, ($) => {
+    return $.__d_map_deprecated(($, id) => p_.from.state($).decide(($) => {
         switch ($[0]) {
             case 'file': return p_.ss($, ($) => ['file', Statements(
                 $['statements'],
@@ -461,8 +457,8 @@ export const String_Literal: interface_.String_Literal = ($) => {
     return sh.ph.serialize($.delimiter[0] === "quote" ? quoted_text($.value) : apostrophed_text($.value))
 }
 
-export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l_map(($) =>
-    p_.decide.state($, ($): d_out.Paragraph => {
+export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l_map_deprecated(($) =>
+    p_.from.state($).decide(($): d_out.Paragraph => {
         switch ($[0]) {
             case 'block': return p_.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
@@ -478,12 +474,12 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l
                 sh.sentence([]),
                 sh.sentence([
                     sh.ph.literal("export "),
-                    p_.decide.state($.type, ($) => {
+                    p_.from.state($.type).decide(($) => {
                         switch ($[0]) {
                             case 'named exports': return p_.ss($, ($) => sh.ph.composed([
                                 sh.ph.literal("{ "),
                                 sh.ph.indent(
-                                    sh.pg.sentences($.specifiers.__l_map(($) => sh.sentence([
+                                    sh.pg.sentences($.specifiers.__l_map_deprecated(($) => sh.sentence([
                                         Identifier($.name),
                                         $.as.__decide(
                                             ($) => sh.ph.composed([
@@ -524,7 +520,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l
                 sh.sentence([]),
                 sh.sentence([
                     sh.ph.literal("import "),
-                    p_.decide.state($.type, ($) => {
+                    p_.from.state($.type).decide(($) => {
                         switch ($[0]) {
                             case 'default': return p_.ss($, ($) => sh.ph.composed([
                                 Identifier($),
@@ -532,7 +528,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l
                             case 'named': return p_.ss($, ($) => sh.ph.composed([
                                 sh.ph.literal("{"),
                                 sh.ph.indent(
-                                    sh.pg.sentences($.specifiers.__l_map(($) => sh.sentence([
+                                    sh.pg.sentences($.specifiers.__l_map_deprecated(($) => sh.sentence([
                                         Identifier($.name),
                                         $.as.__decide(
                                             ($) => sh.ph.composed([
@@ -604,8 +600,8 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l
                     ),
                     sh.ph.literal(") {"),
                     sh.ph.indent(sh.pg.sentences(
-                        $.clauses.__l_map(($) => sh.sentence([
-                            p_.decide.state($.type, ($) => {
+                        $.clauses.__l_map_deprecated(($) => sh.sentence([
+                            p_.from.state($.type).decide(($) => {
                                 switch ($[0]) {
                                     case 'case': return p_.ss($, ($) => sh.ph.composed([
                                         sh.ph.literal("case "),
@@ -637,7 +633,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l
                     sh.ph.literal("type "),
                     Identifier($['name']),
                     sh.ph.rich(
-                        $['parameters'].__l_map(($) => Identifier($)),
+                        $['parameters'].__l_map_deprecated(($) => Identifier($)),
                         sh.ph.nothing(),
                         sh.ph.literal("<"),
                         sh.ph.literal(", "),
@@ -680,7 +676,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed($.__l
     })
 ))
 
-export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, ($) => {
+export const Expression: interface_.Expression = ($, $p) => p_.from.state($).decide(($) => {
     switch ($[0]) {
         case 'assignment': return p_.ss($, ($) => sh.ph.composed([
             Expression($.left, $p),
@@ -693,7 +689,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
         case 'array literal': return p_.ss($, ($) => sh.ph.composed([
             sh.ph.literal("["),
             sh.ph.rich(
-                $.__l_map(($) => Expression($, {
+                $.__l_map_deprecated(($) => Expression($, {
                     'object literal needs parentheses': false,
                     'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                 })),
@@ -707,7 +703,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
         case 'arrow function': return p_.ss($, ($) => sh.ph.composed([
             sh.ph.literal("("),
             sh.ph.rich(
-                $.parameters.__l_map(($) => sh.ph.composed([
+                $.parameters.__l_map_deprecated(($) => sh.ph.composed([
                     Identifier($.name),
                     $.type.__decide(
                         ($) => sh.ph.composed([
@@ -731,7 +727,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
                 () => sh.ph.nothing(),
             ),
             sh.ph.literal(" => "),
-            p_.decide.state($.body, ($) => {
+            p_.from.state($.body).decide(($) => {
                 switch ($[0]) {
                     case 'block': return p_.ss($, ($) => sh.ph.composed([
                         sh.ph.literal("{"),
@@ -755,7 +751,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
             Expression($['function selection'], $p),
             sh.ph.literal("("),
             sh.ph.indent(
-                sh.pg.sentences($['arguments'].__l_map(($) => sh.sentence([
+                sh.pg.sentences($['arguments'].__l_map_deprecated(($) => sh.sentence([
                     Expression(
                         $,
                         {
@@ -771,7 +767,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
         case 'compare': return p_.ss($, ($) => sh.ph.composed([
             Expression($.left, $p),
             sh.ph.literal(" "),
-            p_.decide.state($.operator, ($) => {
+            p_.from.state($.operator).decide(($) => {
                 switch ($[0]) {
                     case 'loosely equal': return p_.ss($, ($) => sh.ph.literal("=="))
                     case 'strictly equal': return p_.ss($, ($) => sh.ph.literal("==="))
@@ -827,11 +823,11 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
                 : sh.ph.nothing(),
             sh.ph.literal("{"),
             sh.ph.indent(
-                sh.pg.sentences(p_.list.from.list(
+                sh.pg.sentences(p_.from.list(
                     $.properties,
                 ).map(
                     ($) => sh.sentence([
-                        p_.decide.state($.key, ($) => {
+                        p_.from.state($.key).decide(($) => {
                             switch ($[0]) {
                                 case 'identifier': return p_.ss($, ($) => Identifier($))
                                 case 'string literal': return p_.ss($, ($) => String_Literal($))
@@ -874,7 +870,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
         case 'unary operation': return p_.ss($, ($) => {
             const operand = $.operand
             return sh.ph.composed([
-                p_.decide.state($.operator, ($) => {
+                p_.from.state($.operator).decide(($) => {
                     switch ($[0]) {
                         case 'negation': return p_.ss($, ($) => sh.ph.literal("-"))
                         case 'logical not': return p_.ss($, ($) => sh.ph.literal("!"))
@@ -888,12 +884,12 @@ export const Expression: interface_.Expression = ($, $p) => p_.decide.state($, (
     }
 })
 
-export const Type: interface_.Type = ($, $p) => p_.decide.state($, ($) => {
+export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(($) => {
     switch ($[0]) {
         case 'boolean': return p_.ss($, ($) => sh.ph.literal("boolean"))
         case 'function': return p_.ss($, ($) => sh.ph.composed([
             sh.ph.rich(
-                $['type parameters'].__l_map(($) => Type($, $p)),
+                $['type parameters'].__l_map_deprecated(($) => Type($, $p)),
                 sh.ph.nothing(),
                 sh.ph.literal("<"),
                 sh.ph.literal(", "),
@@ -901,7 +897,7 @@ export const Type: interface_.Type = ($, $p) => p_.decide.state($, ($) => {
             ),
             sh.ph.literal("("),
             sh.ph.indent(
-                sh.pg.sentences($['parameters'].__l_map(($) => sh.sentence([
+                sh.pg.sentences($['parameters'].__l_map_deprecated(($) => sh.sentence([
                     Identifier($.name),
                     $.type.__decide(
                         ($) => sh.ph.composed([
@@ -925,7 +921,7 @@ export const Type: interface_.Type = ($, $p) => p_.decide.state($, ($) => {
             $.readonly ? sh.ph.literal("readonly ") : sh.ph.nothing(),
             sh.ph.literal("["),
             sh.ph.rich(
-                $.elements.__l_map(($) => Type($, $p)),
+                $.elements.__l_map_deprecated(($) => Type($, $p)),
                 sh.ph.nothing(),
                 sh.ph.nothing(),
                 sh.ph.literal(", "),
@@ -933,18 +929,18 @@ export const Type: interface_.Type = ($, $p) => p_.decide.state($, ($) => {
             ),
             sh.ph.literal("]"),
         ]))
-        case 'type literal': return p_.ss($, ($) => $p['replace empty type literals by symbol'] && p_.boolean.from.list($.properties).is_empty()
+        case 'type literal': return p_.ss($, ($) => $p['replace empty type literals by symbol'] && p_.from.list($.properties).is_empty()
             ? sh.ph.literal("symbol")
             : sh.ph.composed([
                 sh.ph.literal("{"),
                 sh.ph.indent(
-                    sh.pg.sentences(p_.list.from.list(
+                    sh.pg.sentences(p_.from.list(
                         $.properties,
                     ).map(
                         ($) => sh.sentence([
                             sh.ph.composed([
                                 $['readonly'] ? sh.ph.literal("readonly ") : sh.ph.nothing(),
-                                p_.decide.state($.key, ($) => {
+                                p_.from.state($.key).decide(($) => {
                                     switch ($[0]) {
                                         case 'identifier': return p_.ss($, ($) => Identifier($))
                                         case 'string literal': return p_.ss($, ($) => String_Literal($))
@@ -961,16 +957,16 @@ export const Type: interface_.Type = ($, $p) => p_.decide.state($, ($) => {
         )
         case 'type reference': return p_.ss($, ($) => sh.ph.composed([
             Identifier($['start']),
-            sh.ph.composed($['tail'].__l_map(($) => sh.ph.composed([
+            sh.ph.composed($['tail'].__l_map_deprecated(($) => sh.ph.composed([
                 sh.ph.literal("."),
                 Identifier($),
             ]))),
-            p_.boolean.from.list($['type arguments']).is_empty()
+            p_.from.list($['type arguments']).is_empty()
                 ? sh.ph.nothing()
                 : sh.ph.composed([
                     sh.ph.literal("<"),
                     sh.ph.rich(
-                        $['type arguments'].__l_map(($) => Type($, $p)),
+                        $['type arguments'].__l_map_deprecated(($) => Type($, $p)),
                         sh.ph.nothing(),
                         sh.ph.nothing(),
                         sh.ph.literal(", "),
@@ -980,7 +976,7 @@ export const Type: interface_.Type = ($, $p) => p_.decide.state($, ($) => {
                 ]),
         ]))
         case 'union': return p_.ss($, ($) => sh.ph.indent(
-            sh.pg.sentences($.__l_map(($) => sh.sentence([
+            sh.pg.sentences($.__l_map_deprecated(($) => sh.sentence([
                 sh.ph.literal("| "),
                 Type($, $p),
             ])))
