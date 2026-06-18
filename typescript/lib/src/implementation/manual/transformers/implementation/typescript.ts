@@ -77,54 +77,70 @@ export const Package_Set: p_ri.Refiner<
                             ),
                         ],
                         $.specials['change context']
-                            ? [sh.s.import_default(
-                                sh.identifier_raw("p_change_context"),
-                                sh.string_literal("pareto-core/dist/specials/change_context", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_default(
+                                    sh.identifier_raw("p_change_context"),
+                                    sh.string_literal("pareto-core/dist/specials/change_context", 'apostrophe')
+                                )
+                            ]
                             : [],
                         $.specials['implement me']
-                            ? [sh.s.import_namespace(
-                                sh.identifier_raw("_pdev"),
-                                sh.string_literal("pareto-core-dev", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_namespace(
+                                    sh.identifier_raw("_pdev"),
+                                    sh.string_literal("pareto-core-dev", 'apostrophe')
+                                )
+                            ]
                             : [],
                         $.specials['iterate']
-                            ? [sh.s.import_named(
-                                [
-                                    sh.specifier(sh.identifier_raw("p_change_context"), null),
-                                ],
-                                sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_named(
+                                    [
+                                        sh.specifier(sh.identifier_raw("p_change_context"), null),
+                                    ],
+                                    sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
+                                )
+                            ]
                             : [],
                         $.specials['list from text']
-                            ? [sh.s.import_default(
-                                sh.identifier_raw("p_list_from_text"),
-                                sh.string_literal("pareto-core/dist/specials/list_from_text", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_default(
+                                    sh.identifier_raw("p_list_from_text"),
+                                    sh.string_literal("pareto-core/dist/specials/list_from_text", 'apostrophe')
+                                )
+                            ]
                             : [],
                         $.specials.lookups
-                            ? [sh.s.import_namespace(
-                                sh.identifier_raw("p_sl"),
-                                sh.string_literal("pareto-core/dist/select_static_lookup", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_namespace(
+                                    sh.identifier_raw("p_sl"),
+                                    sh.string_literal("pareto-core/dist/select_static_lookup", 'apostrophe')
+                                )
+                            ]
                             : [],
                         $.specials['text from list']
-                            ? [sh.s.import_default(
-                                sh.identifier_raw("p_text_from_list"),
-                                sh.string_literal("pareto-core/dist/specials/text_from_list", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_default(
+                                    sh.identifier_raw("p_text_from_list"),
+                                    sh.string_literal("pareto-core/dist/specials/text_from_list", 'apostrophe')
+                                )
+                            ]
                             : [],
                         $.specials['unreachable code path']
-                            ? [sh.s.import_default(
-                                sh.identifier_raw("p_unreachable_code_path"),
-                                sh.string_literal("pareto-core/dist/specials/unreachable_code_path", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_default(
+                                    sh.identifier_raw("p_unreachable_code_path"),
+                                    sh.string_literal("pareto-core/dist/specials/unreachable_code_path", 'apostrophe')
+                                )
+                            ]
                             : [],
                         $.specials['variables']
-                            ? [sh.s.import_default(
-                                sh.identifier_raw("p_variables"),
-                                sh.string_literal("pareto-core/dist/specials/variables", 'apostrophe')
-                            )]
+                            ? [
+                                sh.s.import_default(
+                                    sh.identifier_raw("p_variables"),
+                                    sh.string_literal("pareto-core/dist/specials/variables", 'apostrophe')
+                                )
+                            ]
                             : [],
                         p_.from.dictionary(
                             $['type imports'],
