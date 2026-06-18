@@ -11,7 +11,10 @@ export const Identifier: p_i.Transformer<
     string,
     d_loc.List_of_Characters
 >= ($) => {
-    const temp_literal_to_text = ($: string): d_loc.List_of_Characters => p_list_from_text($, ($) => $)
+    const temp_literal_to_text = ($: string): d_loc.List_of_Characters => p_list_from_text(
+        $,
+        ($) => $
+    )
     const the_string = $
     if (the_string === "") {
         return temp_literal_to_text("_empty")
@@ -97,7 +100,10 @@ export const Identifier: p_i.Transformer<
     }
 
     return p_list_build_deprecated(($i) => {
-        const characters = p_list_from_text(the_string, ($) => $)
+        const characters = p_list_from_text(
+            the_string,
+            ($) => $
+        )
         const length = characters.__get_number_of_items()
 
         let position = 0

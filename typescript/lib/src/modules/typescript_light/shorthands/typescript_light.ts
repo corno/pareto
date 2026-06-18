@@ -16,7 +16,10 @@ export const identifier_raw = (
 export const identifier_escaped = (
     name: string,
 ): d_target.Identifier => ({
-    'value': p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $)
+    'value': p_text_from_list(
+        t_text_to_identifier.Identifier(name),
+        ($) => $
+    )
 })
 
 
@@ -250,7 +253,7 @@ export namespace t {
     ): d_target.Type => {
         return ['string', null]
     }
-    
+
     export const tuple = (
         read_only: 'readonly' | '',
         elements: p_.Raw_Or_Normal_List<d_target.Type>): d_target.Type => {
@@ -389,7 +392,10 @@ export namespace e {
     export const identifier_escaped = (
         name: string,
     ): d_target.Expression => ['identifier', {
-        'value': p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $),
+        'value': p_text_from_list(
+            t_text_to_identifier.Identifier(name),
+            ($) => $
+        ),
     }]
 
     export const not = (

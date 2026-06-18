@@ -3,7 +3,7 @@ import * as _p from 'pareto-core/dist/assign'
 
 import _p_change_context from 'pareto-core/dist/implementation/specials/change_context'
 
-import * as _p_sl from 'pareto-core/dist/implementation/refiner/select_static_lookup'
+import * as _p_sl from 'pareto-core/dist/implementation/refiner/select_lookup'
 
 import _p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 
@@ -17,7 +17,7 @@ import * as t_signatures from "../../../../../../../interface/generated/liana/sc
 
 export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.dictionary.from.dictionary(
     $['l dictionary'],
-).resolve_static(
+).resolve_refiner(
     ($, id, $a, $c): t_out.Package_Set.D => _p_change_context(
         $['l entry'],
         ($) => _p_variables(
@@ -94,7 +94,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
                                         $,
                                         ($) => ['data modules', _p.dictionary.from.dictionary(
                                             $['l dictionary'],
-                                        ).resolve_static(
+                                        ).resolve_refiner(
                                             ($, id, $a, $c): t_out.Package.content.data_modules.D => _p_change_context(
                                                 $['l entry'],
                                                 ($) => Value(
@@ -113,7 +113,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
                                         $,
                                         ($) => ['functions', _p.dictionary.from.dictionary(
                                             $['l dictionary'],
-                                        ).resolve_static(
+                                        ).resolve_refiner(
                                             ($, id, $a, $c): t_out.Package.content.functions.D => _p_change_context(
                                                 $['l entry'],
                                                 ($) => _p.literal.group_resolve(
@@ -187,7 +187,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
                                                                                                     ).map(
                                                                                                         ($) => _p.dictionary.from.dictionary(
                                                                                                             $['l dictionary'],
-                                                                                                        ).resolve_static(
+                                                                                                        ).resolve_refiner(
                                                                                                             ($, id, $a, $c): t_out.Package.content.functions.D.type_.refiner.lookups.O.D => _p_change_context(
                                                                                                                 $['l entry'],
                                                                                                                 ($) => _p_variables(
@@ -272,7 +272,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
                                                             ).map(
                                                                 ($) => _p.dictionary.from.dictionary(
                                                                     $['l dictionary'],
-                                                                ).resolve_static(
+                                                                ).resolve_refiner(
                                                                     ($, id, $a, $c): t_out.Package.content.functions.D.parameters.O.D => _p_change_context(
                                                                         $['l entry'],
                                                                         ($) => Value(
@@ -317,7 +317,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
 
 export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p.dictionary.from.dictionary(
     $['l dictionary'],
-).resolve_static(
+).resolve_refiner(
     ($, id, $a, $c): t_out.Imports.D => _p_change_context(
         $['l entry'],
         ($) => _p.literal.group_resolve(
@@ -449,7 +449,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                             $,
                             ($) => ['group', _p.dictionary.from.dictionary(
                                 $['l dictionary'],
-                            ).resolve_static(
+                            ).resolve_refiner(
                                 ($, id, $a, $c): t_out.Value.group.D => _p_change_context(
                                     $['l entry'],
                                     ($) => Value(
@@ -637,7 +637,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                             $,
                             ($) => ['state', _p.dictionary.from.dictionary(
                                 $['l dictionary'],
-                            ).resolve_static(
+                            ).resolve_refiner(
                                 ($, id, $a, $c): t_out.Value.state.D => _p_change_context(
                                     $['l entry'],
                                     ($) => Value(

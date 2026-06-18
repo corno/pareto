@@ -3,7 +3,7 @@ import * as _p from 'pareto-core/dist/assign'
 
 import _p_change_context from 'pareto-core/dist/implementation/specials/change_context'
 
-import * as _p_sl from 'pareto-core/dist/implementation/refiner/select_static_lookup'
+import * as _p_sl from 'pareto-core/dist/implementation/refiner/select_lookup'
 
 import _p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 
@@ -19,7 +19,7 @@ import * as v_external_interface from "../../../interface/resolved/refiners/unre
 
 export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.dictionary.from.dictionary(
     $['l dictionary'],
-).resolve_static(
+).resolve_refiner(
     ($, id, $a, $c): t_out.Package_Set.D => _p_change_context(
         $['l entry'],
         ($) => _p_variables(
@@ -149,7 +149,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
             $['variable imports'],
             ($) => _p.dictionary.from.dictionary(
                 $['l dictionary'],
-            ).resolve_static(
+            ).resolve_refiner(
                 ($, id, $a, $c): t_out.Package.variable_imports.D => _p_change_context(
                     $['l entry'],
                     ($) => _p.literal.group_resolve(
@@ -233,7 +233,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.literal.gr
             $['functions'],
             ($) => _p.dictionary.from.dictionary(
                 $['l dictionary'],
-            ).resolve_static(
+            ).resolve_refiner(
                 ($, id, $a, $c): t_out.Package.functions.D => _p_change_context(
                     $['l entry'],
                     ($) => _p.literal.group_resolve(
@@ -576,7 +576,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                         $['options'],
                                                                                                                         ($) => _p.dictionary.from.dictionary(
                                                                                                                             $['l dictionary'],
-                                                                                                                        ).resolve_static(
+                                                                                                                        ).resolve_refiner(
                                                                                                                             ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.partial.options.D => _p_change_context(
                                                                                                                                 $['l entry'],
                                                                                                                                 ($) => Assign(
@@ -619,7 +619,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                                         $['options'],
                                                                                                                         ($) => _p.dictionary.from.dictionary(
                                                                                                                             $['l dictionary'],
-                                                                                                                        ).resolve_static(
+                                                                                                                        ).resolve_refiner(
                                                                                                                             ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.full.options.D => _p_change_context(
                                                                                                                                 $['l entry'],
                                                                                                                                 ($) => Assign(
@@ -724,7 +724,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                 $['cases'],
                                                                                 ($) => _p.dictionary.from.dictionary(
                                                                                     $['l dictionary'],
-                                                                                ).resolve_static(
+                                                                                ).resolve_refiner(
                                                                                     ($, id, $a, $c): t_out.Assign.decide.type_.text.cases.D => _p_change_context(
                                                                                         $['l entry'],
                                                                                         ($) => Assign(
@@ -982,7 +982,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     $,
                                                                                     ($) => ['literal', _p.dictionary.from.dictionary(
                                                                                         $['l dictionary'],
-                                                                                    ).resolve_static(
+                                                                                    ).resolve_refiner(
                                                                                         ($, id, $a, $c): t_out.Assign.construct.dictionary.literal.D => _p_change_context(
                                                                                             $['l entry'],
                                                                                             ($) => Assign(
@@ -1245,7 +1245,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                                 $['properties'],
                                                                                                 ($) => _p.dictionary.from.dictionary(
                                                                                                     $['l dictionary'],
-                                                                                                ).resolve_static(
+                                                                                                ).resolve_refiner(
                                                                                                     ($, id, $a, $c): t_out.Assign.construct.group.literal.properties.D => _p_change_context(
                                                                                                         $['l entry'],
                                                                                                         ($) => Assign(
@@ -2349,7 +2349,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                     $['variables'],
                                                                     ($) => _p.dictionary.from.dictionary(
                                                                         $['l dictionary'],
-                                                                    ).resolve_static(
+                                                                    ).resolve_refiner(
                                                                         ($, id, $a, $c): t_out.Assign.special.variables.variables.D => _p_change_context(
                                                                             $['l entry'],
                                                                             ($) => Assign(
@@ -2588,7 +2588,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                 $,
                                                                                                                 ($) => ['initialize', _p.dictionary.from.dictionary(
                                                                                                                     $['l dictionary'],
-                                                                                                                ).resolve_static(
+                                                                                                                ).resolve_refiner(
                                                                                                                     ($, id, $a, $c): t_out.Select_Value.regular.start.call.lookups.O.initialize.D => _p_change_context(
                                                                                                                         $['l entry'],
                                                                                                                         ($) => Select_Lookup(
@@ -2637,7 +2637,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                 $,
                                                                                                                 ($) => ['initialize', _p.dictionary.from.dictionary(
                                                                                                                     $['l dictionary'],
-                                                                                                                ).resolve_static(
+                                                                                                                ).resolve_refiner(
                                                                                                                     ($, id, $a, $c): t_out.Select_Value.regular.start.call.arguments_.O.initialize.D => _p_change_context(
                                                                                                                         $['l entry'],
                                                                                                                         ($) => Assign(

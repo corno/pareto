@@ -36,7 +36,10 @@ export const temp_create_file_path = (
             p_.list.from.list(
                 $.tail.__l_map(($) => `/${valid_file_name($)}`),
             ).flatten(
-                ($) => p_list_from_text($, ($) => $)
+                ($) => p_list_from_text(
+                    $,
+                    ($) => $
+                )
             ),
             ($) => $
         )
@@ -48,7 +51,10 @@ export const temp_create_file_path = (
                 case 'ancestor': return p_.ss($, ($) => p_text_from_list(
                     p_.list.from.list(
                         p_.literal.repeat(
-                            p_list_from_text("../", ($) => $),
+                            p_list_from_text(
+                                "../",
+                                ($) => $
+                            ),
                             $['number of steps']
                         ),
                     ).flatten(

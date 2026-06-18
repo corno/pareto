@@ -10,7 +10,10 @@ export type Signature = p_i.Transformer<string, d_out.List_of_Characters>
 
 export const $$: Signature = ($) => {
     return p_list_build_deprecated(($i) => {
-        p_list_from_text($, ($) => $).__l_map(($) => {
+        p_list_from_text(
+            $,
+            ($) => $
+        ).__l_map(($) => {
             if ($ === 36) { // $
                 $i['add item'](36) //dollar
                 $i['add item'](36) //dollar

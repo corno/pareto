@@ -525,7 +525,7 @@ export const Assign: p_i.Transformer<
                                                             selection,
                                                         ]
                                                     ),
-                                                    sh.identifier_raw("resolve_static"),
+                                                    sh.identifier_raw("resolve_refiner"),
                                                 ),
                                                 [
                                                     sh.e.arrow_function_with_expression(
