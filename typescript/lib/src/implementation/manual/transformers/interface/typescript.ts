@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as p_ri from 'pareto-core/dist/interface/refiner'
-import p_change_context from 'pareto-core/dist/implementation/specials/change_context'
-import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
-import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
+import p_change_context from 'pareto-core/dist/implementation/refiner/specials/change_context'
+import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
+import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/list_from_text'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/interface/data/resolved"
 import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"

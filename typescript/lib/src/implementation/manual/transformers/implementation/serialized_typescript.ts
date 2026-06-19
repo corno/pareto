@@ -1,5 +1,5 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
-import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
+import p_unreachable_code_path from 'pareto-core/dist/implementation/transformer/specials/unreachable_code_path'
 
 //FIXME, this one should be moved to pareto-targets
 

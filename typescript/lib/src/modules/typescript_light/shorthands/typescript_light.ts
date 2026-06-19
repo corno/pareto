@@ -1,5 +1,5 @@
 import * as p_ from 'pareto-core-shorthands/dist/unconstrained'
-import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
+import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
 
 //data types
 import * as d_target from "../../../interface/generated/liana/schemas/typescript_light/data"
