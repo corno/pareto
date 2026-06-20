@@ -50,12 +50,12 @@ export const temp_create_file_path = (
                 case 'external': return p_.ss($, ($) => valid_file_name($) + do_tail())
                 case 'ancestor': return p_.ss($, ($) => p_text_from_list(
                     p_.from.list(
-                        p_.literal.repeat(
+                        p_.from.number($['number of steps']).repeat(
                             p_list_from_text(
                                 "../",
                                 ($) => $
                             ),
-                            $['number of steps']
+                            
                         ),
                     ).flatten(
                         ($) => $
