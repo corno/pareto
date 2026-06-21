@@ -115,9 +115,9 @@ export const Package_Set: p_ri.Refiner<
                 case 'package': return p_.ss($, ($) => {
 
                     return sh.n.file(p_.literal.nested_list<d_out.Statements_.L>([
-                        [
+                        p_.literal.list([
                             sh.s.import_namespace(sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
-                        ],
+                        ]),
 
                         p_.from.dictionary($.imports,).convert_to_list(($, id): d_out.Statements_.L => sh.s.import_namespace(
                             sh.identifier_escaped(`i ${id}`),
@@ -215,7 +215,7 @@ export const Package_Set: p_ri.Refiner<
                                                             default: return p_.au($[0])
                                                         }
                                                     }),
-                                                    [
+                                                    p_.literal.list([
                                                         sh.s.namespace(
                                                             true,
                                                             sh.identifier_raw("P"),
@@ -233,7 +233,7 @@ export const Package_Set: p_ri.Refiner<
                                                                 () => p_.literal.list<d_out.Statements_.L>([])
                                                             )
                                                         )
-                                                    ]
+                                                    ])
                                                 ])
                                             ),
                                             sh.s.type_alias(
@@ -243,12 +243,12 @@ export const Package_Set: p_ri.Refiner<
                                                 sh.t.function_(
                                                     [],
                                                     p_.literal.nested_list([
-                                                        [
+                                                        p_.literal.list([
                                                             sh.parameter(
                                                                 sh.identifier_raw("context"),
                                                                 sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("I")], []),
                                                             ),
-                                                        ],
+                                                        ]),
 
                                                         p_.from.state($.type).decide(($) => {
                                                             switch ($[0]) {
@@ -339,7 +339,7 @@ export const Package_Set: p_ri.Refiner<
                             }
                         }),
 
-                        [
+                        p_.literal.list([
                             sh.s.export_(
                                 p_.from.state($.content).decide(($) => {
                                     switch ($[0]) {
@@ -358,7 +358,7 @@ export const Package_Set: p_ri.Refiner<
                                 }),
                                 null,
                             )
-                        ]
+                        ])
 
 
                     ]))

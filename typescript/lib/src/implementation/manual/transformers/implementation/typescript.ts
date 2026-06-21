@@ -77,71 +77,71 @@ export const Package_Set: p_ri.Refiner<
                             ),
                         ]),
                         $.specials['change context']
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_default(
                                     sh.identifier_raw("p_change_context"),
                                     sh.string_literal("pareto-core/dist/specials/change_context", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         $.specials['implement me']
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_namespace(
                                     sh.identifier_raw("_pdev"),
                                     sh.string_literal("pareto-core-dev", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         $.specials['iterate']
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_named(
                                     [
                                         sh.specifier(sh.identifier_raw("p_change_context"), null),
                                     ],
                                     sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         $.specials['list from text']
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_default(
                                     sh.identifier_raw("p_list_from_text"),
                                     sh.string_literal("pareto-core/dist/specials/list_from_text", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         $.specials.lookups
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_namespace(
                                     sh.identifier_raw("p_sl"),
                                     sh.string_literal("pareto-core/dist/select_static_lookup", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         $.specials['text from list']
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_default(
                                     sh.identifier_raw("p_text_from_list"),
                                     sh.string_literal("pareto-core/dist/specials/text_from_list", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         $.specials['unreachable code path']
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_default(
                                     sh.identifier_raw("p_unreachable_code_path"),
                                     sh.string_literal("pareto-core/dist/specials/unreachable_code_path", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         $.specials['variables']
-                            ? [
+                            ? p_.literal.list([
                                 sh.s.import_default(
                                     sh.identifier_raw("p_variables"),
                                     sh.string_literal("pareto-core/dist/specials/variables", 'apostrophe')
                                 )
-                            ]
-                            : [],
+                            ])
+                            : p_.literal.list([]),
                         p_.from.dictionary(
                             $['type imports'],
                         ).convert_to_list(
