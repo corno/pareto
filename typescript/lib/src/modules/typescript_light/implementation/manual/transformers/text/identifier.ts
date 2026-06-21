@@ -89,7 +89,7 @@ export const Identifier: p_i.Transformer<
         "object": null,
         "never": null,
     })
-    if (reserved_keywords.__get_possible_entry_deprecated(the_string).__decide(
+    if (p_.from.optional(reserved_keywords.__get_possible_entry_deprecated(the_string)).decide(
         () => true,
         () => false,
     )) {
@@ -118,7 +118,7 @@ export const Identifier: p_i.Transformer<
                 if (position === length) {
                     return null
                 }
-                return characters.__deprecated_get_possible_item_at(position).__decide(
+                return p_.from.optional(characters.__deprecated_get_possible_item_at(position)).decide(
                     ($) => $,
                     () => null
                 )

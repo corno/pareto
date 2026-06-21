@@ -79,7 +79,7 @@ const temp_rename: p_ri.Refiner<
     abort
 ) => {
         const renamed: { [id: string]: d_in.Package_Set.D } = {}
-        $.__d_map_deprecated(($, id) => {
+        p_.from.dictionary($).map(($, id) => {
             const new_id: string = p_.from.state($).decide(($) => {
                 switch ($[0]) {
                     case 'package': return p_.ss($, ($) => id + ".ts")
@@ -110,7 +110,7 @@ export const Package_Set: p_ri.Refiner<
     $,
     abort
 ) => {
-        return temp_rename($, abort).__d_map_deprecated(($) => p_.from.state($).decide(($) => {
+        return p_.from.dictionary(temp_rename($, abort)).map(($) => p_.from.state($).decide(($) => {
             switch ($[0]) {
                 case 'package': return p_.ss($, ($) => {
 
@@ -169,7 +169,7 @@ export const Package_Set: p_ri.Refiner<
                                                             case 'transformer': return p_.ss($, ($) => p_.literal.list([]))
                                                             case 'refiner': return p_.ss($, ($): d_out.Statements => p_.literal.nested_list<d_out.Statements.L>([
 
-                                                                $.error.__decide<d_out.Statements>(
+                                                                p_.from.optional($.error).decide<d_out.Statements>(
                                                                     ($) => {
                                                                         return Value(
                                                                             $,
@@ -183,7 +183,7 @@ export const Package_Set: p_ri.Refiner<
                                                                     }
                                                                 ),
 
-                                                                $.lookups.__decide<d_out.Statements>(
+                                                                p_.from.optional($.lookups).decide<d_out.Statements>(
                                                                     ($) => {
                                                                         return p_.from.dictionary(
                                                                             $,
@@ -219,7 +219,7 @@ export const Package_Set: p_ri.Refiner<
                                                         sh.s.namespace(
                                                             true,
                                                             sh.identifier_raw("P"),
-                                                            $.parameters.__decide(
+                                                            p_.from.optional($.parameters).decide(
                                                                 ($) => p_.from.dictionary(
                                                                     $,
                                                                 ).flatten_to_list(
@@ -255,7 +255,7 @@ export const Package_Set: p_ri.Refiner<
                                                                 case 'transformer': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.list([]))
                                                                 case 'refiner': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.nested_list([
 
-                                                                    $.error.__decide(
+                                                                    p_.from.optional($.error).decide(
                                                                         ($) => p_.literal.list([
 
                                                                             sh.parameter(
@@ -273,7 +273,7 @@ export const Package_Set: p_ri.Refiner<
                                                                         () => p_.literal.list([])
                                                                     ),
 
-                                                                    $.lookups.__decide(
+                                                                    p_.from.optional($.lookups).decide(
                                                                         ($) => p_.literal.list([
 
                                                                             sh.parameter(
@@ -310,7 +310,7 @@ export const Package_Set: p_ri.Refiner<
                                                                 default: return p_.au($[0])
                                                             }
                                                         }),
-                                                        $.parameters.__decide(
+                                                        p_.from.optional($.parameters).decide(
                                                             ($) => p_.literal.list([
 
                                                                 sh.parameter(

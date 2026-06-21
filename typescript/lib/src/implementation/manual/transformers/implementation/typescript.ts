@@ -18,7 +18,7 @@ import { temp_create_file_path } from '../interface/typescript'
 
 const join = ($: p_di.List<string>): string => {
     let out = ""
-    $.__l_map_deprecated(($) => {
+    p_.from.list($).map(($) => {
         out += $
         return null
     })
@@ -276,7 +276,7 @@ export const Assign: p_i.Transformer<
                                 [
                                     sh.parameter(sh.identifier_raw("$"), null)
                                 ],
-                                $['temp resulting node'].__decide(
+                                p_.from.optional($['temp resulting node']).decide(
                                     ($) => Temp_Value_Type_Specification($),
                                     () => null
                                 ),
@@ -306,7 +306,7 @@ export const Assign: p_i.Transformer<
                                 [
                                     sh.parameter(sh.identifier_raw("$"), null)
                                 ],
-                                $['temp resulting node'].__decide(
+                                p_.from.optional($['temp resulting node']).decide(
                                     ($) => Temp_Value_Type_Specification($),
                                     () => null
                                 ),
@@ -397,7 +397,7 @@ export const Assign: p_i.Transformer<
                                 [
                                     sh.parameter(sh.identifier_raw("$t"), null)
                                 ],
-                                $['temp resulting node'].__decide(
+                                p_.from.optional($['temp resulting node']).decide(
                                     ($) => Temp_Value_Type_Specification($),
                                     () => null
                                 ),
@@ -639,7 +639,7 @@ export const Assign: p_i.Transformer<
                                 sh.identifier_raw("literal"),
                             ),
                             [
-                                sh.e.array_literal($.__l_map_deprecated(($) => Assign($)))
+                                sh.e.array_literal(p_.from.list($).map(($) => Assign($)))
                             ]
                         ))
                         case 'from': return p_.ss($, ($) => p_variables(() => {
@@ -975,7 +975,7 @@ export const reduce = <Item extends p_di.Value, Result_Type extends p_di.Value>(
     ) => Result_Type,
 ): Result_Type => {
     let current_state = initial_state
-    $.__l_map_deprecated(($) => {
+    p_.from.list($).map(($) => {
         current_state = update_state($, current_state)
         return null
     })
@@ -1014,7 +1014,7 @@ export const Select_Value = (
                             p_.literal.list([
                                 Assign($.context),
                             ]),
-                            $.abort.__decide(
+                            p_.from.optional($.abort).decide(
                                 ($) => p_.literal.list([
                                     sh.e.arrow_function_with_expression(
                                         [
@@ -1031,7 +1031,7 @@ export const Select_Value = (
                                 ]),
                                 () => p_.literal.list([])
                             ),
-                            $.lookups.__decide(
+                            p_.from.optional($.lookups).decide(
                                 ($) => p_.from.state($).decide(($) => {
                                     switch ($[0]) {
                                         case 'initialize': return p_.ss($, ($) => p_.from.dictionary($).is_empty()
@@ -1055,7 +1055,7 @@ export const Select_Value = (
                                 }),
                                 () => p_.literal.list([])
                             ),
-                            $.arguments.__decide(
+                            p_.from.optional($.arguments).decide(
                                 ($) => p_.from.state($).decide(($) => {
                                     switch ($[0]) {
                                         case 'initialize': return p_.ss($, ($) => p_.from.dictionary($).is_empty()
