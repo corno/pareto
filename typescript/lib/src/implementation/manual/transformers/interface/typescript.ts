@@ -55,7 +55,7 @@ export const temp_create_file_path = (
                                 "../",
                                 ($) => $
                             ),
-                            
+
                         ),
                     ).flatten(
                         ($) => $
@@ -164,7 +164,7 @@ export const Package_Set: p_ri.Refiner<
                                                             'name': "O",
                                                         }
                                                     ),
-                                                    p_.from.state($.type).decide( ($): d_out.Statements => {
+                                                    p_.from.state($.type).decide(($): d_out.Statements => {
                                                         switch ($[0]) {
                                                             case 'transformer': return p_.ss($, ($) => p_.literal.list([]))
                                                             case 'refiner': return p_.ss($, ($): d_out.Statements => p_.literal.nested_list<d_out.Statements.L>([
@@ -396,17 +396,15 @@ export const Value: p_i.Transformer_With_Parameter<
                         switch ($[0]) {
                             case 'import': return p_.ss($, ($) => sh.t.type_reference(
                                 sh.identifier_escaped("i " + $.import),
-                                p_.literal.nested_list([
-                                    [
-                                        sh.identifier_escaped($.type)
-                                    ],
+                                p_.literal.list([
+                                    sh.identifier_escaped($.type)
                                 ]),
                                 []
                             ))
                             case 'local': return p_.ss($, ($) => sh.t.type_reference(
                                 sh.identifier_escaped($ + " "),
                                 //tail
-                                p_.literal.nested_list([]),
+                                p_.literal.list([]),
                                 []
                             ))
                             default: return p_.au($[0])
@@ -436,34 +434,32 @@ export const Value: p_i.Transformer_With_Parameter<
                     ])
                 )
             ]))
-            case 'group': return p_.ss($, ($) => p_.literal.nested_list([
-                [
-                    sh.s.namespace(
-                        true,
-                        sh.identifier_escaped($p.name),
-                        p_.from.dictionary(
-                            $
-                        ).flatten_to_list(
-                            ($, id) => Value(
-                                $,
-                                {
-                                    'name': id,
-                                }
-                            )
+            case 'group': return p_.ss($, ($) => p_.literal.list([
+                sh.s.namespace(
+                    true,
+                    sh.identifier_escaped($p.name),
+                    p_.from.dictionary(
+                        $
+                    ).flatten_to_list(
+                        ($, id) => Value(
+                            $,
+                            {
+                                'name': id,
+                            }
                         )
-                    ),
-                    sh.s.type_alias(
-                        true,
-                        sh.identifier_escaped($p.name),
-                        p_.literal.list([]),
-                        sh.t.type_literal(p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
-                            id,
-                            'apostrophized string literal',
-                            true,
-                            sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
-                        )))
                     )
-                ]
+                ),
+                sh.s.type_alias(
+                    true,
+                    sh.identifier_escaped($p.name),
+                    p_.literal.list([]),
+                    sh.t.type_literal(p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
+                        id,
+                        'apostrophized string literal',
+                        true,
+                        sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
+                    )))
+                )
             ]))
             case 'list': return p_.ss($, ($) => p_.literal.list([
                 sh.s.namespace(
@@ -580,38 +576,36 @@ export const Value: p_i.Transformer_With_Parameter<
 
                 )
             ]))
-            case 'state': return p_.ss($, ($) => p_.literal.nested_list([
-                [
-                    sh.s.namespace(
-                        true,
-                        sh.identifier_escaped($p.name),
-                        p_.from.dictionary(
+            case 'state': return p_.ss($, ($) => p_.literal.list([
+                sh.s.namespace(
+                    true,
+                    sh.identifier_escaped($p.name),
+                    p_.from.dictionary(
+                        $,
+                    ).flatten_to_list(
+                        ($, id) => Value(
                             $,
-                        ).flatten_to_list(
-                            ($, id) => Value(
-                                $,
-                                {
-                                    'name': id,
-                                }
+                            {
+                                'name': id,
+                            }
+                        )
+                    )
+                ),
+                sh.s.type_alias(
+                    true,
+                    sh.identifier_escaped($p.name),
+                    p_.literal.list([]),
+                    p_.from.dictionary($).is_empty()
+                        ? sh.t.never()
+                        : sh.t.union(
+                            p_.from.dictionary($).convert_to_list(
+                                ($, id) => sh.t.tuple('readonly', [
+                                    sh.t.literal_type(sh.string_literal(id, 'apostrophe')),
+                                    sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
+                                ])
                             )
                         )
-                    ),
-                    sh.s.type_alias(
-                        true,
-                        sh.identifier_escaped($p.name),
-                        p_.literal.list([]),
-                        p_.from.dictionary($).is_empty()
-                            ? sh.t.never()
-                            : sh.t.union(
-                                p_.from.dictionary($).convert_to_list(
-                                    ($, id) => sh.t.tuple('readonly', [
-                                        sh.t.literal_type(sh.string_literal(id, 'apostrophe')),
-                                        sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
-                                    ])
-                                )
-                            )
-                    )
-                ]
+                )
             ]))
             case 'text': return p_.ss($, ($) => p_.literal.list([
                 sh.s.type_alias(

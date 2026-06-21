@@ -70,12 +70,12 @@ export const Package_Set: p_ri.Refiner<
                 case 'package': return p_.ss($, ($): d_out.Directory.D => {
 
                     const y: d_out.Statements = p_.literal.nested_list([
-                        [
+                        p_.literal.list([
                             sh.s.import_namespace(
                                 sh.identifier_raw("pt"),
                                 sh.string_literal("pareto-core/dist/assign", 'apostrophe')
                             ),
-                        ],
+                        ]),
                         $.specials['change context']
                             ? [
                                 sh.s.import_default(
@@ -184,24 +184,24 @@ export const Package_Set: p_ri.Refiner<
                                 ),
                                 sh.e.arrow_function_with_expression(
                                     p_.literal.nested_list([
-                                        [
+                                        p_.literal.list([
                                             sh.parameter(sh.identifier_raw("$"), null),
-                                        ],
+                                        ]),
                                         $['temp has abort']
-                                            ? [
+                                            ? p_.literal.list([
                                                 sh.parameter(sh.identifier_raw("abort"), null),
-                                            ]
-                                            : [],
+                                            ])
+                                            : p_.literal.list([]),
                                         $['temp has lookups']
-                                            ? [
+                                            ? p_.literal.list([
                                                 sh.parameter(sh.identifier_raw("$l"), null),
-                                            ]
-                                            : [],
+                                            ])
+                                            : p_.literal.list([]),
                                         $['temp has parameters']
-                                            ? [
+                                            ? p_.literal.list([
                                                 sh.parameter(sh.identifier_raw("$p"), null),
-                                            ]
-                                            : []
+                                            ])
+                                            : p_.literal.list([])
                                     ]),
                                     null,
                                     Assign($.expression)
@@ -353,7 +353,7 @@ export const Assign: p_i.Transformer<
                                                     ]
                                                 )
                                             ),
-                                            [
+                                            p_.literal.list([
                                                 sh.sw.default_([
                                                     sh.s.return_(p_.from.state($.type).decide(($) => {
                                                         switch ($[0]) {
@@ -375,7 +375,7 @@ export const Assign: p_i.Transformer<
                                                         }
                                                     }))
                                                 ])
-                                            ]
+                                            ])
                                         ])
                                     )
                                 ]
@@ -405,19 +405,19 @@ export const Assign: p_i.Transformer<
                                     sh.s.switch_(
                                         sh.e.identifier_raw("$t"),
                                         p_.literal.nested_list([
-                                            p_.from.dictionary($.cases).convert_to_list(($, id) => sh.sw.case_(
+                                            p_.from.dictionary(
+                                                $.cases
+                                            ).convert_to_list(($, id) => sh.sw.case_(
                                                 sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
                                                 [
                                                     sh.s.return_(Assign($))
                                                 ]
-                                            )
-                                            ),
-
-                                            [
+                                            )),
+                                            p_.literal.list([
                                                 sh.sw.default_([
                                                     sh.s.return_(Assign($.default))
                                                 ])
-                                            ]
+                                            ])
                                         ])
                                     )
                                 ]
@@ -600,7 +600,7 @@ export const Assign: p_i.Transformer<
                                                     null,
                                                     Assign($)
                                                 )),
-                                                [
+                                                p_.literal.list([
                                                     sh.s.return_(sh.e.object_literal(
                                                         p_.from.dictionary($).convert_to_list(($, id) => sh.object_property(
                                                             id,
@@ -608,7 +608,7 @@ export const Assign: p_i.Transformer<
                                                             sh.e.identifier_escaped("prop " + id)
                                                         ))
                                                     ))
-                                                ]
+                                                ])
 
                                             ])
                                         )
@@ -949,11 +949,11 @@ export const Assign: p_i.Transformer<
                                         Assign($)
                                     ),
                                 ),
-                                [
+                                p_.literal.list([
                                     sh.s.return_(
                                         Assign($.assign)
                                     )
-                                ]
+                                ])
 
                             ])
                         )
@@ -1011,9 +1011,9 @@ export const Select_Value = (
                             }
                         }),
                         p_.literal.nested_list([
-                            [
+                            p_.literal.list([
                                 Assign($.context),
-                            ],
+                            ]),
                             $.abort.__decide(
                                 ($) => p_.literal.list([
                                     sh.e.arrow_function_with_expression(

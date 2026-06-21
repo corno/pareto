@@ -159,39 +159,39 @@ export const escaped_text: interface_.escaped_text = ($) => p_.from.list(
 )
 
 export const apostrophed_text: interface_.apostrophed_text = ($) => p_.literal.nested_list([
-    [
+    p_.literal.list([
         0x27, // '
-    ],
+    ]),
     escaped_text(
         $,
     ),
-    [
+    p_.literal.list([
         0x27, // '
-    ]
+    ])
 ])
 
 export const backticked_text: interface_.backticked_text = ($) => p_.literal.nested_list([
-    [
+    p_.literal.list([
         0x60, // `
-    ],
+    ]),
     escaped_text(
         $,
     ),
-    [
+    p_.literal.list([
         0x60, // `
-    ]
+    ])
 ])
 
 export const quoted_text: interface_.quoted_text = ($) => p_.literal.nested_list([
-    [
+    p_.literal.list([
         0x22, // "
-    ],
+    ]),
     escaped_text(
         $,
     ),
-    [
+    p_.literal.list([
         0x22, // "
-    ]
+    ])
 ])
 
 
