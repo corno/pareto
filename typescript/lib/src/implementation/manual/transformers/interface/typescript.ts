@@ -114,7 +114,7 @@ export const Package_Set: p_ri.Refiner<
             switch ($[0]) {
                 case 'package': return p_.ss($, ($) => {
 
-                    return sh.n.file(p_.literal.nested_list<d_out.Statements_.L>([
+                    return sh.n.file(p_.literal.segmented_list<d_out.Statements_.L>([
                         p_.literal.list([
                             sh.s.import_namespace(sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
                         ]),
@@ -151,7 +151,7 @@ export const Package_Set: p_ri.Refiner<
                                             sh.s.namespace(
                                                 true,
                                                 sh.identifier_escaped(name),
-                                                p_.literal.nested_list<d_out.Statements_.L>([
+                                                p_.literal.segmented_list<d_out.Statements_.L>([
                                                     Value(
                                                         $.context,
                                                         {
@@ -167,7 +167,7 @@ export const Package_Set: p_ri.Refiner<
                                                     p_.from.state($.type).decide(($): d_out.Statements => {
                                                         switch ($[0]) {
                                                             case 'transformer': return p_.ss($, ($) => p_.literal.list([]))
-                                                            case 'refiner': return p_.ss($, ($): d_out.Statements => p_.literal.nested_list<d_out.Statements.L>([
+                                                            case 'refiner': return p_.ss($, ($): d_out.Statements => p_.literal.segmented_list<d_out.Statements.L>([
 
                                                                 p_.from.optional($.error).decide<d_out.Statements>(
                                                                     ($) => {
@@ -242,7 +242,7 @@ export const Package_Set: p_ri.Refiner<
                                                 [],
                                                 sh.t.function_(
                                                     [],
-                                                    p_.literal.nested_list([
+                                                    p_.literal.segmented_list([
                                                         p_.literal.list([
                                                             sh.parameter(
                                                                 sh.identifier_raw("context"),
@@ -253,7 +253,7 @@ export const Package_Set: p_ri.Refiner<
                                                         p_.from.state($.type).decide(($) => {
                                                             switch ($[0]) {
                                                                 case 'transformer': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.list([]))
-                                                                case 'refiner': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.nested_list([
+                                                                case 'refiner': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.segmented_list([
 
                                                                     p_.from.optional($.error).decide(
                                                                         ($) => p_.literal.list([
@@ -416,14 +416,12 @@ export const Value: p_i.Transformer_With_Parameter<
                 sh.s.namespace(
                     true,
                     sh.identifier_escaped($p.name),
-                    p_.literal.nested_list<d_out.Statements_.L>([
-                        Value(
-                            $,
-                            {
-                                'name': "D",
-                            }
-                        )
-                    ])
+                    Value(
+                        $,
+                        {
+                            'name': "D",
+                        }
+                    )
                 ),
                 sh.s.type_alias(
                     true,
@@ -465,14 +463,12 @@ export const Value: p_i.Transformer_With_Parameter<
                 sh.s.namespace(
                     true,
                     sh.identifier_escaped($p.name),
-                    p_.literal.nested_list<d_out.Statements_.L>([
-                        Value(
-                            $,
-                            {
-                                'name': "L",
-                            }
-                        )
-                    ])
+                    Value(
+                        $,
+                        {
+                            'name': "L",
+                        }
+                    )
                 ),
                 sh.s.type_alias(
                     true,
@@ -503,14 +499,12 @@ export const Value: p_i.Transformer_With_Parameter<
                 sh.s.namespace(
                     true,
                     sh.identifier_escaped($p.name),
-                    p_.literal.nested_list<d_out.Statements_.L>([
-                        Value(
-                            $,
-                            {
-                                'name': "O",
-                            }
-                        )
-                    ])
+                    Value(
+                        $,
+                        {
+                            'name': "O",
+                        }
+                    )
                 ),
                 sh.s.type_alias(
                     true,
@@ -538,7 +532,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                 }
                             }),
                             //tail
-                            p_.literal.nested_list([
+                            p_.literal.segmented_list([
                                 p_.from.state($.location).decide(($) => {
                                     switch ($[0]) {
                                         case 'import': return p_.ss($, ($) => p_.literal.list([

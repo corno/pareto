@@ -158,7 +158,7 @@ export const escaped_text: interface_.escaped_text = ($) => p_.from.list(
     }
 )
 
-export const apostrophed_text: interface_.apostrophed_text = ($) => p_.literal.nested_list([
+export const apostrophed_text: interface_.apostrophed_text = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x27, // '
     ]),
@@ -170,7 +170,7 @@ export const apostrophed_text: interface_.apostrophed_text = ($) => p_.literal.n
     ])
 ])
 
-export const backticked_text: interface_.backticked_text = ($) => p_.literal.nested_list([
+export const backticked_text: interface_.backticked_text = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x60, // `
     ]),
@@ -182,7 +182,7 @@ export const backticked_text: interface_.backticked_text = ($) => p_.literal.nes
     ])
 ])
 
-export const quoted_text: interface_.quoted_text = ($) => p_.literal.nested_list([
+export const quoted_text: interface_.quoted_text = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x22, // "
     ]),

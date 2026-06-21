@@ -69,7 +69,7 @@ export const Package_Set: p_ri.Refiner<
             switch ($[0]) {
                 case 'package': return p_.ss($, ($): d_out.Directory.D => {
 
-                    const y: d_out.Statements = p_.literal.nested_list([
+                    const y: d_out.Statements = p_.literal.segmented_list([
                         p_.literal.list([
                             sh.s.import_namespace(
                                 sh.identifier_raw("pt"),
@@ -183,7 +183,7 @@ export const Package_Set: p_ri.Refiner<
                                     []
                                 ),
                                 sh.e.arrow_function_with_expression(
-                                    p_.literal.nested_list([
+                                    p_.literal.segmented_list([
                                         p_.literal.list([
                                             sh.parameter(sh.identifier_raw("$"), null),
                                         ]),
@@ -224,7 +224,7 @@ export const Temp_Value_Type_Specification = (
     return sh.t.type_reference(
         sh.identifier_escaped("t " + $.type.import),
         //tail
-        p_.literal.nested_list([
+        p_.literal.segmented_list([
             p_.literal.list([
                 sh.identifier_escaped($.type.type)
             ]),
@@ -316,7 +316,7 @@ export const Assign: p_i.Transformer<
                                             sh.e.identifier_raw("$"),
                                             sh.e.number_literal(0)
                                         ),
-                                        p_.literal.nested_list([
+                                        p_.literal.chain(
                                             p_.from.dictionary(
                                                 p_.from.state($.type).decide(($): d_in.Assign.decide.type_.state.type_.partial.options => {
                                                     switch ($[0]) {
@@ -353,30 +353,28 @@ export const Assign: p_i.Transformer<
                                                     ]
                                                 )
                                             ),
-                                            p_.literal.list([
-                                                sh.sw.default_([
-                                                    sh.s.return_(p_.from.state($.type).decide(($) => {
-                                                        switch ($[0]) {
-                                                            case 'partial': return p_.ss($, ($) => Assign($.default))
-                                                            case 'full': return p_.ss($, ($) => sh.e.call(
-                                                                sh.e.property_access(
-                                                                    sh.e.identifier_raw("pt"),
-                                                                    sh.identifier_raw('au'),
-                                                                ),
-                                                                [
-                                                                    sh.e.element_access(
-                                                                        sh.e.identifier_raw("$"),
-                                                                        sh.e.number_literal(0)
-                                                                    )
-                                                                ]
-                                                            ))
-                                                            case 'single': return p_.ss($, ($) => Assign($['if false']))
-                                                            default: return p_.au($[0])
-                                                        }
-                                                    }))
-                                                ])
+                                            sh.sw.default_([
+                                                sh.s.return_(p_.from.state($.type).decide(($) => {
+                                                    switch ($[0]) {
+                                                        case 'partial': return p_.ss($, ($) => Assign($.default))
+                                                        case 'full': return p_.ss($, ($) => sh.e.call(
+                                                            sh.e.property_access(
+                                                                sh.e.identifier_raw("pt"),
+                                                                sh.identifier_raw('au'),
+                                                            ),
+                                                            [
+                                                                sh.e.element_access(
+                                                                    sh.e.identifier_raw("$"),
+                                                                    sh.e.number_literal(0)
+                                                                )
+                                                            ]
+                                                        ))
+                                                        case 'single': return p_.ss($, ($) => Assign($['if false']))
+                                                        default: return p_.au($[0])
+                                                    }
+                                                }))
                                             ])
-                                        ])
+                                        )
                                     )
                                 ]
 
@@ -404,7 +402,7 @@ export const Assign: p_i.Transformer<
                                 [
                                     sh.s.switch_(
                                         sh.e.identifier_raw("$t"),
-                                        p_.literal.nested_list([
+                                        p_.literal.chain(
                                             p_.from.dictionary(
                                                 $.cases
                                             ).convert_to_list(($, id) => sh.sw.case_(
@@ -413,12 +411,10 @@ export const Assign: p_i.Transformer<
                                                     sh.s.return_(Assign($))
                                                 ]
                                             )),
-                                            p_.literal.list([
-                                                sh.sw.default_([
-                                                    sh.s.return_(Assign($.default))
-                                                ])
+                                            sh.sw.default_([
+                                                sh.s.return_(Assign($.default))
                                             ])
-                                        ])
+                                        )
                                     )
                                 ]
 
@@ -592,7 +588,7 @@ export const Assign: p_i.Transformer<
                                         sh.e.arrow_function_with_block(
                                             [],
                                             null,
-                                            p_.literal.nested_list([
+                                            p_.literal.chain(
                                                 p_.from.dictionary($).convert_to_list(($, id) => sh.s.variable(
                                                     false,
                                                     true,
@@ -600,17 +596,14 @@ export const Assign: p_i.Transformer<
                                                     null,
                                                     Assign($)
                                                 )),
-                                                p_.literal.list([
-                                                    sh.s.return_(sh.e.object_literal(
-                                                        p_.from.dictionary($).convert_to_list(($, id) => sh.object_property(
-                                                            id,
-                                                            'apostrophized string literal',
-                                                            sh.e.identifier_escaped("prop " + id)
-                                                        ))
+                                                sh.s.return_(sh.e.object_literal(
+                                                    p_.from.dictionary($).convert_to_list(($, id) => sh.object_property(
+                                                        id,
+                                                        'apostrophized string literal',
+                                                        sh.e.identifier_escaped("prop " + id)
                                                     ))
-                                                ])
-
-                                            ])
+                                                ))
+                                            )
                                         )
                                     ]
                                 ),
@@ -939,7 +932,7 @@ export const Assign: p_i.Transformer<
                             [
                             ],
                             null,
-                            p_.literal.nested_list([
+                            p_.literal.chain(
                                 p_.from.dictionary($.variables).convert_to_list(
                                     ($, id) => sh.s.variable(
                                         false,
@@ -949,13 +942,10 @@ export const Assign: p_i.Transformer<
                                         Assign($)
                                     ),
                                 ),
-                                p_.literal.list([
-                                    sh.s.return_(
-                                        Assign($.assign)
-                                    )
-                                ])
-
-                            ])
+                                sh.s.return_(
+                                    Assign($.assign)
+                                )
+                            )
                         )
                     ]
                 ))
@@ -1010,7 +1000,7 @@ export const Select_Value = (
                                 default: return p_.au($[0])
                             }
                         }),
-                        p_.literal.nested_list([
+                        p_.literal.segmented_list([
                             p_.literal.list([
                                 Assign($.context),
                             ]),
