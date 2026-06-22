@@ -19,7 +19,7 @@ export const Identifier: p_i.Transformer<
     if (the_string === "") {
         return temp_literal_to_text("_empty")
     }
-    const reserved_keywords = p_.literal.dictionary({
+    const $v_reserved_keywords = p_.literal.dictionary({
         //Reserved Words
         "arguments": null,
         "break": null,
@@ -89,7 +89,7 @@ export const Identifier: p_i.Transformer<
         "object": null,
         "never": null,
     })
-    return p_.from.dictionary(reserved_keywords).get_possible_entry(
+    return p_.from.dictionary($v_reserved_keywords).get_possible_entry(
         the_string,
         ($) => p_list_build_deprecated(($i) => {
             $i['add list'](temp_literal_to_text(the_string))
