@@ -10,7 +10,7 @@ import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schem
 export const Identifier: p_i.Transformer<
     string,
     d_loc.List_of_Characters
->= ($) => {
+> = ($) => {
     const temp_literal_to_text = ($: string): d_loc.List_of_Characters => p_list_from_text(
         $,
         ($) => $
@@ -89,106 +89,101 @@ export const Identifier: p_i.Transformer<
         "object": null,
         "never": null,
     })
-    if (p_.from.optional(
-        p_.from.dictionary(reserved_keywords).get_possible_entry(the_string)
-    ).decide(
-        () => true,
-        () => false,
-    )) {
-        return p_list_build_deprecated(($i) => {
+    return p_.from.dictionary(reserved_keywords).get_possible_entry(
+        the_string,
+        ($) => p_list_build_deprecated(($i) => {
             $i['add list'](temp_literal_to_text(the_string))
             $i['add item'](95) //_
-        })
-    }
+        }),
+        () => p_list_build_deprecated(($i) => {
+            const characters = p_list_from_text(
+                the_string,
+                ($) => $
+            )
+            const length = p_.from.list(characters).amount_of_items()
 
-    return p_list_build_deprecated(($i) => {
-        const characters = p_list_from_text(
-            the_string,
-            ($) => $
-        )
-        const length =  p_.from.list(characters).amount_of_items()
+            let position = 0
 
-        let position = 0
+            const discard_character = () => {
+                position += 1
+            }
 
-        const discard_character = () => {
-            position += 1
-        }
+            while (true) {
 
-        while (true) {
-
-            const get_current_character = (): null | number => {
-                if (position === length) {
-                    return null
+                const get_current_character = (): null | number => {
+                    if (position === length) {
+                        return null
+                    }
+                    return p_.from.optional(characters.__deprecated_get_possible_item_at(position)).decide(
+                        ($) => $,
+                        () => null
+                    )
                 }
-                return p_.from.optional(characters.__deprecated_get_possible_item_at(position)).decide(
-                    ($) => $,
-                    () => null
-                )
-            }
-            const current_character = get_current_character()
-            if (current_character === null) {
-                return
-            }
+                const current_character = get_current_character()
+                if (current_character === null) {
+                    return
+                }
 
-            if (position === 0) {
-                //first character
-                if (current_character >= 48 && current_character <= 57) {
-                    //begins with 0-9
+                if (position === 0) {
+                    //first character
+                    if (current_character >= 48 && current_character <= 57) {
+                        //begins with 0-9
 
-                    $i['add item'](95) //_
+                        $i['add item'](95) //_
+                        $i['add item'](current_character)
+                    }
+                }
+                if (false
+                    || (current_character >= 48 && current_character <= 57) //0-9
+                    || (current_character >= 65 && current_character <= 90) //A-Z
+                    || (current_character >= 97 && current_character <= 122)//a-z
+                ) {
+                    //normal character
                     $i['add item'](current_character)
-                }
-            }
-            if (false
-                || (current_character >= 48 && current_character <= 57) //0-9
-                || (current_character >= 65 && current_character <= 90) //A-Z
-                || (current_character >= 97 && current_character <= 122)//a-z
-            ) {
-                //normal character
-                $i['add item'](current_character)
-                discard_character()
-            } else {
-                const consume_and_add = ($: string) => {
                     discard_character()
-                    $i['add list'](temp_literal_to_text($))
-                }
-                switch (current_character) {
-                    case 32: consume_and_add("_"); break; // Space
-                    case 33: consume_and_add("$ex_"); break; // Exclamation (!)
-                    case 34: consume_and_add("$qo_"); break; // Double Quote (")
-                    case 35: consume_and_add("$ha_"); break; // Hash (#)
-                    case 36: consume_and_add("$$_"); break; // Dollar ($)
-                    case 37: consume_and_add("$pt_"); break; // Percent (%)
-                    case 38: consume_and_add("$am_"); break; // Ampersand (&)
-                    case 39: consume_and_add("$ap_"); break; // Apostrophe (')
-                    case 40: consume_and_add("$po_"); break; // Open Parenthesis (()
-                    case 41: consume_and_add("$pc_"); break; // Close Parenthesis ())
-                    case 42: consume_and_add("$sr_"); break; // Asterisk (*)
-                    case 43: consume_and_add("$pl_"); break; // Plus (+)
-                    case 44: consume_and_add("$cm_"); break; // Comma (,)
-                    case 45: consume_and_add("$mi_"); break; // Minus (-)
-                    case 46: consume_and_add("$pe_"); break; // Period (.)
-                    case 47: consume_and_add("$sl_"); break; // Slash (/)
-                    case 58: consume_and_add("$cl_"); break; // Colon (:)
-                    case 59: consume_and_add("$sc_"); break; // Semicolon (;)
-                    case 60: consume_and_add("$st_"); break; // Less Than (<)
-                    case 61: consume_and_add("$eq_"); break; // Equals (=)
-                    case 62: consume_and_add("$gt_"); break; // Greater Than (>)
-                    case 63: consume_and_add("$qu_"); break; // Question Mark (?)
-                    case 64: consume_and_add("$at_"); break; // At (@)
-                    case 91: consume_and_add("$bo_"); break; // Open Bracket ([)
-                    case 92: consume_and_add("$bs_"); break; // Backslash (\)
-                    case 93: consume_and_add("$bc_"); break; // Close Bracket (])
-                    case 94: consume_and_add("$ca_"); break; // Caret (^)
-                    case 95: consume_and_add("$_"); break; // Underscore (_)
-                    case 96: consume_and_add("$bt_"); break; // Backtick (`)
-                    case 123: consume_and_add("$co_"); break; // Open Curly Brace ({)
-                    case 124: consume_and_add("$vb_"); break; // Vertical Bar (|)
-                    case 125: consume_and_add("$cc_"); break; // Close Curly Brace (})
-                    case 126: consume_and_add("$ti_"); break; // Tilde (~)
-                    default: p_implement_me(`unhandled character: \"${current_character}\"`);
+                } else {
+                    const consume_and_add = ($: string) => {
+                        discard_character()
+                        $i['add list'](temp_literal_to_text($))
+                    }
+                    switch (current_character) {
+                        case 32: consume_and_add("_"); break; // Space
+                        case 33: consume_and_add("$ex_"); break; // Exclamation (!)
+                        case 34: consume_and_add("$qo_"); break; // Double Quote (")
+                        case 35: consume_and_add("$ha_"); break; // Hash (#)
+                        case 36: consume_and_add("$$_"); break; // Dollar ($)
+                        case 37: consume_and_add("$pt_"); break; // Percent (%)
+                        case 38: consume_and_add("$am_"); break; // Ampersand (&)
+                        case 39: consume_and_add("$ap_"); break; // Apostrophe (')
+                        case 40: consume_and_add("$po_"); break; // Open Parenthesis (()
+                        case 41: consume_and_add("$pc_"); break; // Close Parenthesis ())
+                        case 42: consume_and_add("$sr_"); break; // Asterisk (*)
+                        case 43: consume_and_add("$pl_"); break; // Plus (+)
+                        case 44: consume_and_add("$cm_"); break; // Comma (,)
+                        case 45: consume_and_add("$mi_"); break; // Minus (-)
+                        case 46: consume_and_add("$pe_"); break; // Period (.)
+                        case 47: consume_and_add("$sl_"); break; // Slash (/)
+                        case 58: consume_and_add("$cl_"); break; // Colon (:)
+                        case 59: consume_and_add("$sc_"); break; // Semicolon (;)
+                        case 60: consume_and_add("$st_"); break; // Less Than (<)
+                        case 61: consume_and_add("$eq_"); break; // Equals (=)
+                        case 62: consume_and_add("$gt_"); break; // Greater Than (>)
+                        case 63: consume_and_add("$qu_"); break; // Question Mark (?)
+                        case 64: consume_and_add("$at_"); break; // At (@)
+                        case 91: consume_and_add("$bo_"); break; // Open Bracket ([)
+                        case 92: consume_and_add("$bs_"); break; // Backslash (\)
+                        case 93: consume_and_add("$bc_"); break; // Close Bracket (])
+                        case 94: consume_and_add("$ca_"); break; // Caret (^)
+                        case 95: consume_and_add("$_"); break; // Underscore (_)
+                        case 96: consume_and_add("$bt_"); break; // Backtick (`)
+                        case 123: consume_and_add("$co_"); break; // Open Curly Brace ({)
+                        case 124: consume_and_add("$vb_"); break; // Vertical Bar (|)
+                        case 125: consume_and_add("$cc_"); break; // Close Curly Brace (})
+                        case 126: consume_and_add("$ti_"); break; // Tilde (~)
+                        default: p_implement_me(`unhandled character: \"${current_character}\"`);
+                    }
                 }
             }
-        }
-    })
+        }),
+    )
 }
