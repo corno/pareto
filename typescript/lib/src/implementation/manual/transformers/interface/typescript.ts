@@ -34,7 +34,7 @@ export const temp_create_file_path = (
     const do_tail = (): string => {
         return p_text_from_list(
             p_.from.list(
-                $.tail.__l_map_deprecated(($) => `/${valid_file_name($)}`),
+                p_.from.list($.tail).map(($) => `/${valid_file_name($)}`),
             ).flatten(
                 ($) => p_list_from_text(
                     $,
@@ -112,257 +112,254 @@ export const Package_Set: p_ri.Refiner<
 ) => {
         return p_.from.dictionary(temp_rename($, abort)).map(($) => p_.from.state($).decide(($) => {
             switch ($[0]) {
-                case 'package': return p_.ss($, ($) => {
+                case 'package': return p_.ss($, ($) => sh.n.file(p_.literal.segmented_list<d_out.Statements_.L>([
+                    p_.literal.list([
+                        sh.s.import_namespace(sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
+                    ]),
 
-                    return sh.n.file(p_.literal.segmented_list<d_out.Statements_.L>([
-                        p_.literal.list([
-                            sh.s.import_namespace(sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
-                        ]),
+                    p_.from.dictionary($.imports,).convert_to_list(($, id): d_out.Statements_.L => sh.s.import_namespace(
+                        sh.identifier_escaped(`i ${id}`),
+                        temp_create_file_path(
+                            $,
+                            {
+                                'delimiter': ['apostrophe', null]
+                            }
+                        )
+                    )),
 
-                        p_.from.dictionary($.imports,).convert_to_list(($, id): d_out.Statements_.L => sh.s.import_namespace(
-                            sh.identifier_escaped(`i ${id}`),
-                            temp_create_file_path(
+                    p_.from.state($.content).decide(($) => {
+                        switch ($[0]) {
+                            case 'data modules': return p_.ss($, ($) => p_.from.dictionary(
                                 $,
-                                {
-                                    'delimiter': ['apostrophe', null]
-                                }
-                            )
-                        )),
-
-                        p_.from.state($.content).decide(($) => {
-                            switch ($[0]) {
-                                case 'data modules': return p_.ss($, ($) => p_.from.dictionary(
+                            ).flatten_to_list(
+                                ($, id): d_out.Statements => Value(
                                     $,
-                                ).flatten_to_list(
-                                    ($, id): d_out.Statements => Value(
-                                        $,
-                                        {
-                                            'name': id + " ",
-                                            //'temp imports': x_imports,
-                                        }
-                                    )
-                                ))
-                                case 'functions': return p_.ss($, ($) => p_.from.dictionary(
-                                    $
-                                ).flatten_to_list(
-                                    ($, id): d_out.Statements => {
-                                        const name = id + " "
-                                        return p_.literal.list([
-                                            sh.s.namespace(
-                                                true,
-                                                sh.identifier_escaped(name),
-                                                p_.literal.segmented_list<d_out.Statements_.L>([
-                                                    Value(
-                                                        $.context,
-                                                        {
-                                                            'name': "I",
-                                                        }
-                                                    ),
-                                                    Value(
-                                                        $.result,
-                                                        {
-                                                            'name': "O",
-                                                        }
-                                                    ),
-                                                    p_.from.state($.type).decide(($): d_out.Statements => {
-                                                        switch ($[0]) {
-                                                            case 'transformer': return p_.ss($, ($) => p_.literal.list([]))
-                                                            case 'refiner': return p_.ss($, ($): d_out.Statements => p_.literal.segmented_list<d_out.Statements.L>([
+                                    {
+                                        'name': id + " ",
+                                        //'temp imports': x_imports,
+                                    }
+                                )
+                            ))
+                            case 'functions': return p_.ss($, ($) => p_.from.dictionary(
+                                $
+                            ).flatten_to_list(
+                                ($, id): d_out.Statements => {
+                                    const name = id + " "
+                                    return p_.literal.list([
+                                        sh.s.namespace(
+                                            true,
+                                            sh.identifier_escaped(name),
+                                            p_.literal.segmented_list<d_out.Statements_.L>([
+                                                Value(
+                                                    $.context,
+                                                    {
+                                                        'name': "I",
+                                                    }
+                                                ),
+                                                Value(
+                                                    $.result,
+                                                    {
+                                                        'name': "O",
+                                                    }
+                                                ),
+                                                p_.from.state($.type).decide(($): d_out.Statements => {
+                                                    switch ($[0]) {
+                                                        case 'transformer': return p_.ss($, ($) => p_.literal.list([]))
+                                                        case 'refiner': return p_.ss($, ($): d_out.Statements => p_.literal.segmented_list<d_out.Statements.L>([
 
-                                                                p_.from.optional($.error).decide<d_out.Statements>(
-                                                                    ($) => {
-                                                                        return Value(
-                                                                            $,
-                                                                            {
-                                                                                'name': "E",
-                                                                            }
-                                                                        )
-                                                                    },
-                                                                    () => {
-                                                                        return p_.literal.list([])
-                                                                    }
-                                                                ),
+                                                            p_.from.optional($.error).decide<d_out.Statements>(
+                                                                ($) => {
+                                                                    return Value(
+                                                                        $,
+                                                                        {
+                                                                            'name': "E",
+                                                                        }
+                                                                    )
+                                                                },
+                                                                () => {
+                                                                    return p_.literal.list([])
+                                                                }
+                                                            ),
 
-                                                                p_.from.optional($.lookups).decide<d_out.Statements>(
-                                                                    ($) => {
-                                                                        return p_.from.dictionary(
-                                                                            $,
-                                                                        ).convert_to_list(
-                                                                            ($, id) => sh.s.namespace(
-                                                                                true,
-                                                                                sh.identifier_raw("L"),
-                                                                                Value(
-                                                                                    p_.from.state($).decide(($) => {
-                                                                                        switch ($[0]) {
-                                                                                            case 'acyclic': return p_.ss($, ($) => $)
-                                                                                            case 'cyclic': return p_.ss($, ($) => $)
-                                                                                            case 'stack': return p_.ss($, ($) => $)
-                                                                                            default: return p_.au($[0])
-                                                                                        }
-                                                                                    }),
-                                                                                    {
-                                                                                        'name': id,
+                                                            p_.from.optional($.lookups).decide<d_out.Statements>(
+                                                                ($) => {
+                                                                    return p_.from.dictionary(
+                                                                        $,
+                                                                    ).convert_to_list(
+                                                                        ($, id) => sh.s.namespace(
+                                                                            true,
+                                                                            sh.identifier_raw("L"),
+                                                                            Value(
+                                                                                p_.from.state($).decide(($) => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'acyclic': return p_.ss($, ($) => $)
+                                                                                        case 'cyclic': return p_.ss($, ($) => $)
+                                                                                        case 'stack': return p_.ss($, ($) => $)
+                                                                                        default: return p_.au($[0])
                                                                                     }
-                                                                                )
+                                                                                }),
+                                                                                {
+                                                                                    'name': id,
+                                                                                }
                                                                             )
                                                                         )
-                                                                    },
-                                                                    () => {
-                                                                        return p_.literal.list([])
+                                                                    )
+                                                                },
+                                                                () => {
+                                                                    return p_.literal.list([])
+                                                                }
+                                                            ),
+                                                        ]))
+                                                        default: return p_.au($[0])
+                                                    }
+                                                }),
+                                                p_.literal.list([
+                                                    sh.s.namespace(
+                                                        true,
+                                                        sh.identifier_raw("P"),
+                                                        p_.from.optional($.parameters).decide(
+                                                            ($) => p_.from.dictionary(
+                                                                $,
+                                                            ).flatten_to_list(
+                                                                ($, id) => Value(
+                                                                    $,
+                                                                    {
+                                                                        'name': id,
                                                                     }
+                                                                )
+                                                            ),
+                                                            () => p_.literal.list<d_out.Statements_.L>([])
+                                                        )
+                                                    )
+                                                ])
+                                            ])
+                                        ),
+                                        sh.s.type_alias(
+                                            true,
+                                            sh.identifier_escaped(name),
+                                            [],
+                                            sh.t.function_(
+                                                [],
+                                                p_.literal.segmented_list([
+                                                    p_.literal.list([
+                                                        sh.parameter(
+                                                            sh.identifier_raw("context"),
+                                                            sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("I")], []),
+                                                        ),
+                                                    ]),
+
+                                                    p_.from.state($.type).decide(($) => {
+                                                        switch ($[0]) {
+                                                            case 'transformer': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.list([]))
+                                                            case 'refiner': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.segmented_list([
+
+                                                                p_.from.optional($.error).decide(
+                                                                    ($) => p_.literal.list([
+
+                                                                        sh.parameter(
+                                                                            sh.identifier_raw("abort"),
+                                                                            sh.t.type_reference(
+                                                                                sh.identifier_raw("pi"),
+                                                                                [sh.identifier_raw("Abort")],
+                                                                                [
+                                                                                    sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("E")], []),
+                                                                                ]
+                                                                            ),
+
+                                                                        ),
+                                                                    ]),
+                                                                    () => p_.literal.list([])
                                                                 ),
+
+                                                                p_.from.optional($.lookups).decide(
+                                                                    ($) => p_.literal.list([
+
+                                                                        sh.parameter(
+                                                                            sh.identifier_raw("lookups"),
+                                                                            sh.t.type_literal(
+                                                                                p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
+                                                                                    id,
+                                                                                    'apostrophized string literal',
+                                                                                    true,
+                                                                                    sh.t.type_reference(
+                                                                                        sh.identifier_raw("pi"),
+                                                                                        [
+                                                                                            sh.identifier_raw(p_.from.state($).decide(($) => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'acyclic': return p_.ss($, ($) => "static_lookup.Acyclic")
+                                                                                                    case 'cyclic': return p_.ss($, ($) => "static_lookup.Cyclic")
+                                                                                                    case 'stack': return p_.ss($, ($) => "static_lookup.Stack")
+                                                                                                    default: return p_.au($[0])
+                                                                                                }
+                                                                                            }))
+                                                                                        ],
+                                                                                        [
+                                                                                            sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("L"), sh.identifier_escaped(id)], [])
+                                                                                        ]
+                                                                                    )
+                                                                                ))
+                                                                            ),
+                                                                        )
+
+                                                                    ]),
+                                                                    () => p_.literal.list([])
+                                                                )
                                                             ]))
                                                             default: return p_.au($[0])
                                                         }
                                                     }),
-                                                    p_.literal.list([
-                                                        sh.s.namespace(
-                                                            true,
-                                                            sh.identifier_raw("P"),
-                                                            p_.from.optional($.parameters).decide(
-                                                                ($) => p_.from.dictionary(
-                                                                    $,
-                                                                ).flatten_to_list(
-                                                                    ($, id) => Value(
-                                                                        $,
-                                                                        {
-                                                                            'name': id,
-                                                                        }
-                                                                    )
-                                                                ),
-                                                                () => p_.literal.list<d_out.Statements_.L>([])
-                                                            )
-                                                        )
-                                                    ])
-                                                ])
-                                            ),
-                                            sh.s.type_alias(
-                                                true,
-                                                sh.identifier_escaped(name),
-                                                [],
-                                                sh.t.function_(
-                                                    [],
-                                                    p_.literal.segmented_list([
-                                                        p_.literal.list([
+                                                    p_.from.optional($.parameters).decide(
+                                                        ($) => p_.literal.list([
+
                                                             sh.parameter(
-                                                                sh.identifier_raw("context"),
-                                                                sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("I")], []),
+                                                                sh.identifier_raw("parameters"),
+                                                                sh.t.type_literal(
+                                                                    p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
+                                                                        id,
+                                                                        'apostrophized string literal',
+                                                                        true,
+                                                                        sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("P"), sh.identifier_escaped(id)], [])
+                                                                    )),
+                                                                )
                                                             ),
+
                                                         ]),
-
-                                                        p_.from.state($.type).decide(($) => {
-                                                            switch ($[0]) {
-                                                                case 'transformer': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.list([]))
-                                                                case 'refiner': return p_.ss($, ($): d_out.Type.function_.parameters => p_.literal.segmented_list([
-
-                                                                    p_.from.optional($.error).decide(
-                                                                        ($) => p_.literal.list([
-
-                                                                            sh.parameter(
-                                                                                sh.identifier_raw("abort"),
-                                                                                sh.t.type_reference(
-                                                                                    sh.identifier_raw("pi"),
-                                                                                    [sh.identifier_raw("Abort")],
-                                                                                    [
-                                                                                        sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("E")], []),
-                                                                                    ]
-                                                                                ),
-
-                                                                            ),
-                                                                        ]),
-                                                                        () => p_.literal.list([])
-                                                                    ),
-
-                                                                    p_.from.optional($.lookups).decide(
-                                                                        ($) => p_.literal.list([
-
-                                                                            sh.parameter(
-                                                                                sh.identifier_raw("lookups"),
-                                                                                sh.t.type_literal(
-                                                                                    p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
-                                                                                        id,
-                                                                                        'apostrophized string literal',
-                                                                                        true,
-                                                                                        sh.t.type_reference(
-                                                                                            sh.identifier_raw("pi"),
-                                                                                            [
-                                                                                                sh.identifier_raw(p_.from.state($).decide(($) => {
-                                                                                                    switch ($[0]) {
-                                                                                                        case 'acyclic': return p_.ss($, ($) => "static_lookup.Acyclic")
-                                                                                                        case 'cyclic': return p_.ss($, ($) => "static_lookup.Cyclic")
-                                                                                                        case 'stack': return p_.ss($, ($) => "static_lookup.Stack")
-                                                                                                        default: return p_.au($[0])
-                                                                                                    }
-                                                                                                }))
-                                                                                            ],
-                                                                                            [
-                                                                                                sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("L"), sh.identifier_escaped(id)], [])
-                                                                                            ]
-                                                                                        )
-                                                                                    ))
-                                                                                ),
-                                                                            )
-
-                                                                        ]),
-                                                                        () => p_.literal.list([])
-                                                                    )
-                                                                ]))
-                                                                default: return p_.au($[0])
-                                                            }
-                                                        }),
-                                                        p_.from.optional($.parameters).decide(
-                                                            ($) => p_.literal.list([
-
-                                                                sh.parameter(
-                                                                    sh.identifier_raw("parameters"),
-                                                                    sh.t.type_literal(
-                                                                        p_.from.dictionary($).convert_to_list(($, id) => sh.tl_propery(
-                                                                            id,
-                                                                            'apostrophized string literal',
-                                                                            true,
-                                                                            sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("P"), sh.identifier_escaped(id)], [])
-                                                                        )),
-                                                                    )
-                                                                ),
-
-                                                            ]),
-                                                            () => p_.literal.list([])
-                                                        ),
-                                                    ]),
-                                                    sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("O")], []),
-                                                )
+                                                        () => p_.literal.list([])
+                                                    ),
+                                                ]),
+                                                sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("O")], []),
                                             )
-                                        ])
-                                    }
-                                ))
-                                default: return p_.au($[0])
-                            }
-                        }),
+                                        )
+                                    ])
+                                }
+                            ))
+                            default: return p_.au($[0])
+                        }
+                    }),
 
-                        p_.literal.list([
-                            sh.s.export_(
-                                p_.from.state($.content).decide(($) => {
-                                    switch ($[0]) {
-                                        case 'data modules': return p_.ss($, ($) => p_.from.dictionary(
-                                            $,
-                                        ).convert_to_list(
-                                            ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
-                                        ))
-                                        case 'functions': return p_.ss($, ($) => p_.from.dictionary(
-                                            $,
-                                        ).convert_to_list(
-                                            ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
-                                        ))
-                                        default: return p_.au($[0])
-                                    }
-                                }),
-                                null,
-                            )
-                        ])
+                    p_.literal.list([
+                        sh.s.export_(
+                            p_.from.state($.content).decide(($) => {
+                                switch ($[0]) {
+                                    case 'data modules': return p_.ss($, ($) => p_.from.dictionary(
+                                        $,
+                                    ).convert_to_list(
+                                        ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                    ))
+                                    case 'functions': return p_.ss($, ($) => p_.from.dictionary(
+                                        $,
+                                    ).convert_to_list(
+                                        ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                    ))
+                                    default: return p_.au($[0])
+                                }
+                            }),
+                            null,
+                        )
+                    ])
 
 
-                    ]))
-                })
+                ])))
                 case 'set': return p_.ss($, ($) => ['directory', Package_Set($, abort)])
                 default: return p_.au($[0])
             }

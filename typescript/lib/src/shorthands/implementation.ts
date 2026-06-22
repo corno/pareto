@@ -1,5 +1,5 @@
 import * as p_ from 'pareto-core-shorthands/dist/unconstrained'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_temp from 'pareto-core/dist/implementation/transformer'
 
 import * as d_target from "../interface/generated/liana/schemas/implementation/data/resolved" //THIS IS NOT CORRECT! It should be unresolved
 
@@ -102,7 +102,9 @@ export namespace m {
             'unreachable code path': false,
             'variables': false,
         }
-        p_.list(specials).__l_map_deprecated(($) => {
+        p_temp.from.list(
+            p_.list(specials)
+        ).map(($) => {
             switch ($) {
                 case 'abort': temp_specials['abort'] = true; break
                 case 'change context': temp_specials['change context'] = true; break
@@ -139,7 +141,9 @@ export const algorithm = (
     let has_abort = false
     let has_lookups = false
     let has_parameters = false
-    p_.list(specials).__l_map_deprecated(($) => {
+    p_temp.from.list(
+        p_.list(specials)
+    ).map(($) => {
         switch ($) {
             case 'abort': has_abort = true; break
             case 'lookups': has_lookups = true; break
