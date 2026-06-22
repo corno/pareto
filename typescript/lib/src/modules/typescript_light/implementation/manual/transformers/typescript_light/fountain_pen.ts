@@ -432,7 +432,7 @@ export const float: interface_.float = ($) => {
 
 
 export const Directory: interface_.Directory = ($) => {
-    return $.__d_map_deprecated(($, id) => p_.from.state($).decide(($) => {
+    return p_.from.dictionary($).map(($, id) => p_.from.state($).decide(($) => {
         switch ($[0]) {
             case 'file': return p_.ss($, ($) => ['file', Statements(
                 $['statements'],
@@ -929,7 +929,10 @@ export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(($) => {
             ),
             sh.ph.literal("]"),
         ]))
-        case 'type literal': return p_.ss($, ($) => $p['replace empty type literals by symbol'] && p_.from.list($.properties).is_empty()
+        case 'type literal': return p_.ss($, ($) => $p['replace empty type literals by symbol'] && p_.from.list($.properties).on_has_items(
+            () => true,
+            () => false,
+        )
             ? sh.ph.literal("symbol")
             : sh.ph.composed([
                 sh.ph.literal("{"),
@@ -961,12 +964,11 @@ export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(($) => {
                 sh.ph.literal("."),
                 Identifier($),
             ]))),
-            p_.from.list($['type arguments']).is_empty()
-                ? sh.ph.nothing()
-                : sh.ph.composed([
+            p_.from.list($['type arguments']).on_has_items(
+                ($) => sh.ph.composed([
                     sh.ph.literal("<"),
                     sh.ph.rich(
-                        p_.from.list($['type arguments']).map(($) => Type($, $p)),
+                        p_.from.list($).map(($) => Type($, $p)),
                         sh.ph.nothing(),
                         sh.ph.nothing(),
                         sh.ph.literal(", "),
@@ -974,6 +976,8 @@ export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(($) => {
                     ),
                     sh.ph.literal(">"),
                 ]),
+                () => sh.ph.nothing()
+            ),
         ]))
         case 'union': return p_.ss($, ($) => sh.ph.indent(
             sh.pg.sentences(p_.from.list($).map(($) => sh.sentence([

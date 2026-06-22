@@ -34,7 +34,7 @@ const temp_rename: p_ri.Refiner<
     abort
 ) => {
         const renamed: { [id: string]: d_in.Package_Set.D } = {}
-        $.__d_map_deprecated(($, id) => {
+        p_.from.dictionary($).map(($, id) => {
             const new_id: string = p_.from.state($).decide(($) => {
                 switch ($[0]) {
                     case 'package': return p_.ss($, ($) => id + ".ts")
@@ -1024,11 +1024,8 @@ export const Select_Value = (
                             p_.from.optional($.lookups).decide(
                                 ($) => p_.from.state($).decide(($) => {
                                     switch ($[0]) {
-                                        case 'initialize': return p_.ss($, ($) => p_.from.dictionary($).is_empty()
-                                            ? p_.literal.list([
-                                                sh.e.null_(),
-                                            ])
-                                            : p_.literal.list([
+                                        case 'initialize': return p_.ss($, ($) => p_.from.dictionary($).on_has_entries(
+                                            ($) => p_.literal.list([
                                                 sh.e.object_literal(
                                                     p_.from.dictionary($).convert_to_list(($, id) => sh.object_property(
                                                         id,
@@ -1036,7 +1033,11 @@ export const Select_Value = (
                                                         Select_Lookup($)
                                                     ))
                                                 )
-                                            ]))
+                                            ]),
+                                            () => p_.literal.list([
+                                                sh.e.null_(),
+                                            ])
+                                        ))
                                         case 'pass through': return p_.ss($, ($) => p_.literal.list([
                                             sh.e.identifier_raw("$l")
                                         ]))
@@ -1048,11 +1049,8 @@ export const Select_Value = (
                             p_.from.optional($.arguments).decide(
                                 ($) => p_.from.state($).decide(($) => {
                                     switch ($[0]) {
-                                        case 'initialize': return p_.ss($, ($) => p_.from.dictionary($).is_empty()
-                                            ? p_.literal.list([
-                                                sh.e.null_(),
-                                            ])
-                                            : p_.literal.list([
+                                        case 'initialize': return p_.ss($, ($) => p_.from.dictionary($).on_has_entries(
+                                            ($) => p_.literal.list([
                                                 sh.e.object_literal(
                                                     p_.from.dictionary($).convert_to_list(($, id) => sh.object_property(
                                                         id,
@@ -1060,7 +1058,11 @@ export const Select_Value = (
                                                         Assign($)
                                                     ))
                                                 )
-                                            ]))
+                                            ]),
+                                            () => p_.literal.list([
+                                                sh.e.null_(),
+                                            ]),
+                                        ))
                                         case 'pass through': return p_.ss($, ($) => p_.literal.list([
                                             sh.e.identifier_raw("$p")
                                         ]))

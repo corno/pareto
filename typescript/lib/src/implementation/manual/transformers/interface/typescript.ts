@@ -586,16 +586,17 @@ export const Value: p_i.Transformer_With_Parameter<
                     true,
                     sh.identifier_escaped($p.name),
                     p_.literal.list([]),
-                    p_.from.dictionary($).is_empty()
-                        ? sh.t.never()
-                        : sh.t.union(
+                    p_.from.dictionary($).on_has_entries(
+                        ($) => sh.t.union(
                             p_.from.dictionary($).convert_to_list(
                                 ($, id) => sh.t.tuple('readonly', [
                                     sh.t.literal_type(sh.string_literal(id, 'apostrophe')),
                                     sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
                                 ])
                             )
-                        )
+                        ),
+                        () => sh.t.never()
+                    )
                 )
             ]))
             case 'text': return p_.ss($, ($) => p_.literal.list([
