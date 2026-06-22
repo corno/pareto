@@ -36,8 +36,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => p_change_cont
                 'subdocument context': p_.literal.not_set(),
             },
         ),
-        'l dictionary': p_.from.dictionary(
-            $['entries'],
+        'l dictionary': p_.from.dictionary($['entries'],
         ).map(
             ($, id) => ({
                 'l location': v_parse_tree_to_location.Value(
@@ -207,8 +206,7 @@ export const Package: t_signatures.Package = ($, abort) => p_change_context(
                                                                 'subdocument context': p_.literal.not_set(),
                                                             },
                                                         ),
-                                                        'l dictionary': p_.from.dictionary(
-                                                            $['entries'],
+                                                        'l dictionary': p_.from.dictionary($['entries'],
                                                         ).map(
                                                             ($, id) => ({
                                                                 'l location': v_parse_tree_to_location.Value(
@@ -256,8 +254,7 @@ export const Package: t_signatures.Package = ($, abort) => p_change_context(
                                                                 'subdocument context': p_.literal.not_set(),
                                                             },
                                                         ),
-                                                        'l dictionary': p_.from.dictionary(
-                                                            $['entries'],
+                                                        'l dictionary': p_.from.dictionary($['entries'],
                                                         ).map(
                                                             ($, id) => ({
                                                                 'l location': v_parse_tree_to_location.Value(
@@ -417,8 +414,7 @@ export const Package: t_signatures.Package = ($, abort) => p_change_context(
                                                                                                                                             'subdocument context': p_.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
-                                                                                                                                    ($) => p_.from.optional(
-                                                                                                                                        v_unmarshalled_from_parse_tree.Optional(
+                                                                                                                                    ($) => p_.from.optional(v_unmarshalled_from_parse_tree.Optional(
                                                                                                                                             $,
                                                                                                                                             ($) => abort(
                                                                                                                                                 $,
@@ -444,8 +440,7 @@ export const Package: t_signatures.Package = ($, abort) => p_change_context(
                                                                                                                                             'subdocument context': p_.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
-                                                                                                                                    ($) => p_.from.optional(
-                                                                                                                                        v_unmarshalled_from_parse_tree.Optional(
+                                                                                                                                    ($) => p_.from.optional(v_unmarshalled_from_parse_tree.Optional(
                                                                                                                                             $,
                                                                                                                                             ($) => abort(
                                                                                                                                                 $,
@@ -469,8 +464,7 @@ export const Package: t_signatures.Package = ($, abort) => p_change_context(
                                                                                                                                                         'subdocument context': p_.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
-                                                                                                                                                'l dictionary': p_.from.dictionary(
-                                                                                                                                                    $['entries'],
+                                                                                                                                                'l dictionary': p_.from.dictionary($['entries'],
                                                                                                                                                 ).map(
                                                                                                                                                     ($, id) => ({
                                                                                                                                                         'l location': v_parse_tree_to_location.Value(
@@ -600,8 +594,7 @@ export const Package: t_signatures.Package = ($, abort) => p_change_context(
                                                                                             'subdocument context': p_.literal.not_set(),
                                                                                         },
                                                                                     ),
-                                                                                    ($) => p_.from.optional(
-                                                                                        v_unmarshalled_from_parse_tree.Optional(
+                                                                                    ($) => p_.from.optional(v_unmarshalled_from_parse_tree.Optional(
                                                                                             $,
                                                                                             ($) => abort(
                                                                                                 $,
@@ -625,8 +618,7 @@ export const Package: t_signatures.Package = ($, abort) => p_change_context(
                                                                                                         'subdocument context': p_.literal.not_set(),
                                                                                                     },
                                                                                                 ),
-                                                                                                'l dictionary': p_.from.dictionary(
-                                                                                                    $['entries'],
+                                                                                                'l dictionary': p_.from.dictionary($['entries'],
                                                                                                 ).map(
                                                                                                     ($, id) => ({
                                                                                                         'l location': v_parse_tree_to_location.Value(
@@ -696,8 +688,7 @@ export const Imports: t_signatures.Imports = ($, abort) => p_change_context(
                 'subdocument context': p_.literal.not_set(),
             },
         ),
-        'l dictionary': p_.from.dictionary(
-            $['entries'],
+        'l dictionary': p_.from.dictionary($['entries'],
         ).map(
             ($, id) => ({
                 'l location': v_parse_tree_to_location.Value(
@@ -907,8 +898,7 @@ export const Imports: t_signatures.Imports = ($, abort) => p_change_context(
                                                 'subdocument context': p_.literal.not_set(),
                                             },
                                         ),
-                                        'l list': p_.from.list(
-                                            v_unmarshalled_from_parse_tree.List(
+                                        'l list': p_.from.list(v_unmarshalled_from_parse_tree.List(
                                                 $,
                                                 ($) => abort(
                                                     $,
@@ -1080,8 +1070,7 @@ export const Value: t_signatures.Value = ($, abort) => p_change_context(
                                             'subdocument context': p_.literal.not_set(),
                                         },
                                     ),
-                                    'l dictionary': p_.from.dictionary(
-                                        $['entries'],
+                                    'l dictionary': p_.from.dictionary($['entries'],
                                     ).map(
                                         ($, id) => ({
                                             'l location': v_parse_tree_to_location.Value(
@@ -1361,8 +1350,7 @@ export const Value: t_signatures.Value = ($, abort) => p_change_context(
                                                             'subdocument context': p_.literal.not_set(),
                                                         },
                                                     ),
-                                                    'l list': p_.from.list(
-                                                        v_unmarshalled_from_parse_tree.List(
+                                                    'l list': p_.from.list(v_unmarshalled_from_parse_tree.List(
                                                             $,
                                                             ($) => abort(
                                                                 $,
@@ -1558,8 +1546,7 @@ export const Value: t_signatures.Value = ($, abort) => p_change_context(
                                             'subdocument context': p_.literal.not_set(),
                                         },
                                     ),
-                                    'l dictionary': p_.from.dictionary(
-                                        $['entries'],
+                                    'l dictionary': p_.from.dictionary($['entries'],
                                     ).map(
                                         ($, id) => ({
                                             'l location': v_parse_tree_to_location.Value(

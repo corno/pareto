@@ -21,8 +21,7 @@ import * as t_signatures from "../../../../../../../interface/generated/liana/sc
 
 import * as v_external_interface from "../../../interface/resolved/refiners/unresolved"
 
-export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => p_.from.dictionary(
-    $['l dictionary'],
+export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => p_.from.dictionary($['l dictionary'],
 ).resolve(
     ($, id, $a, $c): t_out.Package_Set.D => p_change_context(
         $['l entry'],
@@ -151,8 +150,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
         
         const prop_variable_imports = p_change_context(
             $['variable imports'],
-            ($) => p_.from.dictionary(
-                $['l dictionary'],
+            ($) => p_.from.dictionary($['l dictionary'],
             ).resolve(
                 ($, id, $a, $c): t_out.Package.variable_imports.D => p_change_context(
                     $['l entry'],
@@ -161,8 +159,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
                             
                             const prop_tail = p_change_context(
                                 $['tail'],
-                                ($) => p_.from.list(
-                                    $['l list'],
+                                ($) => p_.from.list($['l list'],
                                 ).map(
                                     ($) => p_change_context(
                                         $['l item'],
@@ -235,8 +232,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
         
         const prop_functions = p_change_context(
             $['functions'],
-            ($) => p_.from.dictionary(
-                $['l dictionary'],
+            ($) => p_.from.dictionary($['l dictionary'],
             ).resolve(
                 ($, id, $a, $c): t_out.Package.functions.D => p_change_context(
                     $['l entry'],
@@ -339,8 +335,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
         
         const prop_sub_selection = p_change_context(
             $['sub selection'],
-            ($) => p_.from.list(
-                $['l list'],
+            ($) => p_.from.list($['l list'],
             ).map(
                 ($) => p_change_context(
                     $['l item'],
@@ -440,8 +435,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                             
                                                                             const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => p_.from.optional(
-                                                                                    $,
+                                                                                ($) => p_.from.optional($,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
                                                                                         $,
@@ -493,8 +487,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                             
                                                                             const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => p_.from.optional(
-                                                                                    $,
+                                                                                ($) => p_.from.optional($,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
                                                                                         $,
@@ -546,8 +539,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                             
                                                                             const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => p_.from.optional(
-                                                                                    $,
+                                                                                ($) => p_.from.optional($,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
                                                                                         $,
@@ -578,8 +570,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                                                                     
                                                                                                                     const prop_options = p_change_context(
                                                                                                                         $['options'],
-                                                                                                                        ($) => p_.from.dictionary(
-                                                                                                                            $['l dictionary'],
+                                                                                                                        ($) => p_.from.dictionary($['l dictionary'],
                                                                                                                         ).resolve(
                                                                                                                             ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.partial.options.D => p_change_context(
                                                                                                                                 $['l entry'],
@@ -621,8 +612,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                                                                     
                                                                                                                     const prop_options = p_change_context(
                                                                                                                         $['options'],
-                                                                                                                        ($) => p_.from.dictionary(
-                                                                                                                            $['l dictionary'],
+                                                                                                                        ($) => p_.from.dictionary($['l dictionary'],
                                                                                                                         ).resolve(
                                                                                                                             ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.full.options.D => p_change_context(
                                                                                                                                 $['l entry'],
@@ -710,8 +700,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                             
                                                                             const prop_temp_resulting_node = p_change_context(
                                                                                 $['temp resulting node'],
-                                                                                ($) => p_.from.optional(
-                                                                                    $,
+                                                                                ($) => p_.from.optional($,
                                                                                 ).map(
                                                                                     ($) => Temp_Value_Type_Specification(
                                                                                         $,
@@ -726,8 +715,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                             
                                                                             const prop_cases = p_change_context(
                                                                                 $['cases'],
-                                                                                ($) => p_.from.dictionary(
-                                                                                    $['l dictionary'],
+                                                                                ($) => p_.from.dictionary($['l dictionary'],
                                                                                 ).resolve(
                                                                                     ($, id, $a, $c): t_out.Assign.decide.type_.text.cases.D => p_change_context(
                                                                                         $['l entry'],
@@ -984,8 +972,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                             case 'literal':
                                                                                 return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', p_.from.dictionary(
-                                                                                        $['l dictionary'],
+                                                                                    ($) => ['literal', p_.from.dictionary($['l dictionary'],
                                                                                     ).resolve(
                                                                                         ($, id, $a, $c): t_out.Assign.construct.dictionary.literal.D => p_change_context(
                                                                                             $['l entry'],
@@ -1247,8 +1234,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                                             
                                                                                             const prop_properties = p_change_context(
                                                                                                 $['properties'],
-                                                                                                ($) => p_.from.dictionary(
-                                                                                                    $['l dictionary'],
+                                                                                                ($) => p_.from.dictionary($['l dictionary'],
                                                                                                 ).resolve(
                                                                                                     ($, id, $a, $c): t_out.Assign.construct.group.literal.properties.D => p_change_context(
                                                                                                         $['l entry'],
@@ -1299,8 +1285,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                             case 'literal':
                                                                                 return p_.ss(
                                                                                     $,
-                                                                                    ($) => ['literal', p_.from.list(
-                                                                                        $['l list'],
+                                                                                    ($) => ['literal', p_.from.list($['l list'],
                                                                                     ).map(
                                                                                         ($) => p_change_context(
                                                                                             $['l item'],
@@ -2351,8 +2336,7 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => p_variables(
                                                                 
                                                                 const prop_variables = p_change_context(
                                                                     $['variables'],
-                                                                    ($) => p_.from.dictionary(
-                                                                        $['l dictionary'],
+                                                                    ($) => p_.from.dictionary($['l dictionary'],
                                                                     ).resolve(
                                                                         ($, id, $a, $c): t_out.Assign.special.variables.variables.D => p_change_context(
                                                                             $['l entry'],
@@ -2560,8 +2544,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => p_v
                                                                             
                                                                             const prop_abort = p_change_context(
                                                                                 $['abort'],
-                                                                                ($) => p_.from.optional(
-                                                                                    $,
+                                                                                ($) => p_.from.optional($,
                                                                                 ).map(
                                                                                     ($) => Assign(
                                                                                         $,
@@ -2576,8 +2559,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => p_v
                                                                             
                                                                             const prop_lookups = p_change_context(
                                                                                 $['lookups'],
-                                                                                ($) => p_.from.optional(
-                                                                                    $,
+                                                                                ($) => p_.from.optional($,
                                                                                 ).map(
                                                                                     ($) => p_variables(
                                                                                         () => {
@@ -2590,8 +2572,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => p_v
                                                                                                         case 'initialize':
                                                                                                             return p_.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['initialize', p_.from.dictionary(
-                                                                                                                    $['l dictionary'],
+                                                                                                                ($) => ['initialize', p_.from.dictionary($['l dictionary'],
                                                                                                                 ).resolve(
                                                                                                                     ($, id, $a, $c): t_out.Select_Value.regular.start.call.lookups.O.initialize.D => p_change_context(
                                                                                                                         $['l entry'],
@@ -2625,8 +2606,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => p_v
                                                                             
                                                                             const prop_arguments = p_change_context(
                                                                                 $['arguments'],
-                                                                                ($) => p_.from.optional(
-                                                                                    $,
+                                                                                ($) => p_.from.optional($,
                                                                                 ).map(
                                                                                     ($) => p_variables(
                                                                                         () => {
@@ -2639,8 +2619,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => p_v
                                                                                                         case 'initialize':
                                                                                                             return p_.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['initialize', p_.from.dictionary(
-                                                                                                                    $['l dictionary'],
+                                                                                                                ($) => ['initialize', p_.from.dictionary($['l dictionary'],
                                                                                                                 ).resolve(
                                                                                                                     ($, id, $a, $c): t_out.Select_Value.regular.start.call.arguments_.O.initialize.D => p_change_context(
                                                                                                                         $['l entry'],
@@ -3169,8 +3148,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => p_v
                                     
                                     const prop_tail = p_change_context(
                                         $['tail'],
-                                        ($) => p_.from.list(
-                                            $['l list'],
+                                        ($) => p_.from.list($['l list'],
                                         ).map(
                                             ($) => p_change_context(
                                                 $['l item'],

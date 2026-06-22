@@ -19,8 +19,7 @@ import * as t_out from "../../../../../../../interface/generated/liana/schemas/i
 
 import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/interface/signatures/resolved/refiners/unresolved"
 
-export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => p_.from.dictionary(
-    $['l dictionary'],
+export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => p_.from.dictionary($['l dictionary'],
 ).resolve(
     ($, id, $a, $c): t_out.Package_Set.D => p_change_context(
         $['l entry'],
@@ -96,8 +95,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
                                 case 'data modules':
                                     return p_.ss(
                                         $,
-                                        ($) => ['data modules', p_.from.dictionary(
-                                            $['l dictionary'],
+                                        ($) => ['data modules', p_.from.dictionary($['l dictionary'],
                                         ).resolve(
                                             ($, id, $a, $c): t_out.Package.content.data_modules.D => p_change_context(
                                                 $['l entry'],
@@ -115,8 +113,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
                                 case 'functions':
                                     return p_.ss(
                                         $,
-                                        ($) => ['functions', p_.from.dictionary(
-                                            $['l dictionary'],
+                                        ($) => ['functions', p_.from.dictionary($['l dictionary'],
                                         ).resolve(
                                             ($, id, $a, $c): t_out.Package.content.functions.D => p_change_context(
                                                 $['l entry'],
@@ -170,8 +167,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
                                                                                                 
                                                                                                 const prop_error = p_change_context(
                                                                                                     $['error'],
-                                                                                                    ($) => p_.from.optional(
-                                                                                                        $,
+                                                                                                    ($) => p_.from.optional($,
                                                                                                     ).map(
                                                                                                         ($) => Value(
                                                                                                             $,
@@ -186,11 +182,9 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
                                                                                                 
                                                                                                 const prop_lookups = p_change_context(
                                                                                                     $['lookups'],
-                                                                                                    ($) => p_.from.optional(
-                                                                                                        $,
+                                                                                                    ($) => p_.from.optional($,
                                                                                                     ).map(
-                                                                                                        ($) => p_.from.dictionary(
-                                                                                                            $['l dictionary'],
+                                                                                                        ($) => p_.from.dictionary($['l dictionary'],
                                                                                                         ).resolve(
                                                                                                             ($, id, $a, $c): t_out.Package.content.functions.D.type_.refiner.lookups.O.D => p_change_context(
                                                                                                                 $['l entry'],
@@ -271,11 +265,9 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
                                                         
                                                         const prop_parameters = p_change_context(
                                                             $['parameters'],
-                                                            ($) => p_.from.optional(
-                                                                $,
+                                                            ($) => p_.from.optional($,
                                                             ).map(
-                                                                ($) => p_.from.dictionary(
-                                                                    $['l dictionary'],
+                                                                ($) => p_.from.dictionary($['l dictionary'],
                                                                 ).resolve(
                                                                     ($, id, $a, $c): t_out.Package.content.functions.D.parameters.O.D => p_change_context(
                                                                         $['l entry'],
@@ -319,8 +311,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => p_.literal.gr
     },
 )
 
-export const Imports: t_signatures.Imports = ($, abort, $l, $p) => p_.from.dictionary(
-    $['l dictionary'],
+export const Imports: t_signatures.Imports = ($, abort, $l, $p) => p_.from.dictionary($['l dictionary'],
 ).resolve(
     ($, id, $a, $c): t_out.Imports.D => p_change_context(
         $['l entry'],
@@ -382,8 +373,7 @@ export const Imports: t_signatures.Imports = ($, abort, $l, $p) => p_.from.dicti
                 
                 const prop_tail = p_change_context(
                     $['tail'],
-                    ($) => p_.from.list(
-                        $['l list'],
+                    ($) => p_.from.list($['l list'],
                     ).map(
                         ($) => p_change_context(
                             $['l item'],
@@ -451,8 +441,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => p_variables(
                     case 'group':
                         return p_.ss(
                             $,
-                            ($) => ['group', p_.from.dictionary(
-                                $['l dictionary'],
+                            ($) => ['group', p_.from.dictionary($['l dictionary'],
                             ).resolve(
                                 ($, id, $a, $c): t_out.Value.group.D => p_change_context(
                                     $['l entry'],
@@ -573,8 +562,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => p_variables(
                                     
                                     const prop_sub_selection = p_change_context(
                                         $['sub selection'],
-                                        ($) => p_.from.list(
-                                            $['l list'],
+                                        ($) => p_.from.list($['l list'],
                                         ).map(
                                             ($) => p_change_context(
                                                 $['l item'],
@@ -639,8 +627,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => p_variables(
                     case 'state':
                         return p_.ss(
                             $,
-                            ($) => ['state', p_.from.dictionary(
-                                $['l dictionary'],
+                            ($) => ['state', p_.from.dictionary($['l dictionary'],
                             ).resolve(
                                 ($, id, $a, $c): t_out.Value.state.D => p_change_context(
                                     $['l entry'],

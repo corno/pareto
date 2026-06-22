@@ -102,9 +102,9 @@ export namespace m {
             'unreachable code path': false,
             'variables': false,
         }
-        p_temp.from.list(
-            p_.list(specials)
-        ).map(($) => {
+        p_temp.from.list(p_.list(specials)
+        ).map(
+($) => {
             switch ($) {
                 case 'abort': temp_specials['abort'] = true; break
                 case 'change context': temp_specials['change context'] = true; break
@@ -141,9 +141,9 @@ export const algorithm = (
     let has_abort = false
     let has_lookups = false
     let has_parameters = false
-    p_temp.from.list(
-        p_.list(specials)
-    ).map(($) => {
+    p_temp.from.list(p_.list(specials)
+    ).map(
+($) => {
         switch ($) {
             case 'abort': has_abort = true; break
             case 'lookups': has_lookups = true; break

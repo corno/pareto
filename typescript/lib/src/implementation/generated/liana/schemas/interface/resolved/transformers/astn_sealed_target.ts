@@ -15,8 +15,7 @@ import * as t_out from "astn-core/dist/interface/generated/liana/schemas/sealed_
 
 import * as v_primitives_to_text from "liana-core/dist/implementation/manual/transformers/primitives/text"
 
-export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.from.dictionary(
-    $,
+export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.from.dictionary($,
 ).map(
     ($, id) => ['state', p_decide_state(
         $,
@@ -70,8 +69,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                 $,
                                 ($) => ({
                                     'option': 'data modules',
-                                    'value': ['dictionary', p_.from.dictionary(
-                                        $,
+                                    'value': ['dictionary', p_.from.dictionary($,
                                     ).map(
                                         ($, id) => Value(
                                             $,
@@ -84,8 +82,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                 $,
                                 ($) => ({
                                     'option': 'functions',
-                                    'value': ['dictionary', p_.from.dictionary(
-                                        $,
+                                    'value': ['dictionary', p_.from.dictionary($,
                                     ).map(
                                         ($, id) => ['group', ['verbose', p_.literal.dictionary(
                                             {
@@ -136,8 +133,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                                                                         $['lookups'],
                                                                                         ($) => ['optional', p_decide_optional(
                                                                                             $,
-                                                                                            ($): t_out.Value.optional => ['set', ['dictionary', p_.from.dictionary(
-                                                                                                $,
+                                                                                            ($): t_out.Value.optional => ['set', ['dictionary', p_.from.dictionary($,
                                                                                             ).map(
                                                                                                 ($, id) => ['state', p_decide_state(
                                                                                                     $,
@@ -200,8 +196,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                                     $['parameters'],
                                                     ($) => ['optional', p_decide_optional(
                                                         $,
-                                                        ($): t_out.Value.optional => ['set', ['dictionary', p_.from.dictionary(
-                                                            $,
+                                                        ($): t_out.Value.optional => ['set', ['dictionary', p_.from.dictionary($,
                                                         ).map(
                                                             ($, id) => Value(
                                                                 $,
@@ -226,8 +221,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
     },
 )]]
 
-export const Imports: t_signatures.Imports = ($) => ['dictionary', p_.from.dictionary(
-    $,
+export const Imports: t_signatures.Imports = ($) => ['dictionary', p_.from.dictionary($,
 ).map(
     ($, id) => ['group', ['verbose', p_.literal.dictionary(
         {
@@ -296,8 +290,7 @@ export const Imports: t_signatures.Imports = ($) => ['dictionary', p_.from.dicti
             ),
             "tail": p_change_context(
                 $['tail'],
-                ($) => ['list', p_.from.list(
-                    $,
+                ($) => ['list', p_.from.list($,
                 ).map(
                     ($) => ['text', {
                         'delimiter': ['quote', null],
@@ -353,8 +346,7 @@ export const Value: t_signatures.Value = ($) => ['state', p_decide_state(
                     $,
                     ($) => ({
                         'option': 'group',
-                        'value': ['dictionary', p_.from.dictionary(
-                            $,
+                        'value': ['dictionary', p_.from.dictionary($,
                         ).map(
                             ($, id) => Value(
                                 $,
@@ -465,8 +457,7 @@ export const Value: t_signatures.Value = ($) => ['state', p_decide_state(
                                 ),
                                 "sub selection": p_change_context(
                                     $['sub selection'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => ['state', p_decide_state(
                                             $,
@@ -545,8 +536,7 @@ export const Value: t_signatures.Value = ($) => ['state', p_decide_state(
                     $,
                     ($) => ({
                         'option': 'state',
-                        'value': ['dictionary', p_.from.dictionary(
-                            $,
+                        'value': ['dictionary', p_.from.dictionary($,
                         ).map(
                             ($, id) => Value(
                                 $,

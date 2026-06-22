@@ -17,8 +17,7 @@ import * as v_primitives_to_text from "liana-core/dist/implementation/manual/tra
 
 import * as v_external_interface from "../../../interface/resolved/transformers/astn_sealed_target"
 
-export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.from.dictionary(
-    $,
+export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.from.dictionary($,
 ).map(
     ($, id) => ['state', p_decide_state(
         $,
@@ -151,15 +150,13 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
         ),
         "variable imports": p_change_context(
             $['variable imports'],
-            ($) => ['dictionary', p_.from.dictionary(
-                $,
+            ($) => ['dictionary', p_.from.dictionary($,
             ).map(
                 ($, id) => ['group', ['verbose', p_.literal.dictionary(
                     {
                         "tail": p_change_context(
                             $['tail'],
-                            ($) => ['list', p_.from.list(
-                                $,
+                            ($) => ['list', p_.from.list($,
                             ).map(
                                 ($) => ['text', {
                                     'delimiter': ['quote', null],
@@ -236,8 +233,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
         ),
         "functions": p_change_context(
             $['functions'],
-            ($) => ['dictionary', p_.from.dictionary(
-                $,
+            ($) => ['dictionary', p_.from.dictionary($,
             ).map(
                 ($, id) => ['group', ['verbose', p_.literal.dictionary(
                     {
@@ -327,8 +323,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
         ),
         "sub selection": p_change_context(
             $['sub selection'],
-            ($) => ['list', p_.from.list(
-                $,
+            ($) => ['list', p_.from.list($,
             ).map(
                 ($) => ['state', p_decide_state(
                     $,
@@ -513,8 +508,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                     {
                                                                                                         "options": p_change_context(
                                                                                                             $['options'],
-                                                                                                            ($) => ['dictionary', p_.from.dictionary(
-                                                                                                                $,
+                                                                                                            ($) => ['dictionary', p_.from.dictionary($,
                                                                                                             ).map(
                                                                                                                 ($, id) => Assign(
                                                                                                                     $,
@@ -540,8 +534,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                     {
                                                                                                         "options": p_change_context(
                                                                                                             $['options'],
-                                                                                                            ($) => ['dictionary', p_.from.dictionary(
-                                                                                                                $,
+                                                                                                            ($) => ['dictionary', p_.from.dictionary($,
                                                                                                             ).map(
                                                                                                                 ($, id) => Assign(
                                                                                                                     $,
@@ -613,8 +606,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     ),
                                                                     "cases": p_change_context(
                                                                         $['cases'],
-                                                                        ($) => ['dictionary', p_.from.dictionary(
-                                                                            $,
+                                                                        ($) => ['dictionary', p_.from.dictionary($,
                                                                         ).map(
                                                                             ($, id) => Assign(
                                                                                 $,
@@ -835,8 +827,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['dictionary', p_.from.dictionary(
-                                                                            $,
+                                                                        'value': ['dictionary', p_.from.dictionary($,
                                                                         ).map(
                                                                             ($, id) => Assign(
                                                                                 $,
@@ -1024,8 +1015,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                             {
                                                                                 "properties": p_change_context(
                                                                                     $['properties'],
-                                                                                    ($) => ['dictionary', p_.from.dictionary(
-                                                                                        $,
+                                                                                    ($) => ['dictionary', p_.from.dictionary($,
                                                                                     ).map(
                                                                                         ($, id) => Assign(
                                                                                             $,
@@ -1068,8 +1058,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['list', p_.from.list(
-                                                                            $,
+                                                                        'value': ['list', p_.from.list($,
                                                                         ).map(
                                                                             ($) => Assign(
                                                                                 $,
@@ -1938,8 +1927,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     {
                                                         "variables": p_change_context(
                                                             $['variables'],
-                                                            ($) => ['dictionary', p_.from.dictionary(
-                                                                $,
+                                                            ($) => ['dictionary', p_.from.dictionary($,
                                                             ).map(
                                                                 ($, id) => Assign(
                                                                     $,
@@ -2139,8 +2127,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'initialize',
-                                                                                                    'value': ['dictionary', p_.from.dictionary(
-                                                                                                        $,
+                                                                                                    'value': ['dictionary', p_.from.dictionary($,
                                                                                                     ).map(
                                                                                                         ($, id) => Select_Lookup(
                                                                                                             $,
@@ -2179,8 +2166,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'initialize',
-                                                                                                    'value': ['dictionary', p_.from.dictionary(
-                                                                                                        $,
+                                                                                                    'value': ['dictionary', p_.from.dictionary($,
                                                                                                     ).map(
                                                                                                         ($, id) => Assign(
                                                                                                             $,
@@ -2548,8 +2534,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                 ),
                                 "tail": p_change_context(
                                     $['tail'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => ['text', {
                                             'delimiter': ['quote', null],

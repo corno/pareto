@@ -18,12 +18,13 @@ export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
     return t_typescript_light_to_fountain_pen_block.Directory(
         t_typescript.Package_Set(
             $,
-            ($) => p_.from.state($).decide(($) => {
-                switch ($[0]) {
-                    case 'directory name ending with ts': return p_.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
-                    default: return p_.au($[0])
-                }
-            })
+            ($) => p_.from.state($).decide(
+                ($) => {
+                    switch ($[0]) {
+                        case 'directory name ending with ts': return p_.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
+                        default: return p_.au($[0])
+                    }
+                })
             // r_pareto_implementation.r_Module_Set(
             //     t_pareto_to_pareto_implementation.Module($),
             //     {

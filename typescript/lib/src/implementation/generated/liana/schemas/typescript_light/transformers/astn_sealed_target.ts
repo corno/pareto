@@ -15,8 +15,7 @@ import * as t_out from "astn-core/dist/interface/generated/liana/schemas/sealed_
 
 import * as v_primitives_to_text from "liana-core/dist/implementation/manual/transformers/primitives/text"
 
-export const Directory: t_signatures.Directory = ($) => ['dictionary', p_.from.dictionary(
-    $,
+export const Directory: t_signatures.Directory = ($) => ['dictionary', p_.from.dictionary($,
 ).map(
     ($, id) => ['state', p_decide_state(
         $,
@@ -62,8 +61,7 @@ export const Block: t_signatures.Block = ($) => Statements(
     $,
 )
 
-export const Statements: t_signatures.Statements = ($) => ['list', p_.from.list(
-    $,
+export const Statements: t_signatures.Statements = ($) => ['list', p_.from.list($,
 ).map(
     ($) => ['state', p_decide_state(
         $,
@@ -101,8 +99,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', p_.from.list(
                                                                     {
                                                                         "specifiers": p_change_context(
                                                                             $['specifiers'],
-                                                                            ($) => ['list', p_.from.list(
-                                                                                $,
+                                                                            ($) => ['list', p_.from.list($,
                                                                             ).map(
                                                                                 ($) => ['group', ['verbose', p_.literal.dictionary(
                                                                                     {
@@ -204,8 +201,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', p_.from.list(
                                                                     {
                                                                         "specifiers": p_change_context(
                                                                             $['specifiers'],
-                                                                            ($) => ['list', p_.from.list(
-                                                                                $,
+                                                                            ($) => ['list', p_.from.list($,
                                                                             ).map(
                                                                                 ($) => ['group', ['verbose', p_.literal.dictionary(
                                                                                     {
@@ -312,8 +308,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', p_.from.list(
                                     ),
                                     "clauses": p_change_context(
                                         $['clauses'],
-                                        ($) => ['list', p_.from.list(
-                                            $,
+                                        ($) => ['list', p_.from.list($,
                                         ).map(
                                             ($) => ['group', ['verbose', p_.literal.dictionary(
                                                 {
@@ -387,8 +382,7 @@ export const Statements: t_signatures.Statements = ($) => ['list', p_.from.list(
                                     ),
                                     "parameters": p_change_context(
                                         $['parameters'],
-                                        ($) => ['list', p_.from.list(
-                                            $,
+                                        ($) => ['list', p_.from.list($,
                                         ).map(
                                             ($) => Identifier(
                                                 $,
@@ -490,8 +484,7 @@ export const Type: t_signatures.Type = ($) => ['state', p_decide_state(
                             {
                                 "type parameters": p_change_context(
                                     $['type parameters'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => Type(
                                             $,
@@ -574,8 +567,7 @@ export const Type: t_signatures.Type = ($) => ['state', p_decide_state(
                                 ),
                                 "elements": p_change_context(
                                     $['elements'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => Type(
                                             $,
@@ -595,8 +587,7 @@ export const Type: t_signatures.Type = ($) => ['state', p_decide_state(
                             {
                                 "properties": p_change_context(
                                     $['properties'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => ['group', ['verbose', p_.literal.dictionary(
                                             {
@@ -672,8 +663,7 @@ export const Type: t_signatures.Type = ($) => ['state', p_decide_state(
                                 ),
                                 "tail": p_change_context(
                                     $['tail'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => Identifier(
                                             $,
@@ -682,8 +672,7 @@ export const Type: t_signatures.Type = ($) => ['state', p_decide_state(
                                 ),
                                 "type arguments": p_change_context(
                                     $['type arguments'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => Type(
                                             $,
@@ -699,8 +688,7 @@ export const Type: t_signatures.Type = ($) => ['state', p_decide_state(
                     $,
                     ($) => ({
                         'option': 'union',
-                        'value': ['list', p_.from.list(
-                            $,
+                        'value': ['list', p_.from.list($,
                         ).map(
                             ($) => Type(
                                 $,
@@ -724,8 +712,7 @@ export const Type: t_signatures.Type = ($) => ['state', p_decide_state(
     },
 )]
 
-export const Function_Parameters: t_signatures.Function_Parameters = ($) => ['list', p_.from.list(
-    $,
+export const Function_Parameters: t_signatures.Function_Parameters = ($) => ['list', p_.from.list($,
 ).map(
     ($) => ['group', ['verbose', p_.literal.dictionary(
         {
@@ -758,8 +745,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', p_decide_sta
                     $,
                     ($) => ({
                         'option': 'array literal',
-                        'value': ['list', p_.from.list(
-                            $,
+                        'value': ['list', p_.from.list($,
                         ).map(
                             ($) => Expression(
                                 $,
@@ -866,8 +852,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', p_decide_sta
                                 ),
                                 "arguments": p_change_context(
                                     $['arguments'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => Expression(
                                             $,
@@ -1082,8 +1067,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', p_decide_sta
                             {
                                 "properties": p_change_context(
                                     $['properties'],
-                                    ($) => ['list', p_.from.list(
-                                        $,
+                                    ($) => ['list', p_.from.list($,
                                     ).map(
                                         ($) => ['group', ['verbose', p_.literal.dictionary(
                                             {
