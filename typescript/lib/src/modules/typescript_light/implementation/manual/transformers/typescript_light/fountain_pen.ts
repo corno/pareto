@@ -844,27 +844,28 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
                     : sh.ph.nothing(),
                 sh.ph.literal("{"),
                 sh.ph.indent(
-                    sh.pg.sentences(p_.from.list($.properties,
-                    ).map(
-                        ($) => sh.sentence([
-                            p_.from.state($.key).decide(
-                                ($) => {
-                                    switch ($[0]) {
-                                        case 'identifier': return p_.ss($, ($) => Identifier($))
-                                        case 'string literal': return p_.ss($, ($) => String_Literal($))
-                                        default: return p_.au($[0])
+                    sh.pg.sentences(
+                        p_.from.list($.properties).map(
+                            ($) => sh.sentence([
+                                p_.from.state($.key).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'identifier': return p_.ss($, ($) => Identifier($))
+                                            case 'string literal': return p_.ss($, ($) => String_Literal($))
+                                            default: return p_.au($[0])
+                                        }
+                                    }),
+                                sh.ph.literal(": "),
+                                Expression(
+                                    $.value,
+                                    {
+                                        'object literal needs parentheses': false,
+                                        'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                     }
-                                }),
-                            sh.ph.literal(": "),
-                            Expression(
-                                $.value,
-                                {
-                                    'object literal needs parentheses': false,
-                                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
-                                }
-                            ),
-                            sh.ph.literal(",")
-                        ]))),
+                                ),
+                                sh.ph.literal(",")
+                            ])
+                        )),
                 ),
                 sh.ph.literal("}"),
                 $p['object literal needs parentheses']
@@ -963,8 +964,7 @@ export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(
                 : sh.ph.composed([
                     sh.ph.literal("{"),
                     sh.ph.indent(
-                        sh.pg.sentences(p_.from.list($.properties,
-                        ).map(
+                        sh.pg.sentences(p_.from.list($.properties).map(
                             ($) => sh.sentence([
                                 sh.ph.composed([
                                     $['readonly'] ? sh.ph.literal("readonly ") : sh.ph.nothing(),

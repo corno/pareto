@@ -147,8 +147,7 @@ export const Package_Set: p_ri.Refiner<
                                         )
                                     ])
                                     : p_.literal.list([]),
-                                p_.from.dictionary($['type imports'],
-                                ).convert_to_list(
+                                p_.from.dictionary($['type imports']).convert_to_list(
                                     ($, id) => sh.s.import_namespace(
                                         sh.identifier_escaped(join(p_.literal.list(["t ", id]))),
                                         temp_create_file_path(
@@ -159,8 +158,7 @@ export const Package_Set: p_ri.Refiner<
                                         )
                                     )
                                 ),
-                                p_.from.dictionary($['variable imports'],
-                                ).convert_to_list(
+                                p_.from.dictionary($['variable imports']).convert_to_list(
                                     ($, id) => sh.s.import_namespace(
                                         sh.identifier_escaped(join(p_.literal.list(["v ", id]))),
                                         temp_create_file_path(
@@ -171,8 +169,7 @@ export const Package_Set: p_ri.Refiner<
                                         )
                                     )
                                 ),
-                                p_.from.dictionary($.functions,
-                                ).convert_to_list(
+                                p_.from.dictionary($.functions).convert_to_list(
                                     ($, id): d_out.Statements.L => sh.s.variable(
                                         true,
                                         true,
@@ -230,8 +227,7 @@ export const Temp_Value_Type_Specification = (
             p_.literal.list([
                 sh.identifier_escaped($.type.type)
             ]),
-            p_.from.list($['sub selection'],
-            ).flatten(
+            p_.from.list($['sub selection']).flatten(
                 ($) => p_.from.state($).decide(
                     ($): p_di.List<d_out.Identifier> => {
                         switch ($[0]) {
@@ -409,8 +405,7 @@ export const Assign: p_i.Transformer<
                                                 sh.s.switch_(
                                                     sh.e.identifier_raw("$t"),
                                                     p_.literal.chain(
-                                                        p_.from.dictionary($.cases
-                                                        ).convert_to_list(
+                                                        p_.from.dictionary($.cases).convert_to_list(
                                                             ($, id) => sh.sw.case_(
                                                                 sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
                                                                 [

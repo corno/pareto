@@ -33,8 +33,9 @@ export const temp_create_file_path = (
     }
     const do_tail = (): string => {
         return p_text_from_list(
-            p_.from.list(p_.from.list($.tail).map(
-                ($) => `/${valid_file_name($)}`),
+            p_.from.list(
+                p_.from.list($.tail).map(
+                    ($) => `/${valid_file_name($)}`),
             ).flatten(
                 ($) => p_list_from_text(
                     $,
@@ -134,8 +135,7 @@ export const Package_Set: p_ri.Refiner<
                     p_.from.state($.content).decide(
                         ($) => {
                             switch ($[0]) {
-                                case 'data modules': return p_.ss($, ($) => p_.from.dictionary($,
-                                ).flatten_to_list(
+                                case 'data modules': return p_.ss($, ($) => p_.from.dictionary($).flatten_to_list(
                                     ($, id): d_out.Statements => Value(
                                         $,
                                         {
@@ -144,8 +144,7 @@ export const Package_Set: p_ri.Refiner<
                                         }
                                     )
                                 ))
-                                case 'functions': return p_.ss($, ($) => p_.from.dictionary($
-                                ).flatten_to_list(
+                                case 'functions': return p_.ss($, ($) => p_.from.dictionary($).flatten_to_list(
                                     ($, id): d_out.Statements => {
                                         const name = id + " "
                                         return p_.literal.list([
@@ -187,8 +186,7 @@ export const Package_Set: p_ri.Refiner<
 
                                                                     p_.from.optional($.lookups).decide<d_out.Statements>(
                                                                         ($) => {
-                                                                            return p_.from.dictionary($,
-                                                                            ).convert_to_list(
+                                                                            return p_.from.dictionary($).convert_to_list(
                                                                                 ($, id) => sh.s.namespace(
                                                                                     true,
                                                                                     sh.identifier_raw("L"),
@@ -222,8 +220,7 @@ export const Package_Set: p_ri.Refiner<
                                                             true,
                                                             sh.identifier_raw("P"),
                                                             p_.from.optional($.parameters).decide(
-                                                                ($) => p_.from.dictionary($,
-                                                                ).flatten_to_list(
+                                                                ($) => p_.from.dictionary($).flatten_to_list(
                                                                     ($, id) => Value(
                                                                         $,
                                                                         {
@@ -349,12 +346,10 @@ export const Package_Set: p_ri.Refiner<
                             p_.from.state($.content).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'data modules': return p_.ss($, ($) => p_.from.dictionary($,
-                                        ).convert_to_list(
+                                        case 'data modules': return p_.ss($, ($) => p_.from.dictionary($).convert_to_list(
                                             ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
-                                        case 'functions': return p_.ss($, ($) => p_.from.dictionary($,
-                                        ).convert_to_list(
+                                        case 'functions': return p_.ss($, ($) => p_.from.dictionary($).convert_to_list(
                                             ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
                                         default: return p_.au($[0])
@@ -440,8 +435,7 @@ export const Value: p_i.Transformer_With_Parameter<
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        p_.from.dictionary($
-                        ).flatten_to_list(
+                        p_.from.dictionary($).flatten_to_list(
                             ($, id) => Value(
                                 $,
                                 {
@@ -548,8 +542,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                                 default: return p_.au($[0])
                                             }
                                         }),
-                                    p_.from.list($['sub selection'],
-                                    ).flatten(
+                                    p_.from.list($['sub selection']).flatten(
                                         ($) => p_.from.state($).decide(
                                             ($) => {
                                                 switch ($[0]) {
@@ -580,8 +573,7 @@ export const Value: p_i.Transformer_With_Parameter<
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        p_.from.dictionary($,
-                        ).flatten_to_list(
+                        p_.from.dictionary($).flatten_to_list(
                             ($, id) => Value(
                                 $,
                                 {
