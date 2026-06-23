@@ -11,7 +11,7 @@ import * as d_out from "../../../../interface/generated/liana/schemas/typescript
 import * as d_function from "../../../../interface/data/pareto_to_typescript"
 
 //shorthands
-import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light"
+import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target"
 
 //dependencies
 import { temp_create_file_path } from '../interface/typescript'
@@ -100,9 +100,9 @@ export const Package_Set: p_ri.Refiner<
                                 $.specials['iterate']
                                     ? p_.literal.list([
                                         sh.s.import_named(
-                                            [
+                                            p_.literal.list([
                                                 sh.specifier(sh.identifier_raw("p_change_context"), null),
-                                            ],
+                                            ]),
                                             sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
                                         )
                                     ])
@@ -179,7 +179,7 @@ export const Package_Set: p_ri.Refiner<
                                             p_.literal.list([
                                                 sh.identifier_escaped($.type.type)
                                             ]),
-                                            []
+                                            p_.literal.list([])
                                         ),
                                         sh.e.arrow_function_with_expression(
                                             p_.literal.segmented_list([
@@ -242,7 +242,7 @@ export const Temp_Value_Type_Specification = (
             ),
         ]),
         //type arguments
-        []
+        p_.literal.list([])
     )
 }
 
@@ -271,12 +271,12 @@ export const Assign: p_i.Transformer<
                                         ),
                                         sh.identifier_raw("optional"),
                                     ),
-                                    [
+                                    p_.literal.list([
                                         selection,
                                         sh.e.arrow_function_with_expression(
-                                            [
+                                            p_.literal.list([
                                                 sh.parameter(sh.identifier_raw("$"), null)
-                                            ],
+                                            ]),
                                             p_.from.optional($['temp resulting node']).decide(
                                                 ($) => Temp_Value_Type_Specification($),
                                                 () => null
@@ -285,13 +285,12 @@ export const Assign: p_i.Transformer<
 
                                         ),
                                         sh.e.arrow_function_with_expression(
-                                            [
-                                            ],
+                                            p_.literal.list([]),
                                             null,
                                             Assign($['if not set']),
 
                                         ),
-                                    ]
+                                    ])
                                 ))
                                 case 'state': return p_.ss($, ($) => sh.e.call(
                                     sh.e.property_access(
@@ -301,17 +300,17 @@ export const Assign: p_i.Transformer<
                                         ),
                                         sh.identifier_raw("state"),
                                     ),
-                                    [
+                                    p_.literal.list([
                                         selection,
                                         sh.e.arrow_function_with_block(
-                                            [
+                                            p_.literal.list([
                                                 sh.parameter(sh.identifier_raw("$"), null)
-                                            ],
+                                            ]),
                                             p_.from.optional($['temp resulting node']).decide(
                                                 ($) => Temp_Value_Type_Specification($),
                                                 () => null
                                             ),
-                                            [
+                                            p_.literal.list([
                                                 sh.s.switch_(
                                                     sh.e.element_access(
                                                         sh.e.identifier_raw("$"),
@@ -334,54 +333,56 @@ export const Assign: p_i.Transformer<
                                                         ).convert_to_list(
                                                             ($, id) => sh.sw.case_(
                                                                 sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
-                                                                [
+                                                                p_.literal.list([
                                                                     sh.s.return_(sh.e.call(
                                                                         sh.e.property_access(
                                                                             sh.e.identifier_raw("pt"),
                                                                             sh.identifier_raw('ss'),
                                                                         ),
-                                                                        [
+                                                                        p_.literal.list([
                                                                             sh.e.identifier_raw("$"),
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null)
-                                                                                ],
+                                                                                ]),
                                                                                 null,
                                                                                 Assign($)
                                                                             )
-                                                                        ]
+                                                                        ])
                                                                     ))
-                                                                ]
+                                                                ])
                                                             )
                                                         ),
-                                                        sh.sw.default_([
-                                                            sh.s.return_(p_.from.state($.type).decide(
-                                                                ($) => {
-                                                                    switch ($[0]) {
-                                                                        case 'partial': return p_.ss($, ($) => Assign($.default))
-                                                                        case 'full': return p_.ss($, ($) => sh.e.call(
-                                                                            sh.e.property_access(
-                                                                                sh.e.identifier_raw("pt"),
-                                                                                sh.identifier_raw('au'),
-                                                                            ),
-                                                                            [
-                                                                                sh.e.element_access(
-                                                                                    sh.e.identifier_raw("$"),
-                                                                                    sh.e.number_literal(0)
-                                                                                )
-                                                                            ]
-                                                                        ))
-                                                                        case 'single': return p_.ss($, ($) => Assign($['if false']))
-                                                                        default: return p_.au($[0])
-                                                                    }
-                                                                }))
-                                                        ])
+                                                        sh.sw.default_(
+                                                            p_.literal.list([
+                                                                sh.s.return_(p_.from.state($.type).decide(
+                                                                    ($) => {
+                                                                        switch ($[0]) {
+                                                                            case 'partial': return p_.ss($, ($) => Assign($.default))
+                                                                            case 'full': return p_.ss($, ($) => sh.e.call(
+                                                                                sh.e.property_access(
+                                                                                    sh.e.identifier_raw("pt"),
+                                                                                    sh.identifier_raw('au'),
+                                                                                ),
+                                                                                p_.literal.list([
+                                                                                    sh.e.element_access(
+                                                                                        sh.e.identifier_raw("$"),
+                                                                                        sh.e.number_literal(0)
+                                                                                    )
+                                                                                ])
+                                                                            ))
+                                                                            case 'single': return p_.ss($, ($) => Assign($['if false']))
+                                                                            default: return p_.au($[0])
+                                                                        }
+                                                                    }))
+
+                                                            ])
+                                                        )
                                                     )
                                                 )
-                                            ]
-
+                                            ])
                                         )
-                                    ]
+                                    ])
                                 ))
                                 case 'text': return p_.ss($, ($) => sh.e.call(
                                     sh.e.property_access(
@@ -391,36 +392,38 @@ export const Assign: p_i.Transformer<
                                         ),
                                         sh.identifier_raw("text"),
                                     ),
-                                    [
+                                    p_.literal.list([
                                         selection,
                                         sh.e.arrow_function_with_block(
-                                            [
+                                            p_.literal.list([
                                                 sh.parameter(sh.identifier_raw("$t"), null)
-                                            ],
+                                            ]),
                                             p_.from.optional($['temp resulting node']).decide(
                                                 ($) => Temp_Value_Type_Specification($),
                                                 () => null
                                             ),
-                                            [
+                                            p_.literal.list([
                                                 sh.s.switch_(
                                                     sh.e.identifier_raw("$t"),
                                                     p_.literal.chain(
                                                         p_.from.dictionary($.cases).convert_to_list(
                                                             ($, id) => sh.sw.case_(
                                                                 sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
-                                                                [
+                                                                p_.literal.list([
                                                                     sh.s.return_(Assign($))
-                                                                ]
+                                                                ])
                                                             )),
-                                                        sh.sw.default_([
-                                                            sh.s.return_(Assign($.default))
-                                                        ])
+                                                        sh.sw.default_(
+                                                            p_.literal.list([
+                                                                sh.s.return_(Assign($.default))
+                                                            ])
+                                                        )
                                                     )
                                                 )
-                                            ]
+                                            ])
 
                                         )
-                                    ]
+                                    ])
                                 ))
                                 default: return p_.au($[0])
                             }
@@ -486,14 +489,14 @@ export const Assign: p_i.Transformer<
                                             ),
                                             sh.identifier_raw("literal"),
                                         ),
-                                        [
+                                        p_.literal.list([
                                             sh.e.object_literal(p_.from.dictionary($).convert_to_list(
                                                 ($, id) => sh.object_property(
                                                     id,
                                                     'quoted string literal',
                                                     Assign($),
                                                 )))
-                                        ]
+                                        ])
                                     ))
                                     case 'from': return p_.ss($, ($) => p_variables(
                                         () => {
@@ -518,22 +521,22 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("dictionary"),
                                                                                 ),
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     selection,
-                                                                                ]
+                                                                                ])
                                                                             ),
                                                                             sh.identifier_raw("map"),
                                                                         ),
-                                                                        [
+                                                                        p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null),
                                                                                     sh.parameter(sh.identifier_raw("id"), null),
-                                                                                ],
+                                                                                ]),
                                                                                 null,
                                                                                 Assign($['assign entry'])
                                                                             )
-                                                                        ]
+                                                                        ])
                                                                     ))
                                                                     case 'resolve': return p_.ss($, ($) => sh.e.call(
                                                                         sh.e.property_access(
@@ -548,24 +551,24 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("dictionary"),
                                                                                 ),
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     selection,
-                                                                                ]
+                                                                                ])
                                                                             ),
                                                                             sh.identifier_raw("resolve_refiner"),
                                                                         ),
-                                                                        [
+                                                                        p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null),
                                                                                     sh.parameter(sh.identifier_raw("id"), null),
                                                                                     sh.parameter(sh.identifier_raw("$a"), null),
                                                                                     sh.parameter(sh.identifier_raw("$c"), null),
-                                                                                ],
+                                                                                ]),
                                                                                 Temp_Value_Type_Specification($['temp resulting entry node']),
                                                                                 Assign($['assign entry'])
                                                                             )
-                                                                        ]
+                                                                        ])
                                                                     ))
                                                                     default: return p_.au($[0])
                                                                 }
@@ -600,9 +603,9 @@ export const Assign: p_i.Transformer<
                                                     ),
                                                     sh.identifier_raw("resolve"),
                                                 ),
-                                                [
+                                                p_.literal.list([
                                                     sh.e.arrow_function_with_block(
-                                                        [],
+                                                        p_.literal.list([]),
                                                         null,
                                                         p_.literal.chain(
                                                             p_.from.dictionary($).convert_to_list(
@@ -623,7 +626,7 @@ export const Assign: p_i.Transformer<
                                                             ))
                                                         )
                                                     )
-                                                ]
+                                                ])
                                             ),
                                             () => sh.e.null_(),
                                         )
@@ -651,10 +654,10 @@ export const Assign: p_i.Transformer<
                                             ),
                                             sh.identifier_raw("literal"),
                                         ),
-                                        [
+                                        p_.literal.list([
                                             sh.e.array_literal(p_.from.list($).map(
                                                 ($) => Assign($)))
-                                        ]
+                                        ])
                                     ))
                                     case 'from': return p_.ss($, ($) => p_variables(
                                         () => {
@@ -686,21 +689,21 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("list"),
                                                                                 ),
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     selection,
-                                                                                ]
+                                                                                ])
                                                                             ),
                                                                             sh.identifier_raw("map"),
                                                                         ),
-                                                                        [
+                                                                        p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null)
-                                                                                ],
+                                                                                ]),
                                                                                 null,
                                                                                 Assign($['assign item'])
                                                                             )
-                                                                        ]
+                                                                        ])
                                                                     ))
                                                                     case 'map with state': return p_.ss($, ($) => sh.e.call(
                                                                         sh.e.property_access(
@@ -710,33 +713,33 @@ export const Assign: p_i.Transformer<
                                                                             ),
                                                                             sh.identifier_raw("map_with_state"),
                                                                         ),
-                                                                        [
+                                                                        p_.literal.list([
                                                                             selection,
                                                                             Assign($['initialize state']),
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null)
-                                                                                ],
+                                                                                ]),
                                                                                 null,
                                                                                 Assign($['assign item'])
                                                                             ),
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null),
                                                                                     sh.parameter(sh.identifier_raw("state"), null),
-                                                                                ],
+                                                                                ]),
                                                                                 null,
                                                                                 Assign($['update state'])
                                                                             ),
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null),
                                                                                     sh.parameter(sh.identifier_raw("state"), null),
-                                                                                ],
+                                                                                ]),
                                                                                 null,
                                                                                 Assign($['wrap up'])
                                                                             ),
-                                                                        ]
+                                                                        ])
                                                                     ))
                                                                     case 'reduce': return p_.ss($, ($) => p_implement_me("X11"))
                                                                     case 'reverse': return p_.ss($, ($) => p_implement_me("X12"))
@@ -803,8 +806,7 @@ export const Assign: p_i.Transformer<
                                                         ),
                                                         sh.identifier_raw("not_set"),
                                                     ),
-                                                    [
-                                                    ]
+                                                    p_.literal.list([])
                                                 ))
                                                 case 'set': return p_.ss($, ($) => sh.e.call(
                                                     sh.e.property_access(
@@ -817,9 +819,9 @@ export const Assign: p_i.Transformer<
                                                         ),
                                                         sh.identifier_raw("set"),
                                                     ),
-                                                    [
+                                                    p_.literal.list([
                                                         Assign($),
-                                                    ]
+                                                    ])
                                                 ))
                                                 default: return p_.au($[0])
                                             }
@@ -853,21 +855,21 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("optional"),
                                                                                 ),
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     selection,
-                                                                                ]
+                                                                                ])
                                                                             ),
                                                                             sh.identifier_raw("map"),
                                                                         ),
-                                                                        [
+                                                                        p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
-                                                                                [
+                                                                                p_.literal.list([
                                                                                     sh.parameter(sh.identifier_raw("$"), null)
-                                                                                ],
+                                                                                ]),
                                                                                 null,
                                                                                 Assign($['assign set'])
                                                                             ),
-                                                                        ]
+                                                                        ])
                                                                     ))
                                                                     default: return p_.au($[0])
                                                                 }
@@ -882,10 +884,12 @@ export const Assign: p_i.Transformer<
                         case 'state': return p_.ss($, ($) => p_.from.state($).decide(
                             ($) => {
                                 switch ($[0]) {
-                                    case 'literal': return p_.ss($, ($) => sh.e.array_literal([
-                                        sh.e.string_literal(sh.string_literal($.option, 'apostrophe')),
-                                        Assign($['assign option'])
-                                    ]))
+                                    case 'literal': return p_.ss($, ($) => sh.e.array_literal(
+                                        p_.literal.list([
+                                            sh.e.string_literal(sh.string_literal($.option, 'apostrophe')),
+                                            Assign($['assign option'])
+                                        ])
+                                    ))
                                     default: return p_.au($[0])
                                 }
                             }))
@@ -934,45 +938,44 @@ export const Assign: p_i.Transformer<
                         case 'assert': return p_.ss($, ($) => p_implement_me("X22"))
                         case 'abort': return p_.ss($, ($) => sh.e.call(
                             sh.e.identifier_raw("abort"),
-                            [
+                            p_.literal.list([
                                 Assign($)
-                            ]
+                            ])
                         ))
                         case 'change context': return p_.ss($, ($) => sh.e.call(
                             sh.e.identifier_raw("p_change_context"),
-                            [
+                            p_.literal.list([
                                 Select_Value($['new context']),
                                 sh.e.arrow_function_with_expression(
-                                    [
+                                    p_.literal.list([
                                         sh.parameter(sh.identifier_raw("$"), null)
-                                    ],
+                                    ]),
                                     null,
                                     Assign($['expression'])
                                 )
-                            ]
+                            ])
                         ))
                         case 'implement me': return p_.ss($, ($) => sh.e.call(
                             sh.e.property_access(
                                 sh.e.identifier_raw("_pdev"),
                                 sh.identifier_raw("implement_me")
                             ),
-                            [
+                            p_.literal.list([
                                 sh.e.string_literal(sh.string_literal($, 'quote'))
-                            ]
+                            ])
                         ))
                         case 'iterate': return p_.ss($, ($) => p_implement_me("X23"))
                         case 'unreachable': return p_.ss($, ($) => sh.e.call(
                             sh.e.identifier_raw("p_unreachable_code_path"),
-                            [
+                            p_.literal.list([
                                 sh.e.string_literal(sh.string_literal($.explanation, 'quote'))
-                            ]
+                            ])
                         ))
                         case 'variables': return p_.ss($, ($) => sh.e.call(
                             sh.e.identifier_raw("p_variables"),
-                            [
+                            p_.literal.list([
                                 sh.e.arrow_function_with_block(
-                                    [
-                                    ],
+                                    p_.literal.list([]),
                                     null,
                                     p_.literal.chain(
                                         p_.from.dictionary($.variables).convert_to_list(
@@ -989,7 +992,7 @@ export const Assign: p_i.Transformer<
                                         )
                                     )
                                 )
-                            ]
+                            ])
                         ))
                         default: return p_.au($[0])
                     }
@@ -1025,9 +1028,9 @@ export const Select_Value = (
                     sh.e.identifier_raw("_pdev"),
                     sh.identifier_raw("implement_me")
                 ),
-                [
+                p_.literal.list([
                     sh.e.string_literal(sh.string_literal($, 'quote'))
-                ]
+                ])
             ))
             case 'regular': return p_.ss($, ($) => reduce(
                 $.tail,
@@ -1053,15 +1056,15 @@ export const Select_Value = (
                                     p_.from.optional($.abort).decide(
                                         ($) => p_.literal.list([
                                             sh.e.arrow_function_with_expression(
-                                                [
+                                                p_.literal.list([
                                                     sh.parameter(sh.identifier_raw("$"), null)
-                                                ],
+                                                ]),
                                                 null,
                                                 sh.e.call(
                                                     sh.e.identifier_raw("abort"),
-                                                    [
+                                                    p_.literal.list([
                                                         Assign($)
-                                                    ]
+                                                    ])
                                                 )
                                             )
                                         ]),
@@ -1130,249 +1133,259 @@ export const Select_Value = (
                                     Select_Value($.dictionary),
                                     sh.identifier_raw("__get_entry_deprecated")
                                 ),
-                                [
+                                p_.literal.list([
                                     Assign($.id),
-                                    sh.e.object_literal([
-                                        sh.object_property(
-                                            "no_such_entry",
-                                            'identifier',
-                                            sh.e.arrow_function_with_expression(
-                                                [
-                                                    sh.parameter(
-                                                        sh.identifier_raw("$"),
-                                                        null,
+                                    sh.e.object_literal(
+                                        p_.literal.list([
+                                            sh.object_property(
+                                                "no_such_entry",
+                                                'identifier',
+                                                sh.e.arrow_function_with_expression(
+                                                    p_.literal.list([
+                                                        sh.parameter(
+                                                            sh.identifier_raw("$"),
+                                                            null,
+                                                        )
+                                                    ]),
+                                                    null,
+                                                    sh.e.call(
+                                                        sh.e.identifier_raw("abort"),
+                                                        p_.literal.list([
+                                                            Assign($['no such entry handler'])
+                                                        ])
                                                     )
-                                                ],
-                                                null,
-                                                sh.e.call(
-                                                    sh.e.identifier_raw("abort"),
-                                                    [
-                                                        Assign($['no such entry handler'])
-                                                    ]
                                                 )
                                             )
-                                        )
-                                    ])
-                                ]
+                                        ])
+                                    )
+                                ])
                             ))
                             case 'list from text': return p_.ss($, ($) => sh.e.call(
                                 sh.e.identifier_raw("p_list_from_text"),
-                                [
+                                p_.literal.list([
                                     Select_Value($.source),
                                     sh.e.arrow_function_with_expression(
-                                        [
+                                        p_.literal.list([
                                             sh.parameter(
                                                 sh.identifier_raw("$"),
                                                 null,
                                             )
-                                        ],
+                                        ]),
                                         null,
                                         Assign($['assign item'])
                                     )
-                                ]
+                                ])
                             ))
                             case 'lookup entry': return p_.ss($, ($) => sh.e.call(
                                 sh.e.property_access(
                                     Select_Lookup($.lookup),
                                     sh.identifier_raw("get_entry")
                                 ),
-                                [
+                                p_.literal.list([
                                     Assign($.id),
                                     p_.from.state($.type).decide(
                                         ($) => {
                                             switch ($[0]) {
-                                                case 'acyclic': return p_.ss($, ($) => sh.e.object_literal([
+                                                case 'acyclic': return p_.ss($, ($) => sh.e.object_literal(
+                                                    p_.literal.list([
 
-                                                    sh.object_property(
-                                                        "no_such_entry",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['no such entry'])
-                                                                ]
+                                                        sh.object_property(
+                                                            "no_such_entry",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['no such entry'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                    sh.object_property(
-                                                        "no_context_lookup",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['no context lookup'])
-                                                                ]
+                                                        ),
+                                                        sh.object_property(
+                                                            "no_context_lookup",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['no context lookup'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                    sh.object_property(
-                                                        "cycle_detected",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['cycle detected'])
-                                                                ]
+                                                        ),
+                                                        sh.object_property(
+                                                            "cycle_detected",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['cycle detected'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                ]))
-                                                case 'cyclic': return p_.ss($, ($) => sh.e.object_literal([
+                                                        ),
+                                                    ])
+                                                ))
+                                                case 'cyclic': return p_.ss($, ($) => sh.e.object_literal(
+                                                    p_.literal.list([
 
-                                                    sh.object_property(
-                                                        "no_such_entry",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['no such entry'])
-                                                                ]
+                                                        sh.object_property(
+                                                            "no_such_entry",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['no such entry'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                    sh.object_property(
-                                                        "no_context_lookup",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['no context lookup'])
-                                                                ]
+                                                        ),
+                                                        sh.object_property(
+                                                            "no_context_lookup",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['no context lookup'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                    sh.object_property(
-                                                        "accessing_cyclic_sibling_before_it_is_resolved",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['accessing cyclic sibling before it is resolved'])
-                                                                ]
+                                                        ),
+                                                        sh.object_property(
+                                                            "accessing_cyclic_sibling_before_it_is_resolved",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['accessing cyclic sibling before it is resolved'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                ]))
-                                                case 'stack': return p_.ss($, ($) => sh.e.object_literal([
+                                                        ),
+                                                    ])
+                                                ))
+                                                case 'stack': return p_.ss($, ($) => sh.e.object_literal(
+                                                    p_.literal.list([
 
-                                                    sh.object_property(
-                                                        "no_such_entry",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['no such entry'])
-                                                                ]
+                                                        sh.object_property(
+                                                            "no_such_entry",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['no such entry'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                    sh.object_property(
-                                                        "no_context_lookup",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['no context lookup'])
-                                                                ]
+                                                        ),
+                                                        sh.object_property(
+                                                            "no_context_lookup",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['no context lookup'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                    sh.object_property(
-                                                        "cycle_detected",
-                                                        'identifier',
-                                                        sh.e.arrow_function_with_expression(
-                                                            [],
-                                                            null,
-                                                            sh.e.call(
-                                                                sh.e.identifier_raw("abort"),
-                                                                [
-                                                                    Assign($['abort handlers']['cycle detected'])
-                                                                ]
+                                                        ),
+                                                        sh.object_property(
+                                                            "cycle_detected",
+                                                            'identifier',
+                                                            sh.e.arrow_function_with_expression(
+                                                                p_.literal.list([]),
+                                                                null,
+                                                                sh.e.call(
+                                                                    sh.e.identifier_raw("abort"),
+                                                                    p_.literal.list([
+                                                                        Assign($['abort handlers']['cycle detected'])
+                                                                    ])
+                                                                )
                                                             )
-                                                        )
-                                                    ),
-                                                ]))
+                                                        ),
+                                                    ])
+                                                ))
                                                 default: return p_.au($[0])
                                             }
                                         }),
-                                ]
+                                ])
                             ))
                             case 'lookup entry depth': return p_.ss($, ($) => sh.e.call(
                                 sh.e.property_access(
                                     Select_Lookup($.lookup),
                                     sh.identifier_raw("get_entry_depth")
                                 ),
-                                [
+                                p_.literal.list([
                                     Assign($.id),
-                                    sh.e.object_literal([
-                                        sh.object_property(
-                                            "no_such_entry",
-                                            'identifier',
-                                            sh.e.arrow_function_with_expression(
-                                                [],
-                                                null,
-                                                sh.e.call(
-                                                    sh.e.identifier_raw("abort"),
-                                                    [
-                                                        Assign($['abort handlers']['no such entry'])
-                                                    ]
+                                    sh.e.object_literal(
+                                        p_.literal.list([
+                                            sh.object_property(
+                                                "no_such_entry",
+                                                'identifier',
+                                                sh.e.arrow_function_with_expression(
+                                                    p_.literal.list([]),
+                                                    null,
+                                                    sh.e.call(
+                                                        sh.e.identifier_raw("abort"),
+                                                        p_.literal.list([
+                                                            Assign($['abort handlers']['no such entry'])
+                                                        ])
+                                                    )
                                                 )
-                                            )
-                                        ),
-                                        sh.object_property(
-                                            "no_context_lookup",
-                                            'identifier',
-                                            sh.e.arrow_function_with_expression(
-                                                [],
-                                                null,
-                                                sh.e.call(
-                                                    sh.e.identifier_raw("abort"),
-                                                    [
-                                                        Assign($['abort handlers']['no context lookup'])
-                                                    ]
+                                            ),
+                                            sh.object_property(
+                                                "no_context_lookup",
+                                                'identifier',
+                                                sh.e.arrow_function_with_expression(
+                                                    p_.literal.list([]),
+                                                    null,
+                                                    sh.e.call(
+                                                        sh.e.identifier_raw("abort"),
+                                                        p_.literal.list([
+                                                            Assign($['abort handlers']['no context lookup'])
+                                                        ])
+                                                    )
                                                 )
-                                            )
-                                        ),
-                                        sh.object_property(
-                                            "cycle_detected",
-                                            'identifier',
-                                            sh.e.arrow_function_with_expression(
-                                                [],
-                                                null,
-                                                sh.e.call(
-                                                    sh.e.identifier_raw("abort"),
-                                                    [
-                                                        Assign($['abort handlers']['cycle detected'])
-                                                    ]
+                                            ),
+                                            sh.object_property(
+                                                "cycle_detected",
+                                                'identifier',
+                                                sh.e.arrow_function_with_expression(
+                                                    p_.literal.list([]),
+                                                    null,
+                                                    sh.e.call(
+                                                        sh.e.identifier_raw("abort"),
+                                                        p_.literal.list([
+                                                            Assign($['abort handlers']['cycle detected'])
+                                                        ])
+                                                    )
                                                 )
-                                            )
-                                        ),
-                                    ]),
-                                ]
+                                            ),
+                                        ])
+                                    ),
+                                ])
                             ))
                             case 'parameter': return p_.ss($, ($) => sh.e.element_access(
                                 sh.e.identifier_raw("$p"),
@@ -1383,19 +1396,19 @@ export const Select_Value = (
                             case 'state': return p_.ss($, ($) => sh.e.identifier_raw("state"))
                             case 'text from list': return p_.ss($, ($) => sh.e.call(
                                 sh.e.identifier_raw("p_text_from_list"),
-                                [
+                                p_.literal.list([
                                     Select_Value($.source),
                                     sh.e.arrow_function_with_expression(
-                                        [
+                                        p_.literal.list([
                                             sh.parameter(
                                                 sh.identifier_raw("$"),
                                                 null,
                                             )
-                                        ],
+                                        ]),
                                         null,
                                         Assign($['assign character'])
                                     )
-                                ]
+                                ])
                             ))
                             case 'variable': return p_.ss($, ($) => sh.e.identifier_escaped("var " + $))
                             default: return p_.au($[0])
@@ -1422,9 +1435,9 @@ export const Select_Lookup = (
                     sh.e.identifier_raw("_pdev"),
                     sh.identifier_raw("implement_me")
                 ),
-                [
+                p_.literal.list([
                     sh.e.string_literal(sh.string_literal($, 'quote'))
-                ]
+                ])
             ))
             case 'acyclic': return p_.ss($, ($) => p_.from.state($).decide(
                 ($) => {
@@ -1437,8 +1450,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("not_set")
                             ),
-                            [
-                            ]
+                            p_.literal.list([])
                         ))
                         case 'siblings': return p_.ss($, ($) => sh.e.identifier_raw("$a"))
                         case 'resolved dictionary': return p_.ss($, ($) => sh.e.call(
@@ -1449,9 +1461,9 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("from_resolved_dictionary")
                             ),
-                            [
+                            p_.literal.list([
                                 Select_Value($)
-                            ]
+                            ])
                         ))
                         default: return p_.au($[0])
                     }
@@ -1471,8 +1483,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("empty")
                             ),
-                            [
-                            ]
+                            p_.literal.list([])
                         ))
                         case 'push': return p_.ss($, ($) => sh.e.call(
                             sh.e.property_access(
@@ -1482,10 +1493,10 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("push")
                             ),
-                            [
+                            p_.literal.list([
                                 Select_Lookup($.stack),
                                 Select_Lookup($.acyclic)
-                            ]
+                            ])
                         ))
                         default: return p_.au($[0])
                     }
@@ -1501,8 +1512,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("not_set")
                             ),
-                            [
-                            ]
+                            p_.literal.list([])
                         ))
                         case 'siblings': return p_.ss($, ($) => sh.e.identifier_raw("$c"))
                         default: return p_.au($[0])

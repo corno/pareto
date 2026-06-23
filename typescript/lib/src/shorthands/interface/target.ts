@@ -1,6 +1,6 @@
-import * as p_ from 'pareto-core-shorthands/dist/unconstrained'
+import * as p_ from 'pareto-core-shorthands/dist/unconstrained_target'
 
-import * as d_out from "../interface/generated/liana/schemas/interface/data/resolved"
+import * as d_out from "../../interface/generated/liana/schemas/interface/data/resolved"
 
 
 const wrap_state = <T>(value: T): T => {
@@ -9,14 +9,14 @@ const wrap_state = <T>(value: T): T => {
 export namespace m {
 
     export const set = (
-        entries: p_.Raw_Or_Normal_Dictionary<d_out.Package_Set.D>
+        entries: p_.Normal_Dictionary<d_out.Package_Set.D>
     ): d_out.Package_Set.D => {
         return wrap_state(['set', p_.dictionary(entries)])
     }
 
     export const package_data = (
-        imports: p_.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
-        types: p_.Raw_Or_Normal_Dictionary<d_out.Package.content.data_modules.D>,
+        imports: p_.Normal_Dictionary<d_out.Imports.D>,
+        types: p_.Normal_Dictionary<d_out.Package.content.data_modules.D>,
     ): d_out.Package_Set.D => {
         return wrap_state(['package', {
             'imports': p_.dictionary(imports),
@@ -25,8 +25,8 @@ export namespace m {
     }
 
     export const package_functions = (
-        imports: p_.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
-        types: p_.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D>,
+        imports: p_.Normal_Dictionary<d_out.Imports.D>,
+        types: p_.Normal_Dictionary<d_out.Package.content.functions.D>,
     ): d_out.Package_Set.D => {
         return wrap_state(['package', {
             'imports': p_.dictionary(imports),
@@ -39,7 +39,7 @@ export namespace import_ {
 
     export const external = (
         id: string,
-        tail: p_.Raw_Or_Normal_List<string>,
+        tail: p_.Normal_List<string>,
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['external', id]),
@@ -49,7 +49,7 @@ export namespace import_ {
 
     export const sibling = (
         id: string,
-        tail: p_.Raw_Or_Normal_List<string>,
+        tail: p_.Normal_List<string>,
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['sibling', id]),
@@ -59,7 +59,7 @@ export namespace import_ {
     export const ancestor = (
         number_of_steps: number,
         id: string,
-        tail: p_.Raw_Or_Normal_List<string>,
+        tail: p_.Normal_List<string>,
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['ancestor', {
@@ -135,7 +135,7 @@ export namespace t {
     }
 
     export const group = (
-        properties: p_.Raw_Or_Normal_Dictionary<d_out.Value>
+        properties: p_.Normal_Dictionary<d_out.Value>
     ): d_out.Value => {
         return wrap_state(['group', p_.dictionary(properties)])
     }
@@ -170,7 +170,7 @@ export namespace t {
 
     export const reference = (
         location: d_out.Module_Reference,
-        sub_selection: p_.Raw_Or_Normal_List<d_out.Value.reference.sub_selection.L>,
+        sub_selection: p_.Normal_List<d_out.Value.reference.sub_selection.L>,
         cyclic?: 'cyclic' | 'acyclic'
     ): d_out.Value => {
         return wrap_state(['reference', {
@@ -184,7 +184,7 @@ export namespace t {
 
     // export const reference_sibling = (
     //     sibling: string,
-    //     sub_selection: p_.Raw_Or_Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
+    //     sub_selection: p_.Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
     // ): d_out.Value => {
     //     return wrap_state(['reference', ['acyclic', {
     //         'location': wrap_state(['local', sibling]),
@@ -203,7 +203,7 @@ export namespace t {
     // export const reference_imported = (
     //     imp: string,
     //     type: string,
-    //     sub_selection: p_.Raw_Or_Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
+    //     sub_selection: p_.Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
     // ): d_out.Value => {
     //     return wrap_state(['reference', ['acyclic', {
     //         'location': wrap_state(['import', {
@@ -216,7 +216,7 @@ export namespace t {
     // }
 
     export const state = (
-        states: p_.Raw_Or_Normal_Dictionary<d_out.Value>
+        states: p_.Normal_Dictionary<d_out.Value>
     ): d_out.Value => {
         return wrap_state(['state', p_.dictionary(states)])
     }
@@ -239,7 +239,7 @@ export namespace type {
     export const transformer = (
         context: d_out.Value,
         result: d_out.Value,
-        parameters: null | p_.Raw_Or_Normal_Dictionary<d_out.Value>,
+        parameters: null | p_.Normal_Dictionary<d_out.Value>,
     ): d_out.Package.content.functions.D => {
         return {
             'context': context,
@@ -253,8 +253,8 @@ export namespace type {
         context: d_out.Value,
         result: d_out.Value,
         error: null | d_out.Value,
-        lookups: null | p_.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D.type_.refiner.lookups.O.D>,
-        parameters: null | p_.Raw_Or_Normal_Dictionary<d_out.Value>,
+        lookups: null | p_.Normal_Dictionary<d_out.Package.content.functions.D.type_.refiner.lookups.O.D>,
+        parameters: null | p_.Normal_Dictionary<d_out.Value>,
     ): d_out.Package.content.functions.D => {
         return {
             'context': context,

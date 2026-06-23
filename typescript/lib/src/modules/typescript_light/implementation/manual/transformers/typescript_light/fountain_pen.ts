@@ -12,7 +12,7 @@ import * as d_out_fs from "pareto-fountain-pen-file-structure/dist/interface/dat
 import * as d_in from "../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 export namespace interface_ {
 

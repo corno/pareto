@@ -1,11 +1,11 @@
-import * as p_ from 'pareto-core-shorthands/dist/unconstrained'
+import * as p_ from 'pareto-core-shorthands/dist/unconstrained_target'
 import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
 
 //data types
-import * as d_target from "../../../interface/generated/liana/schemas/typescript_light/data"
+import * as d_target from "../../../../interface/generated/liana/schemas/typescript_light/data"
 
 //dependencies
-import * as t_text_to_identifier from "../implementation/manual/transformers/text/identifier"
+import * as t_text_to_identifier from "../../implementation/manual/transformers/text/identifier"
 
 export const identifier_raw = (
     name: string,
@@ -36,11 +36,11 @@ export const string_literal = (
 export namespace n {
 
     export const directory = (
-        children: p_.Raw_Or_Normal_Dictionary<d_target.Directory.D>,
+        children: p_.Normal_Dictionary<d_target.Directory.D>,
     ): d_target.Directory.D => ['directory', p_.dictionary(children)]
 
     export const file = (
-        statements: p_.Raw_Or_Normal_List<d_target.Statements.L>
+        statements: p_.Normal_List<d_target.Statements.L>
     ): d_target.Directory.D => {
         return ['file', {
             'statements': p_.list(statements),
@@ -64,14 +64,14 @@ export namespace sw {
 
     export const case_ = (
         expression: d_target.Expression,
-        statements: p_.Raw_Or_Normal_List<d_target.Statements.L>,
+        statements: p_.Normal_List<d_target.Statements.L>,
     ): d_target.Statements.L.switch_.clauses.L => ({
         'type': ['case', expression],
         'statements': p_.list(statements),
     })
 
     export const default_ = (
-        statements: p_.Raw_Or_Normal_List<d_target.Statements.L>,
+        statements: p_.Normal_List<d_target.Statements.L>,
     ): d_target.Statements.L.switch_.clauses.L => ({
         'type': ['default', null],
         'statements': p_.list(statements),
@@ -81,11 +81,11 @@ export namespace sw {
 export namespace s {
 
     export const block = (
-        statements: p_.Raw_Or_Normal_List<d_target.Statements.L>
+        statements: p_.Normal_List<d_target.Statements.L>
     ): d_target.Statements.L => ['block', p_.list(statements)]
 
     export const export_ = (
-        specifiers: p_.Raw_Or_Normal_List<d_target.Statements.L.export_.type_.named_exports.specifiers.L>,
+        specifiers: p_.Normal_List<d_target.Statements.L.export_.type_.named_exports.specifiers.L>,
         from: null | d_target.String_Literal,
     ): d_target.Statements.L => ['export', {
         'type': ['named exports', {
@@ -99,7 +99,7 @@ export namespace s {
     ): d_target.Statements.L => ['expression', expression]
 
     export const import_named = (
-        specifiers: p_.Raw_Or_Normal_List<d_target.Statements.L.import_.type_.named.specifiers.L>,
+        specifiers: p_.Normal_List<d_target.Statements.L.import_.type_.named.specifiers.L>,
         from: d_target.String_Literal
     ): d_target.Statements.L => ['import', {
         'type': ['named', {
@@ -130,7 +130,7 @@ export namespace s {
     export const namespace = (
         export_: boolean,
         name: d_target.Identifier,
-        block: p_.Raw_Or_Normal_List<d_target.Statements.L>,
+        block: p_.Normal_List<d_target.Statements.L>,
     ): d_target.Statements.L => ['module declaration', {
         'export': export_,
         'name': name,
@@ -143,7 +143,7 @@ export namespace s {
 
     export const switch_ = (
         expression: d_target.Expression,
-        clauses: p_.Raw_Or_Normal_List<d_target.Statements.L.switch_.clauses.L>,
+        clauses: p_.Normal_List<d_target.Statements.L.switch_.clauses.L>,
     ): d_target.Statements.L => ['switch', {
         'expression': expression,
         'clauses': p_.list(clauses),
@@ -152,7 +152,7 @@ export namespace s {
     export const type_alias = (
         export_: boolean,
         name: d_target.Identifier,
-        parameters: p_.Raw_Or_Normal_List<d_target.Identifier>,
+        parameters: p_.Normal_List<d_target.Identifier>,
         type: d_target.Type,
     ): d_target.Statements.L => ['type alias declaration', {
         'export': export_,
@@ -217,8 +217,8 @@ export namespace t {
     }
 
     export const function_ = (
-        type_parameters: p_.Raw_Or_Normal_List<d_target.Type>,
-        parameters: p_.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
+        type_parameters: p_.Normal_List<d_target.Type>,
+        parameters: p_.Normal_List<d_target.Function_Parameters.L>,
         return_: d_target.Type,
     ): d_target.Type => {
         return ['function', {
@@ -256,7 +256,7 @@ export namespace t {
 
     export const tuple = (
         read_only: 'readonly' | '',
-        elements: p_.Raw_Or_Normal_List<d_target.Type>): d_target.Type => {
+        elements: p_.Normal_List<d_target.Type>): d_target.Type => {
         return ['tuple', {
             'readonly': read_only === 'readonly',
             'elements': p_.list(elements)
@@ -264,7 +264,7 @@ export namespace t {
     }
 
     export const type_literal = (
-        properties: p_.Raw_Or_Normal_List<d_target.Type.type_literal.properties.L>
+        properties: p_.Normal_List<d_target.Type.type_literal.properties.L>
     ): d_target.Type => {
         return ['type literal', {
             'properties': p_.list(properties),
@@ -273,8 +273,8 @@ export namespace t {
 
     export const type_reference = (
         start: d_target.Identifier,
-        tail: p_.Raw_Or_Normal_List<d_target.Identifier>,
-        type_arguments: p_.Raw_Or_Normal_List<d_target.Type>,
+        tail: p_.Normal_List<d_target.Identifier>,
+        type_arguments: p_.Normal_List<d_target.Type>,
     ): d_target.Type => {
         return ['type reference', {
             'start': start,
@@ -284,7 +284,7 @@ export namespace t {
     }
 
     export const union = (
-        cases: p_.Raw_Or_Normal_List<d_target.Type>
+        cases: p_.Normal_List<d_target.Type>
     ): d_target.Type => {
         return ['union', p_.list(cases)]
     }
@@ -300,11 +300,11 @@ export namespace t {
 export namespace e {
 
     export const array_literal = (
-        elements: p_.Raw_Or_Normal_List<d_target.Expression>
+        elements: p_.Normal_List<d_target.Expression>
     ): d_target.Expression => ['array literal', p_.list(elements)]
 
     export const arrow_function_with_expression = (
-        parameters: p_.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
+        parameters: p_.Normal_List<d_target.Function_Parameters.L>,
         return_type: null | d_target.Type,
         expression: d_target.Expression,
     ): d_target.Expression => ['arrow function', {
@@ -314,9 +314,9 @@ export namespace e {
     }]
 
     export const arrow_function_with_block = (
-        parameters: p_.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
+        parameters: p_.Normal_List<d_target.Function_Parameters.L>,
         return_type: null | d_target.Type,
-        block: p_.Raw_Or_Normal_List<d_target.Statements.L>,
+        block: p_.Normal_List<d_target.Statements.L>,
     ): d_target.Expression => ['arrow function', {
         'parameters': p_.list(parameters),
         'return type': return_type === null ? p_.optional.not_set() : p_.optional.set(return_type),
@@ -333,8 +333,8 @@ export namespace e {
 
     export const call = (
         function_selection: d_target.Expression,
-        // type_arguments: p_.Raw_Or_Normal_List<d_target.Type>,
-        arguments_: p_.Raw_Or_Normal_List<d_target.Expression>,
+        // type_arguments: p_.Normal_List<d_target.Type>,
+        arguments_: p_.Normal_List<d_target.Expression>,
     ): d_target.Expression => ['call', {
         'function selection': function_selection,
         'arguments': p_.list(arguments_),
@@ -420,7 +420,7 @@ export namespace e {
     ): d_target.Expression => ['number literal', value]
 
     export const object_literal = (
-        properties: p_.Raw_Or_Normal_List<d_target.Expression.object_literal.properties.L>
+        properties: p_.Normal_List<d_target.Expression.object_literal.properties.L>
     ): d_target.Expression => ['object literal', {
         'properties': p_.list(properties),
     }]
