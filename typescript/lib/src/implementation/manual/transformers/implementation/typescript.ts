@@ -101,7 +101,8 @@ export const Package_Set: p_ri.Refiner<
                                     ? p_.literal.list([
                                         sh.s.import_named(
                                             p_.literal.list([
-                                                sh.specifier(sh.identifier_raw("p_change_context"), null),
+                                                sh.specifier(
+sh.identifier_raw("p_change_context"), null),
                                             ]),
                                             sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
                                         )
@@ -184,21 +185,25 @@ export const Package_Set: p_ri.Refiner<
                                         sh.e.arrow_function_with_expression(
                                             p_.literal.segmented_list([
                                                 p_.literal.list([
-                                                    sh.parameter(sh.identifier_raw("$"), null),
+                                                    sh.parameter(
+sh.identifier_raw("$"), null),
                                                 ]),
                                                 $['temp has abort']
                                                     ? p_.literal.list([
-                                                        sh.parameter(sh.identifier_raw("abort"), null),
+                                                        sh.parameter(
+sh.identifier_raw("abort"), null),
                                                     ])
                                                     : p_.literal.list([]),
                                                 $['temp has lookups']
                                                     ? p_.literal.list([
-                                                        sh.parameter(sh.identifier_raw("$l"), null),
+                                                        sh.parameter(
+sh.identifier_raw("$l"), null),
                                                     ])
                                                     : p_.literal.list([]),
                                                 $['temp has parameters']
                                                     ? p_.literal.list([
-                                                        sh.parameter(sh.identifier_raw("$p"), null),
+                                                        sh.parameter(
+sh.identifier_raw("$p"), null),
                                                     ])
                                                     : p_.literal.list([])
                                             ]),
@@ -275,7 +280,8 @@ export const Assign: p_i.Transformer<
                                         selection,
                                         sh.e.arrow_function_with_expression(
                                             p_.literal.list([
-                                                sh.parameter(sh.identifier_raw("$"), null)
+                                                sh.parameter(
+sh.identifier_raw("$"), null)
                                             ]),
                                             p_.from.optional($['temp resulting node']).decide(
                                                 ($) => Temp_Value_Type_Specification($),
@@ -304,7 +310,8 @@ export const Assign: p_i.Transformer<
                                         selection,
                                         sh.e.arrow_function_with_block(
                                             p_.literal.list([
-                                                sh.parameter(sh.identifier_raw("$"), null)
+                                                sh.parameter(
+sh.identifier_raw("$"), null)
                                             ]),
                                             p_.from.optional($['temp resulting node']).decide(
                                                 ($) => Temp_Value_Type_Specification($),
@@ -332,9 +339,11 @@ export const Assign: p_i.Transformer<
                                                             })
                                                         ).convert_to_list(
                                                             ($, id) => sh.sw.case_(
-                                                                sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
+                                                                sh.e.string_literal(
+sh.string_literal(id, 'apostrophe')),
                                                                 p_.literal.list([
-                                                                    sh.s.return_(sh.e.call(
+                                                                    sh.s.return_(
+sh.e.call(
                                                                         sh.e.property_access(
                                                                             sh.e.identifier_raw("pt"),
                                                                             sh.identifier_raw('ss'),
@@ -343,7 +352,8 @@ export const Assign: p_i.Transformer<
                                                                             sh.e.identifier_raw("$"),
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null)
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null)
                                                                                 ]),
                                                                                 null,
                                                                                 Assign($)
@@ -396,7 +406,8 @@ export const Assign: p_i.Transformer<
                                         selection,
                                         sh.e.arrow_function_with_block(
                                             p_.literal.list([
-                                                sh.parameter(sh.identifier_raw("$t"), null)
+                                                sh.parameter(
+sh.identifier_raw("$t"), null)
                                             ]),
                                             p_.from.optional($['temp resulting node']).decide(
                                                 ($) => Temp_Value_Type_Specification($),
@@ -408,7 +419,8 @@ export const Assign: p_i.Transformer<
                                                     p_.literal.chain(
                                                         p_.from.dictionary($.cases).convert_to_list(
                                                             ($, id) => sh.sw.case_(
-                                                                sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
+                                                                sh.e.string_literal(
+sh.string_literal(id, 'apostrophe')),
                                                                 p_.literal.list([
                                                                     sh.s.return_(Assign($))
                                                                 ])
@@ -530,8 +542,10 @@ export const Assign: p_i.Transformer<
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null),
-                                                                                    sh.parameter(sh.identifier_raw("id"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("id"), null),
                                                                                 ]),
                                                                                 null,
                                                                                 Assign($['assign entry'])
@@ -560,10 +574,14 @@ export const Assign: p_i.Transformer<
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null),
-                                                                                    sh.parameter(sh.identifier_raw("id"), null),
-                                                                                    sh.parameter(sh.identifier_raw("$a"), null),
-                                                                                    sh.parameter(sh.identifier_raw("$c"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("id"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("$a"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("$c"), null),
                                                                                 ]),
                                                                                 Temp_Value_Type_Specification($['temp resulting entry node']),
                                                                                 Assign($['assign entry'])
@@ -616,7 +634,8 @@ export const Assign: p_i.Transformer<
                                                                     null,
                                                                     Assign($)
                                                                 )),
-                                                            sh.s.return_(sh.e.object_literal(
+                                                            sh.s.return_(
+sh.e.object_literal(
                                                                 p_.from.dictionary($).convert_to_list(
                                                                     ($, id) => sh.object_property(
                                                                         id,
@@ -698,7 +717,8 @@ export const Assign: p_i.Transformer<
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null)
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null)
                                                                                 ]),
                                                                                 null,
                                                                                 Assign($['assign item'])
@@ -718,23 +738,28 @@ export const Assign: p_i.Transformer<
                                                                             Assign($['initialize state']),
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null)
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null)
                                                                                 ]),
                                                                                 null,
                                                                                 Assign($['assign item'])
                                                                             ),
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null),
-                                                                                    sh.parameter(sh.identifier_raw("state"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("state"), null),
                                                                                 ]),
                                                                                 null,
                                                                                 Assign($['update state'])
                                                                             ),
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null),
-                                                                                    sh.parameter(sh.identifier_raw("state"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null),
+                                                                                    sh.parameter(
+sh.identifier_raw("state"), null),
                                                                                 ]),
                                                                                 null,
                                                                                 Assign($['wrap up'])
@@ -864,7 +889,8 @@ export const Assign: p_i.Transformer<
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
-                                                                                    sh.parameter(sh.identifier_raw("$"), null)
+                                                                                    sh.parameter(
+sh.identifier_raw("$"), null)
                                                                                 ]),
                                                                                 null,
                                                                                 Assign($['assign set'])
@@ -886,7 +912,8 @@ export const Assign: p_i.Transformer<
                                 switch ($[0]) {
                                     case 'literal': return p_.ss($, ($) => sh.e.array_literal(
                                         p_.literal.list([
-                                            sh.e.string_literal(sh.string_literal($.option, 'apostrophe')),
+                                            sh.e.string_literal(
+sh.string_literal($.option, 'apostrophe')),
                                             Assign($['assign option'])
                                         ])
                                     ))
@@ -896,7 +923,8 @@ export const Assign: p_i.Transformer<
                         case 'text': return p_.ss($, ($) => p_.from.state($).decide(
                             ($) => {
                                 switch ($[0]) {
-                                    case 'literal': return p_.ss($, ($) => sh.e.string_literal(sh.string_literal($.value, p_.from.state($.type).decide(
+                                    case 'literal': return p_.ss($, ($) => sh.e.string_literal(
+sh.string_literal($.value, p_.from.state($.type).decide(
                                         ($) => {
                                             switch ($[0]) {
                                                 case 'freeform': return p_.ss($, ($) => 'quote')
@@ -948,7 +976,8 @@ export const Assign: p_i.Transformer<
                                 Select_Value($['new context']),
                                 sh.e.arrow_function_with_expression(
                                     p_.literal.list([
-                                        sh.parameter(sh.identifier_raw("$"), null)
+                                        sh.parameter(
+sh.identifier_raw("$"), null)
                                     ]),
                                     null,
                                     Assign($['expression'])
@@ -961,14 +990,16 @@ export const Assign: p_i.Transformer<
                                 sh.identifier_raw("implement_me")
                             ),
                             p_.literal.list([
-                                sh.e.string_literal(sh.string_literal($, 'quote'))
+                                sh.e.string_literal(
+sh.string_literal($, 'quote'))
                             ])
                         ))
                         case 'iterate': return p_.ss($, ($) => p_implement_me("X23"))
                         case 'unreachable': return p_.ss($, ($) => sh.e.call(
                             sh.e.identifier_raw("p_unreachable_code_path"),
                             p_.literal.list([
-                                sh.e.string_literal(sh.string_literal($.explanation, 'quote'))
+                                sh.e.string_literal(
+sh.string_literal($.explanation, 'quote'))
                             ])
                         ))
                         case 'variables': return p_.ss($, ($) => sh.e.call(
@@ -1029,7 +1060,8 @@ export const Select_Value = (
                     sh.identifier_raw("implement_me")
                 ),
                 p_.literal.list([
-                    sh.e.string_literal(sh.string_literal($, 'quote'))
+                    sh.e.string_literal(
+sh.string_literal($, 'quote'))
                 ])
             ))
             case 'regular': return p_.ss($, ($) => reduce(
@@ -1057,7 +1089,8 @@ export const Select_Value = (
                                         ($) => p_.literal.list([
                                             sh.e.arrow_function_with_expression(
                                                 p_.literal.list([
-                                                    sh.parameter(sh.identifier_raw("$"), null)
+                                                    sh.parameter(
+sh.identifier_raw("$"), null)
                                                 ]),
                                                 null,
                                                 sh.e.call(
@@ -1389,7 +1422,8 @@ export const Select_Value = (
                             ))
                             case 'parameter': return p_.ss($, ($) => sh.e.element_access(
                                 sh.e.identifier_raw("$p"),
-                                sh.e.string_literal(sh.string_literal($, 'apostrophe'))
+                                sh.e.string_literal(
+sh.string_literal($, 'apostrophe'))
                             ))
                             case 'parent sibling': return p_.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
                             case 'sibling': return p_.ss($, ($) => sh.e.identifier_escaped("prop " + $))
@@ -1417,7 +1451,8 @@ export const Select_Value = (
                 ($, current_expression) => {
                     return sh.e.element_access(
                         current_expression,
-                        sh.e.string_literal(sh.string_literal($, 'apostrophe'))
+                        sh.e.string_literal(
+sh.string_literal($, 'apostrophe'))
                     )
                 }
             ))
@@ -1436,7 +1471,8 @@ export const Select_Lookup = (
                     sh.identifier_raw("implement_me")
                 ),
                 p_.literal.list([
-                    sh.e.string_literal(sh.string_literal($, 'quote'))
+                    sh.e.string_literal(
+sh.string_literal($, 'quote'))
                 ])
             ))
             case 'acyclic': return p_.ss($, ($) => p_.from.state($).decide(
@@ -1470,7 +1506,8 @@ export const Select_Lookup = (
                 }))
             case 'from parameter': return p_.ss($, ($) => sh.e.element_access(
                 sh.e.identifier_raw("$l"),
-                sh.e.string_literal(sh.string_literal($, 'apostrophe'))
+                sh.e.string_literal(
+sh.string_literal($, 'apostrophe'))
             ))
             case 'stack': return p_.ss($, ($) => p_.from.state($).decide(
                 ($) => {

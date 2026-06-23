@@ -574,7 +574,8 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                             sh.ph.literal(" "),
                             sh.ph.composed([
                                 sh.ph.literal("{"),
-                                sh.ph.indent(sh.pg.composed([
+                                sh.ph.indent(
+sh.pg.composed([
                                     Statements($.block, $p),
                                     sh.pg.sentences([
                                         sh.sentence([]),
@@ -611,7 +612,8 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                                 }
                             ),
                             sh.ph.literal(") {"),
-                            sh.ph.indent(sh.pg.sentences(
+                            sh.ph.indent(
+sh.pg.sentences(
                                 p_.from.list($.clauses).map(
                                     ($) => sh.sentence([
                                         p_.from.state($.type).decide(
@@ -809,7 +811,8 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
             ]))
             case 'conditional': return p_.ss($, ($) => sh.ph.composed([
                 Expression($.condition, $p),
-                sh.ph.indent(sh.pg.sentences([
+                sh.ph.indent(
+sh.pg.sentences([
                     sh.sentence([
                         sh.ph.literal("? "),
                         Expression($['if true'],

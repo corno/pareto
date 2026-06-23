@@ -118,7 +118,8 @@ export const Package_Set: p_ri.Refiner<
             switch ($[0]) {
                 case 'package': return p_.ss($, ($) => sh.n.file(p_.literal.segmented_list<d_out.Statements_.L>([
                     p_.literal.list([
-                        sh.s.import_namespace(sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
+                        sh.s.import_namespace(
+sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
                     ]),
 
                     p_.from.dictionary($.imports,).convert_to_list(
@@ -267,7 +268,8 @@ export const Package_Set: p_ri.Refiner<
                                                                                         sh.identifier_raw("pi"),
                                                                                         p_.literal.list([sh.identifier_raw("Abort")]),
                                                                                         p_.literal.list([
-                                                                                            sh.t.type_reference(sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("E")]), p_.literal.list([])),
+                                                                                            sh.t.type_reference(
+sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("E")]), p_.literal.list([])),
                                                                                         ])
                                                                                     ),
 
@@ -301,7 +303,8 @@ export const Package_Set: p_ri.Refiner<
                                                                                                             }))
                                                                                                     ]),
                                                                                                     p_.literal.list([
-                                                                                                        sh.t.type_reference(sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("L"), sh.identifier_escaped(id)]), p_.literal.list([]))
+                                                                                                        sh.t.type_reference(
+sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("L"), sh.identifier_escaped(id)]), p_.literal.list([]))
                                                                                                     ])
                                                                                                 )
                                                                                             ))
@@ -326,7 +329,8 @@ export const Package_Set: p_ri.Refiner<
                                                                                 id,
                                                                                 'apostrophized string literal',
                                                                                 true,
-                                                                                sh.t.type_reference(sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("P"), sh.identifier_escaped(id)]), p_.literal.list([]))
+                                                                                sh.t.type_reference(
+sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("P"), sh.identifier_escaped(id)]), p_.literal.list([]))
                                                                             )),
                                                                     )
                                                                 ),
@@ -335,7 +339,8 @@ export const Package_Set: p_ri.Refiner<
                                                             () => p_.literal.list([])
                                                         ),
                                                     ]),
-                                                    sh.t.type_reference(sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("O")]), p_.literal.list([])),
+                                                    sh.t.type_reference(
+sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("O")]), p_.literal.list([])),
                                                 )
                                             )
                                         ])
@@ -351,10 +356,12 @@ export const Package_Set: p_ri.Refiner<
                                 ($) => {
                                     switch ($[0]) {
                                         case 'data modules': return p_.ss($, ($) => p_.from.dictionary($).convert_to_list(
-                                            ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                            ($, id) => sh.specifier(
+sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
                                         case 'functions': return p_.ss($, ($) => p_.from.dictionary($).convert_to_list(
-                                            ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                            ($, id) => sh.specifier(
+sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
                                         default: return p_.au($[0])
                                     }
