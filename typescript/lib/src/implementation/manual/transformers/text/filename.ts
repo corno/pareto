@@ -7,7 +7,9 @@ import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
 
-export type Signature = p_i.Transformer<string, d_out.List_of_Characters>
+export type Signature = p_i.Transformer<
+string, d_out.List_of_Characters
+>
 
 export const $$: Signature = ($) => {
     return p_list_build_deprecated(
