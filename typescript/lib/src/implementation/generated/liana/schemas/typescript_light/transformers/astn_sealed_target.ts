@@ -17,7 +17,7 @@ import * as v_primitives_to_text from "liana-core/dist/implementation/manual/tra
 
 export const Directory: t_signatures.Directory = ($) => ['dictionary', p_.from.dictionary($,
 ).map(
-    ($, id) => ['state', p_decide_state(
+    ($, id): t_out.Value => ['state', p_decide_state(
         $,
         ($): t_out.Value.state => {
             switch ($[0]) {

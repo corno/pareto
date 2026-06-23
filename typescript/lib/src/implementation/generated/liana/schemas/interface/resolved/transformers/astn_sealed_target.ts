@@ -17,7 +17,7 @@ import * as v_primitives_to_text from "liana-core/dist/implementation/manual/tra
 
 export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.from.dictionary($,
 ).map(
-    ($, id) => ['state', p_decide_state(
+    ($, id): t_out.Value => ['state', p_decide_state(
         $,
         ($): t_out.Value.state => {
             switch ($[0]) {
@@ -84,7 +84,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                     'option': 'functions',
                                     'value': ['dictionary', p_.from.dictionary($,
                                     ).map(
-                                        ($, id) => ['group', ['verbose', p_.literal.dictionary(
+                                        ($, id): t_out.Value => ['group', ['verbose', p_.literal.dictionary(
                                             {
                                                 "result": p_change_context(
                                                     $['result'],
@@ -135,7 +135,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                                                                             $,
                                                                                             ($): t_out.Value.optional => ['set', ['dictionary', p_.from.dictionary($,
                                                                                             ).map(
-                                                                                                ($, id) => ['state', p_decide_state(
+                                                                                                ($, id): t_out.Value => ['state', p_decide_state(
                                                                                                     $,
                                                                                                     ($): t_out.Value.state => {
                                                                                                         switch ($[0]) {
@@ -223,7 +223,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
 
 export const Imports: t_signatures.Imports = ($) => ['dictionary', p_.from.dictionary($,
 ).map(
-    ($, id) => ['group', ['verbose', p_.literal.dictionary(
+    ($, id): t_out.Value => ['group', ['verbose', p_.literal.dictionary(
         {
             "type": p_change_context(
                 $['type'],

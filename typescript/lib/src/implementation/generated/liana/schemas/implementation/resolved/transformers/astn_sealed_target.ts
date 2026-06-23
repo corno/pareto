@@ -1,9 +1,9 @@
 
 import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_di from 'pareto-core/dist/interface/data'
-const p_decide_state = <State, B>($: State,  assign: ($: State) => B) => assign($)
-const p_decide_optional = <OV extends p_di.Value, B extends p_di.Value>($: p_di.Optional_Value<OV>,  assign: ($: OV) => B,  otherwise: () => B) => p_.from.optional($).decide(assign, otherwise)
-const p_decide_text = <B>($: string,  assign: ($: string) => B) => assign($)
+const p_decide_state = <State, B>($: State, assign: ($: State) => B) => assign($)
+const p_decide_optional = <OV extends p_di.Value, B extends p_di.Value>($: p_di.Optional_Value<OV>, assign: ($: OV) => B, otherwise: () => B) => p_.from.optional($).decide(assign, otherwise)
+const p_decide_text = <B>($: string, assign: ($: string) => B) => assign($)
 
 import p_change_context from 'pareto-core/dist/implementation/refiner/specials/change_context'
 
@@ -17,9 +17,8 @@ import * as v_primitives_to_text from "liana-core/dist/implementation/manual/tra
 
 import * as v_external_interface from "../../../interface/resolved/transformers/astn_sealed_target"
 
-export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.from.dictionary($,
-).map(
-    ($, id) => ['state', p_decide_state(
+export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.from.dictionary($).map(
+    ($, id): t_out.Value => ['state', p_decide_state(
         $,
         ($): t_out.Value.state => {
             switch ($[0]) {
@@ -152,13 +151,13 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
             $['variable imports'],
             ($) => ['dictionary', p_.from.dictionary($,
             ).map(
-                ($, id) => ['group', ['verbose', p_.literal.dictionary(
+                ($, id): t_out.Value => ['group', ['verbose', p_.literal.dictionary(
                     {
                         "tail": p_change_context(
                             $['tail'],
                             ($) => ['list', p_.from.list($,
                             ).map(
-                                ($) => ['text', {
+                                ($): t_out.Value => ['text', {
                                     'delimiter': ['quote', null],
                                     'value': $,
                                 }],
@@ -235,7 +234,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
             $['functions'],
             ($) => ['dictionary', p_.from.dictionary($,
             ).map(
-                ($, id) => ['group', ['verbose', p_.literal.dictionary(
+                ($, id): t_out.Value => ['group', ['verbose', p_.literal.dictionary(
                     {
                         "type": p_change_context(
                             $['type'],

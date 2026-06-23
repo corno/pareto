@@ -68,7 +68,7 @@ export const Package_Set: p_ri.Refiner<
     $,
     abort
 ) => {
-        return temp_rename($, abort).__d_map_deprecated(
+        return p_.from.dictionary(temp_rename($, abort)).map(
             ($, id) => p_.from.state($).decide(
                 ($) => {
                     switch ($[0]) {
