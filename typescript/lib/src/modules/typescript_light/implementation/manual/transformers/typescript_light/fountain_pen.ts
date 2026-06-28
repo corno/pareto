@@ -408,7 +408,7 @@ export const float: interface_.float = ($) => {
                     let digits_output = 0
 
                     // Output all digits from highest, but ensure we output at least decimal_pos digits before decimal
-                    let min_digits_needed = decimal_pos
+                    // let min_digits_needed = decimal_pos
 
                     for (let i = digit_count - 1; i >= 0; i--) {
                         // Stop after we've output all significant fractional digits
