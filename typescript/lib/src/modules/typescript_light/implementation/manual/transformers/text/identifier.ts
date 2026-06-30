@@ -98,11 +98,11 @@ export const Identifier: p_i.Transformer<
             }),
         () => p_list_build_deprecated(
             ($i) => {
-                const characters = p_list_from_text(
+                const $v_characters = p_list_from_text(
                     the_string,
                     ($) => $
                 )
-                const length = p_.from.list(characters).amount_of_items()
+                const length = p_.from.list($v_characters).amount_of_items()
 
                 let position = 0
 
@@ -116,7 +116,7 @@ export const Identifier: p_i.Transformer<
                         if (position === length) {
                             return null
                         }
-                        return p_.from.optional(characters.__deprecated_get_possible_item_at(position)).decide(
+                        return p_.from.optional($v_characters.__deprecated_get_possible_item_at(position)).decide(
                             ($) => $,
                             () => null
                         )

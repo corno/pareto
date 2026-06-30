@@ -21,7 +21,7 @@ export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
             ($) => p_.from.state($).decide(
                 ($) => {
                     switch ($[0]) {
-                        case 'directory name ending with ts': return p_.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
+                        case 'directory name ending with ts': return p_.option($, () => p_unreachable_code_path("I think this needs proper implementation"))
                         default: return p_.au($[0])
                     }
                 })

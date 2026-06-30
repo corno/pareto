@@ -23,7 +23,7 @@ export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.fr
         ($): t_out.Value.state => {
             switch ($[0]) {
                 case 'package':
-                    return p_.ss(
+                    return p_.option(
                         $,
                         ($) => ({
                             'option': 'package',
@@ -33,7 +33,7 @@ export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', p_.fr
                         }),
                     )
                 case 'set':
-                    return p_.ss(
+                    return p_.option(
                         $,
                         ($) => ({
                             'option': 'set',
@@ -170,7 +170,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                 ($): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'ancestor':
-                                            return p_.ss(
+                                            return p_.option(
                                                 $,
                                                 ($) => ({
                                                     'option': 'ancestor',
@@ -197,7 +197,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                                 }),
                                             )
                                         case 'external':
-                                            return p_.ss(
+                                            return p_.option(
                                                 $,
                                                 ($) => ({
                                                     'option': 'external',
@@ -208,7 +208,7 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', p_.lit
                                                 }),
                                             )
                                         case 'sibling':
-                                            return p_.ss(
+                                            return p_.option(
                                                 $,
                                                 ($) => ({
                                                     'option': 'sibling',
@@ -329,7 +329,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                     ($): t_out.Value.state => {
                         switch ($[0]) {
                             case 'dictionary':
-                                return p_.ss(
+                                return p_.option(
                                     $,
                                     ($) => ({
                                         'option': 'dictionary',
@@ -337,7 +337,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     }),
                                 )
                             case 'group':
-                                return p_.ss(
+                                return p_.option(
                                     $,
                                     ($) => ({
                                         'option': 'group',
@@ -348,7 +348,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     }),
                                 )
                             case 'list':
-                                return p_.ss(
+                                return p_.option(
                                     $,
                                     ($) => ({
                                         'option': 'list',
@@ -356,7 +356,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     }),
                                 )
                             case 'optional':
-                                return p_.ss(
+                                return p_.option(
                                     $,
                                     ($) => ({
                                         'option': 'optional',
@@ -364,7 +364,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     }),
                                 )
                             case 'state':
-                                return p_.ss(
+                                return p_.option(
                                     $,
                                     ($) => ({
                                         'option': 'state',
@@ -391,7 +391,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
     ($): t_out.Value.state => {
         switch ($[0]) {
             case 'decide':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'decide',
@@ -410,7 +410,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                         ($): t_out.Value.state => {
                                             switch ($[0]) {
                                                 case 'boolean':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'boolean',
@@ -443,7 +443,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                         }),
                                                     )
                                                 case 'optional':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'optional',
@@ -476,7 +476,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                         }),
                                                     )
                                                 case 'state':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'state',
@@ -499,7 +499,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'partial':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'partial',
@@ -525,7 +525,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'full':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'full',
@@ -545,7 +545,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'single':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'single',
@@ -587,7 +587,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                         }),
                                                     )
                                                 case 'text':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'text',
@@ -635,7 +635,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                     }),
                 )
             case 'construct':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'construct',
@@ -644,7 +644,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                             ($): t_out.Value.state => {
                                 switch ($[0]) {
                                     case 'boolean':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'boolean',
@@ -653,7 +653,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'literal':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
@@ -662,7 +662,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'false':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'false',
@@ -670,7 +670,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'true':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'true',
@@ -687,7 +687,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'from':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
@@ -706,7 +706,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                         ($): t_out.Value.state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'boolean':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'boolean',
@@ -715,7 +715,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'not':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'not',
@@ -723,7 +723,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                                 }),
                                                                                                                             )
                                                                                                                         case 'copy':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'copy',
@@ -740,7 +740,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                         }),
                                                                                                     )
                                                                                                 case 'dictionary':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'dictionary',
@@ -749,7 +749,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'is empty':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'is empty',
@@ -766,7 +766,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                         }),
                                                                                                     )
                                                                                                 case 'list':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'list',
@@ -775,7 +775,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'is empty':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'is empty',
@@ -813,7 +813,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'dictionary':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'dictionary',
@@ -822,7 +822,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'literal':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
@@ -835,7 +835,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'from':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
@@ -854,7 +854,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                         ($): t_out.Value.state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'dictionary':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'dictionary',
@@ -863,7 +863,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'filter':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'filter',
@@ -880,7 +880,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                                 }),
                                                                                                                             )
                                                                                                                         case 'map':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map',
@@ -897,7 +897,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                                 }),
                                                                                                                             )
                                                                                                                         case 'resolve':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'resolve',
@@ -929,7 +929,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                         }),
                                                                                                     )
                                                                                                 case 'list':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'list',
@@ -938,7 +938,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'convert':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'convert',
@@ -997,7 +997,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'group':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'group',
@@ -1006,7 +1006,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'literal':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
@@ -1044,7 +1044,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'list':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'list',
@@ -1053,7 +1053,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'literal':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
@@ -1066,7 +1066,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'from':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
@@ -1085,7 +1085,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                         ($): t_out.Value.state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'dictionary':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'dictionary',
@@ -1094,7 +1094,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'convert':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'convert',
@@ -1120,7 +1120,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                         }),
                                                                                                     )
                                                                                                 case 'list':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'list',
@@ -1129,7 +1129,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'filter':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'filter',
@@ -1146,7 +1146,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                                 }),
                                                                                                                             )
                                                                                                                         case 'map':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map',
@@ -1163,7 +1163,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                                 }),
                                                                                                                             )
                                                                                                                         case 'map with state':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map with state',
@@ -1198,7 +1198,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                                 }),
                                                                                                                             )
                                                                                                                         case 'reduce':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'reduce',
@@ -1221,7 +1221,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                                 }),
                                                                                                                             )
                                                                                                                         case 'reverse':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'reverse',
@@ -1259,7 +1259,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'nothing':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'nothing',
@@ -1267,7 +1267,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'number':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'number',
@@ -1276,7 +1276,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'approximation':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'approximation',
@@ -1285,7 +1285,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'literal':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'literal',
@@ -1301,7 +1301,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'copy':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'copy',
@@ -1320,7 +1320,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'integer':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'integer',
@@ -1329,7 +1329,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'copy':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'copy',
@@ -1339,7 +1339,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'divide':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'divide',
@@ -1368,7 +1368,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'literal':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'literal',
@@ -1390,7 +1390,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'natural':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'natural',
@@ -1399,7 +1399,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'literal':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'literal',
@@ -1412,7 +1412,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'copy':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'copy',
@@ -1422,7 +1422,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'number of dictionary entries':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'number of dictionary entries',
@@ -1439,7 +1439,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'number of list items':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'number of list items',
@@ -1456,7 +1456,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'source column':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'source column',
@@ -1464,7 +1464,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'source line':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'source line',
@@ -1490,7 +1490,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'optional':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'optional',
@@ -1499,7 +1499,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'literal':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
@@ -1508,7 +1508,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'not set':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'not set',
@@ -1516,7 +1516,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                             }),
                                                                                         )
                                                                                     case 'set':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'set',
@@ -1535,7 +1535,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'from':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
@@ -1554,7 +1554,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                         ($): t_out.Value.state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'boolean':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'boolean',
@@ -1563,7 +1563,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'convert':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'convert',
@@ -1589,7 +1589,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                         }),
                                                                                                     )
                                                                                                 case 'optional':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'optional',
@@ -1598,7 +1598,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'map':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'map',
@@ -1645,7 +1645,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'state':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'state',
@@ -1654,7 +1654,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'literal':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
@@ -1687,7 +1687,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'text':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'text',
@@ -1696,7 +1696,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                     ($): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'literal':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
@@ -1709,7 +1709,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                         ($): t_out.Value.state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'identifier':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'identifier',
@@ -1717,7 +1717,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                         }),
                                                                                                     )
                                                                                                 case 'freeform':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'freeform',
@@ -1744,7 +1744,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'from':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'from',
@@ -1763,7 +1763,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                         ($): t_out.Value.state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'text':
-                                                                                                    return p_.ss(
+                                                                                                    return p_.option(
                                                                                                         $,
                                                                                                         ($) => ({
                                                                                                             'option': 'text',
@@ -1772,7 +1772,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                                                                 ($): t_out.Value.state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'copy':
-                                                                                                                            return p_.ss(
+                                                                                                                            return p_.option(
                                                                                                                                 $,
                                                                                                                                 ($) => ({
                                                                                                                                     'option': 'copy',
@@ -1801,7 +1801,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'source document':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'source document',
@@ -1809,7 +1809,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'entry id':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'entry id',
@@ -1817,7 +1817,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                                                     }),
                                                                 )
                                                             case 'option name':
-                                                                return p_.ss(
+                                                                return p_.option(
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'option name',
@@ -1843,7 +1843,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                     }),
                 )
             case 'select':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'select',
@@ -1853,7 +1853,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                     }),
                 )
             case 'special':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'special',
@@ -1862,7 +1862,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                             ($): t_out.Value.state => {
                                 switch ($[0]) {
                                     case 'abort':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'abort',
@@ -1872,7 +1872,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'assert':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'assert',
@@ -1895,7 +1895,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'change context':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'change context',
@@ -1918,7 +1918,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'variables':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'variables',
@@ -1944,7 +1944,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'implement me':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'implement me',
@@ -1955,7 +1955,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'iterate':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'iterate',
@@ -1978,7 +1978,7 @@ export const Assign: t_signatures.Assign = ($) => ['state', p_decide_state(
                                             }),
                                         )
                                     case 'unreachable':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'unreachable',
@@ -2017,7 +2017,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
     ($): t_out.Value.state => {
         switch ($[0]) {
             case 'implement me':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'implement me',
@@ -2028,7 +2028,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                     }),
                 )
             case 'regular':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'regular',
@@ -2041,7 +2041,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                         ($): t_out.Value.state => {
                                             switch ($[0]) {
                                                 case 'call':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'call',
@@ -2054,7 +2054,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'local':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'local',
@@ -2065,7 +2065,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                             }),
                                                                                         )
                                                                                     case 'imported':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'imported',
@@ -2122,7 +2122,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                 ($): t_out.Value.state => {
                                                                                     switch ($[0]) {
                                                                                         case 'initialize':
-                                                                                            return p_.ss(
+                                                                                            return p_.option(
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'initialize',
@@ -2135,7 +2135,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                                 }),
                                                                                             )
                                                                                         case 'pass through':
-                                                                                            return p_.ss(
+                                                                                            return p_.option(
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'pass through',
@@ -2161,7 +2161,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                 ($): t_out.Value.state => {
                                                                                     switch ($[0]) {
                                                                                         case 'initialize':
-                                                                                            return p_.ss(
+                                                                                            return p_.option(
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'initialize',
@@ -2174,7 +2174,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                                 }),
                                                                                             )
                                                                                         case 'pass through':
-                                                                                            return p_.ss(
+                                                                                            return p_.option(
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'pass through',
@@ -2196,7 +2196,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'context':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'context',
@@ -2204,7 +2204,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'dictionary entry':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'dictionary entry',
@@ -2233,7 +2233,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'list from text':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'list from text',
@@ -2256,7 +2256,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'lookup entry':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'lookup entry',
@@ -2281,7 +2281,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                             ($): t_out.Value.state => {
                                                                                 switch ($[0]) {
                                                                                     case 'acyclic':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'acyclic',
@@ -2317,7 +2317,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                             }),
                                                                                         )
                                                                                     case 'cyclic':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'cyclic',
@@ -2353,7 +2353,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                                                             }),
                                                                                         )
                                                                                     case 'stack':
-                                                                                        return p_.ss(
+                                                                                        return p_.option(
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'stack',
@@ -2401,7 +2401,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'lookup entry depth':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'lookup entry depth',
@@ -2449,7 +2449,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'parameter':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'parameter',
@@ -2460,7 +2460,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'parent sibling':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'parent sibling',
@@ -2471,7 +2471,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'sibling':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'sibling',
@@ -2482,7 +2482,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'state':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'state',
@@ -2490,7 +2490,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'text from list':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'text from list',
@@ -2513,7 +2513,7 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', p_decide
                                                         }),
                                                     )
                                                 case 'variable':
-                                                    return p_.ss(
+                                                    return p_.option(
                                                         $,
                                                         ($) => ({
                                                             'option': 'variable',
@@ -2558,7 +2558,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
     ($): t_out.Value.state => {
         switch ($[0]) {
             case 'implement me':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'implement me',
@@ -2569,7 +2569,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                     }),
                 )
             case 'from parameter':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'from parameter',
@@ -2580,7 +2580,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                     }),
                 )
             case 'stack':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'stack',
@@ -2589,7 +2589,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                             ($): t_out.Value.state => {
                                 switch ($[0]) {
                                     case 'empty':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'empty',
@@ -2597,7 +2597,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                                             }),
                                         )
                                     case 'push':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'push',
@@ -2629,7 +2629,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                     }),
                 )
             case 'acyclic':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'acyclic',
@@ -2638,7 +2638,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                             ($): t_out.Value.state => {
                                 switch ($[0]) {
                                     case 'not set':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'not set',
@@ -2646,7 +2646,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                                             }),
                                         )
                                     case 'siblings':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'siblings',
@@ -2654,7 +2654,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                                             }),
                                         )
                                     case 'resolved dictionary':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'resolved dictionary',
@@ -2673,7 +2673,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                     }),
                 )
             case 'cyclic':
-                return p_.ss(
+                return p_.option(
                     $,
                     ($) => ({
                         'option': 'cyclic',
@@ -2682,7 +2682,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                             ($): t_out.Value.state => {
                                 switch ($[0]) {
                                     case 'not set':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'not set',
@@ -2690,7 +2690,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ['state', p_deci
                                             }),
                                         )
                                     case 'siblings':
-                                        return p_.ss(
+                                        return p_.option(
                                             $,
                                             ($) => ({
                                                 'option': 'siblings',

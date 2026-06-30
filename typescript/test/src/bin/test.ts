@@ -11,7 +11,7 @@ import * as sh from "lib/dist/modules/typescript_light/shorthands/typescript_lig
 let found_errors = false
 
 function test_number_serialization(number: number, expected: string) {
-    const actual = t_fp_to_text.Phrase(
+    const actual = t_fp_to_text.Phrases(
 
         t_typescript_to_fp.Expression(
             sh.e.number_literal(number),
