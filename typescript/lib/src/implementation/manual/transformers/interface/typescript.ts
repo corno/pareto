@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as p_ri from 'pareto-core/dist/interface/refiner'
-import p_change_context from 'pareto-core/dist/implementation/refiner/specials/change_context'
+import p_variables from 'pareto-core/dist/implementation/refiner/specials/variables'
 import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
 import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/list_from_text'
 
@@ -119,7 +119,7 @@ export const Package_Set: p_ri.Refiner<
                 case 'package': return p_.ss($, ($) => sh.n.file(p_.literal.segmented_list<d_out.Statements_.L>([
                     p_.literal.list([
                         sh.s.import_namespace(
-sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
+                            sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
                     ]),
 
                     p_.from.dictionary($.imports,).convert_to_list(
@@ -269,7 +269,7 @@ sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 
                                                                                         p_.literal.list([sh.identifier_raw("Abort")]),
                                                                                         p_.literal.list([
                                                                                             sh.t.type_reference(
-sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("E")]), p_.literal.list([])),
+                                                                                                sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("E")]), p_.literal.list([])),
                                                                                         ])
                                                                                     ),
 
@@ -304,7 +304,7 @@ sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("E")]), p_.liter
                                                                                                     ]),
                                                                                                     p_.literal.list([
                                                                                                         sh.t.type_reference(
-sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("L"), sh.identifier_escaped(id)]), p_.literal.list([]))
+                                                                                                            sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("L"), sh.identifier_escaped(id)]), p_.literal.list([]))
                                                                                                     ])
                                                                                                 )
                                                                                             ))
@@ -330,7 +330,7 @@ sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("L"), sh.identif
                                                                                 'apostrophized string literal',
                                                                                 true,
                                                                                 sh.t.type_reference(
-sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("P"), sh.identifier_escaped(id)]), p_.literal.list([]))
+                                                                                    sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("P"), sh.identifier_escaped(id)]), p_.literal.list([]))
                                                                             )),
                                                                     )
                                                                 ),
@@ -340,7 +340,7 @@ sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("P"), sh.identif
                                                         ),
                                                     ]),
                                                     sh.t.type_reference(
-sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("O")]), p_.literal.list([])),
+                                                        sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("O")]), p_.literal.list([])),
                                                 )
                                             )
                                         ])
@@ -357,11 +357,11 @@ sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("O")]), p_.liter
                                     switch ($[0]) {
                                         case 'data modules': return p_.ss($, ($) => p_.from.dictionary($).convert_to_list(
                                             ($, id) => sh.specifier(
-sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                                sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
                                         case 'functions': return p_.ss($, ($) => p_.from.dictionary($).convert_to_list(
                                             ($, id) => sh.specifier(
-sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                                sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
                                         default: return p_.au($[0])
                                     }
@@ -567,9 +567,8 @@ export const Value: p_i.Transformer_With_Parameter<
                         true,
                         sh.identifier_escaped($p.name),
                         p_.literal.list([]),
-                        p_change_context($, ($) => {
-                            const foo = sh.t.type_reference(
-
+                        p_variables(() => {
+                            const Reference = ($: d_in.Value.reference) => sh.t.type_reference(
                                 //start
                                 p_.from.state($.location).decide(
                                     ($) => {
@@ -614,10 +613,10 @@ export const Value: p_i.Transformer_With_Parameter<
                                         sh.identifier_raw("Circular_Dependency")
                                     ]),
                                     p_.literal.list([
-                                        foo
+                                        Reference($)
                                     ])
                                 )
-                                : foo
+                                : Reference($)
                         })
 
                     )
