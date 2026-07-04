@@ -8,7 +8,7 @@ import * as d_out from "pareto-fountain-pen-file-structure/dist/interface/data/f
 
 //transformations
 import * as t_typescript from "./typescript"
-import * as t_typescript_light_to_fountain_pen_block from "../../../../modules/typescript_light/implementation/manual/transformers/typescript_light/fountain_pen"
+import * as t_typescript_light_to_fountain_pen_block from "../../../../modules/typescript_light/implementation/manual/transformers/typescript_light/prose"
 
 //resolvers
 // import * as r_pareto_implementation from "pareto/dist/implementation/generated/liana/schemas/implementation/resolve"
