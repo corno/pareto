@@ -1,11 +1,11 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
 
-import * as i_generic from "liana-core/dist/interface/data/unmarshall"
+import * as i_generic from "liana-core/interface/data/unmarshall"
 
-import * as i_out from "../../data"
+import * as i_out from "../../data.js"
 
-import * as i_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
+import * as i_in from "astn-core/interface/generated/liana/schemas/parse_tree/data"
 
 export namespace Directory_ {
     
@@ -159,7 +159,7 @@ export type Identifier_ = (
     abort: p_i.Abort<Identifier_.E>,
 ) => Identifier_.O
 
-export { 
+export type { 
     Directory_ as Directory, 
     Block_ as Block, 
     Statements_ as Statements, 

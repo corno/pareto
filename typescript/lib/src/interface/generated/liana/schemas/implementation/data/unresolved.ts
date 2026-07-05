@@ -1,10 +1,10 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_di from 'pareto-core/interface/data'
 
-import * as i_location from "liana-core/dist/interface/data/document_and_location"
+import * as i_location from "liana-core/interface/data/document_and_location"
 
-import * as i_imports_interface from "../../interface/data/unresolved"
+import * as i_imports_interface from "../../interface/data/unresolved.js"
 
 export namespace Package_Set_ {
     
@@ -2284,7 +2284,7 @@ export type Select_Lookup_ = {
     readonly 'l state': Select_Lookup_.l_state
 }
 
-export { 
+export type { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 

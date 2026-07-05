@@ -1,9 +1,9 @@
-import * as p_ from 'pareto-core/dist/implementation/transformer'
-import * as p_ri from 'pareto-core/dist/interface/refiner'
+import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
-import * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved"
-import * as d_in_imp from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
+import * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved.js"
+import * as d_in_imp from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
 export namespace d_in {
 
     export type Temp_Library = {
@@ -12,17 +12,17 @@ export namespace d_in {
     }
 
 }
-import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
-import * as d_function from "../../../../interface/data/pareto_to_typescript"
+import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
+import * as d_function from "../../../../interface/data/pareto_to_typescript.js"
 
 //dependencies
-import * as t_interface_to_typescript_temp from "../interface/typescript"
-import * as t_implementation_to_typescript_temp from "../implementation/typescript"
+import * as t_interface_to_typescript_temp from "../interface/typescript.js"
+import * as t_implementation_to_typescript_temp from "../implementation/typescript.js"
 
 //shorthands
-import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target"
+import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target.js"
 
-// import * as signatures from "../interface/signatures"
+// import * as signatures from "../interface/signatures.js"
 
 
 export const Temp_Library: p_ri.Refiner<

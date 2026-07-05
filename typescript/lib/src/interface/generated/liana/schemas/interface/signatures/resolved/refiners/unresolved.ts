@@ -1,11 +1,11 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
 
-import * as i_generic from "liana-core/dist/interface/data/resolve"
+import * as i_generic from "liana-core/interface/data/resolve"
 
-import * as i_resolved from "../../../data/resolved"
+import * as i_resolved from "../../../data/resolved.js"
 
-import * as i_unresolved from "../../../data/unresolved"
+import * as i_unresolved from "../../../data/unresolved.js"
 
 export namespace Package_ {
     
@@ -112,7 +112,7 @@ export type Module_Reference_ = (
     parameters: symbol,
 ) => Module_Reference_.O
 
-export { 
+export type { 
     Package_ as Package, 
     Package_Set_ as Package_Set, 
     Imports_ as Imports, 

@@ -1,11 +1,11 @@
-import * as p_ from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/transformer'
-import p_implement_me from 'pareto-core-dev/dist/implement_me'
-import p_list_build_deprecated from 'pareto-core/dist/implementation/refiner/specials/list_build_deprecated'
-import p_list_from_text from 'pareto-core/dist/implementation/refiner/specials/list_from_text'
+import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/transformer'
+import p_implement_me from 'pareto-core-dev/implement_me'
+import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
+import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 
-import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
+import * as d_loc from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
 
 export const Identifier: p_i.Transformer<
     string,

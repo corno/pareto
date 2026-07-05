@@ -1,11 +1,11 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
 
-import * as i_generic from "liana-core/dist/interface/data/resolve"
+import * as i_generic from "liana-core/interface/data/resolve"
 
-import * as i_resolved from "../../../data/resolved"
+import * as i_resolved from "../../../data/resolved.js"
 
-import * as i_unresolved from "../../../data/unresolved"
+import * as i_unresolved from "../../../data/unresolved.js"
 
 export namespace Package_Set_ {
     
@@ -133,7 +133,7 @@ export type Select_Lookup_ = (
     parameters: symbol,
 ) => Select_Lookup_.O
 
-export { 
+export type { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 

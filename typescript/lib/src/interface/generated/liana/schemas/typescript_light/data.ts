@@ -1,6 +1,6 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_di from 'pareto-core/interface/data'
 
 export namespace Directory_ {
     
@@ -754,7 +754,7 @@ export type Identifier_ = {
     readonly 'value': Identifier_.value
 }
 
-export { 
+export type { 
     Directory_ as Directory, 
     Block_ as Block, 
     Statements_ as Statements, 

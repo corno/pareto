@@ -1,8 +1,8 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_di from 'pareto-core/interface/data'
 
-import * as i_imports_interface from "../../interface/data/resolved"
+import * as i_imports_interface from "../../interface/data/resolved.js"
 
 export namespace Package_Set_ {
     
@@ -1435,7 +1435,7 @@ export type Select_Lookup_ =
     | readonly ['acyclic', Select_Lookup_.acyclic]
     | readonly ['cyclic', Select_Lookup_.cyclic]
 
-export { 
+export type { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 

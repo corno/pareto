@@ -1,20 +1,20 @@
-import * as p_ from 'pareto-core/dist/implementation/transformer'
-import * as p_i from 'pareto-core/dist/interface/transformer'
-import * as p_di from 'pareto-core/dist/interface/data'
-import p_implement_me from 'pareto-core-dev/dist/implement_me'
-import p_variables from 'pareto-core/dist/implementation/transformer/specials/variables'
-import * as p_ri from 'pareto-core/dist/interface/refiner'
+import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_i from 'pareto-core/interface/transformer'
+import * as p_di from 'pareto-core/interface/data'
+import p_implement_me from 'pareto-core-dev/implement_me'
+import p_variables from 'pareto-core/implementation/transformer/specials/variables'
+import * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
-import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
-import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
-import * as d_function from "../../../../interface/data/pareto_to_typescript"
+import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
+import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
+import * as d_function from "../../../../interface/data/pareto_to_typescript.js"
 
 //shorthands
-import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target"
+import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target.js"
 
 //dependencies
-import { temp_create_file_path } from '../interface/typescript'
+import { temp_create_file_path } from "../interface/typescript.js"
 
 const join = ($: p_di.List<string>): string => {
     let out = ""
@@ -78,14 +78,14 @@ export const Package_Set: p_ri.Refiner<
                                 p_.literal.list([
                                     sh.s.import_namespace(
                                         sh.identifier_raw("pt"),
-                                        sh.string_literal("pareto-core/dist/assign", 'apostrophe')
+                                        sh.string_literal("pareto-core/assign", 'apostrophe')
                                     ),
                                 ]),
                                 $.specials['change context']
                                     ? p_.literal.list([
                                         sh.s.import_default(
                                             sh.identifier_raw("p_change_context"),
-                                            sh.string_literal("pareto-core/dist/specials/change_context", 'apostrophe')
+                                            sh.string_literal("pareto-core/specials/change_context", 'apostrophe')
                                         )
                                     ])
                                     : p_.literal.list([]),
@@ -104,7 +104,7 @@ export const Package_Set: p_ri.Refiner<
                                                 sh.specifier(
                                                     sh.identifier_raw("p_change_context"), null),
                                             ]),
-                                            sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
+                                            sh.string_literal("pareto-core/iterate", 'apostrophe')
                                         )
                                     ])
                                     : p_.literal.list([]),
@@ -112,7 +112,7 @@ export const Package_Set: p_ri.Refiner<
                                     ? p_.literal.list([
                                         sh.s.import_default(
                                             sh.identifier_raw("p_list_from_text"),
-                                            sh.string_literal("pareto-core/dist/specials/list_from_text", 'apostrophe')
+                                            sh.string_literal("pareto-core/specials/list_from_text", 'apostrophe')
                                         )
                                     ])
                                     : p_.literal.list([]),
@@ -120,7 +120,7 @@ export const Package_Set: p_ri.Refiner<
                                     ? p_.literal.list([
                                         sh.s.import_namespace(
                                             sh.identifier_raw("p_sl"),
-                                            sh.string_literal("pareto-core/dist/select_static_lookup", 'apostrophe')
+                                            sh.string_literal("pareto-core/select_static_lookup", 'apostrophe')
                                         )
                                     ])
                                     : p_.literal.list([]),
@@ -128,7 +128,7 @@ export const Package_Set: p_ri.Refiner<
                                     ? p_.literal.list([
                                         sh.s.import_default(
                                             sh.identifier_raw("p_text_from_list"),
-                                            sh.string_literal("pareto-core/dist/specials/text_from_list", 'apostrophe')
+                                            sh.string_literal("pareto-core/specials/text_from_list", 'apostrophe')
                                         )
                                     ])
                                     : p_.literal.list([]),
@@ -136,7 +136,7 @@ export const Package_Set: p_ri.Refiner<
                                     ? p_.literal.list([
                                         sh.s.import_default(
                                             sh.identifier_raw("p_unreachable_code_path"),
-                                            sh.string_literal("pareto-core/dist/specials/unreachable_code_path", 'apostrophe')
+                                            sh.string_literal("pareto-core/specials/unreachable_code_path", 'apostrophe')
                                         )
                                     ])
                                     : p_.literal.list([]),
@@ -144,7 +144,7 @@ export const Package_Set: p_ri.Refiner<
                                     ? p_.literal.list([
                                         sh.s.import_default(
                                             sh.identifier_raw("p_variables"),
-                                            sh.string_literal("pareto-core/dist/specials/variables", 'apostrophe')
+                                            sh.string_literal("pareto-core/specials/variables", 'apostrophe')
                                         )
                                     ])
                                     : p_.literal.list([]),

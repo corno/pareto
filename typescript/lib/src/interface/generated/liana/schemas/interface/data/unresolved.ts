@@ -1,8 +1,8 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_di from 'pareto-core/interface/data'
 
-import * as i_location from "liana-core/dist/interface/data/document_and_location"
+import * as i_location from "liana-core/interface/data/document_and_location"
 
 export namespace Package_Set_ {
     
@@ -658,7 +658,7 @@ export type Module_Reference_ = {
     readonly 'l state': Module_Reference_.l_state
 }
 
-export { 
+export type { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Imports_ as Imports, 

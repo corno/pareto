@@ -1,9 +1,9 @@
-import * as p_ from 'pareto-core-shorthands/dist/unconstrained_target'
-import * as p_temp from 'pareto-core/dist/implementation/transformer'
+import * as p_ from 'pareto-core-shorthands/unconstrained_target'
+import * as p_temp from 'pareto-core/implementation/transformer'
 
-import * as d_target from "../../interface/generated/liana/schemas/implementation/data/resolved" //THIS IS NOT CORRECT! It should be unresolved
+import * as d_target from "../../interface/generated/liana/schemas/implementation/data/resolved.js" //THIS IS NOT CORRECT! It should be unresolved
 
-import * as d_target_interface from "../../interface/generated/liana/schemas/interface/data/resolved"
+import * as d_target_interface from "../../interface/generated/liana/schemas/interface/data/resolved.js"
 
 
 const wrap_state = <T>(value: T): T => value

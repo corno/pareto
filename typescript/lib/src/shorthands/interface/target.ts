@@ -1,6 +1,6 @@
-import * as p_ from 'pareto-core-shorthands/dist/unconstrained_target'
+import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
-import * as d_out from "../../interface/generated/liana/schemas/interface/data/resolved"
+import * as d_out from "../../interface/generated/liana/schemas/interface/data/resolved.js"
 
 
 const wrap_state = <T>(value: T): T => {

@@ -1,25 +1,25 @@
 
-import * as p_ from 'pareto-core/dist/implementation/refiner'
+import * as p_ from 'pareto-core/implementation/refiner'
 
-import p_change_context from 'pareto-core/dist/implementation/refiner/specials/change_context'
-import * as p_di from 'pareto-core/dist/interface/data'
+import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+import * as p_di from 'pareto-core/interface/data'
 const p_decide_state = <State, B>($: State,  assign: ($: State) => B) => assign($)
 const p_decide_optional = <OV extends p_di.Value, B extends p_di.Value>($: p_di.Optional_Value<OV>,  assign: ($: OV) => B,  otherwise: () => B) => p_.from.optional($).decide(assign, otherwise)
 const p_decide_text = <B>($: string,  assign: ($: string) => B) => assign($)
 
-import * as _p_sl from 'pareto-core/dist/implementation/refiner/specials/lookup'
+import * as _p_sl from 'pareto-core/implementation/refiner/specials/lookup'
 
-import _p_unreachable_code_path from 'pareto-core/dist/implementation/transformer/specials/unreachable_code_path'
+import _p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
-import p_variables from 'pareto-core/dist/implementation/refiner/specials/variables'
+import p_variables from 'pareto-core/implementation/refiner/specials/variables'
 
 
 
-import * as t_out from "../../../../../../../interface/generated/liana/schemas/implementation/data/resolved"
+import * as t_out from "../../../../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
 
-import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/implementation/signatures/resolved/refiners/unresolved"
+import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/implementation/signatures/resolved/refiners/unresolved.js"
 
-import * as v_external_interface from "../../../interface/resolved/refiners/unresolved"
+import * as v_external_interface from "../../../interface/resolved/refiners/unresolved.js"
 
 export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => p_.from.dictionary($['l dictionary'],
 ).resolve(

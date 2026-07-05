@@ -1,6 +1,6 @@
 
-import * as p_i from 'pareto-core/dist/interface/__internal/Abort'
-import * as p_di from 'pareto-core/dist/interface/data'
+import * as p_i from 'pareto-core/interface/__internal/Abort'
+import * as p_di from 'pareto-core/interface/data'
 
 export namespace Package_Set_ {
     
@@ -326,7 +326,7 @@ export type Module_Reference_ =
     | readonly ['import', Module_Reference_.import_]
     | readonly ['local', Module_Reference_.local]
 
-export { 
+export type { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Imports_ as Imports, 
