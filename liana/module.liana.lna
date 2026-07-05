@@ -5178,7 +5178,7 @@
                     )
                 }
                 `simple types`: {
-                    'Approximation': (
+                    'number': (
                         `type`: | `number` (
                             `precision`: | `approximation` (
                                 `significant digits`: 10
@@ -5191,6 +5191,12 @@
                 }
             )
             `modules`: {
+                'Block': (
+                    `root value`: | `component` (
+                        `type`: | `internal` 'Statements'
+                        `results`: _
+                    )
+                )
                 'Directory': (
                     `root value`: | `dictionary` (
                         `value`: | `state` (
@@ -5221,11 +5227,399 @@
                         )
                     )
                 )
-                'Block': (
-                    `root value`: | `component` (
-                        `type`: | `internal` 'Statements'
+                'Expression': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'array literal': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `list` (
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Expression'
+                                        `results`: _
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'arrow function': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'declaration': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Function Declaration'
+                                            `results`: _
+                                        )
+                                    )
+                                    'body': (
+                                        `description`: _
+                                        `value`: | `state` (
+                                            `options`: {
+                                                'block': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `component` (
+                                                        `type`: | `internal` 'Block'
+                                                        `results`: _
+                                                    )
+                                                )
+                                                'expression': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `component` (
+                                                        `type`: | `internal` 'Expression'
+                                                        `results`: _
+                                                    )
+                                                )
+                                            }
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'assignment': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'left': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                    'right': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'call': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'function selection': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                    'arguments': (
+                                        `description`: _
+                                        `value`: | `list` (
+                                            `value`: | `component` (
+                                                `type`: | `internal` 'Expression'
+                                                `results`: _
+                                            )
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'compare': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'left': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                    'operator': (
+                                        `description`: _
+                                        `value`: | `state` (
+                                            `options`: {
+                                                'strictly equal': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                                'strictly not equal': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                                'smaller than': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                                'smaller than or equal': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                                'greater than': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                                'greater than or equal': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                            }
+                                            `results`: _
+                                        )
+                                    )
+                                    'right': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'conditional': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'condition': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                    'if true': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                    'if false': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'element access': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'collection': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                    'index': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'identifier': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `internal` 'Identifier'
+                                    `results`: _
+                                )
+                            )
+                            'false': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'null': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'number literal': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `simple` | `global` 'number'
+                            )
+                            'object literal': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'properties': (
+                                        `description`: _
+                                        `value`: | `list` (
+                                            `value`: | `group` {
+                                                'key': (
+                                                    `description`: _
+                                                    `value`: | `state` (
+                                                        `options`: {
+                                                            'identifier': (
+                                                                `constraints`: _
+                                                                `description`: _
+                                                                `value`: | `component` (
+                                                                    `type`: | `internal` 'Identifier'
+                                                                    `results`: _
+                                                                )
+                                                            )
+                                                            'string literal': (
+                                                                `constraints`: _
+                                                                `description`: _
+                                                                `value`: | `component` (
+                                                                    `type`: | `internal` 'String Literal'
+                                                                    `results`: _
+                                                                )
+                                                            )
+                                                        }
+                                                        `results`: _
+                                                    )
+                                                )
+                                                'value': (
+                                                    `description`: _
+                                                    `value`: | `component` (
+                                                        `type`: | `internal` 'Expression'
+                                                        `results`: _
+                                                    )
+                                                )
+                                            }
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'parenthesized': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `internal` 'Expression'
+                                    `results`: _
+                                )
+                            )
+                            'property access': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'object': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                    'property': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Identifier'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                            'string literal': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `component` (
+                                    `type`: | `internal` 'String Literal'
+                                    `results`: _
+                                )
+                            )
+                            'true': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                            'unary operation': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `group` {
+                                    'operator': (
+                                        `description`: _
+                                        `value`: | `state` (
+                                            `options`: {
+                                                'negation': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                                'logical not': (
+                                                    `constraints`: _
+                                                    `description`: _
+                                                    `value`: | `nothing` ~
+                                                )
+                                            }
+                                            `results`: _
+                                        )
+                                    )
+                                    'operand': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Expression'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                            )
+                        }
                         `results`: _
                     )
+                )
+                'Function Declaration': (
+                    `root value`: | `group` {
+                        'type parameters': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `component` (
+                                    `type`: | `internal` 'Type'
+                                    `results`: _
+                                )
+                                `results`: _
+                            )
+                        )
+                        'parameters': (
+                            `description`: _
+                            `value`: | `list` (
+                                `value`: | `group` {
+                                    'name': (
+                                        `description`: _
+                                        `value`: | `component` (
+                                            `type`: | `internal` 'Identifier'
+                                            `results`: _
+                                        )
+                                    )
+                                    'type': (
+                                        `description`: _
+                                        `value`: | `optional` | `component` (
+                                            `type`: | `internal` 'Type'
+                                            `results`: _
+                                        )
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                        'return type': (
+                            `description`: _
+                            `value`: | `optional` | `component` (
+                                `type`: | `internal` 'Type'
+                                `results`: _
+                            )
+                        )
+                    }
+                )
+                'Identifier': (
+                    `root value`: | `group` {
+                        'value': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                    }
                 )
                 'Statements': (
                     `root value`: | `list` (
@@ -5361,7 +5755,7 @@
                                         )
                                     }
                                 )
-                                'module declaration': (
+                                'namespace': (
                                     `constraints`: _
                                     `description`: _
                                     `value`: | `group` {
@@ -5517,6 +5911,32 @@
                         `results`: _
                     )
                 )
+                'String Literal': (
+                    `root value`: | `group` {
+                        'delimiter': (
+                            `description`: _
+                            `value`: | `state` (
+                                `options`: {
+                                    'quote': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                    'apostrophe': (
+                                        `constraints`: _
+                                        `description`: _
+                                        `value`: | `nothing` ~
+                                    )
+                                }
+                                `results`: _
+                            )
+                        )
+                        'value': (
+                            `description`: _
+                            `value`: | `text` | `global` 'text'
+                        )
+                    }
+                )
                 'Type': (
                     `root value`: | `state` (
                         `options`: {
@@ -5529,20 +5949,10 @@
                                 `constraints`: _
                                 `description`: _
                                 `value`: | `group` {
-                                    'type parameters': (
-                                        `description`: _
-                                        `value`: | `list` (
-                                            `value`: | `component` (
-                                                `type`: | `internal` 'Type'
-                                                `results`: _
-                                            )
-                                            `results`: _
-                                        )
-                                    )
-                                    'parameters': (
+                                    'declaration': (
                                         `description`: _
                                         `value`: | `component` (
-                                            `type`: | `internal` 'Function Parameters'
+                                            `type`: | `internal` 'Function Declaration'
                                             `results`: _
                                         )
                                     )
@@ -5685,6 +6095,11 @@
                                     )
                                 }
                             )
+                            'undefined': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
                             'union': (
                                 `constraints`: _
                                 `description`: _
@@ -5704,421 +6119,6 @@
                         }
                         `results`: _
                     )
-                )
-                'Function Parameters': (
-                    `root value`: | `list` (
-                        `value`: | `group` {
-                            'name': (
-                                `description`: _
-                                `value`: | `component` (
-                                    `type`: | `internal` 'Identifier'
-                                    `results`: _
-                                )
-                            )
-                            'type': (
-                                `description`: _
-                                `value`: | `optional` | `component` (
-                                    `type`: | `internal` 'Type'
-                                    `results`: _
-                                )
-                            )
-                        }
-                        `results`: _
-                    )
-                )
-                'Expression': (
-                    `root value`: | `state` (
-                        `options`: {
-                            'array literal': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `list` (
-                                    `value`: | `component` (
-                                        `type`: | `internal` 'Expression'
-                                        `results`: _
-                                    )
-                                    `results`: _
-                                )
-                            )
-                            'arrow function': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'parameters': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Function Parameters'
-                                            `results`: _
-                                        )
-                                    )
-                                    'return type': (
-                                        `description`: _
-                                        `value`: | `optional` | `component` (
-                                            `type`: | `internal` 'Type'
-                                            `results`: _
-                                        )
-                                    )
-                                    'body': (
-                                        `description`: _
-                                        `value`: | `state` (
-                                            `options`: {
-                                                'block': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `component` (
-                                                        `type`: | `internal` 'Block'
-                                                        `results`: _
-                                                    )
-                                                )
-                                                'expression': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `component` (
-                                                        `type`: | `internal` 'Expression'
-                                                        `results`: _
-                                                    )
-                                                )
-                                            }
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'assignment': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'left': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                    'right': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'call': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'function selection': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                    'arguments': (
-                                        `description`: _
-                                        `value`: | `list` (
-                                            `value`: | `component` (
-                                                `type`: | `internal` 'Expression'
-                                                `results`: _
-                                            )
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'compare': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'left': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                    'operator': (
-                                        `description`: _
-                                        `value`: | `state` (
-                                            `options`: {
-                                                'loosely equal': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'strictly equal': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'loosely not equal': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'strictly not equal': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'smaller than': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'smaller than or equal': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'greater than': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'greater than or equal': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                            }
-                                            `results`: _
-                                        )
-                                    )
-                                    'right': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'conditional': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'condition': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                    'if true': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                    'if false': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'element access': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'collection': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                    'index': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'identifier': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `component` (
-                                    `type`: | `internal` 'Identifier'
-                                    `results`: _
-                                )
-                            )
-                            'false': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `nothing` ~
-                            )
-                            'null': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `nothing` ~
-                            )
-                            'number literal': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `simple` | `global` 'Approximation'
-                            )
-                            'object literal': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'properties': (
-                                        `description`: _
-                                        `value`: | `list` (
-                                            `value`: | `group` {
-                                                'key': (
-                                                    `description`: _
-                                                    `value`: | `state` (
-                                                        `options`: {
-                                                            'identifier': (
-                                                                `constraints`: _
-                                                                `description`: _
-                                                                `value`: | `component` (
-                                                                    `type`: | `internal` 'Identifier'
-                                                                    `results`: _
-                                                                )
-                                                            )
-                                                            'string literal': (
-                                                                `constraints`: _
-                                                                `description`: _
-                                                                `value`: | `component` (
-                                                                    `type`: | `internal` 'String Literal'
-                                                                    `results`: _
-                                                                )
-                                                            )
-                                                        }
-                                                        `results`: _
-                                                    )
-                                                )
-                                                'value': (
-                                                    `description`: _
-                                                    `value`: | `component` (
-                                                        `type`: | `internal` 'Expression'
-                                                        `results`: _
-                                                    )
-                                                )
-                                            }
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'parenthesized': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `component` (
-                                    `type`: | `internal` 'Expression'
-                                    `results`: _
-                                )
-                            )
-                            'property access': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'object': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                    'property': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Identifier'
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                            'string literal': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `component` (
-                                    `type`: | `internal` 'String Literal'
-                                    `results`: _
-                                )
-                            )
-                            'true': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `nothing` ~
-                            )
-                            'unary operation': (
-                                `constraints`: _
-                                `description`: _
-                                `value`: | `group` {
-                                    'operator': (
-                                        `description`: _
-                                        `value`: | `state` (
-                                            `options`: {
-                                                'negation': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                                'logical not': (
-                                                    `constraints`: _
-                                                    `description`: _
-                                                    `value`: | `nothing` ~
-                                                )
-                                            }
-                                            `results`: _
-                                        )
-                                    )
-                                    'operand': (
-                                        `description`: _
-                                        `value`: | `component` (
-                                            `type`: | `internal` 'Expression'
-                                            `results`: _
-                                        )
-                                    )
-                                }
-                            )
-                        }
-                        `results`: _
-                    )
-                )
-                'String Literal': (
-                    `root value`: | `group` {
-                        'delimiter': (
-                            `description`: _
-                            `value`: | `state` (
-                                `options`: {
-                                    'quote': (
-                                        `constraints`: _
-                                        `description`: _
-                                        `value`: | `nothing` ~
-                                    )
-                                    'apostrophe': (
-                                        `constraints`: _
-                                        `description`: _
-                                        `value`: | `nothing` ~
-                                    )
-                                }
-                                `results`: _
-                            )
-                        )
-                        'value': (
-                            `description`: _
-                            `value`: | `text` | `global` 'text'
-                        )
-                    }
-                )
-                'Identifier': (
-                    `root value`: | `group` {
-                        'value': (
-                            `description`: _
-                            `value`: | `text` | `global` 'text'
-                        )
-                    }
                 )
             }
             `complexity`: | `unconstrained` ~
