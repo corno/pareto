@@ -9,6 +9,18 @@ import * as d_in from "../../../../interface/generated/liana/schemas/interface/d
 import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
 import * as d_function from "../../../../interface/data/pareto_to_typescript"
 
+export namespace interface_ {
+    export type Package_Set = p_ri.Refiner<
+        d_out.Directory,
+        d_function.Error,
+        d_in.Package_Set
+    >
+    export type Value = p_i.Transformer_With_Parameter<
+        d_in.Value,
+        d_out.Statements,
+        { 'name': string }
+    >
+}
 
 //dependencies
 import { $$ as s_file_name } from "../text/filename"
