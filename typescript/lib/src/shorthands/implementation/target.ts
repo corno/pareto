@@ -217,7 +217,9 @@ export namespace a {
         ): d_target.Assign => wrap_state(['decide', {
             'source': source,
             'type': wrap_state(['state', {
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? p_.optional.not_set() : p_.optional.set(resulting_type),
+                'temp resulting node': (resulting_type === null || resulting_type === undefined)
+                    ? p_.optional.not_set()
+                    : p_.optional.set(resulting_type),
                 'type': wrap_state(['full', {
                     'options': p_.dictionary(cases),
                 }])
@@ -232,7 +234,9 @@ export namespace a {
         ): d_target.Assign => wrap_state(['decide', {
             'source': source,
             'type': wrap_state(['state', {
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? p_.optional.not_set() : p_.optional.set(resulting_type),
+                'temp resulting node': (resulting_type === null || resulting_type === undefined)
+                    ? p_.optional.not_set()
+                    : p_.optional.set(resulting_type),
                 'type': wrap_state(['partial', {
                     'options': p_.dictionary(cases),
                     'default': default_
@@ -448,7 +452,9 @@ export namespace a {
             value: string,
             type: 'identifier' | 'freeform'
         ): d_target.Assign => wrap_state(['construct', wrap_state(['text', wrap_state(['literal', {
-            'type': ((): d_target.Assign.construct.text.literal.type_ => type === 'identifier' ? wrap_state(['identifier', null]) : wrap_state(['freeform', null]))(),
+            'type': ((): d_target.Assign.construct.text.literal.type_ => type === 'identifier'
+                ? wrap_state(['identifier', null])
+                : wrap_state(['freeform', null]))(),
             'value': value,
         }])])])
 

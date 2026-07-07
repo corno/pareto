@@ -242,7 +242,9 @@ export namespace type {
             'context': context,
             'result': result,
             'type': ['transformer', null],
-            'parameters': parameters === null ? p_.optional.not_set() : p_.optional.set(p_.dictionary(parameters)),
+            'parameters': parameters === null
+                ? p_.optional.not_set() :
+                p_.optional.set(p_.dictionary(parameters)),
         }
     }
 
@@ -255,11 +257,17 @@ export namespace type {
     ): d_out.Package.content.functions.D => {
         return {
             'context': context,
-            'parameters': parameters === null ? p_.optional.not_set() : p_.optional.set(p_.dictionary(parameters)),
+            'parameters': parameters === null
+                ? p_.optional.not_set()
+                : p_.optional.set(p_.dictionary(parameters)),
             'result': result,
             'type': ['refiner', {
-                'error': error === null ? p_.optional.not_set() : p_.optional.set(error),
-                'lookups': lookups === null ? p_.optional.not_set() : p_.optional.set(p_.dictionary(lookups)),
+                'error': error === null
+                    ? p_.optional.not_set()
+                    : p_.optional.set(error),
+                'lookups': lookups === null
+                    ? p_.optional.not_set()
+                    : p_.optional.set(p_.dictionary(lookups)),
             }],
         }
     }

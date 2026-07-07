@@ -456,11 +456,15 @@ export const Identifier: interface_.Identifier = ($) => {
 
 
 export const String_Literal_pseudo: interface_.String_Literal_pseudo = ($, $p) => {
-    return sh.ph.serialize($p.delimiter === "quote" ? quoted_text($) : apostrophed_text($))
+    return sh.ph.serialize($p.delimiter === "quote"
+        ? quoted_text($)
+        : apostrophed_text($))
 }
 
 export const String_Literal: interface_.String_Literal = ($) => {
-    return sh.ph.serialize($.delimiter[0] === "quote" ? quoted_text($.value) : apostrophed_text($.value))
+    return sh.ph.serialize($.delimiter[0] === "quote"
+        ? quoted_text($.value)
+        : apostrophed_text($.value))
 }
 
 export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.from.list($).map(
@@ -568,7 +572,9 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                     case 'module declaration': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
                         sh.sentence([
-                            $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
+                            $.export ?
+                                sh.ph.literal("export ")
+                                : sh.ph.nothing(),
                             sh.ph.literal("namespace "),
                             Identifier($['name']),
                             sh.ph.literal(" "),
