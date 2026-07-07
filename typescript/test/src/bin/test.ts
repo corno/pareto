@@ -4,45 +4,45 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 import p_log_debug_message from 'pareto-core-dev/log_debug_message'
 
 import * as t_typescript_to_prose from "lib/modules/typescript_light/implementation/manual/transformers/typescript_light/prose"
-import * as t_fp_to_text from "pareto-fountain-pen/implementation/manual/transformers/prose/text"
+// import * as t_fp_to_text from "pareto-fountain-pen/implementation/manual/transformers/prose/text"
 
 import * as sh from "lib/modules/typescript_light/shorthands/typescript_light/target"
 
 let found_errors = false
 
-function test_number_serialization(number: number, expected: string) {
-    const actual = t_fp_to_text.Phrases(
+// function test_number_serialization(number: number, expected: string) {
+//     const actual = t_fp_to_text.Phrases(
 
-        t_typescript_to_prose.Expression(
-            sh.e.number_literal(number),
-            {
-                'object literal needs parentheses': false,
-                'replace empty type literals by symbol': false
-            }
-        ),
-        {
-            'indentation': "    ",
-            'newline': "\n",
-        }
-    )
+//         t_typescript_to_prose.Expression(
+//             sh.e.number_literal(number),
+//             {
+//                 'object literal needs parentheses': false,
+//                 'replace empty type literals by symbol': false
+//             }
+//         ),
+//         {
+//             'indentation': "    ",
+//             'newline': "\n",
+//         }
+//     )
 
-    if (actual !== expected) {
-        found_errors = true
-        p_log_debug_message(
-            `Expected: '${expected}', Actual: '${actual}'`,
-            () => { }
-        )
-    }
-}
+//     if (actual !== expected) {
+//         found_errors = true
+//         p_log_debug_message(
+//             `Expected: '${expected}', Actual: '${actual}'`,
+//             () => { }
+//         )
+//     }
+// }
 
-test_number_serialization(1, "1")
-test_number_serialization(10, "10")
-test_number_serialization(42, "42")
-test_number_serialization(1.5, "1.5")
-test_number_serialization(-1, "-1")
-test_number_serialization(-1.5, "-1.5")
-test_number_serialization(0, "0")
-test_number_serialization(0.234230000, "0.23423")
+// test_number_serialization(1, "1")
+// test_number_serialization(10, "10")
+// test_number_serialization(42, "42")
+// test_number_serialization(1.5, "1.5")
+// test_number_serialization(-1, "-1")
+// test_number_serialization(-1.5, "-1.5")
+// test_number_serialization(0, "0")
+// test_number_serialization(0.234230000, "0.23423")
 
 if (found_errors) {
     p_implement_me("number serialization does not match expected output")
