@@ -5,8 +5,8 @@ import type * as d_out from "pareto-fountain-pen/interface/generated/liana/schem
 
 
 
-    export type Text = p_.Transformer<
-        string, d_out.List_of_Characters
-    >
+export type Text = p_.Transformer<
+    string, d_out.List_of_Characters
+>
 
 
