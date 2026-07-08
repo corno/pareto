@@ -22,7 +22,7 @@ import * as t_implementation_to_typescript_temp from "../implementation/typescri
 //shorthands
 import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target.js"
 
-// import * as signatures from "../interface/signatures.js"
+// import type * as interface_ from "../interface/signatures.js"
 
 
 export const Temp_Library: p_ri.Refiner<
