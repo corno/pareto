@@ -1,10 +1,6 @@
 
 import type * as p_ from 'pareto-core/interface/transformer'
 import type * as p_ri from 'pareto-core/interface/refiner'
-import p_variables from 'pareto-core/implementation/refiner/specials/variables'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
-
 import type * as d_in from "../../../generated/liana/schemas/interface/data/resolved.js"
 import type * as d_out from "../../../generated/liana/schemas/typescript_light/data.js"
 import type * as d_function from "../../../data/pareto_to_typescript.js"
