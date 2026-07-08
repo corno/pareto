@@ -1,5 +1,5 @@
 
-import type * as p_i from 'pareto-core/interface/transformer'
+import type * as p_ from 'pareto-core/interface/transformer'
 import type * as p_ri from 'pareto-core/interface/refiner'
 import p_variables from 'pareto-core/implementation/refiner/specials/variables'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
@@ -15,7 +15,7 @@ import type * as d_function from "../../../data/pareto_to_typescript.js"
         d_function.Error,
         d_in.Package_Set
     >
-    export type Value = p_i.Transformer_With_Parameter<
+    export type Value = p_.Transformer_With_Parameter<
         d_in.Value,
         d_out.Statements,
         { 'name': string }
