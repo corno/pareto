@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+
 import type * as p_i from 'pareto-core/interface/transformer'
 import type * as p_ri from 'pareto-core/interface/refiner'
 import p_variables from 'pareto-core/implementation/refiner/specials/variables'
@@ -9,7 +9,7 @@ import type * as d_in from "../../../generated/liana/schemas/interface/data/reso
 import type * as d_out from "../../../generated/liana/schemas/typescript_light/data.js"
 import type * as d_function from "../../../data/pareto_to_typescript.js"
 
-export namespace interface_ {
+
     export type Package_Set = p_ri.Refiner<
         d_out.Directory,
         d_function.Error,
@@ -20,4 +20,4 @@ export namespace interface_ {
         d_out.Statements,
         { 'name': string }
     >
-}
+
