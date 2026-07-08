@@ -76,7 +76,7 @@ export const temp_create_file_path = (
                         ($) => $
                     ) + valid_file_name($.dependency) + do_tail())
                     case 'sibling': return p_.option($, ($) => `./${valid_file_name($)}` + do_tail())
-                    default: return p_.au($[0])
+                    default: return p_.exhaustive($[0])
                 }
             }),
         'delimiter': $p.delimiter
@@ -107,7 +107,7 @@ const temp_rename: p_ri.Refiner<
                                 }
                                 return id
                             })
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     })
                 renamed[new_id] = $
@@ -210,7 +210,7 @@ export const Package_Set: p_ri.Refiner<
                                                                                                     case 'acyclic': return p_.option($, ($) => $)
                                                                                                     case 'cyclic': return p_.option($, ($) => $)
                                                                                                     case 'stack': return p_.option($, ($) => $)
-                                                                                                    default: return p_.au($[0])
+                                                                                                    default: return p_.exhaustive($[0])
                                                                                                 }
                                                                                             }),
                                                                                         {
@@ -225,7 +225,7 @@ export const Package_Set: p_ri.Refiner<
                                                                         }
                                                                     ),
                                                                 ]))
-                                                                default: return p_.au($[0])
+                                                                default: return p_.exhaustive($[0])
                                                             }
                                                         }),
                                                     p_.literal.list([
@@ -310,7 +310,7 @@ export const Package_Set: p_ri.Refiner<
                                                                                                                     case 'acyclic': return p_.option($, ($) => "static_lookup.Acyclic")
                                                                                                                     case 'cyclic': return p_.option($, ($) => "static_lookup.Cyclic")
                                                                                                                     case 'stack': return p_.option($, ($) => "static_lookup.Stack")
-                                                                                                                    default: return p_.au($[0])
+                                                                                                                    default: return p_.exhaustive($[0])
                                                                                                                 }
                                                                                                             }))
                                                                                                     ]),
@@ -327,7 +327,7 @@ export const Package_Set: p_ri.Refiner<
                                                                             () => p_.literal.list([])
                                                                         )
                                                                     ]))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }),
                                                         p_.from.optional($.parameters).decide(
@@ -358,7 +358,7 @@ export const Package_Set: p_ri.Refiner<
                                         ])
                                     }
                                 ))
-                                default: return p_.au($[0])
+                                default: return p_.exhaustive($[0])
                             }
                         }),
 
@@ -375,7 +375,7 @@ export const Package_Set: p_ri.Refiner<
                                             ($, id) => sh.specifier(
                                                 sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                         ))
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 }),
                             null,
@@ -385,7 +385,7 @@ export const Package_Set: p_ri.Refiner<
 
                 ])))
                 case 'set': return p_.option($, ($) => ['directory', Package_Set($, abort)])
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         }))
 
@@ -429,7 +429,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                         p_.literal.list([]),
                                         p_.literal.list([])
                                     ))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             })
                     )
@@ -587,7 +587,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                         switch ($[0]) {
                                             case 'import': return p_.option($, ($) => sh.identifier_escaped("i " + $.import))
                                             case 'local': return p_.option($, ($) => sh.identifier_escaped($ + " "))
-                                            default: return p_.au($[0])
+                                            default: return p_.exhaustive($[0])
                                         }
                                     }),
                                 //tail
@@ -599,7 +599,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                                     sh.identifier_escaped($.type + " ")
                                                 ]))
                                                 case 'local': return p_.option($, ($) => p_.literal.list([]))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }),
                                     p_.from.list($['sub selection']).flatten(
@@ -611,7 +611,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                                     case 'list': return p_.option($, ($) => p_.literal.list([sh.identifier_raw("L")]))
                                                     case 'optional': return p_.option($, ($) => p_.literal.list([sh.identifier_raw("O")]))
                                                     case 'state': return p_.option($, ($) => p_.literal.list([sh.identifier_escaped($)]))
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }),
                                     ),
@@ -682,7 +682,7 @@ export const Value: p_i.Transformer_With_Parameter<
                         sh.t.string()
                     )
                 ]))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         })
 }

@@ -50,7 +50,7 @@ const temp_rename: p_ri.Refiner<
                                 }
                                 return id
                             })
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     })
                 renamed[new_id] = $
@@ -217,7 +217,7 @@ export const Package_Set: p_ri.Refiner<
                             return sh.n.file(y)
                         })
                         case 'set': return p_.option($, ($) => ['directory', Package_Set($, abort)])
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }))
     }
@@ -241,7 +241,7 @@ export const Temp_Value_Type_Specification = (
                             case 'list': return p_.option($, ($) => p_.literal.list([sh.identifier_raw("L")]))
                             case 'optional': return p_.option($, ($) => p_.literal.list([sh.identifier_raw("O")]))
                             case 'state': return p_.option($, ($) => p_.literal.list([sh.identifier_escaped($)]))
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     }),
             ),
@@ -334,7 +334,7 @@ export const Assign: p_i.Transformer<
                                                                         temp[$.option] = $['if true']
                                                                         return p_.literal.dictionary(temp)
                                                                     })
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             })
                                                         ).convert_to_list(
@@ -382,7 +382,7 @@ export const Assign: p_i.Transformer<
                                                                                 ])
                                                                             ))
                                                                             case 'single': return p_.option($, ($) => Assign($['if false']))
-                                                                            default: return p_.au($[0])
+                                                                            default: return p_.exhaustive($[0])
                                                                         }
                                                                     }))
 
@@ -437,7 +437,7 @@ export const Assign: p_i.Transformer<
                                         )
                                     ])
                                 ))
-                                default: return p_.au($[0])
+                                default: return p_.exhaustive($[0])
                             }
                         })
                 }))
@@ -458,24 +458,24 @@ export const Assign: p_i.Transformer<
                                                                 switch ($[0]) {
                                                                     case 'not': return p_.option($, ($) => sh.e.not(Select_Value($v_selection)))
                                                                     case 'copy': return p_.option($, ($) => Select_Value($v_selection))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
                                                         case 'dictionary': return p_.option($, ($) => p_.from.state($).decide(
                                                             ($) => {
                                                                 switch ($[0]) {
                                                                     case 'is empty': return p_.option($, ($) => p_implement_me("X1"))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
                                                         case 'list': return p_.option($, ($) => p_.from.state($).decide(
                                                             ($) => {
                                                                 switch ($[0]) {
                                                                     case 'is empty': return p_.option($, ($) => p_implement_me("X2"))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
-                                                        default: return p_.au($[0])
+                                                        default: return p_.exhaustive($[0])
                                                     }
                                                 })
                                         }))
@@ -484,10 +484,10 @@ export const Assign: p_i.Transformer<
                                             switch ($[0]) {
                                                 case 'false': return p_.option($, ($) => sh.e.false_())
                                                 case 'true': return p_.option($, ($) => sh.e.true_())
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
                         case 'dictionary': return p_.option($, ($) => p_.from.state($).decide(
@@ -588,21 +588,21 @@ export const Assign: p_i.Transformer<
                                                                             )
                                                                         ])
                                                                     ))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
                                                         case 'list': return p_.option($, ($) => p_.from.state($).decide(
                                                             ($) => {
                                                                 switch ($[0]) {
                                                                     case 'convert': return p_.option($, ($) => p_implement_me("X6"))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
-                                                        default: return p_.au($[0])
+                                                        default: return p_.exhaustive($[0])
                                                     }
                                                 })
                                         }))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
                         case 'group': return p_.option($, ($) => p_.from.state($).decide(
@@ -659,7 +659,7 @@ export const Assign: p_i.Transformer<
                                             () => sh.e.null_()
                                         )
                                     )
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
                         case 'list': return p_.option($, ($) => p_.from.state($).decide(
@@ -688,7 +688,7 @@ export const Assign: p_i.Transformer<
                                                             ($) => {
                                                                 switch ($[0]) {
                                                                     case 'convert': return p_.option($, ($) => p_implement_me("X9"))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
                                                         case 'list': return p_.option($, ($) => p_.from.state($).decide(
@@ -768,14 +768,14 @@ export const Assign: p_i.Transformer<
                                                                     ))
                                                                     case 'reduce': return p_.option($, ($) => p_implement_me("X11"))
                                                                     case 'reverse': return p_.option($, ($) => p_implement_me("X12"))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
-                                                        default: return p_.au($[0])
+                                                        default: return p_.exhaustive($[0])
                                                     }
                                                 })
                                         }))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
                         case 'nothing': return p_.option($, ($) => sh.e.null_())
@@ -787,7 +787,7 @@ export const Assign: p_i.Transformer<
                                             switch ($[0]) {
                                                 case 'literal': return p_.option($, ($) => sh.e.number_literal($))
                                                 case 'copy': return p_.option($, ($) => Select_Value($))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }))
                                     case 'integer': return p_.option($, ($) => p_.from.state($).decide(
@@ -796,7 +796,7 @@ export const Assign: p_i.Transformer<
                                                 case 'copy': return p_.option($, ($) => Select_Value($))
                                                 case 'divide': return p_.option($, ($) => p_implement_me("X17"))
                                                 case 'literal': return p_.option($, ($) => sh.e.number_literal($))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }))
                                     case 'natural': return p_.option($, ($) => p_.from.state($).decide(
@@ -808,10 +808,10 @@ export const Assign: p_i.Transformer<
                                                 case 'number of list items': return p_.option($, ($) => p_implement_me("X14"))
                                                 case 'source column': return p_.option($, ($) => p_implement_me("X15"))
                                                 case 'source line': return p_.option($, ($) => p_implement_me("X16"))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
                         case 'optional': return p_.option($, ($) => p_.from.state($).decide(
@@ -848,7 +848,7 @@ export const Assign: p_i.Transformer<
                                                         Assign($),
                                                     ])
                                                 ))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }))
                                     case 'from': return p_.option($, ($) => p_variables(
@@ -861,7 +861,7 @@ export const Assign: p_i.Transformer<
                                                             ($) => {
                                                                 switch ($[0]) {
                                                                     case 'convert': return p_.option($, ($) => p_implement_me("X18"))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
                                                         case 'optional': return p_.option($, ($) => p_.from.state($).decide(
@@ -897,14 +897,14 @@ export const Assign: p_i.Transformer<
                                                                             ),
                                                                         ])
                                                                     ))
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
-                                                        default: return p_.au($[0])
+                                                        default: return p_.exhaustive($[0])
                                                     }
                                                 })
                                         }))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
                         case 'state': return p_.option($, ($) => p_.from.state($).decide(
@@ -917,7 +917,7 @@ export const Assign: p_i.Transformer<
                                             Assign($['assign option'])
                                         ])
                                     ))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
                         case 'text': return p_.option($, ($) => p_.from.state($).decide(
@@ -929,7 +929,7 @@ export const Assign: p_i.Transformer<
                                                 switch ($[0]) {
                                                     case 'freeform': return p_.option($, ($) => 'quote')
                                                     case 'identifier': return p_.option($, ($) => 'apostrophe')
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }))))
                                     case 'from': return p_.option($, ($) => p_variables(
@@ -943,20 +943,20 @@ export const Assign: p_i.Transformer<
                                                                 switch ($[0]) {
                                                                     case 'copy': return p_.option($, ($) => Select_Value($v_selection))
 
-                                                                    default: return p_.au($[0])
+                                                                    default: return p_.exhaustive($[0])
                                                                 }
                                                             }))
-                                                        default: return p_.au($[0])
+                                                        default: return p_.exhaustive($[0])
                                                     }
                                                 })
                                         }))
                                     case 'source document': return p_.option($, ($) => p_implement_me("X20"))
                                     case 'entry id': return p_.option($, ($) => sh.e.identifier_raw("id"))
                                     case 'option name': return p_.option($, ($) => sh.e.identifier_raw("$[0]"))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }))
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }))
             case 'select': return p_.option($, ($) => Select_Value($))
@@ -1025,10 +1025,10 @@ export const Assign: p_i.Transformer<
                                 )
                             ])
                         ))
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })
 
@@ -1078,7 +1078,7 @@ export const Select_Value = (
                                                 sh.e.identifier_escaped(join(p_.literal.list(["v ", $.import]))),
                                                 sh.identifier_escaped($.variable)
                                             ))
-                                            default: return p_.au($[0])
+                                            default: return p_.exhaustive($[0])
                                         }
                                     }),
                                 p_.literal.segmented_list([
@@ -1125,7 +1125,7 @@ export const Select_Value = (
                                                     case 'pass through': return p_.option($, ($) => p_.literal.list([
                                                         sh.e.identifier_raw("$l")
                                                     ]))
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }),
                                         () => p_.literal.list([])
@@ -1152,7 +1152,7 @@ export const Select_Value = (
                                                     case 'pass through': return p_.option($, ($) => p_.literal.list([
                                                         sh.e.identifier_raw("$p")
                                                     ]))
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }),
                                         () => p_.literal.list([])
@@ -1360,7 +1360,7 @@ export const Select_Value = (
                                                         ),
                                                     ])
                                                 ))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }),
                                 ])
@@ -1445,7 +1445,7 @@ export const Select_Value = (
                                 ])
                             ))
                             case 'variable': return p_.option($, ($) => sh.e.identifier_escaped("var " + $))
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     }),
                 ($, current_expression) => {
@@ -1456,7 +1456,7 @@ export const Select_Value = (
                     )
                 }
             ))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })
 
@@ -1501,7 +1501,7 @@ export const Select_Lookup = (
                                 Select_Value($)
                             ])
                         ))
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }))
             case 'from parameter': return p_.option($, ($) => sh.e.element_access(
@@ -1535,7 +1535,7 @@ export const Select_Lookup = (
                                 Select_Lookup($.acyclic)
                             ])
                         ))
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }))
             case 'cyclic': return p_.option($, ($) => p_.from.state($).decide(
@@ -1552,10 +1552,10 @@ export const Select_Lookup = (
                             p_.literal.list([])
                         ))
                         case 'siblings': return p_.option($, ($) => sh.e.identifier_raw("$c"))
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }))
 
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })

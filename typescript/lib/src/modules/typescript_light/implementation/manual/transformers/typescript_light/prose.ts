@@ -445,7 +445,7 @@ export const Directory: interface_.Directory = ($) => {
                         { 'replace empty type literals by symbol': true }
                     )])
                     case 'directory': return p_.option($, ($) => ['directory', Directory($)])
-                    default: return p_.au($[0])
+                    default: return p_.exhaustive($[0])
                 }
             }))
 }
@@ -514,7 +514,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                                                 () => sh.ph.nothing()
                                             )
                                         ]))
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 }),
                         ])
@@ -562,7 +562,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                                             sh.ph.literal("* as "),
                                             Identifier($),
                                         ]))
-                                        default: return p_.au($[0])
+                                        default: return p_.exhaustive($[0])
                                     }
                                 }),
                             sh.ph.literal(" from "),
@@ -650,7 +650,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                                                                 case 'default': return p_.option($, ($) => p_.literal.list([
                                                                     sh.ph.literal("default:")
                                                                 ]))
-                                                                default: return p_.au($[0])
+                                                                default: return p_.exhaustive($[0])
                                                             }
                                                         })
                                                     ,
@@ -716,7 +716,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                             )),
                         ])
                     ]))
-                    default: return p_.au($[0])
+                    default: return p_.exhaustive($[0])
                 }
             })
 ))
@@ -806,7 +806,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
                                     'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                 }
                             ))
-                            default: return p_.au($[0])
+                            default: return p_.exhaustive($[0])
                         }
                     }),
             ]))
@@ -852,7 +852,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
                                 case 'smaller than or equal': return p_.option($, ($) => sh.ph.literal("<="))
                                 case 'greater than': return p_.option($, ($) => sh.ph.literal(">"))
                                 case 'greater than or equal': return p_.option($, ($) => sh.ph.literal(">="))
-                                default: return p_.au($[0])
+                                default: return p_.exhaustive($[0])
                             }
                         }),
                     sh.ph.literal(" "),
@@ -930,7 +930,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
                                             switch ($[0]) {
                                                 case 'identifier': return p_.option($, ($) => Identifier($))
                                                 case 'string literal': return p_.option($, ($) => String_Literal($))
-                                                default: return p_.au($[0])
+                                                default: return p_.exhaustive($[0])
                                             }
                                         }
                                     ),
@@ -988,7 +988,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
                                 switch ($[0]) {
                                     case 'negation': return p_.option($, ($) => sh.ph.literal("-"))
                                     case 'logical not': return p_.option($, ($) => sh.ph.literal("!"))
-                                    default: return p_.au($[0])
+                                    default: return p_.exhaustive($[0])
                                 }
                             }
                         )
@@ -996,7 +996,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
                     Expression(operand, $p)
                 ])
             })
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })
 
@@ -1068,7 +1068,7 @@ export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(
                                                 switch ($[0]) {
                                                     case 'identifier': return p_.option($, ($) => Identifier($))
                                                     case 'string literal': return p_.option($, ($) => String_Literal($))
-                                                    default: return p_.au($[0])
+                                                    default: return p_.exhaustive($[0])
                                                 }
                                             }),
                                         sh.ph.literal(": "),
@@ -1115,6 +1115,6 @@ export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(
                 ))
             ))
             case 'void': return p_.option($, ($) => sh.ph.literal("void"))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })
