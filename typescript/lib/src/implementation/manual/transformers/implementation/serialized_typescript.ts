@@ -3,8 +3,8 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 
 //FIXME, this one should be moved to pareto-targets
 
-import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
-import * as d_out from "pareto-fountain-pen-file-structure/interface/data/file-system"
+import type * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
+import type * as d_out from "pareto-fountain-pen-file-structure/interface/data/file-system"
 
 //transformations
 import * as t_typescript from "./typescript.js"

@@ -6,9 +6,9 @@ import p_variables from 'pareto-core/implementation/transformer/specials/variabl
 import * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
-import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
-import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
-import * as d_function from "../../../../interface/data/pareto_to_typescript.js"
+import type * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
+import type * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
+import type * as d_function from "../../../../interface/data/pareto_to_typescript.js"
 
 //shorthands
 import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target.js"

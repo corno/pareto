@@ -2,8 +2,8 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
-import * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved.js"
-import * as d_in_imp from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
+import type * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved.js"
+import type * as d_in_imp from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
 export namespace d_in {
 
     export type Temp_Library = {
@@ -12,8 +12,8 @@ export namespace d_in {
     }
 
 }
-import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
-import * as d_function from "../../../../interface/data/pareto_to_typescript.js"
+import type * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
+import type * as d_function from "../../../../interface/data/pareto_to_typescript.js"
 
 //dependencies
 import * as t_interface_to_typescript_temp from "../interface/typescript.js"
