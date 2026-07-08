@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/implementation/transformer'
-import * as p_i from 'pareto-core/interface/transformer'
-import * as p_ri from 'pareto-core/interface/refiner'
+import type * as p_i from 'pareto-core/interface/transformer'
+import type * as p_ri from 'pareto-core/interface/refiner'
 import p_variables from 'pareto-core/implementation/refiner/specials/variables'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
@@ -23,7 +23,7 @@ export namespace interface_ {
 }
 
 //dependencies
-import { $$ as s_file_name } from "../text/filename.js"
+import { Text as s_file_name } from "../text/filename.js"
 
 //shorthands
 import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light/target.js"

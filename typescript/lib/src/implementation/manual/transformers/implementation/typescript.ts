@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core/implementation/transformer'
-import * as p_i from 'pareto-core/interface/transformer'
-import * as p_di from 'pareto-core/interface/data'
+import type * as p_i from 'pareto-core/interface/transformer'
+import type * as p_di from 'pareto-core/interface/data'
 import p_implement_me from 'pareto-core-dev/implement_me'
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
-import * as p_ri from 'pareto-core/interface/refiner'
+import type * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
 import type * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
