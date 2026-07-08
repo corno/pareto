@@ -13,6 +13,7 @@ export namespace interface_ {
     >
 
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/text/filename.js"
 
 export const Text: interface_.Text = ($) => {
     return p_list_build_deprecated(

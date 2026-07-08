@@ -21,6 +21,7 @@ export namespace interface_ {
         { 'name': string }
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/interface/typescript.js"
 
 //dependencies
 import { Text as s_file_name } from "../text/filename.js"
