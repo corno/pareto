@@ -4,7 +4,7 @@ import type * as p_ri from 'pareto-core/interface/refiner'
 //data types
 import type * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved.js"
 import type * as d_in_imp from "../../../../interface/generated/liana/schemas/implementation/data/resolved.js"
-export namespace d_in {
+namespace d_in {
 
     export type Temp_Library = {
         'interface': d_in_inf.Package_Set
