@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as interface_ from "../../../../interface/declarations/transformers/text/filename.js"
+import type * as interface_ from "../../../../declarations/transformers/text/filename.js"
 
 export const Text: interface_.Text = ($) => {
     return p_list_build_deprecated(
