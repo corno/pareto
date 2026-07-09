@@ -5,7 +5,7 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import type * as d_target from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
 
 //dependencies
-import * as t_text_to_identifier from "../../implementation/manual/transformers/text/identifier.js"
+import * as t_text_to_identifier from "../../implementation/transformers/text/identifier.js"
 
 export const identifier_raw = (
     name: string,
