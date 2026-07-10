@@ -467,7 +467,7 @@ export const String_Literal: interface_.String_Literal = ($) => {
         : apostrophed_text($.value))
 }
 
-export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.from.list($).map(
+export const Statements: interface_.Statements = ($, $p) => sh.pg.deprecated_composed(p_.from.list($).map(
     ($) =>
         p_.from.state($).decide(
             ($): d_out.Paragraph => {
@@ -581,7 +581,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.composed(p_.fr
                             sh.ph.composed([
                                 sh.ph.literal("{"),
                                 sh.ph.indent(
-                                    sh.pg.composed([
+                                    sh.pg.deprecated_composed([
                                         Statements($.block, $p),
                                         sh.pg.sentences([
                                             sh.sentence([]),
