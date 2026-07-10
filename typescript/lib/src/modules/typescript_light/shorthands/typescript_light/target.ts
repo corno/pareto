@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 //data types
-import type * as d_target from "../../../../interface/generated/liana/schemas/typescript_light/data.js"
+import type * as d_target from "../../../../interface/data/typescript_light.js"
 
 //dependencies
 import * as t_text_to_identifier from "../../implementation/transformers/text/identifier.js"

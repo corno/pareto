@@ -2,7 +2,7 @@
 import * as p_i from 'pareto-core/interface/__internal/Abort'
 import * as p_di from 'pareto-core/interface/data'
 
-import * as i_imports_interface from "../../interface/data/resolved.js"
+import * as i_imports_interface from "../../../interface/interface/data/resolved.js"
 
 export namespace Package_Set_ {
     

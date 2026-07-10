@@ -1,8 +1,8 @@
 
 import type * as p_ from 'pareto-core/interface/transformer'
 import type * as p_ri from 'pareto-core/interface/refiner'
-import type * as d_in from "../../../interface/generated/liana/schemas/interface/data/resolved.js"
-import type * as d_out from "../../../interface/generated/liana/schemas/typescript_light/data.js"
+import type * as d_in from "../../../modules/interface/interface/data/resolved.js"
+import type * as d_out from "../../../interface/data/typescript_light.js"
 import type * as d_function from "../../../interface/data/pareto_to_typescript.js"
 
 
