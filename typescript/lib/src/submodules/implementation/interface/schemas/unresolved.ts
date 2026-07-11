@@ -4,7 +4,7 @@ import * as p_di from 'pareto-core/interface/data'
 
 import * as i_location from "liana-core/interface/data/document_and_location"
 
-import * as i_imports_interface from "../../../interface/interface/data/unresolved.js"
+import * as i_imports_interface from "../../../interface/interface/schemas/unresolved.js"
 
 export namespace Package_Set_ {
     

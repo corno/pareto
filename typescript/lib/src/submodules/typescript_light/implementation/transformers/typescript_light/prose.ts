@@ -9,7 +9,7 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 import type * as d_out from "pareto-fountain-pen/interface/data/prose"
 import type * as d_loc from "pareto-fountain-pen/interface/data/list_of_characters"
 import type * as d_out_fs from "pareto-fountain-pen-file-structure/interface/data/file-system"
-import type * as d_in from "../../../interface/data/typescript_light.js"
+import type * as d_in from "../../../interface/schemas/typescript_light.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"

@@ -2,8 +2,8 @@ import * as p_ from 'pareto-core/implementation/transformer'
 
 import * as interface_ from "../../../declarations/transformers/implementation_command/typescript_light.js"
 
-import * as d_in from "../../../interface/data/implementation_command.js"
-import * as d_out from "../../../../typescript_light/interface/data/typescript_light.js"
+import * as d_in from "../../../interface/schemas/implementation_command.js"
+import * as d_out from "../../../../typescript_light/interface/schemas/typescript_light.js"
 
 //shorthands
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"

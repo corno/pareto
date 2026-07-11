@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
-import type * as d_in from "../../../submodules/interface/interface/data/resolved.js"
+import type * as d_in from "../../../submodules/interface/interface/schemas/resolved.js"
 import type * as d_out from "pareto-fountain-pen-file-structure/interface/data/file-system"
 
 //transformations

@@ -7,9 +7,9 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 import type * as interface_ from "../../../declarations/transformers/interface/typescript.js"
 
-import type * as d_in from "../../../submodules/interface/interface/data/resolved.js"
-import type * as d_out from "../../../submodules/typescript_light/interface/data/typescript_light.js"
-import type * as d_function from "../../../interface/data/pareto_to_typescript.js"
+import type * as d_in from "../../../submodules/interface/interface/schemas/resolved.js"
+import type * as d_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
+import type * as d_function from "../../../interface/schemas/pareto_to_typescript.js"
 
 //dependencies
 import { Text as s_file_name } from "../text/filename.js"
