@@ -2,23 +2,23 @@ import * as p_ from 'pareto-core/interface/data'
 
 
 export type Root = {
-    'type sets': p_.Dictionary<Root.type_setsD>
+    'schemas': p_.Dictionary<Root.schemas_D>
 }
 
 export namespace Root {
 
-    export type type_setsD = {
-        'imports': p_.Dictionary<data_set.importsD>
-        'types': p_.Dictionary<data_set.typesD>
+    export type schemas_D = {
+        'imports': p_.Dictionary<schemas_D.imports_D>
+        'types': p_.Dictionary<schemas_D.types_D>
     }
 
-    export namespace data_set {
+    export namespace schemas_D {
 
-        export type typesD = {
+        export type types_D = {
             'root': Value
         }
 
-        export type importsD =
+        export type imports_D =
             | ['module', {
                 'module': string
                 'type': string
