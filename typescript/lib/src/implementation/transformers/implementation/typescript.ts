@@ -7,7 +7,7 @@ import type * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
 import type * as d_in from "../../../modules/implementation/interface/data/resolved.js"
-import type * as d_out from "../../../interface/data/typescript_light.js"
+import type * as d_out from "../../../modules/typescript_light/interface/data/typescript_light.js"
 import type * as d_function from "../../../interface/data/pareto_to_typescript.js"
 
 //shorthands

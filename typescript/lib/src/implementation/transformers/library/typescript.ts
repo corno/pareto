@@ -12,7 +12,7 @@ namespace d_in {
     }
 
 }
-import type * as d_out from "../../../interface/data/typescript_light.js"
+import type * as d_out from "../../../modules/typescript_light/interface/data/typescript_light.js"
 import type * as d_function from "../../../interface/data/pareto_to_typescript.js"
 
 //dependencies
