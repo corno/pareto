@@ -6,10 +6,10 @@ import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
 //data types
-import type * as d_out from "pareto-fountain-pen/interface/data/prose"
-import type * as d_loc from "pareto-fountain-pen/interface/data/list_of_characters"
-import type * as d_out_fs from "pareto-fountain-pen-file-structure/interface/data/file-system"
-import type * as d_in from "../../../interface/schemas/typescript_light.js"
+import type * as s_out from "pareto-fountain-pen/interface/data/prose"
+import type * as s_loc from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_out_fs from "pareto-fountain-pen-file-structure/interface/data/file-system"
+import type * as s_in from "../../../interface/schemas/typescript_light.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
@@ -18,68 +18,68 @@ export namespace interface_ {
 
     export type escaped_text = p_i.Transformer<
         string,
-        d_loc.List_of_Characters
+        s_loc.List_of_Characters
     >
 
     export type apostrophed_text = p_i.Transformer<
         string,
-        d_loc.List_of_Characters
+        s_loc.List_of_Characters
     >
 
     export type backticked_text = p_i.Transformer<
         string,
-        d_loc.List_of_Characters
+        s_loc.List_of_Characters
     >
 
     export type quoted_text = p_i.Transformer<
         string,
-        d_loc.List_of_Characters
+        s_loc.List_of_Characters
     >
 
     export type decimal = p_i.Transformer<
         number,
-        d_loc.List_of_Characters
+        s_loc.List_of_Characters
     >
 
     export type float = p_i.Transformer<
         number,
-        d_loc.List_of_Characters
+        s_loc.List_of_Characters
     >
 
     export type Directory = p_i.Transformer<
-        d_in.Directory,
-        d_out_fs.Directory
+        s_in.Directory,
+        s_out_fs.Directory
     >
 
     export type Identifier = p_i.Transformer<
-        d_in.Identifier,
-        d_out.Phrase
+        s_in.Identifier,
+        s_out.Phrase
     >
 
     export type String_Literal_pseudo = p_i.Transformer_With_Parameter<
         string,
-        d_out.Phrase,
+        s_out.Phrase,
         {
             'delimiter': "quote" | "apostrophe"
         }
     >
 
     export type String_Literal = p_i.Transformer<
-        d_in.String_Literal,
-        d_out.Phrase
+        s_in.String_Literal,
+        s_out.Phrase
     >
 
     export type Statements = p_i.Transformer_With_Parameter<
-        d_in.Statements,
-        d_out.Paragraph,
+        s_in.Statements,
+        s_out.Paragraph,
         {
             'replace empty type literals by symbol': boolean
         }
     >
 
     export type Expression = p_i.Transformer_With_Parameter<
-        d_in.Expression_,
-        d_out.Phrase.composed,
+        s_in.Expression_,
+        s_out.Phrase.composed,
         {
             'replace empty type literals by symbol': boolean
             'object literal needs parentheses': boolean
@@ -87,8 +87,8 @@ export namespace interface_ {
     >
 
     export type Type = p_i.Transformer_With_Parameter<
-        d_in.Type,
-        d_out.Phrase,
+        s_in.Type,
+        s_out.Phrase,
         {
             'replace empty type literals by symbol': boolean
         }
@@ -470,7 +470,7 @@ export const String_Literal: interface_.String_Literal = ($) => {
 export const Statements: interface_.Statements = ($, $p) => sh.pg.deprecated_composed(p_.from.list($).map(
     ($) =>
         p_.from.state($).decide(
-            ($): d_out.Paragraph => {
+            ($): s_out.Paragraph => {
                 switch ($[0]) {
                     case 'block': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
@@ -593,7 +593,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.deprecated_com
                     ]))
                     case 'return': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence(
-                            p_.literal.segmented_list<d_out.Phrase.composed.L>([
+                            p_.literal.segmented_list<s_out.Phrase.composed.L>([
                                 p_.literal.list([
                                     sh.ph.literal("return "),
                                 ]),
@@ -722,7 +722,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.deprecated_com
 ))
 
 export const Expression: interface_.Expression = ($, $p) => p_.from.state($).decide(
-    ($): d_out.Phrase.composed => {
+    ($): s_out.Phrase.composed => {
         switch ($[0]) {
             case 'assignment': return p_.option($, ($) => p_.literal.segmented_list([
                 Expression($.left, $p),

@@ -7,9 +7,9 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 import type * as interface_ from "../../../declarations/transformers/interface/typescript.js"
 
-import type * as d_in from "../../../submodules/interface/interface/schemas/resolved.js"
-import type * as d_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
-import type * as d_function from "../../../interface/schemas/pareto_to_typescript.js"
+import type * as s_in from "../../../submodules/interface/interface/schemas/resolved.js"
+import type * as s_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
+import type * as s_function from "../../../interface/schemas/pareto_to_typescript.js"
 
 //dependencies
 import { Text as s_file_name } from "../text/filename.js"
@@ -19,13 +19,13 @@ import * as sh from "../../../submodules/typescript_light/shorthands/typescript_
 
 
 export const temp_create_file_path = (
-    $: d_in.Imports.D,
+    $: s_in.Imports.D,
     $p: {
         'delimiter':
         | ['apostrophe', null]
         | ['quote', null]
     },
-): d_out.String_Literal => {
+): s_out.String_Literal => {
     const valid_file_name = ($: string): string => {
         return p_text_from_list(
             s_file_name($),
@@ -73,14 +73,14 @@ export const temp_create_file_path = (
 }
 
 const temp_rename: p_ri.Refiner<
-    d_in.Package_Set,
-    d_function.Error,
-    d_in.Package_Set
+    s_in.Package_Set,
+    s_function.Error,
+    s_in.Package_Set
 > = (
     $,
     abort
 ) => {
-        const renamed: { [id: string]: d_in.Package_Set.D } = {}
+        const renamed: { [id: string]: s_in.Package_Set.D } = {}
         p_.from.dictionary($).map(
             ($, id) => {
                 const new_id: string = p_.from.state($).decide(
@@ -107,9 +107,9 @@ const temp_rename: p_ri.Refiner<
 
 
 export const Package_Set: p_ri.Refiner<
-    d_out.Directory,
-    d_function.Error,
-    d_in.Package_Set
+    s_out.Directory,
+    s_function.Error,
+    s_in.Package_Set
 > = (
     $,
     abort
@@ -117,14 +117,14 @@ export const Package_Set: p_ri.Refiner<
     ($) => p_.from.state($).decide(
         ($) => {
             switch ($[0]) {
-                case 'package': return p_.option($, ($) => sh.n.file(p_.literal.segmented_list<d_out.Statements_.L>([
+                case 'package': return p_.option($, ($) => sh.n.file(p_.literal.segmented_list<s_out.Statements_.L>([
                     p_.literal.list([
                         sh.s.import_namespace(
                             sh.identifier_raw("p_di"), sh.string_literal("pareto-core/data/interface", 'apostrophe')),
                     ]),
 
                     p_.from.dictionary($.imports,).convert_to_list(
-                        ($, id): d_out.Statements_.L => sh.s.import_namespace(
+                        ($, id): s_out.Statements_.L => sh.s.import_namespace(
                             sh.identifier_escaped(`i ${id}`),
                             temp_create_file_path(
                                 $,
@@ -138,7 +138,7 @@ export const Package_Set: p_ri.Refiner<
                         ($) => {
                             switch ($[0]) {
                                 case 'data modules': return p_.option($, ($) => p_.from.dictionary($).flatten_to_list(
-                                    ($, id): d_out.Statements => Value(
+                                    ($, id): s_out.Statements => Value(
                                         $,
                                         {
                                             'name': id + " ",
@@ -147,13 +147,13 @@ export const Package_Set: p_ri.Refiner<
                                     )
                                 ))
                                 case 'functions': return p_.option($, ($) => p_.from.dictionary($).flatten_to_list(
-                                    ($, id): d_out.Statements => {
+                                    ($, id): s_out.Statements => {
                                         const name = id + " "
                                         return p_.literal.list([
                                             sh.s.namespace(
                                                 true,
                                                 sh.identifier_escaped(name),
-                                                p_.literal.segmented_list<d_out.Statements_.L>([
+                                                p_.literal.segmented_list<s_out.Statements_.L>([
                                                     Value(
                                                         $.context,
                                                         {
@@ -167,12 +167,12 @@ export const Package_Set: p_ri.Refiner<
                                                         }
                                                     ),
                                                     p_.from.state($.type).decide(
-                                                        ($): d_out.Statements => {
+                                                        ($): s_out.Statements => {
                                                             switch ($[0]) {
                                                                 case 'transformer': return p_.option($, ($) => p_.literal.list([]))
-                                                                case 'refiner': return p_.option($, ($): d_out.Statements => p_.literal.segmented_list<d_out.Statements.L>([
+                                                                case 'refiner': return p_.option($, ($): s_out.Statements => p_.literal.segmented_list<s_out.Statements.L>([
 
-                                                                    p_.from.optional($.error).decide<d_out.Statements>(
+                                                                    p_.from.optional($.error).decide<s_out.Statements>(
                                                                         ($) => {
                                                                             return Value(
                                                                                 $,
@@ -186,7 +186,7 @@ export const Package_Set: p_ri.Refiner<
                                                                         }
                                                                     ),
 
-                                                                    p_.from.optional($.lookups).decide<d_out.Statements>(
+                                                                    p_.from.optional($.lookups).decide<s_out.Statements>(
                                                                         ($) => {
                                                                             return p_.from.dictionary($).convert_to_list(
                                                                                 ($, id) => sh.s.namespace(
@@ -230,7 +230,7 @@ export const Package_Set: p_ri.Refiner<
                                                                         }
                                                                     )
                                                                 ),
-                                                                () => p_.literal.list<d_out.Statements_.L>([])
+                                                                () => p_.literal.list<s_out.Statements_.L>([])
                                                             )
                                                         )
                                                     ])
@@ -257,8 +257,8 @@ export const Package_Set: p_ri.Refiner<
                                                         p_.from.state($.type).decide(
                                                             ($) => {
                                                                 switch ($[0]) {
-                                                                    case 'transformer': return p_.option($, ($): d_out.Type.function_.parameters => p_.literal.list([]))
-                                                                    case 'refiner': return p_.option($, ($): d_out.Type.function_.parameters => p_.literal.segmented_list([
+                                                                    case 'transformer': return p_.option($, ($): s_out.Type.function_.parameters => p_.literal.list([]))
+                                                                    case 'refiner': return p_.option($, ($): s_out.Type.function_.parameters => p_.literal.segmented_list([
 
                                                                         p_.from.optional($.error).decide(
                                                                             ($) => p_.literal.list([
@@ -379,12 +379,12 @@ export const Package_Set: p_ri.Refiner<
         }))
 
 export const Value: p_i.Transformer_With_Parameter<
-    d_in.Value,
-    d_out.Statements,
+    s_in.Value,
+    s_out.Statements,
     { 'name': string }
 > = ($, $p) => {
     return p_.from.state($).decide(
-        ($): d_out.Statements => {
+        ($): s_out.Statements => {
             switch ($[0]) {
 
 
@@ -569,7 +569,7 @@ export const Value: p_i.Transformer_With_Parameter<
                         sh.identifier_escaped($p.name),
                         p_.literal.list([]),
                         p_variables(() => {
-                            const Reference = ($: d_in.Value.reference) => sh.t.type_reference(
+                            const Reference = ($: s_in.Value.reference) => sh.t.type_reference(
                                 //start
                                 p_.from.state($.location).decide(
                                     ($) => {

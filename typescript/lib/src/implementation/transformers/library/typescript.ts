@@ -2,18 +2,18 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
-import type * as d_in_inf from "../../../submodules/interface/interface/schemas/resolved.js"
-import type * as d_in_imp from "../../../submodules/implementation/interface/schemas/resolved.js"
-namespace d_in {
+import type * as s_in_inf from "../../../submodules/interface/interface/schemas/resolved.js"
+import type * as s_in_imp from "../../../submodules/implementation/interface/schemas/resolved.js"
+namespace s_in {
 
     export type Temp_Library = {
-        'interface': d_in_inf.Package_Set
-        'implementation': d_in_imp.Package_Set
+        'interface': s_in_inf.Package_Set
+        'implementation': s_in_imp.Package_Set
     }
 
 }
-import type * as d_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
-import type * as d_function from "../../../interface/schemas/pareto_to_typescript.js"
+import type * as s_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
+import type * as s_function from "../../../interface/schemas/pareto_to_typescript.js"
 
 //dependencies
 import * as t_interface_to_typescript_temp from "../interface/typescript.js"
@@ -26,13 +26,13 @@ import * as sh from "../../../submodules/typescript_light/shorthands/typescript_
 
 
 export const Temp_Library: p_ri.Refiner<
-    d_out.Directory,
-    d_function.Error,
-    d_in.Temp_Library
+    s_out.Directory,
+    s_function.Error,
+    s_in.Temp_Library
 > = (
     $,
     abort
-) => p_.literal.dictionary<d_out.Directory.D>({
+) => p_.literal.dictionary<s_out.Directory.D>({
     "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
         $.interface,
         abort,

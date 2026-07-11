@@ -3,8 +3,8 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 
 //FIXME, this one should be moved to pareto-targets
 
-import type * as d_in from "../../../submodules/implementation/interface/schemas/resolved.js"
-import type * as d_out from "pareto-fountain-pen-file-structure/interface/data/file-system"
+import type * as s_in from "../../../submodules/implementation/interface/schemas/resolved.js"
+import type * as s_out from "pareto-fountain-pen-file-structure/interface/data/file-system"
 
 //transformations
 import * as t_typescript from "./typescript.js"
@@ -14,7 +14,7 @@ import * as t_typescript_light_to_prose_block from "../../../submodules/typescri
 // import * as r_pareto_implementation from "pareto/implementation/generated/liana/schemas/implementation/resolve"
 
 
-export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
+export const Package_Set = ($: s_in.Package_Set): s_out.Directory => {
     return t_typescript_light_to_prose_block.Directory(
         t_typescript.Package_Set(
             $,

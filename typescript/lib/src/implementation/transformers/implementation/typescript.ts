@@ -6,9 +6,9 @@ import p_variables from 'pareto-core/implementation/transformer/specials/variabl
 import type * as p_ri from 'pareto-core/interface/refiner'
 
 //data types
-import type * as d_in from "../../../submodules/implementation/interface/schemas/resolved.js"
-import type * as d_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
-import type * as d_function from "../../../interface/schemas/pareto_to_typescript.js"
+import type * as s_in from "../../../submodules/implementation/interface/schemas/resolved.js"
+import type * as s_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
+import type * as s_function from "../../../interface/schemas/pareto_to_typescript.js"
 
 //shorthands
 import * as sh from "../../../submodules/typescript_light/shorthands/typescript_light/target.js"
@@ -27,14 +27,14 @@ const join = ($: p_di.List<string>): string => {
 }
 
 const temp_rename: p_ri.Refiner<
-    d_in.Package_Set,
-    d_function.Error,
-    d_in.Package_Set
+    s_in.Package_Set,
+    s_function.Error,
+    s_in.Package_Set
 > = (
     $,
     abort
 ) => {
-        const renamed: { [id: string]: d_in.Package_Set.D } = {}
+        const renamed: { [id: string]: s_in.Package_Set.D } = {}
         p_.from.dictionary($).map(
             ($, id) => {
                 const new_id: string = p_.from.state($).decide(
@@ -61,9 +61,9 @@ const temp_rename: p_ri.Refiner<
 
 
 export const Package_Set: p_ri.Refiner<
-    d_out.Directory,
-    d_function.Error,
-    d_in.Package_Set
+    s_out.Directory,
+    s_function.Error,
+    s_in.Package_Set
 > = (
     $,
     abort
@@ -72,9 +72,9 @@ export const Package_Set: p_ri.Refiner<
             ($, id) => p_.from.state($).decide(
                 ($) => {
                     switch ($[0]) {
-                        case 'package': return p_.option($, ($): d_out.Directory.D => {
+                        case 'package': return p_.option($, ($): s_out.Directory.D => {
 
-                            const y: d_out.Statements = p_.literal.segmented_list([
+                            const y: s_out.Statements = p_.literal.segmented_list([
                                 p_.literal.list([
                                     sh.s.import_namespace(
                                         sh.identifier_raw("pt"),
@@ -171,7 +171,7 @@ export const Package_Set: p_ri.Refiner<
                                     )
                                 ),
                                 p_.from.dictionary($.functions).convert_to_list(
-                                    ($, id): d_out.Statements.L => sh.s.variable(
+                                    ($, id): s_out.Statements.L => sh.s.variable(
                                         true,
                                         true,
                                         sh.identifier_escaped(id),
@@ -223,8 +223,8 @@ export const Package_Set: p_ri.Refiner<
     }
 
 export const Temp_Value_Type_Specification = (
-    $: d_in.Temp_Value_Type_Specification,
-): d_out.Type => {
+    $: s_in.Temp_Value_Type_Specification,
+): s_out.Type => {
     return sh.t.type_reference(
         sh.identifier_escaped("t " + $.type.import),
         //tail
@@ -234,7 +234,7 @@ export const Temp_Value_Type_Specification = (
             ]),
             p_.from.list($['sub selection']).flatten(
                 ($) => p_.from.state($).decide(
-                    ($): p_di.List<d_out.Identifier> => {
+                    ($): p_di.List<s_out.Identifier> => {
                         switch ($[0]) {
                             case 'dictionary': return p_.option($, ($) => p_.literal.list([sh.identifier_raw("D")]))
                             case 'group': return p_.option($, ($) => p_.literal.list([sh.identifier_escaped($)]))
@@ -252,8 +252,8 @@ export const Temp_Value_Type_Specification = (
 }
 
 export const Assign: p_i.Transformer<
-    d_in.Assign,
-    d_out.Expression
+    s_in.Assign,
+    s_out.Expression
 > = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
@@ -325,12 +325,12 @@ export const Assign: p_i.Transformer<
                                                     ),
                                                     p_.literal.chain(
                                                         p_.from.dictionary(p_.from.state($.type).decide(
-                                                            ($): d_in.Assign.decide.type_.state.type_.partial.options => {
+                                                            ($): s_in.Assign.decide.type_.state.type_.partial.options => {
                                                                 switch ($[0]) {
                                                                     case 'partial': return p_.option($, ($) => $.options)
                                                                     case 'full': return p_.option($, ($) => $.options)
                                                                     case 'single': return p_.option($, ($) => {
-                                                                        const temp: { [id: string]: d_in.Assign.decide.type_.state.type_.partial.options.D } = {}
+                                                                        const temp: { [id: string]: s_in.Assign.decide.type_.state.type_.partial.options.D } = {}
                                                                         temp[$.option] = $['if true']
                                                                         return p_.literal.dictionary(temp)
                                                                     })
@@ -1050,8 +1050,8 @@ export const reduce = <Item extends p_di.Value, Result_Type extends p_di.Value>(
 }
 
 export const Select_Value = (
-    $: d_in.Select_Value,
-): d_out.Expression => p_.from.state($).decide(
+    $: s_in.Select_Value,
+): s_out.Expression => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'implement me': return p_.option($, ($) => sh.e.call(
@@ -1461,8 +1461,8 @@ export const Select_Value = (
     })
 
 export const Select_Lookup = (
-    $: d_in.Select_Lookup,
-): d_out.Expression => p_.from.state($).decide(
+    $: s_in.Select_Lookup,
+): s_out.Expression => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'implement me': return p_.option($, ($) => sh.e.call(

@@ -5,13 +5,13 @@ import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 
-import type * as d_loc from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_loc from "pareto-fountain-pen/interface/data/list_of_characters"
 
 export const Identifier: p_i.Transformer<
     string,
-    d_loc.List_of_Characters
+    s_loc.List_of_Characters
 > = ($) => {
-    const temp_literal_to_text = ($: string): d_loc.List_of_Characters => p_list_from_text(
+    const temp_literal_to_text = ($: string): s_loc.List_of_Characters => p_list_from_text(
         $,
         ($) => $
     )
