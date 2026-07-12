@@ -19,7 +19,7 @@ export type Module = {
     'interface': {
         'schemas': i_schemas.Root
         'commands': i_interface_command.Root
-        'query': i_interface_query.Root
+        'queries': i_interface_query.Root
     }
     'declarations': {
         'transformers': i_declarations_transformer.Root

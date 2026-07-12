@@ -5,7 +5,7 @@ import * as i_type_reference from "./type_reference.js"
 import * as i_schema_reference from "./schema_reference.js"
 
 export type Root = {
-        'schemas': p_.Dictionary<Root.schemas_D> //this is a sparse dictionary on the datasets in the module
+        'schemas': p_.Dictionary<Root.schemas_D> //this is a sparse dictionary on the schemas in the module
 }
 
 export namespace Root {

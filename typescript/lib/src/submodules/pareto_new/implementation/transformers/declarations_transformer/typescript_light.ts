@@ -22,7 +22,7 @@ export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($.s
                             p_.literal.list([
                                 sh.s.import_namespace(
                                     sh.identifier_escaped("p_"),
-                                    sh.string_literal("pareto-core/interface/refiner", 'apostrophe')
+                                    sh.string_literal("pareto-core/interface/transformer", 'apostrophe')
                                 ),
                                 sh.s.import_namespace(
                                     sh.identifier_escaped("s_source"),

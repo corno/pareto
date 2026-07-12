@@ -4,6 +4,7 @@ import p_variables from 'pareto-core/implementation/refiner/specials/variables'
 
 import type * as interface_ from "../../../declarations/transformers/schemas/typescript_light.js"
 
+//schemas
 import type * as s_in from "../../../interface/schemas/schemas.js"
 import type * as s_out from "../../../../typescript_light/interface/schemas/typescript_light.js"
 
@@ -28,8 +29,10 @@ export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($['
                         $.root,
                         {
                             'name': id + " ",
-                            'export': false, //don't export the root type, because they contain a trailing underscore,
-                            //we will export them separately, with the underscore removed
+                            'export': false, //don't export these root types directly, because they contain a trailing underscore
+                            //the trailing underscore is used to avoid clashes in the namespace hierarchy; references to TypeScript types ending in an underscore
+                            //will always refer to type aliases at the root (representingPareto types as opposed to Pareto values)
+                            //we will export these root types separately, with the underscore removed
                         }
                     )
                 ),
@@ -305,7 +308,8 @@ export const Value: p_i.Transformer_With_Parameter<
                                     )
                                 )
                             ),
-                            () => sh.t.never()
+                            () => sh.t.never() //if there are no options, the state can not be initialized.
+                            //this is definitely a design flaw, but nevertheless, the tooling should be able to handle it gracefully, and produce valid TypeScript code, even if it is not very useful
                         ))
                         case 'text': return p_.option($, ($) => sh.t.string())
                         default: return p_.exhaustive($[0])

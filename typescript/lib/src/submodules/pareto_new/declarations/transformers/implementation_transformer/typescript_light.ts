@@ -7,3 +7,9 @@ export type Root = p_.Transformer<
     s_in.Root,
     s_out.Directory.D
 >
+
+
+export type Expression = p_.Transformer<
+    s_in.Expression,
+    s_out.Expression
+>

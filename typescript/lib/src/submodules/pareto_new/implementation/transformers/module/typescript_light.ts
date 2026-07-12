@@ -29,7 +29,7 @@ export const Module: interface_.Module = ($) => ['directory', p_.literal.diction
         p_.literal.dictionary({
             "data": t_data.Root($.interface.schemas),
             "commands": t_interface_command.Root($.interface.commands),
-            "query": t_interface_query.Root($.interface.query),
+            "queries": t_interface_query.Root($.interface.queries),
         })
     ),
     "declarations": sh.n.directory(

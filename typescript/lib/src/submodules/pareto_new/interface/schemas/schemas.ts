@@ -37,7 +37,7 @@ export type Value =
     | ['group', p_.Dictionary<Value>]
     | ['list', Value]
     | ['nothing', null]
-    | ['number', null]
+    | ['number', Value.number_]
     | ['optional', Value]
     | ['reference', Value.reference]
     | ['state', {
@@ -58,6 +58,28 @@ export namespace Value {
         }]
     }
 
+    export namespace number_ {
+        
+        export namespace exact {
+            
+            export type natural = null
+            
+            export type integer = null
+            
+        }
+        
+        export type exact = 
+            | readonly ['natural', exact.natural]
+            | readonly ['integer', exact.integer]
+        
+        export type approximation = null
+        
+    }
+    
+    export type number_ = 
+        | readonly ['exact', number_.exact]
+        | readonly ['approximation', number_.approximation]
+
     export type reference = {
         'type location':
         | ['this schema', {
@@ -67,12 +89,12 @@ export namespace Value {
             'schema': string
             'type': string
         }]
-        'sub selection': p_.List<reference.sub_selectionL>
+        'sub selection': p_.List<reference.sub_selection_L>
         'cyclic': boolean
     }
 
     export namespace reference {
-        export type sub_selectionL =
+        export type sub_selection_L =
             | ['dictionary', null]
             | ['group', {
                 'property': string
