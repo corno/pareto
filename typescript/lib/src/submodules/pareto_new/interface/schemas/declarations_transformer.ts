@@ -16,11 +16,13 @@ export namespace Root {
         export namespace schemas_D {
 
                 export type target_schemas_D = {
-                        'parameters schema': p_.Optional_Value<string>
+                        'parameters schema': target_schemas_D.parameters_schema
                         'types': p_.Dictionary<target_schemas_D.types_D>
                 }
 
                 export namespace target_schemas_D {
+
+                        export type parameters_schema = p_.Optional_Value<string>
 
                         export type types_D = {
                                 'target value': i_value_reference.Value_Reference
