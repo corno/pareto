@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/data'
 
-import * as i_data from "./data.js"
+import * as i_schemas from "./schemas.js"
 import * as i_interface_command from "./interface_command.js"
 import * as i_interface_query from "./interface_query.js"
 import * as i_declarations_transformer from "./declarations_transformer.js"
@@ -17,7 +17,7 @@ export type Root = Module
 export type Module = {
     'submodules': p_.Dictionary<Module>
     'interface': {
-        'data': i_data.Root
+        'schemas': i_schemas.Root
         'commands': i_interface_command.Root
         'query': i_interface_query.Root
     }

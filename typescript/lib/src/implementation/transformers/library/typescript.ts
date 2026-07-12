@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_ri from 'pareto-core/interface/refiner'
 
-//data types
+//schemas
 import type * as s_in_inf from "../../../submodules/interface/interface/schemas/resolved.js"
 import type * as s_in_imp from "../../../submodules/implementation/interface/schemas/resolved.js"
 namespace s_in {

@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-//data types
+//schemas
 import type * as s_target from "../../interface/schemas/typescript_light.js"
 
 //dependencies

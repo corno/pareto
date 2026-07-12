@@ -30,7 +30,7 @@ export namespace Root {
     }
 }
 
-type Value =
+export type Value =
     | ['boolean', null]
     | ['component', Value.component]
     | ['dictionary', Value]
@@ -48,23 +48,27 @@ type Value =
 export namespace Value {
 
     export type component = {
-        'type set':
-        | ['local', {
+        'type location':
+        | ['this schema', {
             'type': string //can be circular
         }]
         | ['import', {
-            'type set': string
+            'schema': string
             'type': string
         }]
     }
 
     export type reference = {
-        'type set':
-        | ['local', null] //cannot be circularyly dependent
-        | ['import', string]
-        'type': string
+        'type location':
+        | ['this schema', {
+            'type': string //cannot be circularly dependent on the type that contains this reference
+        }]
+        | ['import', {
+            'schema': string
+            'type': string
+        }]
         'sub selection': p_.List<reference.sub_selectionL>
-        'cyclic': boolean //not sure if this one is used
+        'cyclic': boolean
     }
 
     export namespace reference {

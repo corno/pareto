@@ -5,7 +5,7 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
 import type * as p_ri from 'pareto-core/interface/refiner'
 
-//data types
+//schemas
 import type * as s_in from "../../../submodules/implementation/interface/schemas/resolved.js"
 import type * as s_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
 import type * as s_function from "../../../interface/schemas/pareto_to_typescript.js"

@@ -9,7 +9,7 @@ import * as s_out from "../../../../typescript_light/interface/schemas/typescrip
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
 
 //dependencies
-import * as t_data from "../data/typescript_light.js"
+import * as t_data from "../schemas/typescript_light.js"
 import * as t_interface_command from "../interface_command/typescript_light.js"
 import * as t_interface_query from "../interface_query/typescript_light.js"
 import * as t_declarations_transformer from "../declarations_transformer/typescript_light.js"
@@ -27,7 +27,7 @@ export const Root: interface_.Root = ($) => Module($)
 export const Module: interface_.Module = ($) => ['directory', p_.literal.dictionary({
     "interface": sh.n.directory(
         p_.literal.dictionary({
-            "data": t_data.Root($.interface.data),
+            "data": t_data.Root($.interface.schemas),
             "commands": t_interface_command.Root($.interface.commands),
             "query": t_interface_query.Root($.interface.query),
         })

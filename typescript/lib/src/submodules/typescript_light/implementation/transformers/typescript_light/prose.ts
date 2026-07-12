@@ -5,7 +5,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
-//data types
+//schemas
 import type * as s_out from "pareto-fountain-pen/interface/data/prose"
 import type * as s_loc from "pareto-fountain-pen/interface/data/list_of_characters"
 import type * as s_out_fs from "pareto-fountain-pen-file-structure/interface/data/file-system"

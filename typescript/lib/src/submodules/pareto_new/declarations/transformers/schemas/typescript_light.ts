@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/interface/transformer'
 
-import * as s_in from "../../../interface/schemas/data.js"
+import * as s_in from "../../../interface/schemas/schemas.js"
 import * as s_out from "../../../../typescript_light/interface/schemas/typescript_light.js"
 
 export type Root = p_.Transformer<
