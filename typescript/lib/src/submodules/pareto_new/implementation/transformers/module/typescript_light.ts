@@ -1,6 +1,15 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import * as interface_ from "../../../declarations/transformers/module/typescript_light.js"
+namespace declarations {
+    export type Root = p_.Transformer<
+        s_in.Root,
+        s_out.Directory.D
+    >
+    export type Module = p_.Transformer<
+        s_in.Module,
+        s_out.Directory.D
+    >
+}
 
 import * as s_in from "../../../interface/schemas/module.js"
 import * as s_out from "../../../../typescript_light/interface/schemas/typescript_light.js"
@@ -21,10 +30,10 @@ import * as t_implementation_refiner from "../implementation_refiner/typescript_
 import * as t_implementation_query from "../implementation_query/typescript_light.js"
 import * as t_implementation_command from "../implementation_command/typescript_light.js"
 
-export const Root: interface_.Root = ($) => Module($)
+export const Root: declarations.Root = ($) => Module($)
 
 
-export const Module: interface_.Module = ($) => ['directory', p_.literal.dictionary({
+export const Module: declarations.Module = ($) => ['directory', p_.literal.dictionary({
     "interface": sh.n.directory(
         p_.literal.dictionary({
             "data": t_data.Root($.interface.schemas),

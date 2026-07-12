@@ -1,0 +1,1 @@
+export * from "pareto-fountain-pen-file-structure/interface/schemas/file-system"

@@ -5,11 +5,17 @@ import p_variables from 'pareto-core/implementation/refiner/specials/variables'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as interface_ from "../../../declarations/transformers/interface/typescript.js"
+import type * as s_out from "../../../interface/schemas/typescript_light.js"
+namespace declarations {
+    export type Value = p_.Transformer_With_Parameter<
+        s_in.Value,
+        s_out.Statements,
+        { 'name': string }
+    >
+}
 
 import type * as s_in from "../../../submodules/interface/interface/schemas/resolved.js"
-import type * as s_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
-import type * as s_function from "../../../interface/schemas/pareto_to_typescript.js"
+import type * as s_parameters from "../../../interface/schemas/pareto_to_typescript.js"
 
 //dependencies
 import { Text as s_file_name } from "../text/filename.js"
@@ -74,7 +80,7 @@ export const temp_create_file_path = (
 
 const temp_rename: p_ri.Refiner<
     s_in.Package_Set,
-    s_function.Error,
+    s_parameters.Error,
     s_in.Package_Set
 > = (
     $,
@@ -108,7 +114,7 @@ const temp_rename: p_ri.Refiner<
 
 export const Package_Set: p_ri.Refiner<
     s_out.Directory,
-    s_function.Error,
+    s_parameters.Error,
     s_in.Package_Set
 > = (
     $,

@@ -2,11 +2,16 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
 import p_variables from 'pareto-core/implementation/refiner/specials/variables'
 
-import type * as interface_ from "../../../declarations/transformers/schemas/typescript_light.js"
+import type * as s_out from "../../../../../submodules/typescript_light/interface/schemas/typescript_light.js"
+namespace declarations {
+    export type Root = p_.Transformer<
+        s_in.Root,
+        s_out.Directory.D
+    >
+}
 
 //schemas
 import type * as s_in from "../../../interface/schemas/schemas.js"
-import type * as s_out from "../../../../typescript_light/interface/schemas/typescript_light.js"
 
 //dependencies
 
@@ -14,7 +19,7 @@ import type * as s_out from "../../../../typescript_light/interface/schemas/type
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
 
 
-export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($['schemas']).map( //create a file for each source schema
+export const Root: declarations.Root = ($) => ['directory', p_.from.dictionary($['schemas']).map( //create a file for each source schema
     ($, id) => {
         return sh.n.file(
             p_.literal.segmented_list([

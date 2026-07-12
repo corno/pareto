@@ -1,6 +1,15 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import * as interface_ from "../../../declarations/transformers/implementation_transformer/typescript_light.js"
+namespace declarations {
+    export type Root = p_.Transformer<
+        s_in.Root,
+        s_out.Directory.D
+    >
+    export type Expression = p_.Transformer<
+        s_in.Expression,
+        s_out.Expression
+    >
+}
 
 import * as s_in from "../../../interface/schemas/implementation_transformer.js"
 import * as s_out from "../../../../typescript_light/interface/schemas/typescript_light.js"
@@ -10,7 +19,7 @@ import * as sh from "../../../../typescript_light/shorthands/typescript_light/ta
 
 //dependencies
 
-export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($.schemas).map( //create a directory for each source schema
+export const Root: declarations.Root = ($) => ['directory', p_.from.dictionary($.schemas).map( //create a directory for each source schema
     ($, id) => {
         const $v_source_schema_id = id
         return sh.n.directory(
@@ -25,7 +34,7 @@ export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($.s
                                     sh.string_literal("pareto-core/implementation/transformer", 'apostrophe')
                                 ),
                                 sh.s.import_namespace(
-                                    sh.identifier_escaped("interface_"),
+                                    sh.identifier_escaped("declarations"),
                                     sh.string_literal("../../../declarations/transformers/" + $v_source_schema_id + "/" + $v_target_schema_id + ".js", 'quote')
                                 ),
                                 sh.s.import_namespace(
@@ -43,7 +52,7 @@ export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($.s
                                     true,
                                     sh.identifier_escaped(id),
                                     sh.t.type_reference(
-                                        sh.identifier_escaped("interface_"),
+                                        sh.identifier_escaped("declarations"),
                                         p_.literal.list([
                                             sh.identifier_escaped(
                                                 id
@@ -63,7 +72,7 @@ export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($.s
     }
 )]
 
-export const Expresssion: interface_.Expression = ($) => p_.from.state($).decide(
+export const Expresssion: declarations.Expression = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'implement me': return p_.option($, ($) => sh.e.call(

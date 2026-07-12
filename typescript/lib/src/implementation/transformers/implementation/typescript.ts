@@ -7,8 +7,8 @@ import type * as p_ri from 'pareto-core/interface/refiner'
 
 //schemas
 import type * as s_in from "../../../submodules/implementation/interface/schemas/resolved.js"
-import type * as s_out from "../../../submodules/typescript_light/interface/schemas/typescript_light.js"
-import type * as s_function from "../../../interface/schemas/pareto_to_typescript.js"
+import type * as s_parameters from "../../../interface/schemas/pareto_to_typescript.js"
+import type * as s_out from "../../../interface/schemas/typescript_light.js"
 
 //shorthands
 import * as sh from "../../../submodules/typescript_light/shorthands/typescript_light/target.js"
@@ -28,7 +28,7 @@ const join = ($: p_di.List<string>): string => {
 
 const temp_rename: p_ri.Refiner<
     s_in.Package_Set,
-    s_function.Error,
+    s_parameters.Error,
     s_in.Package_Set
 > = (
     $,
@@ -62,7 +62,7 @@ const temp_rename: p_ri.Refiner<
 
 export const Package_Set: p_ri.Refiner<
     s_out.Directory,
-    s_function.Error,
+    s_parameters.Error,
     s_in.Package_Set
 > = (
     $,

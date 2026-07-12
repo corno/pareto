@@ -6,15 +6,15 @@ import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
 //schemas
-import type * as s_out from "pareto-fountain-pen/interface/data/prose"
-import type * as s_loc from "pareto-fountain-pen/interface/data/list_of_characters"
-import type * as s_out_fs from "pareto-fountain-pen-file-structure/interface/data/file-system"
+import type * as s_loc from "../../../interface/schemas/list_of_characters.js"
+import type * as s_out_fs from "../../../interface/schemas/filesystem.js"
 import type * as s_in from "../../../interface/schemas/typescript_light.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-export namespace interface_ {
+import type * as s_out from "../../../interface/schemas/prose.js"
+namespace declarations {
 
     export type escaped_text = p_i.Transformer<
         string,
@@ -96,7 +96,7 @@ export namespace interface_ {
 
 }
 
-export const escaped_text: interface_.escaped_text = ($) => p_.from.list(p_list_from_text(
+export const escaped_text: declarations.escaped_text = ($) => p_.from.list(p_list_from_text(
     $,
     ($) => $
 ),
@@ -157,7 +157,7 @@ export const escaped_text: interface_.escaped_text = ($) => p_.from.list(p_list_
     }
 )
 
-export const apostrophed_text: interface_.apostrophed_text = ($) => p_.literal.segmented_list([
+export const apostrophed_text: declarations.apostrophed_text = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x27, // '
     ]),
@@ -169,7 +169,7 @@ export const apostrophed_text: interface_.apostrophed_text = ($) => p_.literal.s
     ])
 ])
 
-export const backticked_text: interface_.backticked_text = ($) => p_.literal.segmented_list([
+export const backticked_text: declarations.backticked_text = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x60, // `
     ]),
@@ -181,7 +181,7 @@ export const backticked_text: interface_.backticked_text = ($) => p_.literal.seg
     ])
 ])
 
-export const quoted_text: interface_.quoted_text = ($) => p_.literal.segmented_list([
+export const quoted_text: declarations.quoted_text = ($) => p_.literal.segmented_list([
     p_.literal.list([
         0x22, // "
     ]),
@@ -194,7 +194,7 @@ export const quoted_text: interface_.quoted_text = ($) => p_.literal.segmented_l
 ])
 
 
-export const decimal: interface_.decimal = ($) => p_list_build_deprecated(
+export const decimal: declarations.decimal = ($) => p_list_build_deprecated(
     ($i) => {
         if ($ < 0) {
             $i['add item'](45) // '-'
@@ -225,7 +225,7 @@ export const decimal: interface_.decimal = ($) => p_list_build_deprecated(
     })
 
 
-export const float: interface_.float = ($) => {
+export const float: declarations.float = ($) => {
     return p_list_build_deprecated(
         ($i) => {
             // Handle special case for zero
@@ -435,7 +435,7 @@ export const float: interface_.float = ($) => {
 }
 
 
-export const Directory: interface_.Directory = ($) => {
+export const Directory: declarations.Directory = ($) => {
     return p_.from.dictionary($).map(
         ($, id) => p_.from.state($).decide(
             ($) => {
@@ -450,24 +450,24 @@ export const Directory: interface_.Directory = ($) => {
             }))
 }
 
-export const Identifier: interface_.Identifier = ($) => {
+export const Identifier: declarations.Identifier = ($) => {
     return sh.ph.literal($.value)
 }
 
 
-export const String_Literal_pseudo: interface_.String_Literal_pseudo = ($, $p) => {
+export const String_Literal_pseudo: declarations.String_Literal_pseudo = ($, $p) => {
     return sh.ph.serialize($p.delimiter === "quote"
         ? quoted_text($)
         : apostrophed_text($))
 }
 
-export const String_Literal: interface_.String_Literal = ($) => {
+export const String_Literal: declarations.String_Literal = ($) => {
     return sh.ph.serialize($.delimiter[0] === "quote"
         ? quoted_text($.value)
         : apostrophed_text($.value))
 }
 
-export const Statements: interface_.Statements = ($, $p) => sh.pg.deprecated_composed(p_.from.list($).map(
+export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_composed(p_.from.list($).map(
     ($) =>
         p_.from.state($).decide(
             ($): s_out.Paragraph => {
@@ -721,7 +721,7 @@ export const Statements: interface_.Statements = ($, $p) => sh.pg.deprecated_com
             })
 ))
 
-export const Expression: interface_.Expression = ($, $p) => p_.from.state($).decide(
+export const Expression: declarations.Expression = ($, $p) => p_.from.state($).decide(
     ($): s_out.Phrase.composed => {
         switch ($[0]) {
             case 'assignment': return p_.option($, ($) => p_.literal.segmented_list([
@@ -1000,7 +1000,7 @@ export const Expression: interface_.Expression = ($, $p) => p_.from.state($).dec
         }
     })
 
-export const Type: interface_.Type = ($, $p) => p_.from.state($).decide(
+export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'boolean': return p_.option($, ($) => sh.ph.literal("boolean"))

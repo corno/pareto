@@ -1,6 +1,11 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import * as interface_ from "../../../declarations/transformers/declarations_refiner/typescript_light.js"
+namespace declarations {
+    export type Root = p_.Transformer<
+        s_in.Root,
+        s_out.Directory.D
+    >
+}
 
 import * as s_in from "../../../interface/schemas/declarations_refiner.js"
 import * as s_out from "../../../../typescript_light/interface/schemas/typescript_light.js"
@@ -10,7 +15,7 @@ import * as sh from "../../../../typescript_light/shorthands/typescript_light/ta
 
 //dependencies
 
-export const Root: interface_.Root = ($) => ['directory', p_.from.dictionary($.schemas).map( //create a directory for each source schema
+export const Root: declarations.Root = ($) => ['directory', p_.from.dictionary($.schemas).map( //create a directory for each source schema
     ($, id) => {
         const $v_target_schema_id = id
         return sh.n.directory(

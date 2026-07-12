@@ -2,9 +2,16 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as interface_ from "../../../declarations/transformers/text/filename.js"
+import * as s_out from "../../../interface/schemas/list_of_characters.js"
 
-export const Text: interface_.Text = ($) => {
+namespace declarations {
+    export type Text = p_.Transformer<
+        string,
+        s_out.List_of_Characters
+    >
+}
+
+export const Text: declarations.Text = ($) => {
     return p_list_build_deprecated(
         ($i) => {
             p_.from.list(p_list_from_text(

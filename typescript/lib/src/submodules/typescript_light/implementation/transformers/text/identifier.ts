@@ -5,7 +5,7 @@ import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 
-import type * as s_loc from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_loc from "../../../interface/schemas/list_of_characters.js"
 
 export const Identifier: p_i.Transformer<
     string,
