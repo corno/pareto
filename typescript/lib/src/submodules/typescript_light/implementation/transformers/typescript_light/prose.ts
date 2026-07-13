@@ -1,19 +1,18 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
-import type * as p_di from 'pareto-core/interface/data'
+import type * as p_di from 'pareto-core/interface/schema'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
 //schemas
 import type * as s_loc from "../../../interface/schemas/list_of_characters.js"
-import type * as s_out_fs from "../../../interface/schemas/filesystem.js"
 import type * as s_in from "../../../interface/schemas/typescript_light.js"
+import type * as s_out from "../../../interface/schemas/prose.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-import type * as s_out from "../../../interface/schemas/prose.js"
 namespace declarations {
 
     export type escaped_text = p_i.Transformer<
@@ -44,11 +43,6 @@ namespace declarations {
     export type float = p_i.Transformer<
         number,
         s_loc.List_of_Characters
-    >
-
-    export type Directory = p_i.Transformer<
-        s_in.Directory,
-        s_out_fs.Directory
     >
 
     export type Identifier = p_i.Transformer<
@@ -435,21 +429,6 @@ export const float: declarations.float = ($) => {
 }
 
 
-export const Directory: declarations.Directory = ($) => {
-    return p_.from.dictionary($).map(
-        ($, id) => p_.from.state($).decide(
-            ($) => {
-                switch ($[0]) {
-                    case 'file': return p_.option($, ($) => ['file', Statements(
-                        $['statements'],
-                        { 'replace empty type literals by symbol': true }
-                    )])
-                    case 'directory': return p_.option($, ($) => ['directory', Directory($)])
-                    default: return p_.exhaustive($[0])
-                }
-            }))
-}
-
 export const Identifier: declarations.Identifier = ($) => {
     return sh.ph.literal($.value)
 }
@@ -674,7 +653,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                             $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
                             sh.ph.literal("type "),
                             Identifier($['name']),
-                            sh.ph.rich(
+                            sh.ph.rich_phrase(
                                 p_.from.list($['parameters']).map(
                                     ($) => Identifier($)),
                                 sh.ph.nothing(),
@@ -737,7 +716,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
             case 'array literal': return p_.option($, ($) => p_.literal.segmented_list([
                 p_.literal.list([
                     sh.ph.literal("["),
-                    sh.ph.rich(
+                    sh.ph.rich_phrase(
                         p_.from.list($).flatten(
                             ($) => Expression($, {
                                 'object literal needs parentheses': false,
@@ -756,7 +735,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
             case 'arrow function': return p_.option($, ($) => p_.literal.segmented_list([
                 p_.literal.list([
                     sh.ph.literal("("),
-                    sh.ph.rich(
+                    sh.ph.rich_phrase(
                         p_.from.list($.parameters).map(
                             ($) => sh.ph.composed([
                                 Identifier($.name),
@@ -1005,7 +984,7 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
         switch ($[0]) {
             case 'boolean': return p_.option($, ($) => sh.ph.literal("boolean"))
             case 'function': return p_.option($, ($) => sh.ph.composed([
-                sh.ph.rich(
+                sh.ph.rich_phrase(
                     p_.from.list($['type parameters']).map(
                         ($) => Type($, $p)),
                     sh.ph.nothing(),
@@ -1040,7 +1019,7 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
             case 'tuple': return p_.option($, ($) => sh.ph.composed([
                 $.readonly ? sh.ph.literal("readonly ") : sh.ph.nothing(),
                 sh.ph.literal("["),
-                sh.ph.rich(
+                sh.ph.rich_phrase(
                     p_.from.list($.elements).map(
                         ($) => Type($, $p)),
                     sh.ph.nothing(),
@@ -1091,12 +1070,15 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
                 p_.from.list($['type arguments']).on_has_items(
                     ($) => sh.ph.composed([
                         sh.ph.literal("<"),
-                        sh.ph.rich(
+                        sh.ph.rich_paragraph(
                             p_.from.list($).map(
-                                ($) => Type($, $p)),
+                                ($) => sh.sentence(p_.literal.list([
+                                    Type($, $p)
+                                ]))
+                            ),
                             sh.ph.nothing(),
                             sh.ph.nothing(),
-                            sh.ph.literal(", "),
+                            sh.ph.literal(","),
                             sh.ph.nothing(),
                         ),
                         sh.ph.literal(">"),

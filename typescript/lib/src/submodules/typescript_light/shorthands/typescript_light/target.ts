@@ -1,4 +1,6 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
+import * as p_temp from 'pareto-core/implementation/refiner'
+import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 //schemas
@@ -35,9 +37,20 @@ export const string_literal = (
 
 export namespace n {
 
-    export const directory = (
+    export const directory_raw = (
         children: p_.Normal_Dictionary<s_target.Directory.D>,
     ): s_target.Directory.D => ['directory', p_.dictionary(children)]
+
+
+
+    export const directory_of_files = (
+        children: p_.Normal_Dictionary<s_target.Directory.D.file>,
+    ): s_target.Directory.D => ['directory', p_temp.from.dictionary(
+        p_temp.from.dictionary(children).re_id(
+            ($, id) => id + ".ts",
+            ($, id) => p_unreachable_code_path("Should never happen: " + id)
+        )
+    ).map(($) => ['file', $])]
 
     export const file = (
         statements: p_.Normal_List<s_target.Statements.L>
@@ -46,7 +59,6 @@ export namespace n {
             'statements': p_.list(statements),
         }]
     }
-
 }
 
 export const specifier = (

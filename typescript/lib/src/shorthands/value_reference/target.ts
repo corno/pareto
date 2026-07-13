@@ -4,7 +4,7 @@ import type * as s_out from "../../submodules/pareto_new/interface/schemas/value
 import type * as s_tr from "../../submodules/pareto_new/interface/schemas/type_reference.js"
 
 export const value_reference = (
-    type: s_tr.Type_Reference,
+    type: string,
     sub_selection: p_.Normal_List<s_out.Value_Reference.sub_selectionL>,
 ): s_out.Value_Reference => ({
     'type': type,

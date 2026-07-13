@@ -1,9 +1,9 @@
-import * as p_ from 'pareto-core/interface/data'
+import * as p_ from 'pareto-core/interface/schema'
 
 import * as i_type_reference from "./type_reference.js"
 
 export type Value_Reference = {
-    'type': i_type_reference.Type_Reference
+    'type': string
     'sub selection': p_.List<Value_Reference.sub_selectionL>
 }
 

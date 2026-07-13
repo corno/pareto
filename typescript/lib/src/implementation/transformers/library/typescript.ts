@@ -33,11 +33,11 @@ export const Temp_Library: p_ri.Refiner<
     $,
     abort
 ) => p_.literal.dictionary<s_out.Directory.D>({
-    "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
+    "interface": sh.n.directory_raw(t_interface_to_typescript_temp.Package_Set(
         $.interface,
         abort,
     )),
-    "implementation": sh.n.directory(t_implementation_to_typescript_temp.Package_Set(
+    "implementation": sh.n.directory_raw(t_implementation_to_typescript_temp.Package_Set(
         $.implementation,
         abort,
         // {

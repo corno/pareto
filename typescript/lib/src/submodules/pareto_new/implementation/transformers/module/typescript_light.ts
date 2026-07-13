@@ -3,11 +3,11 @@ import * as p_ from 'pareto-core/implementation/transformer'
 namespace declarations {
     export type Root = p_.Transformer<
         s_in.Root,
-        s_out.Directory.D
+        s_out.Directory
     >
     export type Module = p_.Transformer<
         s_in.Module,
-        s_out.Directory.D
+        s_out.Directory
     >
 }
 
@@ -18,43 +18,31 @@ import * as s_out from "../../../../typescript_light/interface/schemas/typescrip
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
 
 //dependencies
-import * as t_data from "../schemas/typescript_light.js"
+import * as t_schemas from "../schema/typescript_light.js"
 import * as t_interface_command from "../interface_command/typescript_light.js"
 import * as t_interface_query from "../interface_query/typescript_light.js"
-import * as t_declarations_transformer from "../declarations_transformer/typescript_light.js"
-import * as t_declarations_refiner from "../declarations_refiner/typescript_light.js"
-import * as t_declarations_query from "../declarations_query/typescript_light.js"
-import * as t_declarations_command from "../declarations_command/typescript_light.js"
-import * as t_implementation_transformer from "../implementation_transformer/typescript_light.js"
-import * as t_implementation_refiner from "../implementation_refiner/typescript_light.js"
-import * as t_implementation_query from "../implementation_query/typescript_light.js"
-import * as t_implementation_command from "../implementation_command/typescript_light.js"
+import * as t_transformer from "../transformer/typescript_light.js"
+import * as t_refiner from "../refiner/typescript_light.js"
+import * as t_query from "../query/typescript_light.js"
+import * as t_command from "../command/typescript_light.js"
 
 export const Root: declarations.Root = ($) => Module($)
 
 
-export const Module: declarations.Module = ($) => ['directory', p_.literal.dictionary({
-    "interface": sh.n.directory(
+export const Module: declarations.Module = ($) => p_.literal.dictionary({
+    "interface": sh.n.directory_raw(
         p_.literal.dictionary({
-            "data": t_data.Root($.interface.schemas),
-            "commands": t_interface_command.Root($.interface.commands),
-            "queries": t_interface_query.Root($.interface.queries),
+            "schemas": t_schemas.Root($.interface.schemas),
+            "commands.ts": ['file', t_interface_command.Root($.interface.commands)],
+            "queries.ts": ['file', t_interface_query.Root($.interface.queries)],
         })
     ),
-    "declarations": sh.n.directory(
+    "implementation": sh.n.directory_raw(
         p_.literal.dictionary({
-            "transformers": t_declarations_transformer.Root($.declarations.transformers),
-            "refiners": t_declarations_refiner.Root($.declarations.refiners),
-            "queries": t_declarations_query.Root($.declarations.queries),
-            "commands": t_declarations_command.Root($.declarations.commands),
+            "transformers": ['directory', t_transformer.Root($.implementation.transformers)],
+            "refiners": ['directory', t_refiner.Root($.implementation.refiners)],
+            "queries": ['directory', t_query.Root($.implementation.queries)],
+            "commands": ['directory', t_command.Root($.implementation.commands)],
         })
     ),
-    "implementation": sh.n.directory(
-        p_.literal.dictionary({
-            "transformers": t_implementation_transformer.Root($.implementation.transformers),
-            "refiners": t_implementation_refiner.Root($.implementation.refiners),
-            "queries": t_implementation_query.Root($.implementation.queries),
-            "commands": t_implementation_command.Root($.implementation.commands),
-        })
-    ),
-})]
+})
