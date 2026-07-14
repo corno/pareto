@@ -9,9 +9,9 @@ import type * as s_loc from "../../../interface/schemas/list_of_characters.js"
 
 export const Identifier: p_i.Transformer<
     string,
-    s_loc.List_of_Characters
+    s_loc.List_Of_Characters
 > = ($) => {
-    const temp_literal_to_text = ($: string): s_loc.List_of_Characters => p_list_from_text(
+    const temp_literal_to_text = ($: string): s_loc.List_Of_Characters => p_list_from_text(
         $,
         ($) => $
     )

@@ -7,7 +7,7 @@ import * as s_out from "../../../interface/schemas/list_of_characters.js"
 namespace declarations {
     export type Text = p_.Transformer<
         string,
-        s_out.List_of_Characters
+        s_out.List_Of_Characters
     >
 }
 

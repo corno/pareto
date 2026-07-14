@@ -17,32 +17,32 @@ namespace declarations {
 
     export type escaped_text = p_i.Transformer<
         string,
-        s_loc.List_of_Characters
+        s_loc.List_Of_Characters
     >
 
     export type apostrophed_text = p_i.Transformer<
         string,
-        s_loc.List_of_Characters
+        s_loc.List_Of_Characters
     >
 
     export type backticked_text = p_i.Transformer<
         string,
-        s_loc.List_of_Characters
+        s_loc.List_Of_Characters
     >
 
     export type quoted_text = p_i.Transformer<
         string,
-        s_loc.List_of_Characters
+        s_loc.List_Of_Characters
     >
 
     export type decimal = p_i.Transformer<
         number,
-        s_loc.List_of_Characters
+        s_loc.List_Of_Characters
     >
 
     export type float = p_i.Transformer<
         number,
-        s_loc.List_of_Characters
+        s_loc.List_Of_Characters
     >
 
     export type Identifier = p_i.Transformer<
