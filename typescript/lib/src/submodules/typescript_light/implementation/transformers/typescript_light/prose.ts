@@ -11,7 +11,7 @@ import type * as s_in from "../../../interface/schemas/typescript_light.js"
 import type * as s_out from "../../../interface/schemas/prose.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 namespace declarations {
 
@@ -430,7 +430,7 @@ export const float: declarations.float = ($) => {
 
 
 export const Identifier: declarations.Identifier = ($) => {
-    return sh.ph.literal($.value)
+    return sh.ph.text($.value)
 }
 
 
@@ -454,40 +454,40 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                     case 'block': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
                         sh.sentence([
-                            sh.ph.literal("{"),
+                            sh.ph.text("{"),
                             sh.ph.indent(
                                 Statements($, $p),
                             ),
-                            sh.ph.literal("}"),
+                            sh.ph.text("}"),
                         ])
                     ]))
                     case 'export': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
                         sh.sentence([
-                            sh.ph.literal("export "),
+                            sh.ph.text("export "),
                             p_.from.state($.type).decide(
                                 ($) => {
                                     switch ($[0]) {
                                         case 'named exports': return p_.option($, ($) => sh.ph.composed([
-                                            sh.ph.literal("{ "),
+                                            sh.ph.text("{ "),
                                             sh.ph.indent(
                                                 sh.pg.sentences(p_.from.list($.specifiers).map(
                                                     ($) => sh.sentence([
                                                         Identifier($.name),
                                                         p_.from.optional($.as).decide(
                                                             ($) => sh.ph.composed([
-                                                                sh.ph.literal(" as "),
+                                                                sh.ph.text(" as "),
                                                                 Identifier($),
                                                             ]),
                                                             () => sh.ph.nothing(),
                                                         ),
-                                                        sh.ph.literal(", ")
+                                                        sh.ph.text(", ")
                                                     ]))),
                                             ),
-                                            sh.ph.literal("}"),
+                                            sh.ph.text("}"),
                                             p_.from.optional($.from).decide(
                                                 ($) => sh.ph.composed([
-                                                    sh.ph.literal(" from "),
+                                                    sh.ph.text(" from "),
                                                     String_Literal($),
                                                 ]),
                                                 () => sh.ph.nothing()
@@ -512,7 +512,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                     case 'import': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
                         sh.sentence([
-                            sh.ph.literal("import "),
+                            sh.ph.text("import "),
                             p_.from.state($.type).decide(
                                 ($) => {
                                     switch ($[0]) {
@@ -520,31 +520,31 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                                             Identifier($),
                                         ]))
                                         case 'named': return p_.option($, ($) => sh.ph.composed([
-                                            sh.ph.literal("{"),
+                                            sh.ph.text("{"),
                                             sh.ph.indent(
                                                 sh.pg.sentences(p_.from.list($.specifiers).map(
                                                     ($) => sh.sentence([
                                                         Identifier($.name),
                                                         p_.from.optional($.as).decide(
                                                             ($) => sh.ph.composed([
-                                                                sh.ph.literal(" as "),
+                                                                sh.ph.text(" as "),
                                                                 Identifier($),
                                                             ]),
                                                             () => sh.ph.nothing(),
                                                         ),
-                                                        sh.ph.literal(",")
+                                                        sh.ph.text(",")
                                                     ]))),
                                             ),
-                                            sh.ph.literal("}"),
+                                            sh.ph.text("}"),
                                         ]))
                                         case 'namespace': return p_.option($, ($) => sh.ph.composed([
-                                            sh.ph.literal("* as "),
+                                            sh.ph.text("* as "),
                                             Identifier($),
                                         ]))
                                         default: return p_.exhaustive($[0])
                                     }
                                 }),
-                            sh.ph.literal(" from "),
+                            sh.ph.text(" from "),
                             String_Literal($.from),
                         ])
                     ]))
@@ -552,13 +552,13 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                         sh.sentence([]),
                         sh.sentence([
                             $.export ?
-                                sh.ph.literal("export ")
+                                sh.ph.text("export ")
                                 : sh.ph.nothing(),
-                            sh.ph.literal("namespace "),
+                            sh.ph.text("namespace "),
                             Identifier($['name']),
-                            sh.ph.literal(" "),
+                            sh.ph.text(" "),
                             sh.ph.composed([
-                                sh.ph.literal("{"),
+                                sh.ph.text("{"),
                                 sh.ph.indent(
                                     sh.pg.deprecated_composed([
                                         Statements($.block, $p),
@@ -566,7 +566,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                                             sh.sentence([]),
                                         ])
                                     ])),
-                                sh.ph.literal("}"),
+                                sh.ph.text("}"),
                             ])
                         ])
                     ]))
@@ -574,7 +574,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                         sh.sentence(
                             p_.literal.segmented_list<s_out.Phrase.composed.L>([
                                 p_.literal.list([
-                                    sh.ph.literal("return "),
+                                    sh.ph.text("return "),
                                 ]),
                                 p_.from.optional($).decide(
                                     ($) => Expression(
@@ -592,7 +592,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                     case 'switch': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence(p_.literal.segmented_list([
                             p_.literal.list([
-                                sh.ph.literal("switch ("),
+                                sh.ph.text("switch ("),
                             ]),
                             Expression(
                                 $.expression,
@@ -602,7 +602,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                                 }
                             ),
                             p_.literal.list([
-                                sh.ph.literal(") {"),
+                                sh.ph.text(") {"),
                                 sh.ph.indent(
                                     sh.pg.sentences(
                                         p_.from.list($.clauses).map(
@@ -613,7 +613,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                                                             switch ($[0]) {
                                                                 case 'case': return p_.option($, ($) => p_.literal.segmented_list([
                                                                     p_.literal.list([
-                                                                        sh.ph.literal("case "),
+                                                                        sh.ph.text("case "),
                                                                     ]),
                                                                     Expression(
                                                                         $,
@@ -623,11 +623,11 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                                                                         }
                                                                     ),
                                                                     p_.literal.list([
-                                                                        sh.ph.literal(":"),
+                                                                        sh.ph.text(":"),
                                                                     ]),
                                                                 ]))
                                                                 case 'default': return p_.option($, ($) => p_.literal.list([
-                                                                    sh.ph.literal("default:")
+                                                                    sh.ph.text("default:")
                                                                 ]))
                                                                 default: return p_.exhaustive($[0])
                                                             }
@@ -643,37 +643,37 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                                         ),
                                     )
                                 ),
-                                sh.ph.literal("}"),
+                                sh.ph.text("}"),
                             ])
                         ])),
                     ]))
                     case 'type alias declaration': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
                         sh.sentence([
-                            $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
-                            sh.ph.literal("type "),
+                            $.export ? sh.ph.text("export ") : sh.ph.nothing(),
+                            sh.ph.text("type "),
                             Identifier($['name']),
                             sh.ph.rich_phrase(
                                 p_.from.list($['parameters']).map(
                                     ($) => Identifier($)),
                                 sh.ph.nothing(),
-                                sh.ph.literal("<"),
-                                sh.ph.literal(", "),
-                                sh.ph.literal(">"),
+                                sh.ph.text("<"),
+                                sh.ph.text(", "),
+                                sh.ph.text(">"),
                             ),
-                            sh.ph.literal(" = "),
+                            sh.ph.text(" = "),
                             Type($['type'], $p),
                         ])
                     ]))
                     case 'variable': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
                         sh.sentence([
-                            $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
-                            $.const ? sh.ph.literal("const ") : sh.ph.literal("let "),
+                            $.export ? sh.ph.text("export ") : sh.ph.nothing(),
+                            $.const ? sh.ph.text("const ") : sh.ph.text("let "),
                             Identifier($['name']),
                             p_.from.optional($.type).decide(
                                 ($) => sh.ph.composed([
-                                    sh.ph.literal(": "),
+                                    sh.ph.text(": "),
                                     Type($, $p)
                                 ]),
                                 () => sh.ph.nothing(),
@@ -681,7 +681,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                             sh.ph.composed(p_.from.optional($.expression).decide(
                                 ($) => p_.literal.segmented_list([
                                     p_.literal.list([
-                                        sh.ph.literal(" = "),
+                                        sh.ph.text(" = "),
                                     ]),
                                     Expression(
                                         $,
@@ -706,7 +706,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
             case 'assignment': return p_.option($, ($) => p_.literal.segmented_list([
                 Expression($.left, $p),
                 p_.literal.list([
-                    sh.ph.literal(" = "),
+                    sh.ph.text(" = "),
                 ]),
                 Expression($.right, {
                     'object literal needs parentheses': false,
@@ -715,7 +715,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
             ]))
             case 'array literal': return p_.option($, ($) => p_.literal.segmented_list([
                 p_.literal.list([
-                    sh.ph.literal("["),
+                    sh.ph.text("["),
                     sh.ph.rich_phrase(
                         p_.from.list($).flatten(
                             ($) => Expression($, {
@@ -724,24 +724,24 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                             })),
                         sh.ph.nothing(),
                         sh.ph.nothing(),
-                        sh.ph.literal(", "),
+                        sh.ph.text(", "),
                         sh.ph.nothing(),
                     )
                 ]),
                 p_.literal.list([
-                    sh.ph.literal("]"),
+                    sh.ph.text("]"),
                 ]),
             ]))
             case 'arrow function': return p_.option($, ($) => p_.literal.segmented_list([
                 p_.literal.list([
-                    sh.ph.literal("("),
+                    sh.ph.text("("),
                     sh.ph.rich_phrase(
                         p_.from.list($.parameters).map(
                             ($) => sh.ph.composed([
                                 Identifier($.name),
                                 p_.from.optional($.type).decide(
                                     ($) => sh.ph.composed([
-                                        sh.ph.literal(": "),
+                                        sh.ph.text(": "),
                                         Type($, $p)
                                     ]),
                                     () => sh.ph.nothing(),
@@ -749,15 +749,15 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                             ])),
                         sh.ph.nothing(),
                         sh.ph.nothing(),
-                        sh.ph.literal(", "),
+                        sh.ph.text(", "),
                         sh.ph.nothing(),
                     ),
-                    sh.ph.literal(")"),
+                    sh.ph.text(")"),
                 ]),
                 p_.from.optional($['return type']).decide(
                     ($) => p_.literal.segmented_list([
                         p_.literal.list([
-                            sh.ph.literal(": "),
+                            sh.ph.text(": "),
                         ]),
                         p_.literal.list([
                             Type($, $p)
@@ -766,17 +766,17 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                     () => p_.literal.list([]),
                 ),
                 p_.literal.list([
-                    sh.ph.literal(" => "),
+                    sh.ph.text(" => "),
                 ]),
                 p_.from.state($.body).decide(
                     ($) => {
                         switch ($[0]) {
                             case 'block': return p_.option($, ($) => p_.literal.list([
-                                sh.ph.literal("{"),
+                                sh.ph.text("{"),
                                 sh.ph.indent(
                                     Statements($, $p),
                                 ),
-                                sh.ph.literal("}"),
+                                sh.ph.text("}"),
                             ]))
                             case 'expression': return p_.option($, ($) => Expression(
                                 $,
@@ -792,7 +792,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
             case 'call': return p_.option($, ($) => p_.literal.segmented_list([
                 Expression($['function selection'], $p),
                 p_.literal.list([
-                    sh.ph.literal("("),
+                    sh.ph.text("("),
                     sh.ph.indent(
                         sh.pg.sentences(
                             p_.from.list($['arguments']).map(
@@ -806,35 +806,35 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                             }
                                         ),
                                         p_.literal.list([
-                                            sh.ph.literal(",")
+                                            sh.ph.text(",")
                                         ]),
                                     ])
                                 )
                             )
                         ),
                     ),
-                    sh.ph.literal(")"),
+                    sh.ph.text(")"),
                 ])
             ]))
             case 'compare': return p_.option($, ($) => p_.literal.segmented_list([
                 Expression($.left, $p),
                 p_.literal.list([
-                    sh.ph.literal(" "),
+                    sh.ph.text(" "),
                     p_.from.state($.operator).decide(
                         ($) => {
                             switch ($[0]) {
-                                case 'loosely equal': return p_.option($, ($) => sh.ph.literal("=="))
-                                case 'strictly equal': return p_.option($, ($) => sh.ph.literal("==="))
-                                case 'loosely not equal': return p_.option($, ($) => sh.ph.literal("!="))
-                                case 'strictly not equal': return p_.option($, ($) => sh.ph.literal("!=="))
-                                case 'smaller than': return p_.option($, ($) => sh.ph.literal("<"))
-                                case 'smaller than or equal': return p_.option($, ($) => sh.ph.literal("<="))
-                                case 'greater than': return p_.option($, ($) => sh.ph.literal(">"))
-                                case 'greater than or equal': return p_.option($, ($) => sh.ph.literal(">="))
+                                case 'loosely equal': return p_.option($, ($) => sh.ph.text("=="))
+                                case 'strictly equal': return p_.option($, ($) => sh.ph.text("==="))
+                                case 'loosely not equal': return p_.option($, ($) => sh.ph.text("!="))
+                                case 'strictly not equal': return p_.option($, ($) => sh.ph.text("!=="))
+                                case 'smaller than': return p_.option($, ($) => sh.ph.text("<"))
+                                case 'smaller than or equal': return p_.option($, ($) => sh.ph.text("<="))
+                                case 'greater than': return p_.option($, ($) => sh.ph.text(">"))
+                                case 'greater than or equal': return p_.option($, ($) => sh.ph.text(">="))
                                 default: return p_.exhaustive($[0])
                             }
                         }),
-                    sh.ph.literal(" "),
+                    sh.ph.text(" "),
                 ]),
                 Expression($.right, {
                     'object literal needs parentheses': false,
@@ -849,7 +849,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                             p_.literal.list([
                                 sh.sentence(p_.literal.segmented_list([
                                     p_.literal.list([
-                                        sh.ph.literal("? "),
+                                        sh.ph.text("? "),
                                     ]),
                                     Expression($['if true'],
                                         {
@@ -860,7 +860,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                 ])),
                                 sh.sentence(p_.literal.segmented_list([
                                     p_.literal.list([
-                                        sh.ph.literal(": "),
+                                        sh.ph.text(": "),
                                     ]),
                                     Expression($['if false'], {
                                         'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
@@ -875,30 +875,30 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
             case 'element access': return p_.option($, ($) => p_.literal.segmented_list([
                 Expression($.collection, $p),
                 p_.literal.list([
-                    sh.ph.literal("["),
+                    sh.ph.text("["),
                 ]),
                 Expression($.index, $p),
                 p_.literal.list([
-                    sh.ph.literal("]"),
+                    sh.ph.text("]"),
                 ])
             ]))
             case 'false': return p_.option($, ($) => p_.literal.list([
-                sh.ph.literal("false")
+                sh.ph.text("false")
             ]))
             case 'identifier': return p_.option($, ($) => p_.literal.list([
                 Identifier($)
             ]))
             case 'null': return p_.option($, ($) => p_.literal.list([
-                sh.ph.literal("null")
+                sh.ph.text("null")
             ]))
             case 'number literal': return p_.option($, ($) => p_.literal.list([
                 sh.ph.serialize(float($))
             ]))
             case 'object literal': return p_.option($, ($) => p_.literal.list([
                 $p['object literal needs parentheses']
-                    ? sh.ph.literal("(")
+                    ? sh.ph.text("(")
                     : sh.ph.nothing(),
-                sh.ph.literal("{"),
+                sh.ph.text("{"),
                 sh.ph.indent(
                     sh.pg.sentences(
                         p_.from.list($.properties).map(
@@ -913,7 +913,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                             }
                                         }
                                     ),
-                                    sh.ph.literal(": ")
+                                    sh.ph.text(": ")
                                 ]),
                                 Expression(
                                     $.value,
@@ -923,32 +923,32 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                     }
                                 ),
                                 p_.literal.list([
-                                    sh.ph.literal(",")
+                                    sh.ph.text(",")
                                 ])
                             ]))
                         )),
                 ),
-                sh.ph.literal("}"),
+                sh.ph.text("}"),
                 $p['object literal needs parentheses']
-                    ? sh.ph.literal(")")
+                    ? sh.ph.text(")")
                     : sh.ph.nothing(),
             ]))
             case 'parenthesized': return p_.option($, ($) => p_.literal.segmented_list([
                 p_.literal.list([
-                    sh.ph.literal("("),
+                    sh.ph.text("("),
                 ]),
                 Expression($, {
                     'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                     'object literal needs parentheses': false,
                 }),
                 p_.literal.list([
-                    sh.ph.literal(")"),
+                    sh.ph.text(")"),
                 ])
             ]))
             case 'property access': return p_.option($, ($) => p_.literal.segmented_list([
                 Expression($.object, $p),
                 p_.literal.list([
-                    sh.ph.literal("."),
+                    sh.ph.text("."),
                     Identifier($.property),
                 ])
             ]))
@@ -956,7 +956,7 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                 sh.ph.serialize($['delimiter'][0] === "quote" ? quoted_text($['value']) : apostrophed_text($['value']))
             ]))
             case 'true': return p_.option($, ($) => p_.literal.list([
-                sh.ph.literal("true")
+                sh.ph.text("true")
             ]))
             case 'unary operation': return p_.option($, ($) => {
                 const operand = $.operand
@@ -965,8 +965,8 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                         p_.from.state($.operator).decide(
                             ($) => {
                                 switch ($[0]) {
-                                    case 'negation': return p_.option($, ($) => sh.ph.literal("-"))
-                                    case 'logical not': return p_.option($, ($) => sh.ph.literal("!"))
+                                    case 'negation': return p_.option($, ($) => sh.ph.text("-"))
+                                    case 'logical not': return p_.option($, ($) => sh.ph.text("!"))
                                     default: return p_.exhaustive($[0])
                                 }
                             }
@@ -982,66 +982,66 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
 export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'boolean': return p_.option($, ($) => sh.ph.literal("boolean"))
+            case 'boolean': return p_.option($, ($) => sh.ph.text("boolean"))
             case 'function': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.rich_phrase(
                     p_.from.list($['type parameters']).map(
                         ($) => Type($, $p)),
                     sh.ph.nothing(),
-                    sh.ph.literal("<"),
-                    sh.ph.literal(", "),
-                    sh.ph.literal(">"),
+                    sh.ph.text("<"),
+                    sh.ph.text(", "),
+                    sh.ph.text(">"),
                 ),
-                sh.ph.literal("("),
+                sh.ph.text("("),
                 sh.ph.indent(
                     sh.pg.sentences(p_.from.list($['parameters']).map(
                         ($) => sh.sentence(p_.literal.list([
                             Identifier($.name),
                             p_.from.optional($.type).decide(
                                 ($) => sh.ph.composed([
-                                    sh.ph.literal(": "),
+                                    sh.ph.text(": "),
                                     Type($, $p)
                                 ]),
                                 () => sh.ph.nothing(),
                             ),
-                            sh.ph.literal(",")
+                            sh.ph.text(",")
                         ])))
                     ),
                 ),
-                sh.ph.literal(") => "),
+                sh.ph.text(") => "),
                 Type($['return'], $p)
             ]))
             case 'literal type': return p_.option($, ($) => String_Literal($)) //FIX, implement a switch for the delimiter
-            case 'never': return p_.option($, ($) => sh.ph.literal("never"))
-            case 'null': return p_.option($, ($) => sh.ph.literal("null"))
-            case 'number': return p_.option($, ($) => sh.ph.literal("number"))
-            case 'string': return p_.option($, ($) => sh.ph.literal("string"))
+            case 'never': return p_.option($, ($) => sh.ph.text("never"))
+            case 'null': return p_.option($, ($) => sh.ph.text("null"))
+            case 'number': return p_.option($, ($) => sh.ph.text("number"))
+            case 'string': return p_.option($, ($) => sh.ph.text("string"))
             case 'tuple': return p_.option($, ($) => sh.ph.composed([
-                $.readonly ? sh.ph.literal("readonly ") : sh.ph.nothing(),
-                sh.ph.literal("["),
+                $.readonly ? sh.ph.text("readonly ") : sh.ph.nothing(),
+                sh.ph.text("["),
                 sh.ph.rich_phrase(
                     p_.from.list($.elements).map(
                         ($) => Type($, $p)),
                     sh.ph.nothing(),
                     sh.ph.nothing(),
-                    sh.ph.literal(", "),
+                    sh.ph.text(", "),
                     sh.ph.nothing(),
                 ),
-                sh.ph.literal("]"),
+                sh.ph.text("]"),
             ]))
             case 'type literal': return p_.option($, ($) => $p['replace empty type literals by symbol'] && p_.from.list($.properties).on_has_items(
                 () => true,
                 () => false,
             )
-                ? sh.ph.literal("symbol")
+                ? sh.ph.text("symbol")
                 : sh.ph.composed([
-                    sh.ph.literal("{"),
+                    sh.ph.text("{"),
                     sh.ph.indent(
                         sh.pg.sentences(
                             p_.from.list($.properties).map(
                                 ($) => sh.sentence([
                                     sh.ph.composed([
-                                        $['readonly'] ? sh.ph.literal("readonly ") : sh.ph.nothing(),
+                                        $['readonly'] ? sh.ph.text("readonly ") : sh.ph.nothing(),
                                         p_.from.state($.key).decide(
                                             ($) => {
                                                 switch ($[0]) {
@@ -1050,26 +1050,26 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
                                                     default: return p_.exhaustive($[0])
                                                 }
                                             }),
-                                        sh.ph.literal(": "),
+                                        sh.ph.text(": "),
                                         Type($.type, $p),
                                     ])
                                 ])
                             )
                         ),
                     ),
-                    sh.ph.literal("}")
+                    sh.ph.text("}")
                 ])
             )
             case 'type reference': return p_.option($, ($) => sh.ph.composed([
                 Identifier($['start']),
                 sh.ph.composed(p_.from.list($['tail']).map(
                     ($) => sh.ph.composed([
-                        sh.ph.literal("."),
+                        sh.ph.text("."),
                         Identifier($),
                     ]))),
                 p_.from.list($['type arguments']).on_has_items(
                     ($) => sh.ph.composed([
-                        sh.ph.literal("<"),
+                        sh.ph.text("<"),
                         sh.ph.rich_paragraph(
                             p_.from.list($).map(
                                 ($) => sh.sentence(p_.literal.list([
@@ -1078,10 +1078,10 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
                             ),
                             sh.ph.nothing(),
                             sh.ph.nothing(),
-                            sh.ph.literal(","),
+                            sh.ph.text(","),
                             sh.ph.nothing(),
                         ),
-                        sh.ph.literal(">"),
+                        sh.ph.text(">"),
                     ]),
                     () => sh.ph.nothing()
                 ),
@@ -1090,13 +1090,13 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
                 sh.pg.sentences(p_.from.list($).map(
                     ($) => sh.sentence(
                         p_.literal.list([
-                            sh.ph.literal("| "),
+                            sh.ph.text("| "),
                             Type($, $p),
                         ])
                     )
                 ))
             ))
-            case 'void': return p_.option($, ($) => sh.ph.literal("void"))
+            case 'void': return p_.option($, ($) => sh.ph.text("void"))
             default: return p_.exhaustive($[0])
         }
     })

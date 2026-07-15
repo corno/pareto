@@ -17,7 +17,7 @@ import * as t_pareto_to_typescript from "../../submodules/pareto_new/implementat
 
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 export const $$: p_.Query_Implementation<
     query_interfaces_pareto_common.file_in_directory_out,

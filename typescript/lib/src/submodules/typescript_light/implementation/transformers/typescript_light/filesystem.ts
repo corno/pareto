@@ -13,7 +13,7 @@ import type * as s_in from "../../../interface/schemas/typescript_light.js"
 import * as t_to_prose from "./prose.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 namespace declarations {
 
