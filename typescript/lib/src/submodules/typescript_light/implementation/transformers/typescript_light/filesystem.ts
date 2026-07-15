@@ -10,7 +10,7 @@ import type * as s_out_fs from "../../../interface/schemas/filesystem.js"
 import type * as s_in from "../../../interface/schemas/typescript_light.js"
 
 //dependencies
-import * as t_to_prose from "./prose.js"
+import * as t_to_prose from "./paragraph.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"

@@ -18,7 +18,7 @@ import type * as s_in from "../../../submodules/interface/interface/schemas/reso
 import type * as s_parameters from "../../../interface/schemas/pareto_to_typescript.js"
 
 //dependencies
-import { Text as s_file_name } from "../text/filename.js"
+import { Text as s_file_name } from "../serializers/filename.js"
 
 //shorthands
 import * as sh from "../../../submodules/typescript_light/shorthands/typescript_light/target.js"

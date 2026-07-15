@@ -1,23 +1,20 @@
-import * as p_ from 'pareto-core/implementation/transformer'
-import type * as p_i from 'pareto-core/interface/transformer'
+import * as p_ from 'pareto-core/implementation/serializer'
+import type * as p_schema from 'pareto-core/interface/schema'
 import p_implement_me from 'pareto-core-dev/implement_me'
 import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
 
-import type * as s_loc from "../../../interface/schemas/list_of_characters.js"
-
-export const Identifier: p_i.Transformer<
-    string,
-    s_loc.List_Of_Characters
+export const Identifier: p_.Serializer<
+    string
 > = ($) => {
-    const temp_literal_to_text = ($: string): s_loc.List_Of_Characters => p_list_from_text(
+    const temp_literal_to_text = ($: string): p_schema.List<number> => p_list_from_text(
         $,
         ($) => $
     )
     const the_string = $
     if (the_string === "") {
-        return temp_literal_to_text("_empty")
+        return "_empty"
     }
     const $v_reserved_keywords = p_.literal.dictionary({
         //Reserved Words
@@ -91,12 +88,14 @@ export const Identifier: p_i.Transformer<
     })
     return p_.from.dictionary($v_reserved_keywords).get_possible_entry(
         the_string,
-        ($) => p_list_build_deprecated(
+        ($): string => p_.ph.list_of_characters(p_list_build_deprecated(
             ($i) => {
                 $i['add list'](temp_literal_to_text(the_string))
                 $i['add item'](95) //_
-            }),
-        () => p_list_build_deprecated(
+            }
+        )
+        ),
+        () => p_.ph.list_of_characters(p_list_build_deprecated(
             ($i) => {
                 const $v_characters = p_list_from_text(
                     the_string,
@@ -187,5 +186,6 @@ export const Identifier: p_i.Transformer<
                     }
                 }
             }),
+        )
     )
 }
