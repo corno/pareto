@@ -14,7 +14,7 @@ export const Directory: p_.Transformer<
 > = ($) => t_fs_to_directory_content.Directory(
     t_ts_to_fs.Directory($),
     {
-        'indentation': "   ",
+        'indentation': "    ",
         'newline': "\n",
     }
 )

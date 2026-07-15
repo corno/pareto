@@ -22,7 +22,7 @@ p_h.run_main_command(
                 {
                     'tab size': 4,
                     'serialization parameters': {
-                        'indentation': "   ",
+                        'indentation': "    ",
                         'newline': "\n",
                     },
                     'module': data_module.$
