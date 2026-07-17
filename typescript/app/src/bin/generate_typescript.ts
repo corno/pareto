@@ -8,7 +8,7 @@ import * as rs_stream from "pareto-resource-stream/index"
 
 import { $$ as c_command } from "pareto-common/modules/file_in_directory_out/implementation/commands/operation"
 
-import { $$ as q_query } from "lib/implementation/queries/pareto_to_typescript"
+import { $$ as q_query } from "lib/modules/pareto_new/implementation/queries/pareto_to_typescript"
 
 //data
 import * as data_module from "../data/simple_module.js"

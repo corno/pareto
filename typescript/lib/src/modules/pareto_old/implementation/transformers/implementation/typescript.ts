@@ -5,11 +5,11 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
 
 //schemas
-import type * as s_in from "../../../submodules/implementation/interface/schemas/resolved.js"
+import type * as s_in from "../../../../implementation/interface/schemas/resolved.js"
 import type * as s_out from "../../../interface/schemas/typescript_light.js"
 
 //shorthands
-import * as sh from "../../../submodules/typescript_light/shorthands/typescript_light/target.js"
+import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
 
 //dependencies
 import { temp_create_file_path } from "../interface/typescript.js"

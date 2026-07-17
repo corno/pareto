@@ -1,7 +1,7 @@
 import * as p_di from 'pareto-core/interface/schema'
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
-import type * as s_out from "../../submodules/pareto_new/interface/schemas/transformer.js"
+import type * as s_out from "../../modules/pareto_new/interface/schemas/transformer.js"
 
 export const root = (
     schemas: s_out.Root['schemas'],

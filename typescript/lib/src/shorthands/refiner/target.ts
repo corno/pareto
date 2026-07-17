@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
-import type * as s_out from "../../submodules/pareto_new/interface/schemas/refiner.js"
-import type * as s_vr from "../../submodules/pareto_new/interface/schemas/value_reference.js"
+import type * as s_out from "../../modules/pareto_new/interface/schemas/refiner.js"
+import type * as s_vr from "../../modules/pareto_new/interface/schemas/value_reference.js"
 
 export const root = (
     schemas: p_.Normal_Dictionary<s_out.Root.schemas_D>,

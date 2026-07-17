@@ -5,13 +5,13 @@ import p_super_query_result from 'pareto-core/implementation/query/super_query_r
 import type * as query_interfaces_file_in_directory_out from "pareto-common/modules/file_in_directory_out/interface/queries"
 
 //data  types
-import type * as s_serialize_prose from "../../submodules/typescript_light/schemas/serialization.js"
-import type * as s_module from "../../submodules/pareto_new/interface/schemas/module.js"
+import type * as s_serialize_prose from "../../../typescript_light/schemas/serialization.js"
+import type * as s_module from "../../interface/schemas/module.js"
 import type * as s_file_in_directory_out_query from "pareto-common/modules/file_in_directory_out/schemas/query"
 
 //dependencies
-import * as t_typescript_to_directory_content from "../../submodules/typescript_light/implementation/transformers/typescript_light/directory_content.js"
-import * as t_pareto_to_typescript from "../../submodules/pareto_new/implementation/transformers/module/typescript_light.js"
+import * as t_typescript_to_directory_content from "../../../typescript_light/implementation/transformers/typescript_light/directory_content.js"
+import * as t_pareto_to_typescript from "../transformers/module/typescript_light.js"
 
 
 

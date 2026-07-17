@@ -1,4 +1,4 @@
-import type * as s_out from "../../submodules/pareto_new/interface/schemas/type_reference.js"
+import type * as s_out from "../../modules/pareto_new/interface/schemas/type_reference.js"
 
 export const local = (
     name: string,

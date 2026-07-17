@@ -1,4 +1,4 @@
-import type * as s_out from "../../submodules/pareto_new/interface/schemas/schema_reference.js"
+import type * as s_out from "../../modules/pareto_new/interface/schemas/schema_reference.js"
 
 export const submodule = (
     module: string,

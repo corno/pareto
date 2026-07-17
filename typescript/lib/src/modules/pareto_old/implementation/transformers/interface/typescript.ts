@@ -7,13 +7,13 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 import type * as s_out from "../../../interface/schemas/typescript_light.js"
 
 
-import type * as s_in from "../../../submodules/interface/schemas/resolved.js"
+import type * as s_in from "../../../../interface/schemas/resolved.js"
 
 //dependencies
 import * as ser_file_name from "../serializers/filename.js"
 
 //shorthands
-import * as sh from "../../../submodules/typescript_light/shorthands/typescript_light/target.js"
+import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
 
 
 export const temp_create_file_path = (

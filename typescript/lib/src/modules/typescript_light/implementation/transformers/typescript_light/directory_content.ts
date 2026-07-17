@@ -8,7 +8,7 @@ import * as s_serialization_parameters from "../../../schemas/serialization.js"
 
 //dependencies
 
-import * as t_to_serialized from "../typescript_light/serialized.js"
+import * as t_to_serialized from "./serialized.js"
 
 export const Directory: p_.Transformer_With_Parameter<
     s_in.Directory,
