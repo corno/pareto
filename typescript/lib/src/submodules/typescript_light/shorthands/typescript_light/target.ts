@@ -1,13 +1,53 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
-import * as p_temp from 'pareto-core/implementation/refiner'
-import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 //schemas
-import type * as s_target from "../../interface/schemas/typescript_light.js"
+import type * as s_target from "../../schemas/typescript_light.js"
 
 //dependencies
-import * as t_text_to_identifier from "../../implementation/transformers/text/identifier.js"
+import * as ser_identifier from "../../implementation/serializers/identifier.js"
+
+
+export const directory_of_files = (
+    children: p_.Normal_Dictionary<s_target.Source_File>,
+): s_target.Directory => ({
+    'content': ['files', p_.dictionary(children)]
+})
+
+export const directory_of_directories = (
+    children: p_.Normal_Dictionary<s_target.Directory>,
+): s_target.Directory => ({
+    'content': ['directories', p_.dictionary(children)]
+})
+
+export const mixed_directory = (
+    children: p_.Normal_Dictionary<s_target.Node>,
+): s_target.Directory => ({
+    'content': ['mixed', p_.dictionary(children)]
+})
+
+export namespace n {
+
+    export const file = (
+        source_file: s_target.Source_File
+    ): s_target.Node => {
+        return ['file', source_file]
+    }
+
+    export const directory = (
+        directory: s_target.Directory
+    ): s_target.Node => {
+        return ['directory', directory]
+    }
+}
+
+export const source_file = (
+    statements: p_.Normal_List<s_target.Statements.L>
+): s_target.Source_File => {
+    return {
+        'statements': p_.list(statements),
+    }
+}
+
 
 export const identifier_raw = (
     name: string,
@@ -18,10 +58,7 @@ export const identifier_raw = (
 export const identifier_escaped = (
     name: string,
 ): s_target.Identifier => ({
-    'value': p_text_from_list(
-        t_text_to_identifier.Identifier(name),
-        ($) => $
-    )
+    'value': ser_identifier.Identifier(name),
 })
 
 
@@ -35,31 +72,6 @@ export const string_literal = (
 })
 
 
-export namespace n {
-
-    export const directory_raw = (
-        children: p_.Normal_Dictionary<s_target.Directory.D>,
-    ): s_target.Directory.D => ['directory', p_.dictionary(children)]
-
-
-
-    export const directory_of_files = (
-        children: p_.Normal_Dictionary<s_target.Directory.D.file>,
-    ): s_target.Directory.D => ['directory', p_temp.from.dictionary(
-        p_temp.from.dictionary(children).re_id(
-            ($, id) => id + ".ts",
-            ($, id) => p_unreachable_code_path("Should never happen: " + id)
-        )
-    ).map(($) => ['file', $])]
-
-    export const file = (
-        statements: p_.Normal_List<s_target.Statements.L>
-    ): s_target.Directory.D => {
-        return ['file', {
-            'statements': p_.list(statements),
-        }]
-    }
-}
 
 export const specifier = (
     name: s_target.Identifier,
@@ -404,10 +416,7 @@ export namespace e {
     export const identifier_escaped = (
         name: string,
     ): s_target.Expression => ['identifier', {
-        'value': p_text_from_list(
-            t_text_to_identifier.Identifier(name),
-            ($) => $
-        ),
+        'value': ser_identifier.Identifier(name),
     }]
 
     export const not = (

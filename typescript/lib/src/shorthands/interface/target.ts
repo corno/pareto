@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
-import type * as s_out from "../../submodules/interface/interface/schemas/resolved.js"
+import type * as s_out from "../../submodules/interface/schemas/resolved.js"
 
 export namespace m {
 

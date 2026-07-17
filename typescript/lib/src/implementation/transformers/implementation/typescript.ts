@@ -3,11 +3,9 @@ import type * as p_i from 'pareto-core/interface/transformer'
 import type * as p_di from 'pareto-core/interface/schema'
 import p_implement_me from 'pareto-core-dev/implement_me'
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
-import type * as p_ri from 'pareto-core/interface/refiner'
 
 //schemas
 import type * as s_in from "../../../submodules/implementation/interface/schemas/resolved.js"
-import type * as s_parameters from "../../../interface/schemas/pareto_to_typescript.js"
 import type * as s_out from "../../../interface/schemas/typescript_light.js"
 
 //shorthands
@@ -26,201 +24,168 @@ const join = ($: p_di.List<string>): string => {
     return out
 }
 
-const temp_rename: p_ri.Refiner<
+
+export const Package_Set: p_.Transformer<
     s_in.Package_Set,
-    s_parameters.Error,
-    s_in.Package_Set
+    s_out.Directory
 > = (
     $,
-    abort
-) => {
-        const renamed: { [id: string]: s_in.Package_Set.D } = {}
-        p_.from.dictionary($).map(
-            ($, id) => {
-                const new_id: string = p_.from.state($).decide(
-                    ($) => {
-                        switch ($[0]) {
-                            case 'package': return p_.option($, ($) => id + ".ts")
-                            case 'set': return p_.option($, ($) => {
-                                const ends_with_ts = ($s: string): boolean => {
-                                    return false //implement properly later
-                                }
-                                if (ends_with_ts(id)) {
-                                    abort(['directory name ending with ts', { 'directory name': id }])
-                                }
-                                return id
-                            })
-                            default: return p_.exhaustive($[0])
-                        }
-                    })
-                renamed[new_id] = $
-                return null
-            })
-        return p_.literal.dictionary(renamed)
-    }
+) => sh.mixed_directory(
+    p_.from.dictionary($).map(
+        ($, id) => p_.from.state($).decide(
+            ($) => {
+                switch ($[0]) {
+                    case 'package': return p_.option($, ($): s_out.Node => {
 
-
-export const Package_Set: p_ri.Refiner<
-    s_out.Directory,
-    s_parameters.Error,
-    s_in.Package_Set
-> = (
-    $,
-    abort
-) => {
-        return p_.from.dictionary(temp_rename($, abort)).map(
-            ($, id) => p_.from.state($).decide(
-                ($) => {
-                    switch ($[0]) {
-                        case 'package': return p_.option($, ($): s_out.Directory.D => {
-
-                            const y: s_out.Statements = p_.literal.segmented_list([
-                                p_.literal.list([
+                        const y: s_out.Statements = p_.literal.segmented_list([
+                            p_.literal.list([
+                                sh.s.import_namespace(
+                                    sh.identifier_raw("pt"),
+                                    sh.string_literal("pareto-core/assign", 'apostrophe')
+                                ),
+                            ]),
+                            $.specials['change context']
+                                ? p_.literal.list([
+                                    sh.s.import_default(
+                                        sh.identifier_raw("p_change_context"),
+                                        sh.string_literal("pareto-core/specials/change_context", 'apostrophe')
+                                    )
+                                ])
+                                : p_.literal.list([]),
+                            $.specials['implement me']
+                                ? p_.literal.list([
                                     sh.s.import_namespace(
-                                        sh.identifier_raw("pt"),
-                                        sh.string_literal("pareto-core/assign", 'apostrophe')
-                                    ),
-                                ]),
-                                $.specials['change context']
-                                    ? p_.literal.list([
-                                        sh.s.import_default(
-                                            sh.identifier_raw("p_change_context"),
-                                            sh.string_literal("pareto-core/specials/change_context", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                $.specials['implement me']
-                                    ? p_.literal.list([
-                                        sh.s.import_namespace(
-                                            sh.identifier_raw("_pdev"),
-                                            sh.string_literal("pareto-core-dev", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                $.specials['iterate']
-                                    ? p_.literal.list([
-                                        sh.s.import_named(
-                                            p_.literal.list([
-                                                sh.specifier(
-                                                    sh.identifier_raw("p_change_context"), null),
-                                            ]),
-                                            sh.string_literal("pareto-core/iterate", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                $.specials['list from text']
-                                    ? p_.literal.list([
-                                        sh.s.import_default(
-                                            sh.identifier_raw("p_list_from_text"),
-                                            sh.string_literal("pareto-core/specials/list_from_text", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                $.specials.lookups
-                                    ? p_.literal.list([
-                                        sh.s.import_namespace(
-                                            sh.identifier_raw("p_sl"),
-                                            sh.string_literal("pareto-core/select_static_lookup", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                $.specials['text from list']
-                                    ? p_.literal.list([
-                                        sh.s.import_default(
-                                            sh.identifier_raw("p_text_from_list"),
-                                            sh.string_literal("pareto-core/specials/text_from_list", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                $.specials['unreachable code path']
-                                    ? p_.literal.list([
-                                        sh.s.import_default(
-                                            sh.identifier_raw("p_unreachable_code_path"),
-                                            sh.string_literal("pareto-core/specials/unreachable_code_path", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                $.specials['variables']
-                                    ? p_.literal.list([
-                                        sh.s.import_default(
-                                            sh.identifier_raw("p_variables"),
-                                            sh.string_literal("pareto-core/specials/variables", 'apostrophe')
-                                        )
-                                    ])
-                                    : p_.literal.list([]),
-                                p_.from.dictionary($['type imports']).convert_to_list(
-                                    ($, id) => sh.s.import_namespace(
-                                        sh.identifier_escaped(join(p_.literal.list(["t ", id]))),
-                                        temp_create_file_path(
-                                            $,
-                                            {
-                                                'delimiter': ['quote', null]
-                                            }
-                                        )
+                                        sh.identifier_raw("_pdev"),
+                                        sh.string_literal("pareto-core-dev", 'apostrophe')
                                     )
-                                ),
-                                p_.from.dictionary($['variable imports']).convert_to_list(
-                                    ($, id) => sh.s.import_namespace(
-                                        sh.identifier_escaped(join(p_.literal.list(["v ", id]))),
-                                        temp_create_file_path(
-                                            $,
-                                            {
-                                                'delimiter': ['quote', null]
-                                            }
-                                        )
+                                ])
+                                : p_.literal.list([]),
+                            $.specials['iterate']
+                                ? p_.literal.list([
+                                    sh.s.import_named(
+                                        p_.literal.list([
+                                            sh.specifier(
+                                                sh.identifier_raw("p_change_context"), null),
+                                        ]),
+                                        sh.string_literal("pareto-core/iterate", 'apostrophe')
                                     )
-                                ),
-                                p_.from.dictionary($.functions).convert_to_list(
-                                    ($, id): s_out.Statements.L => sh.s.variable(
-                                        true,
-                                        true,
-                                        sh.identifier_escaped(id),
-                                        sh.t.type_reference(
-                                            sh.identifier_escaped("t " + $.type.import),
-                                            p_.literal.list([
-                                                sh.identifier_escaped($.type.type)
-                                            ]),
-                                            p_.literal.list([])
-                                        ),
-                                        sh.e.arrow_function_with_expression(
-                                            p_.literal.segmented_list([
-                                                p_.literal.list([
-                                                    sh.parameter(
-                                                        sh.identifier_raw("$"), null),
-                                                ]),
-                                                $['temp has abort']
-                                                    ? p_.literal.list([
-                                                        sh.parameter(
-                                                            sh.identifier_raw("abort"), null),
-                                                    ])
-                                                    : p_.literal.list([]),
-                                                $['temp has lookups']
-                                                    ? p_.literal.list([
-                                                        sh.parameter(
-                                                            sh.identifier_raw("$l"), null),
-                                                    ])
-                                                    : p_.literal.list([]),
-                                                $['temp has parameters']
-                                                    ? p_.literal.list([
-                                                        sh.parameter(
-                                                            sh.identifier_raw("$p"), null),
-                                                    ])
-                                                    : p_.literal.list([])
-                                            ]),
-                                            null,
-                                            Assign($.expression)
-                                        )
+                                ])
+                                : p_.literal.list([]),
+                            $.specials['list from text']
+                                ? p_.literal.list([
+                                    sh.s.import_default(
+                                        sh.identifier_raw("p_list_from_text"),
+                                        sh.string_literal("pareto-core/specials/list_from_text", 'apostrophe')
+                                    )
+                                ])
+                                : p_.literal.list([]),
+                            $.specials.lookups
+                                ? p_.literal.list([
+                                    sh.s.import_namespace(
+                                        sh.identifier_raw("p_sl"),
+                                        sh.string_literal("pareto-core/select_static_lookup", 'apostrophe')
+                                    )
+                                ])
+                                : p_.literal.list([]),
+                            $.specials['text from list']
+                                ? p_.literal.list([
+                                    sh.s.import_default(
+                                        sh.identifier_raw("p_text_from_list"),
+                                        sh.string_literal("pareto-core/specials/text_from_list", 'apostrophe')
+                                    )
+                                ])
+                                : p_.literal.list([]),
+                            $.specials['unreachable code path']
+                                ? p_.literal.list([
+                                    sh.s.import_default(
+                                        sh.identifier_raw("p_unreachable_code_path"),
+                                        sh.string_literal("pareto-core/specials/unreachable_code_path", 'apostrophe')
+                                    )
+                                ])
+                                : p_.literal.list([]),
+                            $.specials['variables']
+                                ? p_.literal.list([
+                                    sh.s.import_default(
+                                        sh.identifier_raw("p_variables"),
+                                        sh.string_literal("pareto-core/specials/variables", 'apostrophe')
+                                    )
+                                ])
+                                : p_.literal.list([]),
+                            p_.from.dictionary($['type imports']).convert_to_list(
+                                ($, id) => sh.s.import_namespace(
+                                    sh.identifier_escaped(join(p_.literal.list(["t ", id]))),
+                                    temp_create_file_path(
+                                        $,
+                                        {
+                                            'delimiter': ['quote', null]
+                                        }
                                     )
                                 )
-                            ])
+                            ),
+                            p_.from.dictionary($['variable imports']).convert_to_list(
+                                ($, id) => sh.s.import_namespace(
+                                    sh.identifier_escaped(join(p_.literal.list(["v ", id]))),
+                                    temp_create_file_path(
+                                        $,
+                                        {
+                                            'delimiter': ['quote', null]
+                                        }
+                                    )
+                                )
+                            ),
+                            p_.from.dictionary($.functions).convert_to_list(
+                                ($, id): s_out.Statements.L => sh.s.variable(
+                                    true,
+                                    true,
+                                    sh.identifier_escaped(id),
+                                    sh.t.type_reference(
+                                        sh.identifier_escaped("t " + $.type.import),
+                                        p_.literal.list([
+                                            sh.identifier_escaped($.type.type)
+                                        ]),
+                                        p_.literal.list([])
+                                    ),
+                                    sh.e.arrow_function_with_expression(
+                                        p_.literal.segmented_list([
+                                            p_.literal.list([
+                                                sh.parameter(
+                                                    sh.identifier_raw("$"), null),
+                                            ]),
+                                            $['temp has abort']
+                                                ? p_.literal.list([
+                                                    sh.parameter(
+                                                        sh.identifier_raw("abort"), null),
+                                                ])
+                                                : p_.literal.list([]),
+                                            $['temp has lookups']
+                                                ? p_.literal.list([
+                                                    sh.parameter(
+                                                        sh.identifier_raw("$l"), null),
+                                                ])
+                                                : p_.literal.list([]),
+                                            $['temp has parameters']
+                                                ? p_.literal.list([
+                                                    sh.parameter(
+                                                        sh.identifier_raw("$p"), null),
+                                                ])
+                                                : p_.literal.list([])
+                                        ]),
+                                        null,
+                                        Assign($.expression)
+                                    )
+                                )
+                            )
+                        ])
 
-                            return sh.n.file(y)
-                        })
-                        case 'set': return p_.option($, ($) => ['directory', Package_Set($, abort)])
-                        default: return p_.exhaustive($[0])
-                    }
-                }))
-    }
+                        return sh.n.file(sh.source_file(y))
+                    })
+                    case 'set': return p_.option($, ($) => ['directory', Package_Set($)])
+                    default: return p_.exhaustive($[0])
+                }
+            }
+        )
+    )
+)
 
 export const Temp_Value_Type_Specification = (
     $: s_in.Temp_Value_Type_Specification,

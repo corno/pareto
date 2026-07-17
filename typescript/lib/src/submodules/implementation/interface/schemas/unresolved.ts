@@ -1,10 +1,9 @@
 
-import * as p_i from 'pareto-core/interface/__internal/Abort'
 import * as p_di from 'pareto-core/interface/schema'
 
-import * as i_location from "./document_and_location.js"
+import * as i_location from "../../../interface/schemas/location.js"
 
-import * as i_imports_interface from "../../../interface/interface/schemas/unresolved.js"
+import * as i_imports_interface from "../../../interface/schemas/unresolved.js"
 
 export namespace Package_Set_ {
     

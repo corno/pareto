@@ -1,13 +1,10 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
-import type * as p_di from 'pareto-core/interface/schema'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
-import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
-import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
 //schemas
-import type * as s_in from "../../../interface/schemas/typescript_light.js"
-import type * as s_out from "../../../interface/schemas/paragraph.js"
+import type * as s_in from "../../../schemas/typescript_light.js"
+import type * as s_out from "../../../schemas/paragraph.js"
+import type * as s_serialization from "../../../schemas/serialization.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
@@ -35,12 +32,16 @@ namespace declarations {
         s_out.Phrase
     >
 
+    export type Source_File = p_i.Transformer_With_Parameter<
+        s_in.Source_File,
+        s_out.Paragraph,
+        s_serialization.TypeScript_Parameters
+    >
+
     export type Statements = p_i.Transformer_With_Parameter<
         s_in.Statements,
         s_out.Paragraph,
-        {
-            'replace empty type literals by symbol': boolean
-        }
+        s_serialization.TypeScript_Parameters
     >
 
     export type Expression = p_i.Transformer_With_Parameter<
@@ -55,13 +56,12 @@ namespace declarations {
     export type Type = p_i.Transformer_With_Parameter<
         s_in.Type,
         s_out.Phrase,
-        {
-            'replace empty type literals by symbol': boolean
-        }
+        s_serialization.TypeScript_Parameters
     >
 
 }
 
+export const Source_File: declarations.Source_File = ($, $p) => Statements($.statements, $p)
 
 
 export const Identifier: declarations.Identifier = ($) => {
@@ -70,15 +70,15 @@ export const Identifier: declarations.Identifier = ($) => {
 
 
 export const String_Literal_pseudo: declarations.String_Literal_pseudo = ($, $p) => {
-    return sh.ph.serialize($p.delimiter === "quote"
-        ? quoted_text($)
-        : apostrophed_text($))
+    return sh.ph.text($p.delimiter === "quote"
+            ? ser_primitives.Quoted_Text($)
+            : ser_primitives.Apostrophed_Text($))
 }
 
 export const String_Literal: declarations.String_Literal = ($) => {
-    return sh.ph.serialize($.delimiter[0] === "quote"
-        ? quoted_text($.value)
-        : apostrophed_text($.value))
+    return sh.ph.text($.delimiter[0] === "quote"
+        ? ser_primitives.Quoted_Text($.value)
+        : ser_primitives.Apostrophed_Text($.value))
 }
 
 export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_composed(p_.from.list($).map(
@@ -588,7 +588,9 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                 ])
             ]))
             case 'string literal': return p_.option($, ($) => p_.literal.list([
-                sh.ph.serialize($['delimiter'][0] === "quote" ? quoted_text($['value']) : apostrophed_text($['value']))
+                sh.ph.text($['delimiter'][0] === "quote" 
+                    ? ser_primitives.Quoted_Text($['value']) 
+                    : ser_primitives.Apostrophed_Text($['value']))
             ]))
             case 'true': return p_.option($, ($) => p_.literal.list([
                 sh.ph.text("true")

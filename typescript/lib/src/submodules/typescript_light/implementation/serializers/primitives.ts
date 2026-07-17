@@ -5,8 +5,8 @@ import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials
 import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
 
 //schemas
-import type * as s_in from "../../interface/schemas/typescript_light.js"
-import type * as s_out from "../../interface/schemas/paragraph.js"
+import type * as s_in from "../../schemas/typescript_light.js"
+import type * as s_out from "../../schemas/paragraph.js"
 
 
 namespace declarations {
@@ -106,284 +106,272 @@ export const escaped_text: declarations.escaped_text = ($) => p_.ph.list_of_char
     )
 )
 
-export const Apostrophed_Text: declarations.Apostrophed_Text = ($) => p_.literal.segmented_list([
-    p_.literal.list([
-        0x27, // '
-    ]),
+export const Apostrophed_Text: declarations.Apostrophed_Text = ($) => p_.ph.composed([
+    p_.ph.literal("'"),
     escaped_text(
         $,
     ),
-    p_.literal.list([
-        0x27, // '
-    ])
+    p_.ph.literal("'"),
 ])
 
-export const Backticked_Text: declarations.Backticked_Text = ($) => p_.literal.segmented_list([
-    p_.literal.list([
-        0x60, // `
-    ]),
+export const Backticked_Text: declarations.Backticked_Text = ($) => p_.ph.composed([
+    p_.ph.literal("`"),
     escaped_text(
         $,
     ),
-    p_.literal.list([
-        0x60, // `
-    ])
+    p_.ph.literal("`"),
 ])
 
-export const Quoted_Text: declarations.Quoted_Text = ($) => p_.literal.segmented_list([
-    p_.literal.list([
-        0x22, // "
-    ]),
+export const Quoted_Text: declarations.Quoted_Text = ($) => p_.ph.composed([
+    p_.ph.literal("\""),
     escaped_text(
         $,
     ),
-    p_.literal.list([
-        0x22, // "
-    ])
+    p_.ph.literal("\""),
 ])
 
 
-export const Decimal: declarations.Decimal = ($) => p_list_build_deprecated(
-    ($i) => {
-        if ($ < 0) {
-            $i['add item'](45) // '-'
-            $ = -$
-        }
-        const digits = p_list_build_deprecated<number>(
-            ($i) => {
-                do {
-                    const digit = $ % 10
-                    $i['add item'](digit)
-                    $ = p_.from.number($).divide(
-                        10,
-                        ['towards zero', null],
-                        {
-                            divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10"),
-                        }
-                    )
-                } while ($ > 0)
-
-            })
-
-        for (let j = p_.from.list(digits).amount_of_items() - 1; j >= 0; j--) {
-            $i['add item'](48 + p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
-                ($) => $,
-                () => p_unreachable_code_path("index cannot be out of bounds")
-            ))
-        }
-    })
-
-
-export const Float: declarations.Float = ($) => {
-    return p_.ph.list_of_characters(p_list_build_deprecated(
+export const Decimal: declarations.Decimal = ($) => p_.ph.list_of_characters(
+    p_list_build_deprecated(
         ($i) => {
-            // Handle special case for zero
-            if ($ === 0) {
-                $i['add item'](48) // '0'
-                return
-            }
-
-            // Handle negative numbers
             if ($ < 0) {
                 $i['add item'](45) // '-'
                 $ = -$
             }
-
-            // Calculate exponent (power of 10)
-            let exponent = 0
-            let mantissa = $
-
-            // Normalize to range [1, 10)
-            if (mantissa >= 10) {
-                while (mantissa >= 10) {
-                    mantissa = mantissa / 10
-                    exponent++
-                }
-            } else if (mantissa < 1) {
-                while (mantissa < 1) {
-                    mantissa = mantissa * 10
-                    exponent--
-                }
-            }
-
-            // Use exponential notation only if exponent < -6 or >= 21
-            const use_exponential = exponent < -6 || exponent >= 21
-
-            const fixme_digits = 16
-
-            // Create scale factor
-            let scale_factor = 1
-            for (let i = 0; i < fixme_digits - 1; i++) {
-                scale_factor = scale_factor * 10
-            }
-
-            const mantissa_scaled = p_.from.number(mantissa * scale_factor + 0.5,).divide(
-                1,
-                ['towards zero', null],
-                {
-                    divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 1"),
-                }
-            )
-
-            // Extract all digits
             const digits = p_list_build_deprecated<number>(
                 ($i) => {
-                    let $v_t = mantissa_scaled
                     do {
-                        const digit = $v_t % 10
+                        const digit = $ % 10
                         $i['add item'](digit)
-                        $v_t = p_.from.number($v_t).divide(
+                        $ = p_.from.number($).divide(
                             10,
                             ['towards zero', null],
                             {
                                 divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10"),
                             }
                         )
-                    } while ($v_t > 0)
+                    } while ($ > 0)
+
                 })
 
-            if (use_exponential) {
-                // OUTPUT IN EXPONENTIAL NOTATION
-                const first_digit = p_.from.optional(digits.__deprecated_get_possible_item_at(p_.from.list(digits).amount_of_items() - 1)).decide(
+            for (let j = p_.from.list(digits).amount_of_items() - 1; j >= 0; j--) {
+                $i['add item'](48 + p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
                     ($) => $,
                     () => p_unreachable_code_path("index cannot be out of bounds")
-                )
-                $i['add item'](48 + first_digit)
+                ))
+            }
+        }
+    )
+)
 
-                // Find first non-zero digit in fractional part
-                let first_nonzero_index = -1
-                if (p_.from.list(digits).amount_of_items() > 1) {
-                    for (let j = 0; j < p_.from.list(digits).amount_of_items() - 1; j++) {
-                        const digit = p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
-                            ($) => $,
-                            () => p_unreachable_code_path("index cannot be out of bounds")
-                        )
-                        if (digit !== 0) {
-                            if (first_nonzero_index === -1) {
-                                first_nonzero_index = j
-                            }
+
+export const Float: declarations.Float = ($) => p_.ph.list_of_characters(p_list_build_deprecated(
+    ($i) => {
+        // Handle special case for zero
+        if ($ === 0) {
+            $i['add item'](48) // '0'
+            return
+        }
+
+        // Handle negative numbers
+        if ($ < 0) {
+            $i['add item'](45) // '-'
+            $ = -$
+        }
+
+        // Calculate exponent (power of 10)
+        let exponent = 0
+        let mantissa = $
+
+        // Normalize to range [1, 10)
+        if (mantissa >= 10) {
+            while (mantissa >= 10) {
+                mantissa = mantissa / 10
+                exponent++
+            }
+        } else if (mantissa < 1) {
+            while (mantissa < 1) {
+                mantissa = mantissa * 10
+                exponent--
+            }
+        }
+
+        // Use exponential notation only if exponent < -6 or >= 21
+        const use_exponential = exponent < -6 || exponent >= 21
+
+        const fixme_digits = 16
+
+        // Create scale factor
+        let scale_factor = 1
+        for (let i = 0; i < fixme_digits - 1; i++) {
+            scale_factor = scale_factor * 10
+        }
+
+        const mantissa_scaled = p_.from.number(mantissa * scale_factor + 0.5,).divide(
+            1,
+            ['towards zero', null],
+            {
+                divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 1"),
+            }
+        )
+
+        // Extract all digits
+        const digits = p_list_build_deprecated<number>(
+            ($i) => {
+                let $v_t = mantissa_scaled
+                do {
+                    const digit = $v_t % 10
+                    $i['add item'](digit)
+                    $v_t = p_.from.number($v_t).divide(
+                        10,
+                        ['towards zero', null],
+                        {
+                            divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10"),
+                        }
+                    )
+                } while ($v_t > 0)
+            })
+
+        if (use_exponential) {
+            // OUTPUT IN EXPONENTIAL NOTATION
+            const first_digit = p_.from.optional(digits.__deprecated_get_possible_item_at(p_.from.list(digits).amount_of_items() - 1)).decide(
+                ($) => $,
+                () => p_unreachable_code_path("index cannot be out of bounds")
+            )
+            $i['add item'](48 + first_digit)
+
+            // Find first non-zero digit in fractional part
+            let first_nonzero_index = -1
+            if (p_.from.list(digits).amount_of_items() > 1) {
+                for (let j = 0; j < p_.from.list(digits).amount_of_items() - 1; j++) {
+                    const digit = p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
+                        ($) => $,
+                        () => p_unreachable_code_path("index cannot be out of bounds")
+                    )
+                    if (digit !== 0) {
+                        if (first_nonzero_index === -1) {
+                            first_nonzero_index = j
                         }
                     }
                 }
+            }
 
-                if (first_nonzero_index >= 0) {
-                    $i['add item'](46) // '.'
-                    for (let j = p_.from.list(digits).amount_of_items() - 2; j >= first_nonzero_index; j--) {
-                        const digit = p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
-                            ($) => $,
-                            () => p_unreachable_code_path("index cannot be out of bounds")
-                        )
-                        $i['add item'](48 + digit)
-                    }
-                }
-
-                // Add exponent
-                $i['add item'](101) // 'e'
-                let exp = exponent
-                if (exp < 0) {
-                    $i['add item'](45) // '-'
-                    exp = -exp
-                } else {
-                    $i['add item'](43) // '+'
-                }
-
-                const exp_digits = p_list_build_deprecated<number>(
-                    ($i) => {
-                        if (exp === 0) {
-                            $i['add item'](0)
-                        } else {
-                            do {
-                                const digit = exp % 10
-                                $i['add item'](digit)
-                                exp = p_.from.number(exp).divide(
-                                    10,
-                                    ['towards zero', null],
-                                    {
-                                        divided_by_zero: () => p_unreachable_code_path("hardcoded 10"),
-                                    }
-                                )
-                            } while (exp > 0)
-                        }
-                    })
-
-                for (let j = p_.from.list(exp_digits).amount_of_items() - 1; j >= 0; j--) {
-                    const digit = p_.from.optional(exp_digits.__deprecated_get_possible_item_at(j)).decide(
+            if (first_nonzero_index >= 0) {
+                $i['add item'](46) // '.'
+                for (let j = p_.from.list(digits).amount_of_items() - 2; j >= first_nonzero_index; j--) {
+                    const digit = p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
                         ($) => $,
                         () => p_unreachable_code_path("index cannot be out of bounds")
                     )
                     $i['add item'](48 + digit)
                 }
-            } else {
-                // OUTPUT IN FIXED-POINT NOTATION
-                let digit_count = p_.from.list(digits).amount_of_items()
+            }
 
-                // Find first (lowest index) nonzero digit to know when to stop
-                let first_nonzero = digit_count  // Initialize beyond range
-                for (let j = 0; j < digit_count; j++) {
-                    const d = p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
+            // Add exponent
+            $i['add item'](101) // 'e'
+            let exp = exponent
+            if (exp < 0) {
+                $i['add item'](45) // '-'
+                exp = -exp
+            } else {
+                $i['add item'](43) // '+'
+            }
+
+            const exp_digits = p_list_build_deprecated<number>(
+                ($i) => {
+                    if (exp === 0) {
+                        $i['add item'](0)
+                    } else {
+                        do {
+                            const digit = exp % 10
+                            $i['add item'](digit)
+                            exp = p_.from.number(exp).divide(
+                                10,
+                                ['towards zero', null],
+                                {
+                                    divided_by_zero: () => p_unreachable_code_path("hardcoded 10"),
+                                }
+                            )
+                        } while (exp > 0)
+                    }
+                })
+
+            for (let j = p_.from.list(exp_digits).amount_of_items() - 1; j >= 0; j--) {
+                const digit = p_.from.optional(exp_digits.__deprecated_get_possible_item_at(j)).decide(
+                    ($) => $,
+                    () => p_unreachable_code_path("index cannot be out of bounds")
+                )
+                $i['add item'](48 + digit)
+            }
+        } else {
+            // OUTPUT IN FIXED-POINT NOTATION
+            let digit_count = p_.from.list(digits).amount_of_items()
+
+            // Find first (lowest index) nonzero digit to know when to stop
+            let first_nonzero = digit_count  // Initialize beyond range
+            for (let j = 0; j < digit_count; j++) {
+                const d = p_.from.optional(digits.__deprecated_get_possible_item_at(j)).decide(
+                    ($) => $,
+                    () => p_unreachable_code_path("index cannot be out of bounds")
+                )
+                if (d !== 0) {
+                    first_nonzero = j
+                    break
+                }
+            }
+
+            const decimal_pos = exponent + 1  // Number of digits to the left of decimal
+
+            if (first_nonzero === digit_count) {
+                // All zeros
+                $i['add item'](48) // '0'
+            } else if (decimal_pos <= 0) {
+                // Like 0.00123 - need leading zeros
+                $i['add item'](48) // '0'
+                $i['add item'](46) // '.'
+
+                for (let z = 0; z < -decimal_pos; z++) {
+                    $i['add item'](48)
+                }
+
+                // Output digits from highest to first_nonzero
+                for (let i = digit_count - 1; i >= first_nonzero; i--) {
+                    const d = p_.from.optional(digits.__deprecated_get_possible_item_at(i)).decide(
                         ($) => $,
                         () => p_unreachable_code_path("index cannot be out of bounds")
                     )
-                    if (d !== 0) {
-                        first_nonzero = j
+                    $i['add item'](48 + d)
+                }
+            } else {
+                // Like 123 or 123.45
+                let digits_output = 0
+
+                // Output all digits from highest, but ensure we output at least decimal_pos digits before decimal
+                // let min_digits_needed = decimal_pos
+
+                for (let i = digit_count - 1; i >= 0; i--) {
+                    // Stop after we've output all significant fractional digits
+                    if (i < first_nonzero && digits_output >= decimal_pos) {
                         break
                     }
-                }
 
-                const decimal_pos = exponent + 1  // Number of digits to the left of decimal
+                    const d = p_.from.optional(digits.__deprecated_get_possible_item_at(i)).decide(
+                        ($) => $,
+                        () => p_unreachable_code_path("index cannot be out of bounds")
+                    )
 
-                if (first_nonzero === digit_count) {
-                    // All zeros
-                    $i['add item'](48) // '0'
-                } else if (decimal_pos <= 0) {
-                    // Like 0.00123 - need leading zeros
-                    $i['add item'](48) // '0'
-                    $i['add item'](46) // '.'
-
-                    for (let z = 0; z < -decimal_pos; z++) {
-                        $i['add item'](48)
+                    // Check if we need to insert decimal before this digit
+                    if (digits_output === decimal_pos && digits_output > 0) {
+                        $i['add item'](46) // '.'
                     }
 
-                    // Output digits from highest to first_nonzero
-                    for (let i = digit_count - 1; i >= first_nonzero; i--) {
-                        const d = p_.from.optional(digits.__deprecated_get_possible_item_at(i)).decide(
-                            ($) => $,
-                            () => p_unreachable_code_path("index cannot be out of bounds")
-                        )
-                        $i['add item'](48 + d)
-                    }
-                } else {
-                    // Like 123 or 123.45
-                    let digits_output = 0
-
-                    // Output all digits from highest, but ensure we output at least decimal_pos digits before decimal
-                    // let min_digits_needed = decimal_pos
-
-                    for (let i = digit_count - 1; i >= 0; i--) {
-                        // Stop after we've output all significant fractional digits
-                        if (i < first_nonzero && digits_output >= decimal_pos) {
-                            break
-                        }
-
-                        const d = p_.from.optional(digits.__deprecated_get_possible_item_at(i)).decide(
-                            ($) => $,
-                            () => p_unreachable_code_path("index cannot be out of bounds")
-                        )
-
-                        // Check if we need to insert decimal before this digit
-                        if (digits_output === decimal_pos && digits_output > 0) {
-                            $i['add item'](46) // '.'
-                        }
-
-                        $i['add item'](48 + d)
-                        digits_output++
-                    }
+                    $i['add item'](48 + d)
+                    digits_output++
                 }
             }
-        })
-    )
-}
-
+        }
+    })
+)
 
 export const Identifier: declarations.Identifier = ($) => {
     return p_.ph.literal($.value)

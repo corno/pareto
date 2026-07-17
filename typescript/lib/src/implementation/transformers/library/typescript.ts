@@ -1,8 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
-import type * as p_ri from 'pareto-core/interface/refiner'
 
 //schemas
-import type * as s_in_inf from "../../../submodules/interface/interface/schemas/resolved.js"
+import type * as s_in_inf from "../../../submodules/interface/schemas/resolved.js"
 import type * as s_in_imp from "../../../submodules/implementation/interface/schemas/resolved.js"
 import type * as s_out from "../../../interface/schemas/typescript_light.js"
 namespace s_in {
@@ -13,7 +12,6 @@ namespace s_in {
     }
 
 }
-import type * as s_parameters from "../../../interface/schemas/pareto_to_typescript.js"
 
 //dependencies
 import * as t_interface_to_typescript_temp from "../interface/typescript.js"
@@ -25,24 +23,19 @@ import * as sh from "../../../submodules/typescript_light/shorthands/typescript_
 // import type * as declarations from "../interface/signatures.js"
 
 
-export const Temp_Library: p_ri.Refiner<
-    s_out.Directory,
-    s_parameters.Error,
-    s_in.Temp_Library
+export const Temp_Library: p_.Transformer<
+    s_in.Temp_Library,
+    s_out.Directory
 > = (
     $,
-    abort
-) => p_.literal.dictionary<s_out.Directory.D>({
-    "interface": sh.n.directory_raw(t_interface_to_typescript_temp.Package_Set(
-        $.interface,
-        abort,
-    )),
-    "implementation": sh.n.directory_raw(t_implementation_to_typescript_temp.Package_Set(
-        $.implementation,
-        abort,
-        // {
-        //     'phase': $p.phase,
-        // }
-    )),
-    //FIX: "generic"
-})
+) => sh.directory_of_directories(
+    p_.literal.dictionary({
+        "interface": t_interface_to_typescript_temp.Package_Set(
+            $.interface,
+        ),
+        "implementation": t_implementation_to_typescript_temp.Package_Set(
+            $.implementation,
+        ),
+        //FIX: "generic"
+    })
+)

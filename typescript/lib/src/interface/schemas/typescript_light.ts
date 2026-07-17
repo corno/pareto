@@ -1,1 +1,1 @@
-export * from "../../submodules/typescript_light/interface/schemas/typescript_light.js"
+export * from "../../submodules/typescript_light/schemas/typescript_light.js"
