@@ -17,6 +17,7 @@ p_h.run_main_command(
     () => c_command(
         {
             'error message indentation': "    ",
+            'remove before writing': true,
         },
         {
             'read file': rs_filesystem_unrestricted.$.queries['read file'],
@@ -34,6 +35,7 @@ p_h.run_main_command(
             ),
         },
         {
+            'remove': rs_filesystem_unrestricted.$.commands.remove,
             'write file': rs_filesystem_unrestricted.$.commands['write file'],
             'log error lines': rs_stream.$.commands['log error lines'],
         },
