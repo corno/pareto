@@ -14,8 +14,8 @@ namespace s_in {
 }
 
 //dependencies
-import * as t_interface_to_typescript_temp from "../interface/typescript.js"
-import * as t_implementation_to_typescript_temp from "../implementation/typescript.js"
+import * as t_interface_to_typescript_temp from "../../../../interface/transformers/interface/typescript.js"
+import * as t_implementation_to_typescript_temp from "../../../../implementation/transformers/implementation/typescript.js"
 
 //shorthands
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
