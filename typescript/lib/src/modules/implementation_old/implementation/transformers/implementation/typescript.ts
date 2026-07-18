@@ -5,14 +5,14 @@ import p_implement_me from 'pareto-core-dev/implement_me'
 import p_variables from 'pareto-core/implementation/transformer/specials/variables'
 
 //schemas
-import type * as s_in from "../../interface/schemas/resolved.js"
-import type * as s_out from "../../../pareto_old/interface/schemas/typescript_light.js"
+import type * as s_in from "../../../schemas/resolved.js"
+import type * as s_out from "../../../../typescript_light/schemas/typescript_light.js"
 
 //shorthands
-import * as sh from "../../../typescript_light/shorthands/typescript_light/target.js"
+import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
 
 //dependencies
-import { temp_create_file_path } from "../../../interface/transformers/interface/typescript.js"
+import { temp_create_file_path } from "../../../../interface_old/implementation/transformers/interface/typescript.js"
 
 const join = ($: p_di.List<string>): string => {
     let out = ""

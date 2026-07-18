@@ -1,9 +1,9 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 import * as p_temp from 'pareto-core/implementation/transformer'
 
-import type * as s_target from "../../modules/implementation/interface/schemas/resolved.js" //THIS IS NOT CORRECT! It should be unresolved
+import type * as s_target from "../../modules/implementation_old/schemas/resolved.js" //THIS IS NOT CORRECT! It should be unresolved
 
-import type * as s_target_interface from "../../modules/interface/schemas/resolved.js"
+import type * as s_target_interface from "../../modules/interface_old/schemas/resolved.js"
 
 
 const wrap_state = <T>(value: T): T => value

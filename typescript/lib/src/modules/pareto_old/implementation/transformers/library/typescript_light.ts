@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
-import type * as s_in_inf from "../../../../interface/schemas/resolved.js"
-import type * as s_in_imp from "../../../../implementation/interface/schemas/resolved.js"
+import type * as s_in_inf from "../../../../interface_old/schemas/resolved.js"
+import type * as s_in_imp from "../../../../implementation_old/schemas/resolved.js"
 import type * as s_out from "../../../interface/schemas/typescript_light.js"
 namespace s_in {
 
@@ -14,8 +14,8 @@ namespace s_in {
 }
 
 //dependencies
-import * as t_interface_to_typescript_temp from "../../../../interface/transformers/interface/typescript.js"
-import * as t_implementation_to_typescript_temp from "../../../../implementation/transformers/implementation/typescript.js"
+import * as t_interface_to_typescript_temp from "../../../../interface_old/implementation/transformers/interface/typescript.js"
+import * as t_implementation_to_typescript_temp from "../../../../implementation_old/implementation/transformers/implementation/typescript.js"
 
 //shorthands
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"

@@ -1,9 +1,9 @@
 
 import * as p_di from 'pareto-core/interface/schema'
 
-import * as i_location from "../../../interface/schemas/location.js"
+import * as i_location from "../../interface_old/schemas/location.js"
 
-import * as i_imports_interface from "../../../interface/schemas/unresolved.js"
+import * as i_imports_interface from "../../interface_old/schemas/unresolved.js"
 
 export namespace Package_Set_ {
     
