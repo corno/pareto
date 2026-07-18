@@ -4,7 +4,7 @@ import p_variables from 'pareto-core/implementation/refiner/specials/variables'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
-import type * as s_out from "../../../../pareto_old/interface/schemas/typescript_light.js"
+import type * as s_out from "../../../schemas/typescript_light.js"
 
 
 import type * as s_in from "../../../schemas/resolved.js"

@@ -1,6 +1,6 @@
 {
   "name": "pareto",
-  "version": "0.80.61",
+  "version": "0.80.62",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A library for the Pareto programming Language",

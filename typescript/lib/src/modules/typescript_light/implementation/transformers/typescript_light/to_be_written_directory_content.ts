@@ -3,8 +3,7 @@ import p_add_id_suffix from 'pareto-core/implementation/transformer/specials/add
 
 import * as s_in from "../../../schemas/typescript_light.js"
 import * as s_out from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/to_be_written_directory_content"
-import * as s_file_write_parameters from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/write_directory_content"
-import * as s_serialization_parameters from "../../../schemas/serialization.js"
+import * as s_parameters from "../../../schemas/directory_content_writing.js"
 
 //dependencies
 
@@ -13,10 +12,7 @@ import * as t_to_serialized from "./serialized.js"
 export const Directory: p_.Transformer_With_Parameter<
     s_in.Directory,
     s_out.Directory,
-    {
-        'file write parameters': s_file_write_parameters.File_Write_Parameters
-        'serialization parameters': s_serialization_parameters.Source_File_Parameters
-    }
+    s_parameters.Parameters
 > = ($, $p) => p_.from.state($.content).decide(
     ($): s_out.Directory => {
         switch ($[0]) {

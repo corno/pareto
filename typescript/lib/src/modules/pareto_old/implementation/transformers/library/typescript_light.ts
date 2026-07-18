@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 //schemas
 import type * as s_in_inf from "../../../../interface_old/schemas/resolved.js"
 import type * as s_in_imp from "../../../../implementation_old/schemas/resolved.js"
-import type * as s_out from "../../../interface/schemas/typescript_light.js"
+import type * as s_out from "../../../schemas/typescript_light.js"
 namespace s_in {
 
     export type Temp_Library = {

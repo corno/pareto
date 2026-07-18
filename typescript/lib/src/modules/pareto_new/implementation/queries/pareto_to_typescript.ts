@@ -10,7 +10,7 @@ import type * as s_module from "../../interface/schemas/module.js"
 import type * as s_file_in_directory_out_query from "pareto-common/modules/file_in_directory_out/schemas/query"
 
 //dependencies
-import * as t_typescript_to_directory_content from "../../../typescript_light/implementation/transformers/typescript_light/directory_content.js"
+import * as t_typescript_to_directory_content from "../../../typescript_light/implementation/transformers/typescript_light/to_be_written_directory_content.js"
 import * as t_pareto_to_typescript from "../transformers/module/typescript_light.js"
 
 

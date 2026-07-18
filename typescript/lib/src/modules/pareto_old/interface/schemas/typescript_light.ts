@@ -1,1 +1,0 @@
-export * from "../../../typescript_light/schemas/typescript_light.js"
