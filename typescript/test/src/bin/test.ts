@@ -3,8 +3,8 @@
 import p_implement_me from 'pareto-core-dev/implement_me'
 import p_log_debug_message from 'pareto-core-dev/log_debug_message'
 
-// import * as t_typescript_to_prose from "lib/submodules/typescript_light/implementation/transformers/typescript_light/prose"
-// import * as t_fp_to_text from "pareto-fountain-pen/implementation/transformers/prose/text"
+// import * as t_typescript_to_prose from "lib/submodules/typescript_light/schemas/typescript_light/transformers/prose"
+// import * as t_fp_to_text from "pareto-fountain-pen/schemas/prose/transformers/text"
 
 import * as sh from "lib/modules/typescript_light/shorthands/typescript_light/target"
 

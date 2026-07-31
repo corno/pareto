@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import p_add_id_suffix from 'pareto-core/implementation/transformer/specials/add_id_suffix'
 
 import * as s_in from "../../../schemas/typescript_light.js"
-import * as s_out from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/to_be_written_directory_content"
+import * as s_out from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/to_be_written_directory_content/schema"
 import * as s_parameters from "../../../schemas/directory_content_writing.js"
 
 //dependencies

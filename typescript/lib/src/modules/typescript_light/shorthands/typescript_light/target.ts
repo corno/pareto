@@ -4,7 +4,7 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 import type * as s_target from "../../schemas/typescript_light.js"
 
 //dependencies
-import * as ser_identifier from "../../implementation/serializers/identifier.js"
+import * as ser_identifier from "../../schemas/identifier/serializers.js"
 
 
 export const directory_of_files = (

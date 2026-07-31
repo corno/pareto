@@ -6,7 +6,7 @@ import * as s_parameters from "../../../../typescript_light/schemas/directory_co
 
 //dependencies
 import * as t_to_typescript from "./typescript.js"
-import * as t_typescript_to_directory_content from "../../../../typescript_light/implementation/transformers/typescript_light/to_be_written_directory_content.js"
+import * as t_typescript_to_directory_content from "../../../../typescript_light/schemas/typescript_light/transformers/to_be_written_directory_content.js"
 
 export const Package_Set: p_.Transformer_With_Parameter<
     s_in.Package_Set,

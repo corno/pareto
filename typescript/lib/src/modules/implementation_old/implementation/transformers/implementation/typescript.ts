@@ -12,7 +12,7 @@ import type * as s_out from "../../../../typescript_light/schemas/typescript_lig
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"
 
 //dependencies
-import { temp_create_file_path } from "../../../../interface_old/implementation/transformers/interface/typescript.js"
+import { temp_create_file_path } from "../../../../interface_old/schemas/interface/transformers/typescript.js"
 
 const join = ($: p_di.List<string>): string => {
     let out = ""

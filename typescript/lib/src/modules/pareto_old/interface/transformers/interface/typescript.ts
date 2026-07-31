@@ -10,7 +10,7 @@ import type * as s_out from "../../../schemas/typescript_light.js"
 import type * as s_in_interface from "../../../../interface_old/schemas/resolved.js"
 
 //dependencies
-import * as ser_file_name from "../../../../file_name/implementation/serializers/filename.js"
+import * as ser_file_name from "../../../../file_name/schemas/filename/serializers.js"
 
 //shorthands
 import * as sh from "../../../../typescript_light/shorthands/typescript_light/target.js"

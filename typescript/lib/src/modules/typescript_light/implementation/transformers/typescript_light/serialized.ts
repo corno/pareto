@@ -3,7 +3,7 @@ import type * as p_i from 'pareto-core/interface/transformer'
 
 //schemas
 import type * as s_in from "../../../schemas/typescript_light.js"
-import type * as s_out from "../../../schemas/serialized.js"
+import type * as s_out from "pareto-fountain-pen/modules/paragraph/schemas/serialized/schema"
 import type * as s_parameters from "../../../schemas/serialization.js"
 
 //dependencies
