@@ -7,7 +7,7 @@ namespace declarations {
     >
 }
 
-import * as s_in from "../../../interface/schemas/interface_query.js"
+import * as s_in from "../../../schemas/interface_query.js"
 import * as s_out from "../../../../typescript_light/schemas/typescript_light.js"
 
 //shorthands

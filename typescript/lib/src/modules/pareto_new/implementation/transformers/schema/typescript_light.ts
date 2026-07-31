@@ -11,7 +11,7 @@ namespace declarations {
 }
 
 //schemas
-import type * as s_in from "../../../interface/schemas/schema.js"
+import type * as s_in from "../../../schemas/schema.js"
 
 //dependencies
 

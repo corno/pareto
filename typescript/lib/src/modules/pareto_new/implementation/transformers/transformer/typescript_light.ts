@@ -11,7 +11,7 @@ namespace declarations {
     >
 }
 
-import * as s_in from "../../../interface/schemas/transformer.js"
+import * as s_in from "../../../schemas/transformer.js"
 import * as s_out from "../../../../typescript_light/schemas/typescript_light.js"
 
 //shorthands
@@ -36,18 +36,18 @@ export const Root: declarations.Root = ($) => sh.directory_of_directories(
                                     ),
                                     sh.s.import_namespace(
                                         sh.identifier_raw("s_source"),
-                                        sh.string_literal("../../../interface/schemas/" + $v_source_schema_id + ".js", 'quote')
+                                        sh.string_literal("../../../schemas/" + $v_source_schema_id + ".js", 'quote')
                                     ),
                                     sh.s.import_namespace(
                                         sh.identifier_raw("s_target"),
-                                        sh.string_literal("../../../interface/schemas/" + $v_target_schema_id + ".js", 'quote')
+                                        sh.string_literal("../../../schemas/" + $v_target_schema_id + ".js", 'quote')
                                     ),
                                 ]),
                                 p_.from.optional($['parameters schema']).decide(
                                     ($) => p_.literal.list([
                                         sh.s.import_namespace(
                                             sh.identifier_raw("s_parameters"),
-                                            sh.string_literal("../../../interface/schemas/" + $ + ".js", 'quote')
+                                            sh.string_literal("../../../schemas/" + $ + ".js", 'quote')
                                         )
                                     ]),
                                     () => p_.literal.list([])

@@ -2,11 +2,11 @@ import * as p_ from 'pareto-core/implementation/query'
 import p_super_query_result from 'pareto-core/implementation/query/super_query_result'
 
 //interface dependencies
-import type * as query_interfaces_file_in_directory_out from "pareto-common/modules/file_in_directory_out/interface/queries"
+import type * as query_interfaces_file_in_directory_out from "pareto-common/modules/file_in_directory_out/queries/interfaces"
 
 //data  types
 import type * as s_serialize_prose from "../../../typescript_light/schemas/serialization.js"
-import type * as s_module from "../../interface/schemas/module.js"
+import type * as s_module from "../../schemas/module.js"
 import type * as s_file_in_directory_out_query from "pareto-common/modules/file_in_directory_out/schemas/query"
 
 //dependencies

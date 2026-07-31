@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 
-import * as s_in from "../../../interface/schemas/refiner.js"
+import * as s_in from "../../../schemas/refiner.js"
 import * as s_out from "../../../../typescript_light/schemas/typescript_light.js"
 
 namespace declarations {
@@ -33,7 +33,7 @@ export const Root: declarations.Root = ($) => ({
                                     ),
                                     sh.s.import_namespace(
                                         sh.identifier_escaped("s_source"),
-                                        sh.string_literal("../../../interface/schemas/" + $v_source_schema_id + ".js", 'quote')
+                                        sh.string_literal("../../../schemas/" + $v_source_schema_id + ".js", 'quote')
                                     ),
                                     sh.s.import_namespace(
                                         sh.identifier_escaped("s_target"),

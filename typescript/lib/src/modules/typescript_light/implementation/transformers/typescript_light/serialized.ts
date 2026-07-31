@@ -8,7 +8,7 @@ import type * as s_parameters from "../../../schemas/serialization.js"
 
 //dependencies
 import * as t_to_paragraph from "./paragraph.js"
-import * as t_paragraph_to_serialized from "pareto-fountain-pen/modules/paragraph/implementation/transformers/paragraph/serialized"
+import * as t_paragraph_to_serialized from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/transformers/serialized"
 
 
 export const Source_File: p_.Transformer_With_Parameter<
