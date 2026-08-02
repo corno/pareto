@@ -15,6 +15,6 @@ import * as sh from "../../../../typescript_light/schemas/typescript_light/short
 
 //dependencies
 
-export const Root: declarations.Root = ($): s_out.Directory => sh.directory_of_directories(
+export const Root: declarations.Root = ($): s_out.Directory => sh.xdirectory_of_directories(
     p_.literal.dictionary({})
 )

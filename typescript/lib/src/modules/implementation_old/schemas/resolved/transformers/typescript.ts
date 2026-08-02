@@ -30,7 +30,7 @@ export const Package_Set: p_.Transformer<
     s_out.Directory
 > = (
     $,
-) => sh.mixed_directory(
+) => sh.xmixed_directory(
     p_.from.dictionary($).map(
         ($, id) => p_.from.state($).decide(
             ($) => {

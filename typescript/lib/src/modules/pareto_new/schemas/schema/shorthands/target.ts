@@ -2,23 +2,17 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
 import type * as s_out from "../schema.js"
 
-export const root = (
-    schemas: s_out.Root['schemas'],
-): s_out.Root => ({
-    'schemas': p_.dictionary(schemas),
-})
-
 export const schema = (
-    imports: p_.Normal_Dictionary<s_out.Root.schemas_D.imports_D>,
-    types: p_.Normal_Dictionary<s_out.Root.schemas_D.types_D>,
-): s_out.Root.schemas_D => ({
+    imports: p_.Normal_Dictionary<s_out.schema.imports_D>,
+    types: p_.Normal_Dictionary<s_out.schema.types_D>,
+): s_out.schema => ({
     'imports': p_.dictionary(imports),
     'types': p_.dictionary(types),
 })
 
 export const type = (
     value: s_out.Value,
-): s_out.Root.schemas_D.types_D => ({
+): s_out.schema.types_D => ({
     'root': value,
 })
 

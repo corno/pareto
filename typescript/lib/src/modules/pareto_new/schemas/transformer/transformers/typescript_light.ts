@@ -19,11 +19,11 @@ import * as sh from "../../../../typescript_light/schemas/typescript_light/short
 
 //dependencies
 
-export const Root: declarations.Root = ($) => sh.directory_of_directories(
+export const Root: declarations.Root = ($) => sh.xdirectory_of_directories(
     p_.from.dictionary($.schemas).map( //create a directory for each source schema
         ($, id): s_out.Directory => {
             const $v_source_schema_id = id
-            return sh.directory_of_files(
+            return sh.xdirectory_of_files(
                 p_.from.dictionary($['target schemas']).map( //create a file for each source schema
                     ($, id): s_out.Source_File => {
                         const $v_target_schema_id = id

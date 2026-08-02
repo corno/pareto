@@ -7,19 +7,19 @@ import type * as s_target from "../schema.js"
 import * as ser_identifier from "../../identifier/serializers.js"
 
 
-export const directory_of_files = (
+export const xdirectory_of_files = (
     children: p_.Normal_Dictionary<s_target.Source_File>,
 ): s_target.Directory => ({
     'content': ['files', p_.dictionary(children)]
 })
 
-export const directory_of_directories = (
+export const xdirectory_of_directories = (
     children: p_.Normal_Dictionary<s_target.Directory>,
 ): s_target.Directory => ({
     'content': ['directories', p_.dictionary(children)]
 })
 
-export const mixed_directory = (
+export const xmixed_directory = (
     children: p_.Normal_Dictionary<s_target.Node>,
 ): s_target.Directory => ({
     'content': ['mixed', p_.dictionary(children)]
@@ -37,6 +37,24 @@ export namespace n {
         directory: s_target.Directory
     ): s_target.Node => {
         return ['directory', directory]
+    }
+
+    export const directory_of_files = (
+        children: p_.Normal_Dictionary<s_target.Source_File>,
+    ): s_target.Node => {
+        return directory(xdirectory_of_files(children))
+    }
+
+    export const directory_of_directories = (
+        children: p_.Normal_Dictionary<s_target.Directory>,
+    ): s_target.Node => {
+        return directory(xdirectory_of_directories(children))
+    }
+
+    export const mixed_directory = (
+        children: p_.Normal_Dictionary<s_target.Node>,
+    ): s_target.Node => {
+        return directory(xmixed_directory(children))
     }
 }
 

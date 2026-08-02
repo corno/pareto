@@ -29,7 +29,7 @@ export const Temp_Library: p_.Transformer<
     s_out.Directory
 > = (
     $,
-) => sh.directory_of_directories(
+) => sh.xdirectory_of_directories(
     p_.literal.dictionary({
         "interface": t_interface_to_typescript_temp.Package_Set(
             $.interface,

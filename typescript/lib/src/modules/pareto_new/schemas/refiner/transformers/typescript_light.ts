@@ -20,7 +20,7 @@ export const Root: declarations.Root = ($) => ({
     'content': ['directories', p_.from.dictionary($.schemas).map( //create a directory for each source schema
         ($, id): s_out.Directory  => {
             const $v_target_schema_id = id
-            return sh.directory_of_files(
+            return sh.xdirectory_of_files(
                 p_.from.dictionary($['source schemas']).map( //create a file for each source schema
                     ($, id) => {
                         const $v_source_schema_id = id

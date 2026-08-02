@@ -1,33 +1,26 @@
 import * as p_ from 'pareto-core/interface/schema'
 
 
-export type Root = {
-    'schemas': p_.Dictionary<Root.schemas_D>
+export type schema = {
+    'imports': p_.Dictionary<schema.imports_D>
+    'types': p_.Dictionary<schema.types_D>
 }
 
-export namespace Root {
+export namespace schema {
 
-    export type schemas_D = {
-        'imports': p_.Dictionary<schemas_D.imports_D>
-        'types': p_.Dictionary<schemas_D.types_D>
+    export type types_D = {
+        'root': Value
     }
 
-    export namespace schemas_D {
-
-        export type types_D = {
-            'root': Value
-        }
-
-        export type imports_D =
-            | ['module', {
-                'module': string
-                'type': string
-            }]
-            | ['external', {
-                'path': string
-                'type': string
-            }]
-    }
+    export type imports_D =
+        | ['module', {
+            'module': string
+            'type': string
+        }]
+        | ['external', {
+            'path': string
+            'type': string
+        }]
 }
 
 export type Value =
@@ -59,24 +52,24 @@ export namespace Value {
     }
 
     export namespace number_ {
-        
+
         export namespace exact {
-            
+
             export type natural = null
-            
+
             export type integer = null
-            
+
         }
-        
-        export type exact = 
+
+        export type exact =
             | readonly ['natural', exact.natural]
             | readonly ['integer', exact.integer]
-        
+
         export type approximation = null
-        
+
     }
-    
-    export type number_ = 
+
+    export type number_ =
         | readonly ['exact', number_.exact]
         | readonly ['approximation', number_.approximation]
 

@@ -15,20 +15,20 @@ export type Root = Module
 export type Module = {
     'modules': p_.Dictionary<Module>
     'commands': {
-        'interfaces': p_.Dictionary<i_command_interface.Root>
-        'implementations': p_.Dictionary<i_command.Root>
+        'interfaces': i_command_interface.Root
+        'implementations': i_command.Root
     }
     'queries': {
-        'interfaces': p_.Dictionary<i_query_interface.Root>
-        'implementations': p_.Dictionary<i_query.Root>
+        'interfaces': i_query_interface.Root
+        'implementations': i_query.Root
     }
     'schemas': p_.Dictionary<Schema_Package>
 }
 
 export type Schema_Package = {
-    'schema': i_schema.Root
-    'transformers': p_.Dictionary<i_transformer.Root>
-    'refiners': p_.Dictionary<i_refiner.Root>
-    'deserializers': p_.Optional_Value<i_deserializer.Root>
-    'serializers': p_.Optional_Value<i_serializer.Root>
+    'schema': i_schema.schema
+    'transformers': i_transformer.Root
+    'serializers': i_serializer.Root
+    'refiners': i_refiner.Root
+    'deserializers': i_deserializer.Root
 }
