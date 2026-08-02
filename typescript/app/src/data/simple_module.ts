@@ -1,13 +1,13 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
+import * as sh_command_implementation from "lib/modules/pareto_new/schemas/command_implementation/shorthands/target"
+import * as sh_command_interface from "lib/modules/pareto_new/schemas/command_interface/shorthands/target"
 import * as sh_module from "lib/modules/pareto_new/schemas/module/shorthands/target"
-import * as sh_schema from "lib/modules/pareto_new/schemas/schema/shorthands/target"
-import * as sh_interface_command from "lib/modules/pareto_new/schemas/interface_command/shorthands/target"
-import * as sh_interface_query from "lib/modules/pareto_new/schemas/interface_query/shorthands/target"
-import * as sh_transformer from "lib/modules/pareto_new/schemas/transformer/shorthands/target"
+import * as sh_query_implementation from "lib/modules/pareto_new/schemas/query_implementation/shorthands/target"
+import * as sh_query_interface from "lib/modules/pareto_new/schemas/query_interface/shorthands/target"
 import * as sh_refiner from "lib/modules/pareto_new/schemas/refiner/shorthands/target"
-import * as sh_query from "lib/modules/pareto_new/schemas/query/shorthands/target"
-import * as sh_command from "lib/modules/pareto_new/schemas/command/shorthands/target"
+import * as sh_schema from "lib/modules/pareto_new/schemas/schema/shorthands/target"
+import * as sh_transformer from "lib/modules/pareto_new/schemas/transformer/shorthands/target"
 import * as sh_value_reference from "lib/modules/pareto_new/schemas/value_reference/shorthands/target"
 
 export const $ = sh_module.module(
@@ -37,8 +37,8 @@ export const $ = sh_module.module(
             ),
         })
     ),
-    sh_interface_command.root(),
-    sh_interface_query.root(),
+    sh_command_interface.root(),
+    sh_query_interface.root(),
     sh_transformer.root(p_.literal.dictionary({
         "schema A": {
             'target schemas': p_.literal.dictionary({
@@ -74,7 +74,7 @@ export const $ = sh_module.module(
         }
     })),
     sh_refiner.root(p_.literal.dictionary({})),
-    sh_query.root(),
-    sh_command.root(),
+    sh_query_implementation.root(),
+    sh_command_implementation.root(),
     p_.literal.dictionary({}),
 )

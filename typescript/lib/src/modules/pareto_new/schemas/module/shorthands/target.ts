@@ -10,9 +10,9 @@ export const module = (
     refiners: s_out.Module['implementation']['refiners'],
     queries: s_out.Module['implementation']['queries'],
     commands: s_out.Module['implementation']['commands'],
-    submodules: s_out.Module['submodules'],
+    submodules: s_out.Module['modules'],
 ): s_out.Module => ({
-    'submodules': submodules,
+    'modules': submodules,
     'interface': {
         'schemas': schemas,
         'commands': interface_commands,

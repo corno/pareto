@@ -19,12 +19,12 @@ import * as sh from "../../../../typescript_light/schemas/typescript_light/short
 
 //dependencies
 import * as t_schemas from "../../schema/transformers/typescript_light.js"
-import * as t_interface_command from "../../interface_command/transformers/typescript_light.js"
-import * as t_interface_query from "../../interface_query/transformers/typescript_light.js"
+import * as t_interface_command from "../../command_interface/transformers/typescript_light.js"
+import * as t_interface_query from "../../query_interface/transformers/typescript_light.js"
 import * as t_transformer from "../../transformer/transformers/typescript_light.js"
 import * as t_refiner from "../../refiner/transformers/typescript_light.js"
-import * as t_query from "../../query/transformers/typescript_light.js"
-import * as t_command from "../../command/transformers/typescript_light.js"
+import * as t_query from "../../query_implementation/transformers/typescript_light.js"
+import * as t_command from "../../command_implementation/transformers/typescript_light.js"
 
 export const Root: declarations.Root = ($) => Module($)
 
