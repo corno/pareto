@@ -1,36 +1,36 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import * as sh_module from "lib/shorthands/module/target"
-import * as sh_schemas from "lib/shorthands/schemas/target"
-import * as sh_interface_command from "lib/shorthands/interface_command/target"
-import * as sh_interface_query from "lib/shorthands/interface_query/target"
-import * as sh_transformer from "lib/shorthands/transformer/target"
-import * as sh_refiner from "lib/shorthands/refiner/target"
-import * as sh_query from "lib/shorthands/query/target"
-import * as sh_command from "lib/shorthands/command/target"
-import * as sh_value_reference from "lib/shorthands/value_reference/target"
+import * as sh_module from "lib/modules/pareto_new/schemas/module/shorthands/target"
+import * as sh_schema from "lib/modules/pareto_new/schemas/schema/shorthands/target"
+import * as sh_interface_command from "lib/modules/pareto_new/schemas/interface_command/shorthands/target"
+import * as sh_interface_query from "lib/modules/pareto_new/schemas/interface_query/shorthands/target"
+import * as sh_transformer from "lib/modules/pareto_new/schemas/transformer/shorthands/target"
+import * as sh_refiner from "lib/modules/pareto_new/schemas/refiner/shorthands/target"
+import * as sh_query from "lib/modules/pareto_new/schemas/query/shorthands/target"
+import * as sh_command from "lib/modules/pareto_new/schemas/command/shorthands/target"
+import * as sh_value_reference from "lib/modules/pareto_new/schemas/value_reference/shorthands/target"
 
 export const $ = sh_module.module(
-    sh_schemas.root(
+    sh_schema.root(
         p_.literal.dictionary({
-            "schema A": sh_schemas.schema(
+            "schema A": sh_schema.schema(
                 p_.literal.dictionary({}),
                 p_.literal.dictionary({
-                    "type A": sh_schemas.type(
-                        sh_schemas.v.group(
+                    "type A": sh_schema.type(
+                        sh_schema.v.group(
                             p_.literal.dictionary({
-                                "property A": sh_schemas.v.boolean(),
+                                "property A": sh_schema.v.boolean(),
                             })
                         )
                     ),
                 }),
             ),
-            "schema B": sh_schemas.schema(
+            "schema B": sh_schema.schema(
                 p_.literal.dictionary({}),
                 p_.literal.dictionary({
-                    "type B": sh_schemas.type(
-                        sh_schemas.v.optional(
-                            sh_schemas.v.text()
+                    "type B": sh_schema.type(
+                        sh_schema.v.optional(
+                            sh_schema.v.text()
                         )
                     ),
                 }),
