@@ -135,17 +135,13 @@ export const Package_Set: p_.Transformer<
                                                                             case 'refiner': return p_.option($, ($): s_out.Statements => p_.literal.segmented_list<s_out.Statements.L>([
 
                                                                                 p_.from.optional($.error).decide<s_out.Statements>(
-                                                                                    ($) => {
-                                                                                        return Value(
-                                                                                            $,
-                                                                                            {
-                                                                                                'name': "E",
-                                                                                            }
-                                                                                        )
-                                                                                    },
-                                                                                    () => {
-                                                                                        return p_.literal.list([])
-                                                                                    }
+                                                                                    ($) => Value(
+                                                                                        $,
+                                                                                        {
+                                                                                            'name': "E",
+                                                                                        }
+                                                                                    ),
+                                                                                    () => p_.literal.list([])
                                                                                 ),
 
                                                                                 p_.from.optional($.lookups).decide<s_out.Statements>(

@@ -23,12 +23,10 @@ export namespace m {
     export const package_functions = (
         imports: p_.Normal_Dictionary<s_out.Imports.D>,
         types: p_.Normal_Dictionary<s_out.Package.content.functions.D>,
-    ): s_out.Package_Set.D => {
-        return ['package', {
-            'imports': p_.dictionary(imports),
-            'content': ['functions', p_.dictionary(types)],
-        }]
-    }
+    ): s_out.Package_Set.D => ['package', {
+        'imports': p_.dictionary(imports),
+        'content': ['functions', p_.dictionary(types)],
+    }]
 
 }
 export namespace import_ {
@@ -36,12 +34,10 @@ export namespace import_ {
     export const external = (
         id: string,
         tail: p_.Normal_List<string>,
-    ): s_out.Imports.D => {
-        return {
-            'type': ['external', id],
-            'tail': p_.list(tail),
-        }
-    }
+    ): s_out.Imports.D => ({
+        'type': ['external', id],
+        'tail': p_.list(tail),
+    })
 
     export const sibling = (
         id: string,
@@ -68,9 +64,7 @@ export namespace import_ {
 }
 
 export namespace sub {
-    export const dictionary = (): s_out.Value.reference.sub_selection.L => {
-        return ['dictionary', null]
-    }
+    export const dictionary = (): s_out.Value.reference.sub_selection.L => ['dictionary', null]
 
     export const list = (): s_out.Value.reference.sub_selection.L => {
         return ['list', null]
