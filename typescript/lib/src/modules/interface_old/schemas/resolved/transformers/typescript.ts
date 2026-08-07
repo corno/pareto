@@ -82,7 +82,7 @@ export const Package_Set: p_.Transformer<
                             p_.literal.segmented_list<s_out.Statements_.L>([
                                 p_.literal.list([
                                     sh.s.import_namespace(
-                                        sh.identifier_raw("p_di"), sh.string_literal("pareto-core/data/interface", 'apostrophe')),
+                                        sh.identifier_raw("p_"), sh.string_literal("pareto-core/interface/schema", 'apostrophe')),
                                 ]),
 
                                 p_.from.dictionary($.imports,).convert_to_list(
@@ -224,7 +224,7 @@ export const Package_Set: p_.Transformer<
                                                                                             sh.parameter(
                                                                                                 sh.identifier_raw("abort"),
                                                                                                 sh.t.type_reference(
-                                                                                                    sh.identifier_raw("pi"),
+                                                                                                    sh.identifier_raw("p_"),
                                                                                                     p_.literal.list([sh.identifier_raw("Abort")]),
                                                                                                     p_.literal.list([
                                                                                                         sh.t.type_reference(
@@ -249,7 +249,7 @@ export const Package_Set: p_.Transformer<
                                                                                                             'apostrophized string literal',
                                                                                                             true,
                                                                                                             sh.t.type_reference(
-                                                                                                                sh.identifier_raw("pi"),
+                                                                                                                sh.identifier_raw("p_"),
                                                                                                                 p_.literal.list([
                                                                                                                     sh.identifier_raw(p_.from.state($).decide(
                                                                                                                         ($) => {
@@ -402,7 +402,7 @@ export const Value: p_i.Transformer_With_Parameter<
                         sh.identifier_escaped($p.name),
                         p_.literal.list([]),
                         sh.t.type_reference(
-                            sh.identifier_raw("pi"),
+                            sh.identifier_raw("p_"),
                             p_.literal.list([
                                 sh.identifier_raw("Dictionary")
                             ]),
@@ -462,7 +462,7 @@ export const Value: p_i.Transformer_With_Parameter<
                         sh.identifier_escaped($p.name),
                         p_.literal.list([]),
                         sh.t.type_reference(
-                            sh.identifier_raw("pi"),
+                            sh.identifier_raw("p_"),
                             p_.literal.list([
                                 sh.identifier_raw("List")
                             ]),
@@ -510,7 +510,7 @@ export const Value: p_i.Transformer_With_Parameter<
                         sh.identifier_escaped($p.name),
                         p_.literal.list([]),
                         sh.t.type_reference(
-                            sh.identifier_raw("pi"),
+                            sh.identifier_raw("p_"),
                             p_.literal.list([
                                 sh.identifier_raw("Optional_Value")
                             ]),
@@ -572,7 +572,7 @@ export const Value: p_i.Transformer_With_Parameter<
                             )
                             return $.cyclic
                                 ? sh.t.type_reference(
-                                    sh.identifier_raw("pi"),
+                                    sh.identifier_raw("p_"),
                                     p_.literal.list([
                                         sh.identifier_raw("Circular_Dependency")
                                     ]),

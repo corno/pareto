@@ -40,15 +40,15 @@ export const Package_Set: p_.Transformer<
                         const y: s_out.Statements = p_.literal.segmented_list([
                             p_.literal.list([
                                 sh.s.import_namespace(
-                                    sh.identifier_raw("pt"),
-                                    sh.string_literal("pareto-core/assign", 'apostrophe')
+                                    sh.identifier_raw("p_"),
+                                    sh.string_literal("pareto-core/implementation/transformer", 'apostrophe')
                                 ),
                             ]),
                             $.specials['change context']
                                 ? p_.literal.list([
                                     sh.s.import_default(
                                         sh.identifier_raw("p_change_context"),
-                                        sh.string_literal("pareto-core/specials/change_context", 'apostrophe')
+                                        sh.string_literal("pareto-core/implementation/refiner/specials/change_context", 'apostrophe')
                                     )
                                 ])
                                 : p_.literal.list([]),
