@@ -8,7 +8,7 @@ import p_log_debug_message from 'pareto-core-dev/log_debug_message'
 
 import * as sh from "lib/modules/typescript_light/schemas/typescript_light/shorthands/target"
 
-let found_errors = false
+// let found_errors = false
 
 // function test_number_serialization(number: number, expected: string) {
 //     const actual = t_fp_to_text.Phrases(
