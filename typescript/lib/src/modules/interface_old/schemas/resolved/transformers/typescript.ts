@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 import type * as p_i from 'pareto-core/interface/transformer'
-import p_variables from 'pareto-core/implementation/refiner/specials/variables'
+import p_variables from 'pareto-core/implementation/transformer/specials/variables'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 
