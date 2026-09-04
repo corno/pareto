@@ -91,12 +91,12 @@ export const Root: declarations.Root = ($) => sh.xdirectory_of_directories(
                                                                         ($) => p_.from.state($).decide(
                                                                             ($) => {
                                                                                 switch ($[0]) {
-                                                                                    case 'dictionary': return p_.ss($, ($) => sh.identifier_raw("D"))
-                                                                                    case 'group': return p_.ss($, ($) => sh.identifier_escaped($.property))
-                                                                                    case 'list': return p_.ss($, ($) => sh.identifier_raw("L"))
-                                                                                    case 'optional': return p_.ss($, ($) => sh.identifier_raw("O"))
-                                                                                    case 'state': return p_.ss($, ($) => sh.identifier_escaped($.option))
-                                                                                    default: return p_.au($[0])
+                                                                                    case 'dictionary': return p_.option($, ($) => sh.identifier_raw("D"))
+                                                                                    case 'group': return p_.option($, ($) => sh.identifier_escaped($.property))
+                                                                                    case 'list': return p_.option($, ($) => sh.identifier_raw("L"))
+                                                                                    case 'optional': return p_.option($, ($) => sh.identifier_raw("O"))
+                                                                                    case 'state': return p_.option($, ($) => sh.identifier_escaped($.option))
+                                                                                    default: return p_.exhaustive($[0])
                                                                                 }
                                                                             }
                                                                         )
@@ -171,7 +171,7 @@ export const Expresssion: declarations.Expression = ($) => p_.from.state($).deci
                         sh.string_literal($.remark, 'quote'))
                 ])
             ))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     }
 )

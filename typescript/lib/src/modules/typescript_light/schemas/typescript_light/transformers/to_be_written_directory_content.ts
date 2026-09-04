@@ -16,7 +16,7 @@ export const Directory: p_.Transformer_With_Parameter<
 > = ($, $p) => p_.from.state($.content).decide(
     ($): s_out.Directory => {
         switch ($[0]) {
-            case 'files': return p_.ss($, ($) => p_.from.dictionary(
+            case 'files': return p_.option($, ($) => p_.from.dictionary(
                 p_add_id_suffix(
                     $,
                     ".ts"
@@ -32,10 +32,10 @@ export const Directory: p_.Transformer_With_Parameter<
                     }
                 }]
             ))
-            case 'directories': return p_.ss($, ($) => p_.from.dictionary($).map(
+            case 'directories': return p_.option($, ($) => p_.from.dictionary($).map(
                 ($, id): s_out.Node => ['directory', Directory($, $p)]
             ))
-            case 'mixed': return p_.ss($, ($) => p_.from.dictionary($).map(
+            case 'mixed': return p_.option($, ($) => p_.from.dictionary($).map(
                 ($, id): s_out.Node => {
                     switch ($[0]) {
                         case 'file': return ['file', {
@@ -48,11 +48,11 @@ export const Directory: p_.Transformer_With_Parameter<
                             }
                         }]
                         case 'directory': return ['directory', Directory($[1], $p)]
-                        default: return p_.au($[0])
+                        default: return p_.exhaustive($[0])
                     }
                 }
             ))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     }
 )

@@ -65,9 +65,9 @@ export const Root: declarations.Root = ($) => ({
                                                     p_.from.state($.source).decide(
                                                         ($): string => {
                                                             switch ($[0]) {
-                                                                case 'value': return p_.ss($, ($) => "Refiner")
-                                                                case 'iterator': return p_.ss($, ($) => "Production")
-                                                                default: return p_.au($[0])
+                                                                case 'value': return p_.option($, ($) => "Refiner")
+                                                                case 'iterator': return p_.option($, ($) => "Production")
+                                                                default: return p_.exhaustive($[0])
                                                             }
                                                         }
                                                     )
