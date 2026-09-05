@@ -1,7 +1,7 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
-import * as p_i from 'pareto-core/interface/__internal/Abort'
-import * as p_di from 'pareto-core/interface/schema'
+import * as p_i from 'pareto-core/__internal/Abort'
+import * as p_di from 'pareto-core/schema'
 
 
 export type Directory = {

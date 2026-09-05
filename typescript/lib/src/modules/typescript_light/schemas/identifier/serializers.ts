@@ -1,8 +1,8 @@
-import * as p_ from 'pareto-core/implementation/serializer'
-import type * as p_schema from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/serializer'
+import type * as p_schema from 'pareto-core/schema'
 import p_implement_me from 'pareto-core-dev/implement_me'
-import p_list_build_deprecated from 'pareto-core/implementation/refiner/specials/list_build_deprecated'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+import p_list_build_deprecated from 'pareto-core/refiner/specials/list_build_deprecated'
+import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 
 export const Identifier: p_.Serializer<

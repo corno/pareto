@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/transformer'
 
 namespace declarations {
     export type Root = p_.Transformer<
@@ -32,7 +32,7 @@ export const Root: declarations.Root = ($) => sh.xdirectory_of_directories(
                                 p_.literal.list([
                                     sh.s.import_namespace(
                                         sh.identifier_raw("p_"),
-                                        sh.string_literal("pareto-core/implementation/transformer", 'apostrophe')
+                                        sh.string_literal("pareto-core/transformer", 'apostrophe')
                                     ),
                                     sh.s.import_namespace(
                                         sh.identifier_raw("s_source"),

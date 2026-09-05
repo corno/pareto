@@ -1,8 +1,8 @@
-import * as p_ from 'pareto-core/implementation/transformer'
-import type * as p_i from 'pareto-core/interface/transformer'
-import type * as p_di from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/transformer'
+import type * as p_i from 'pareto-core/transformer'
+import type * as p_di from 'pareto-core/schema'
 import p_implement_me from 'pareto-core-dev/implement_me'
-import p_variables from 'pareto-core/implementation/transformer/specials/variables'
+import p_variables from 'pareto-core/transformer/specials/variables'
 
 //schemas
 import type * as s_in from "../schema.js"
@@ -41,14 +41,14 @@ export const Package_Set: p_.Transformer<
                             p_.literal.list([
                                 sh.s.import_namespace(
                                     sh.identifier_raw("p_"),
-                                    sh.string_literal("pareto-core/implementation/transformer", 'apostrophe')
+                                    sh.string_literal("pareto-core/transformer", 'apostrophe')
                                 ),
                             ]),
                             $.specials['change context']
                                 ? p_.literal.list([
                                     sh.s.import_default(
                                         sh.identifier_raw("p_change_context"),
-                                        sh.string_literal("pareto-core/implementation/refiner/specials/change_context", 'apostrophe')
+                                        sh.string_literal("pareto-core/refiner/specials/change_context", 'apostrophe')
                                     )
                                 ])
                                 : p_.literal.list([]),

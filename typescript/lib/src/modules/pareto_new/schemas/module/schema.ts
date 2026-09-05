@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import * as i_command from "../command_implementation/schema.js"
 import * as i_command_interface from "../command_interface/schema.js"

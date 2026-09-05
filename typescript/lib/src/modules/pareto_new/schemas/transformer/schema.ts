@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/interface/schema'
+import * as p_ from 'pareto-core/schema'
 
 import * as i_value_reference from "../value_reference/schema.js"
 import * as i_type_reference from "../type_reference/schema.js"

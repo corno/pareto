@@ -1,8 +1,8 @@
-import * as p_ from 'pareto-core/implementation/transformer'
-import type * as p_i from 'pareto-core/interface/transformer'
-import p_variables from 'pareto-core/implementation/transformer/specials/variables'
-import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+import * as p_ from 'pareto-core/transformer'
+import type * as p_i from 'pareto-core/transformer'
+import p_variables from 'pareto-core/transformer/specials/variables'
+import p_text_from_list from 'pareto-core/transformer/specials/text_from_list'
+import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
 
 import type * as s_out from "../../../../../modules/typescript_light/schemas/typescript_light/schema.js"
 
@@ -82,7 +82,7 @@ export const Package_Set: p_.Transformer<
                             p_.literal.segmented_list<s_out.Statements_.L>([
                                 p_.literal.list([
                                     sh.s.import_namespace(
-                                        sh.identifier_raw("p_"), sh.string_literal("pareto-core/interface/schema", 'apostrophe')),
+                                        sh.identifier_raw("p_"), sh.string_literal("pareto-core/schema", 'apostrophe')),
                                 ]),
 
                                 p_.from.dictionary($.imports,).convert_to_list(

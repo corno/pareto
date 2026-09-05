@@ -1,4 +1,4 @@
-import * as p_di from 'pareto-core/interface/schema'
+import * as p_di from 'pareto-core/schema'
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
 import type * as s_out from "../schema.js"

@@ -398,7 +398,7 @@ export namespace e {
                 case 'smaller than or equal': return ['smaller than or equal', null]
                 case 'greater than': return ['greater than', null]
                 case 'greater than or equal': return ['greater than or equal', null]
-                default: return p_.au(operator)
+                default: return p_.exhaustive(operator)
             }
         })(),
         'right': right,

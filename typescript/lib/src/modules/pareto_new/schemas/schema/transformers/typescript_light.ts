@@ -1,6 +1,6 @@
-import * as p_ from 'pareto-core/implementation/transformer'
-import type * as p_i from 'pareto-core/interface/transformer'
-import p_variables from 'pareto-core/implementation/refiner/specials/variables'
+import * as p_ from 'pareto-core/transformer'
+import type * as p_i from 'pareto-core/transformer'
+import p_variables from 'pareto-core/refiner/specials/variables'
 
 //schemas
 import type * as s_in from "../schema.js"
@@ -25,7 +25,7 @@ export const Schema: declarations.Schema = ($) => ({
         p_.literal.list([
             sh.s.import_namespace(
                 sh.identifier_escaped("p "),
-                sh.string_literal("pareto-core/interface/data", 'apostrophe')
+                sh.string_literal("pareto-core/data", 'apostrophe')
             ),
         ]),
         p_.from.dictionary($['types']).flatten_to_list( //create a variable for each type

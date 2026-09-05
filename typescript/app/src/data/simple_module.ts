@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/transformer'
 
 import * as sh_command_implementation from "lib/modules/pareto_new/schemas/command_implementation/shorthands/target"
 import * as sh_command_interface from "lib/modules/pareto_new/schemas/command_interface/shorthands/target"

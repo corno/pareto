@@ -1,4 +1,4 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/transformer'
 
 
 import * as s_in from "../schema.js"
@@ -29,7 +29,7 @@ export const Root: declarations.Root = ($) => ({
                                 p_.literal.list([
                                     sh.s.import_namespace(
                                         sh.identifier_escaped("p_"),
-                                        sh.string_literal("pareto-core/interface/refiner", 'apostrophe')
+                                        sh.string_literal("pareto-core/refiner", 'apostrophe')
                                     ),
                                     sh.s.import_namespace(
                                         sh.identifier_escaped("s_source"),
