@@ -1,4 +1,5 @@
 import * as p_ from 'pareto-core/transformer'
+import * as p_s from 'pareto-core/serializer'
 import type * as p_i from 'pareto-core/transformer'
 import type * as p_di from 'pareto-core/schema'
 import p_implement_me from 'pareto-core-dev/implement_me'
@@ -13,16 +14,6 @@ import * as sh from "../../../../typescript_light/schemas/typescript_light/short
 
 //dependencies
 import { temp_create_file_path } from "../../../../interface_old/schemas/resolved/transformers/typescript.js"
-
-const join = ($: p_di.List<string>): string => {
-    let out = ""
-    p_.from.list($).map(
-        ($) => {
-            out += $
-            return null
-        })
-    return out
-}
 
 
 export const Package_Set: p_.Transformer<
@@ -113,7 +104,7 @@ export const Package_Set: p_.Transformer<
                                 : p_.literal.list([]),
                             p_.from.dictionary($['type imports']).convert_to_list(
                                 ($, id) => sh.s.import_namespace(
-                                    sh.identifier_escaped(join(p_.literal.list(["t ", id]))),
+                                    sh.identifier_escaped(p_s.ph.list(p_.literal.list(["t ", id]))),
                                     temp_create_file_path(
                                         $,
                                         {
@@ -124,7 +115,7 @@ export const Package_Set: p_.Transformer<
                             ),
                             p_.from.dictionary($['variable imports']).convert_to_list(
                                 ($, id) => sh.s.import_namespace(
-                                    sh.identifier_escaped(join(p_.literal.list(["v ", id]))),
+                                    sh.identifier_escaped(p_s.ph.list(p_.literal.list(["v ", id]))),
                                     temp_create_file_path(
                                         $,
                                         {
@@ -1040,7 +1031,7 @@ export const Select_Value = (
                                         switch ($[0]) {
                                             case 'local': return p_.option($, ($) => sh.e.identifier_escaped($))
                                             case 'imported': return p_.option($, ($) => sh.e.property_access(
-                                                sh.e.identifier_escaped(join(p_.literal.list(["v ", $.import]))),
+                                                sh.e.identifier_escaped(p_s.ph.list(p_.literal.list(["v ", $.import]))),
                                                 sh.identifier_escaped($.variable)
                                             ))
                                             default: return p_.exhaustive($[0])
