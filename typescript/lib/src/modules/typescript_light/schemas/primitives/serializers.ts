@@ -96,11 +96,9 @@ export const Escaped_Text: declarations.Escaped_Text = ($) => p_.ph.list_of_char
                         0x5C, // \
                         0x76, // v
                     ])
-                default: {
-                    return p_.literal.list([
-                        $,
-                    ])
-                }
+                default: return p_.literal.list([
+                    $,
+                ])
             }
         }
     )
