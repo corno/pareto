@@ -6,32 +6,33 @@ import p_unreachable_code_path from 'pareto-core/transformer/specials/unreachabl
 
 //schemas
 import type * as s_in from "../typescript_light/schema.js"
+import type * as s_in2 from "./schema.js"
 
 
 namespace declarations {
 
-    export type escaped_text = p_.Serializer<
-        string
+    export type Escaped_Text = p_.Serializer<
+        s_in2.Text
     >
 
     export type Apostrophed_Text = p_.Serializer<
-        string
+        s_in2.Text
     >
 
     export type Backticked_Text = p_.Serializer<
-        string
+        s_in2.Text
     >
 
     export type Quoted_Text = p_.Serializer<
-        string
+        s_in2.Text
     >
 
     export type Decimal = p_.Serializer<
-        number
+        s_in2.Number
     >
 
     export type Float = p_.Serializer<
-        number
+        s_in2.Number
     >
 
     export type Identifier = p_.Serializer<
@@ -41,7 +42,7 @@ namespace declarations {
 
 }
 
-export const escaped_text: declarations.escaped_text = ($) => p_.ph.list_of_characters(
+export const Escaped_Text: declarations.Escaped_Text = ($) => p_.ph.list_of_characters(
     p_.from.list(
         p_list_from_text(
             $,
@@ -107,7 +108,7 @@ export const escaped_text: declarations.escaped_text = ($) => p_.ph.list_of_char
 
 export const Apostrophed_Text: declarations.Apostrophed_Text = ($) => p_.ph.composed([
     p_.ph.literal("'"),
-    escaped_text(
+    Escaped_Text(
         $,
     ),
     p_.ph.literal("'"),
@@ -115,7 +116,7 @@ export const Apostrophed_Text: declarations.Apostrophed_Text = ($) => p_.ph.comp
 
 export const Backticked_Text: declarations.Backticked_Text = ($) => p_.ph.composed([
     p_.ph.literal("`"),
-    escaped_text(
+    Escaped_Text(
         $,
     ),
     p_.ph.literal("`"),
@@ -123,7 +124,7 @@ export const Backticked_Text: declarations.Backticked_Text = ($) => p_.ph.compos
 
 export const Quoted_Text: declarations.Quoted_Text = ($) => p_.ph.composed([
     p_.ph.literal("\""),
-    escaped_text(
+    Escaped_Text(
         $,
     ),
     p_.ph.literal("\""),

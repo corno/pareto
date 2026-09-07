@@ -1,5 +1,5 @@
 import * as p_ from 'pareto-core/transformer'
-import type * as p_i from 'pareto-core/transformer'
+import * as p_s from 'pareto-core/serializer'
 import p_variables from 'pareto-core/transformer/specials/variables'
 import p_text_from_list from 'pareto-core/transformer/specials/text_from_list'
 import p_list_from_text from 'pareto-core/refiner/specials/list_from_text'
@@ -31,7 +31,10 @@ export const temp_create_file_path = (
         return p_text_from_list(
             p_.from.list(
                 p_.from.list($.tail).map(
-                    ($) => `/${valid_file_name($)}`),
+                    ($) => p_s.ph.list(p_.literal.list([
+                        "/",
+                        valid_file_name($),
+                    ]))),
             ).flatten(
                 ($) => p_list_from_text(
                     $,
@@ -87,7 +90,10 @@ export const Package_Set: p_.Transformer<
 
                                 p_.from.dictionary($.imports,).convert_to_list(
                                     ($, id): s_out.Statements_.L => sh.s.import_namespace(
-                                        sh.identifier_escaped(`i ${id}`),
+                                        sh.identifier_escaped(p_s.ph.list(p_.literal.list([
+                                            "i ",
+                                            id,
+                                        ]))),
                                         temp_create_file_path(
                                             $,
                                             {
@@ -341,7 +347,7 @@ export const Package_Set: p_.Transformer<
     )
 )
 
-export const Value: p_i.Transformer_With_Parameter<
+export const Value: p_.Transformer_With_Parameter<
     s_in.Value,
     s_out.Statements,
     { 'name': string }
