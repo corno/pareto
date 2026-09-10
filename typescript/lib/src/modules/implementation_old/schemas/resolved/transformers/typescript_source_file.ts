@@ -4,6 +4,7 @@ import type * as p_i from 'pareto-core/transformer'
 import type * as p_di from 'pareto-core/schema'
 import p_implement_me from 'pareto-core-dev/implement_me'
 import p_variables from 'pareto-core/transformer/specials/variables'
+import { single_entry_dictionary } from '../../../../../temp/single_entry_dictionary.js'
 
 //schemas
 import type * as s_in from "../schema.js"
@@ -285,11 +286,7 @@ export const Assign: p_i.Transformer<
                                                                 switch ($[0]) {
                                                                     case 'partial': return p_.option($, ($) => $.options)
                                                                     case 'full': return p_.option($, ($) => $.options)
-                                                                    case 'single': return p_.option($, ($) => {
-                                                                        const temp: { [id: string]: s_in.Assign.decide.type_.state.type_.partial.options.D } = {}
-                                                                        temp[$.option] = $['if true']
-                                                                        return p_.literal.dictionary(temp)
-                                                                    })
+                                                                    case 'single': return p_.option($, ($) => single_entry_dictionary($.option, $['if true']))
                                                                     default: return p_.exhaustive($[0])
                                                                 }
                                                             })
@@ -988,27 +985,12 @@ export const Assign: p_i.Transformer<
         }
     })
 
-export const reduce = <Item extends p_di.Value, Result_Type extends p_di.Value>(
-    $: p_di.List<Item>,
-    initial_state: Result_Type,
-    update_state: (
-        value: Item,
-        current: Result_Type
-    ) => Result_Type,
-): Result_Type => {
-    let current_state = initial_state
-    p_.from.list($).map(
-        ($) => {
-            current_state = update_state($, current_state)
-            return null
-        })
-    return current_state
-}
 
 export const Select_Value = (
     $: s_in.Select_Value,
 ): s_out.Expression => p_.from.state($).decide(
     ($) => {
+
         switch ($[0]) {
             case 'implement me': return p_.option($, ($) => sh.e.call(
                 sh.e.property_access(
@@ -1020,8 +1002,9 @@ export const Select_Value = (
                         sh.string_literal($, 'quote'))
                 ])
             ))
-            case 'regular': return p_.option($, ($) => reduce(
+            case 'regular': return p_.option($, ($) => p_.from.list(
                 $.tail,
+            ).reduce_to_any_value(
                 p_.from.state($.start).decide(
                     ($) => {
                         switch ($[0]) {
