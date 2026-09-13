@@ -15,8 +15,6 @@ import * as sh from "../../../../typescript_light/schemas/typescript_light/short
 
 //dependencies
 
-export const Root: declarations.Root = ($) => ({
+export const Root: declarations.Root = ($): s_out.Source_File => ({
     'statements': p_.literal.list([])
 })
-
-// export const Type: declarations.Type = xxx

@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/transformer'
 namespace declarations {
     export type Root = p_.Transformer<
         s_in.Root,
-        s_out.Directory
+        s_out.Source_File
     >
 }
 
@@ -15,6 +15,6 @@ import * as sh from "../../../../typescript_light/schemas/typescript_light/short
 
 //dependencies
 
-export const Root: declarations.Root = ($): s_out.Directory => sh.xdirectory_of_directories(
-    p_.literal.dictionary({})
-)
+export const Root: declarations.Root = ($): s_out.Source_File => ({
+    'statements': p_.literal.list([])
+})

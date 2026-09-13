@@ -10,7 +10,7 @@ import type * as s_file_in_directory_out_query from "pareto-common/modules/file_
 
 //dependencies
 import * as t_typescript_to_directory_content from "../../../typescript_light/schemas/typescript_light/transformers/to_be_written_directory_content.js"
-import * as t_pareto_to_typescript from "../../schemas/module/transformers/typescript_light.js"
+import * as t_pareto_module_to_typescript from "../../schemas/module/transformers/typescript_light.js"
 
 
 
@@ -25,7 +25,7 @@ export const $$: p_.Query_Implementation<
     (e, $s, $q) => e.transform(
         ($): s_file_in_directory_out_query.Result => ({
             'data': t_typescript_to_directory_content.Directory(
-                t_pareto_to_typescript.Module(
+                t_pareto_module_to_typescript.Module(
                     $s.module
                 ),
                 {

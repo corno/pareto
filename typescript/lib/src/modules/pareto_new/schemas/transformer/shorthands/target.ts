@@ -4,29 +4,39 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 import type * as s_out from "../schema.js"
 
 export const root = (
-    schemas: s_out.Root['schemas'],
+    parameters_schema: null | string,
+    declarations: p_.Normal_Dictionary<s_out.Root.declarations.types_D>,
+    dependencies: p_.Normal_Dictionary<s_out.Root.implementations.dependencies_D>,
+    implementations: p_.Normal_Dictionary<s_out.Root.implementations.types_D>,
 ): s_out.Root => ({
-    'schemas': p_.dictionary(schemas),
+    'parameters schema': parameters_schema === null ? p_.optional.not_set() : p_.optional.set(parameters_schema),
+    'declarations': {
+        'types': p_.dictionary(declarations)
+    },
+    'implementations': {
+        'dependencies': p_.dictionary(dependencies),
+        'types': p_.dictionary(implementations),
+    },
 })
 
-export const source_schema = (
-    target_schemas: p_.Normal_Dictionary<s_out.Root.schemas_D.target_schemas_D>,
-): s_out.Root.schemas_D => ({
-    'target schemas': p_.dictionary(target_schemas),
-})
+// export const source_schema = (
+//     target_schemas: p_.Normal_Dictionary<s_out.Root.schemas_D.target_schemas_D>,
+// ): s_out.Root.schemas_D => ({
+//     'target schemas': p_.dictionary(target_schemas),
+// })
 
-export namespace decl {
+// export namespace decl {
 
-    export const type = (
-        target_value: s_out.Root.schemas_D.target_schemas_D.declarations.types_D['target value'],
-        parameter: s_out.Root.schemas_D.target_schemas_D.declarations.types_D['parameter'],
-    ): s_out.Root.schemas_D.target_schemas_D.declarations.types_D => ({
-        'target value': target_value,
-        'parameter': parameter,
-    })
+//     export const type = (
+//         target_value: s_out.Root.schemas_D.target_schemas_D.declarations.types_D['target value'],
+//         parameter: s_out.Root.schemas_D.target_schemas_D.declarations.types_D['parameter'],
+//     ): s_out.Root.schemas_D.target_schemas_D.declarations.types_D => ({
+//         'target value': target_value,
+//         'parameter': parameter,
+//     })
 
 
-}
+// }
 
 
 // export const target_schema = (

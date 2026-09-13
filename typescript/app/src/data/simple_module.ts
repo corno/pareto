@@ -28,9 +28,16 @@ export const $ = sh_module.module(
                     ),
                 }),
             ),
-            sh_transformer.root(p_.literal.dictionary({})),
+            p_.literal.dictionary({
+                "foo": sh_transformer.root(
+                    "PARAMS",
+                    p_.literal.dictionary({}),
+                    p_.literal.dictionary({}),
+                    p_.literal.dictionary({})
+                ),
+            }),
             sh_serializer.root(),
-            sh_refiner.root(p_.literal.dictionary({})),
+            p_.literal.dictionary({}),
             sh_deserializer.root(),
         ),
         "schema B": sh_module.schema_package(
@@ -44,16 +51,16 @@ export const $ = sh_module.module(
                     ),
                 }),
             ),
-            sh_transformer.root(p_.literal.dictionary({})),
+            p_.literal.dictionary({}),
             sh_serializer.root(),
-            sh_refiner.root(p_.literal.dictionary({})),
+            p_.literal.dictionary({}),
             sh_deserializer.root(),
         )
     }),
-    sh_command_interface.root(),
-    sh_command_implementation.root(),
-    sh_query_interface.root(),
-    sh_query_implementation.root(),
+    p_.literal.dictionary({}),
+    p_.literal.dictionary({}),
+    p_.literal.dictionary({}),
+    p_.literal.dictionary({}),
     // sh_transformer.root(p_.literal.dictionary({
     //     "schema A": {
     //         'target schemas': p_.literal.dictionary({

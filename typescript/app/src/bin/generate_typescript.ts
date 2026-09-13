@@ -18,6 +18,7 @@ p_h.run_main_command(
         {
             'error message indentation': "    ",
             'remove before writing': true,
+            'replace spaces in node names by underscores': true
         },
         {
             'read file': rs_filesystem_unrestricted.$.queries['read file'],
