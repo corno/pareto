@@ -108,6 +108,7 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                                             sh.ph.indent(
                                                 sh.pg.sentences(p_.from.list($.specifiers).map(
                                                     ($) => sh.sentence([
+                                                        $['type only'] ? sh.ph.text("type ") : sh.ph.nothing(),
                                                         Identifier($.name),
                                                         p_.from.optional($.as).decide(
                                                             ($) => sh.ph.composed([

@@ -322,11 +322,17 @@ export const Package_Set: p_.Transformer<
                                                 switch ($[0]) {
                                                     case 'data modules': return p_.option($, ($) => p_.from.dictionary($).convert_to_list(
                                                         ($, id) => sh.specifier(
-                                                            sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                                            true,
+                                                            sh.identifier_escaped(id + " "), 
+                                                            sh.identifier_escaped(id)
+                                                        )
                                                     ))
                                                     case 'functions': return p_.option($, ($) => p_.from.dictionary($).convert_to_list(
                                                         ($, id) => sh.specifier(
-                                                            sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                                                            true,
+                                                            sh.identifier_escaped(id + " "),
+                                                             sh.identifier_escaped(id)
+                                                            )
                                                     ))
                                                     default: return p_.exhaustive($[0])
                                                 }

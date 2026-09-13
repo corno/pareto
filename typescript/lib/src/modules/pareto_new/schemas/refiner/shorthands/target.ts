@@ -3,11 +3,24 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 import type * as s_out from "../schema.js"
 import type * as s_vr from "../../value_reference/schema.js"
 
-// export const root = (
-//     schemas: p_.Normal_Dictionary<s_out.Root.schemas_D>,
-// ): s_out.Root => ({
-//     'schemas': p_.dictionary(schemas),
-// })
+
+export const root = (
+    error_schema: null | string,
+    parameters_schema: null | string,
+    declarations: p_.Normal_Dictionary<s_out.Root.declarations.types_D>,
+    dependencies: p_.Normal_Dictionary<s_out.Root.implementation.dependencies_D>,
+    implementations: p_.Normal_Dictionary<s_out.Root.implementation.types_D>,
+): s_out.Root => ({
+    'error schema': error_schema === null ? p_.optional.not_set() : p_.optional.set(error_schema),
+    'parameters schema': parameters_schema === null ? p_.optional.not_set() : p_.optional.set(parameters_schema),
+    'declarations': {
+        'types': p_.dictionary(declarations)
+    },
+    'implementation': {
+        'dependencies': p_.dictionary(dependencies),
+        'types': p_.dictionary(implementations),
+    },
+})
 
 // export const schema = (
 //     source_schemas: p_.Normal_Dictionary<s_out.Root.schemas_D.source_schemas_D>,

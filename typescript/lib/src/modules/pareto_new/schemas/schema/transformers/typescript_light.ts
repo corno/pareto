@@ -25,7 +25,7 @@ export const Schema: declarations.Schema = ($) => ({
         p_.literal.list([
             sh.s.import_namespace(
                 sh.identifier_escaped("p "),
-                sh.string_literal("pareto-core/data", 'apostrophe')
+                sh.string_literal("pareto-core/schema", 'apostrophe')
             ),
         ]),
         p_.from.dictionary($['types']).flatten_to_list( //create a variable for each type
@@ -45,7 +45,10 @@ export const Schema: declarations.Schema = ($) => ({
             sh.s.export_(
                 p_.from.dictionary($.types).convert_to_list(
                     ($, id) => sh.specifier(
-                        sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
+                        true,
+                        sh.identifier_escaped(id + " "),
+                        sh.identifier_escaped(id)
+                    )
                 ),
                 null,
             )

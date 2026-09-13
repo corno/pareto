@@ -92,10 +92,12 @@ export const string_literal = (
 
 
 export const specifier = (
+    type_only: boolean,
     name: s_target.Identifier,
     as: null | s_target.Identifier,
 ): s_target.Statements.L.export_.type_.named_exports.specifiers.L => {
     return {
+        'type only': type_only,
         'name': name,
         'as': as === null ? p_.optional.not_set() : p_.optional.set(as),
     }

@@ -50,7 +50,7 @@ export const Root: declarations.Root = ($) => {
             //     ]),
             //     () => p_.literal.list([])
             // ),
-            p_.from.dictionary($['types']).convert_to_list( //create a variable for each type
+            p_.from.dictionary($.declarations['types']).convert_to_list( //create a variable for each type
                 ($, id) => sh.s.type_alias(
                     true,
                     sh.identifier_escaped(id),
@@ -126,7 +126,84 @@ export const Root: declarations.Root = ($) => {
                         ])
                     )
                 )
-            )
+            ),
+            // p_.from.dictionary($.implementation['types']).convert_to_list( //create a variable for each type
+            //     ($, id) => sh.s.type_alias(
+            //         true,
+            //         sh.identifier_escaped(id),
+            //         p_.literal.list([]),
+            //         sh.t.type_reference(
+            //             sh.identifier_escaped("p_"),
+            //             p_.literal.list([
+            //                 sh.identifier_raw(
+            //                     p_.from.state($.source).decide(
+            //                         ($): string => {
+            //                             switch ($[0]) {
+            //                                 case 'value': return p_.option($, ($) => "Refiner")
+            //                                 case 'iterator': return p_.option($, ($) => "Production")
+            //                                 default: return p_.exhaustive($[0])
+            //                             }
+            //                         }
+            //                     )
+            //                     + p_.from.optional($.error).decide(
+            //                         ($) => "",
+            //                         () => "_Without_Error"
+            //                     )
+            //                     + p_.from.optional($.parameter).decide(
+            //                         ($) => "_With_Parameter",
+            //                         () => ""
+            //                     )
+            //                 )
+            //             ]),
+            //             p_.literal.segmented_list([
+            //                 p_.literal.list([
+            //                     sh.t.type_reference(
+            //                         sh.identifier_escaped($v_target_schema_id),
+            //                         p_.literal.list([]),
+            //                         p_.literal.list([]),
+            //                     ),
+            //                     sh.t.type_reference(
+            //                         sh.identifier_escaped($v_target_schema_id),
+            //                         p_.literal.list([]),
+            //                         p_.literal.list([]),
+            //                     ),
+            //                 ]),
+            //                 p_.from.optional($.error).decide(
+            //                     ($) => p_.literal.list([
+            //                         sh.t.type_reference(
+            //                             sh.identifier_escaped($v_target_schema_id),
+            //                             p_.literal.list([]),
+            //                             p_.literal.list([
+            //                                 sh.t.type_reference(
+            //                                     sh.identifier_escaped("s_error"),
+            //                                     p_.literal.list([]),
+            //                                     p_.literal.list([])
+            //                                 )
+            //                             ])
+            //                         )
+            //                     ]),
+            //                     () => p_.literal.list([])
+            //                 ),
+            //                 p_.from.optional($.parameter).decide(
+            //                     ($) => p_.literal.list([
+            //                         sh.t.type_reference(
+            //                             sh.identifier_escaped($v_target_schema_id),
+            //                             p_.literal.list([]),
+            //                             p_.literal.list([
+            //                                 sh.t.type_reference(
+            //                                     sh.identifier_escaped("s_parameters"),
+            //                                     p_.literal.list([]),
+            //                                     p_.literal.list([])
+            //                                 )
+            //                             ])
+            //                         )
+            //                     ]),
+            //                     () => p_.literal.list([])
+            //                 )
+            //             ])
+            //         )
+            //     )
+            // )
         ])
     }
 }

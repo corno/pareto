@@ -37,6 +37,7 @@ export namespace Statements_ {
 
                         export namespace L {
 
+
                             export type name = Identifier_
 
                             export namespace as_ {
@@ -50,6 +51,7 @@ export namespace Statements_ {
                         }
 
                         export type L = {
+                            readonly 'type only': boolean
                             readonly 'name': L.name
                             readonly 'as': L.as_
                         }

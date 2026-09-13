@@ -57,6 +57,7 @@ export const Package_Set: p_.Transformer<
                                     sh.s.import_named(
                                         p_.literal.list([
                                             sh.specifier(
+                                                false,
                                                 sh.identifier_raw("p_change_context"), null),
                                         ]),
                                         sh.string_literal("pareto-core/iterate", 'apostrophe')

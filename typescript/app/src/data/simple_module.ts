@@ -30,14 +30,22 @@ export const $ = sh_module.module(
             ),
             p_.literal.dictionary({
                 "foo": sh_transformer.root(
-                    "PARAMS",
+                    null,
                     p_.literal.dictionary({}),
                     p_.literal.dictionary({}),
                     p_.literal.dictionary({})
                 ),
             }),
             sh_serializer.root(),
-            p_.literal.dictionary({}),
+            p_.literal.dictionary({
+                 "foo": sh_refiner.root(
+                    null,
+                    null,
+                    p_.literal.dictionary({}),
+                    p_.literal.dictionary({}),
+                    p_.literal.dictionary({})
+                ),
+            }),
             sh_deserializer.root(),
         ),
         "schema B": sh_module.schema_package(
