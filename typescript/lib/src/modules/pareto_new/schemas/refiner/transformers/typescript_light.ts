@@ -54,6 +54,24 @@ export const Root: declarations.Root = ($) => {
                     t_schema_reference_to_typescript_light.Schema_Reference($['source schema'])
                 ),
             ]),
+            p_.from.optional($['error schema']).decide(
+                ($) => p_.literal.list([
+                    sh.s.import_namespace(
+                        sh.identifier_raw("s_error"),
+                        t_schema_reference_to_typescript_light.Schema_Reference($)
+                    ),
+                ]),
+                () => p_.literal.list([])
+            ),
+            p_.from.optional($['parameters schema']).decide(
+                ($) => p_.literal.list([
+                    sh.s.import_namespace(
+                        sh.identifier_raw("s_parameters"),
+                        t_schema_reference_to_typescript_light.Schema_Reference($)
+                    ),
+                ]),
+                () => p_.literal.list([])
+            ),
             p_.literal.list<s_out.Statements.L>([
                 sh.s.empty_line(),
                 sh.s.namespace(
@@ -71,7 +89,12 @@ export const Root: declarations.Root = ($) => {
                                         sh.identifier_raw("p_"),
                                         p_.literal.list([
                                             sh.identifier_raw(
-                                                "Refiner_Without_Error"
+                                                "Refiner"
+
+                                                + p_.from.optional($.error).decide(
+                                                    ($) => "",
+                                                    () => "_Without_Error"
+                                                )
                                                 + p_.from.optional($.parameter).decide(
                                                     ($) => "_With_Parameter",
                                                     () => ""
@@ -84,7 +107,7 @@ export const Root: declarations.Root = ($) => {
                                                     sh.identifier_raw("s_target"),
                                                     p_.literal.segmented_list([
                                                         p_.literal.list([
-                                                            // sh.identifier_escaped($['source value'].type)
+                                                            sh.identifier_escaped(id)
                                                         ]),
                                                         // p_.from.list($['target value']['sub selection']).map(
                                                         //     ($) => p_.from.state($).decide(
@@ -103,30 +126,50 @@ export const Root: declarations.Root = ($) => {
                                                     ]),
                                                     p_.literal.list([]),
                                                 ),
-                                                sh.t.type_reference(
-                                                    sh.identifier_raw("s_source"),
-                                                    p_.literal.list([
-                                                        sh.identifier_escaped(id)
-                                                    ]),
-                                                    p_.literal.list([]),
+                                            ]),
+                                            p_.from.optional($.error).decide(
+                                                ($) => p_.literal.list([
+                                                    t_schema_reference_to_typescript_light.Type_Reference(
+                                                        $,
+                                                        {
+                                                            'schema': sh.identifier_raw("s_error")
+                                                        }
+                                                    )
+                                                ]),
+                                                () => p_.literal.list([])
+                                            ),
+                                            p_.literal.list([
+                                                p_.from.state($.source).decide(
+                                                    ($) => {
+                                                        switch ($[0]) {
+                                                            case 'value': return p_.option($, ($) => t_schema_reference_to_typescript_light.Type_Reference(
+                                                                $,
+                                                                {
+                                                                    'schema': sh.identifier_raw("s_source")
+                                                                }
+                                                            ))
+                                                            case 'iterator': return p_.option($, ($) => t_schema_reference_to_typescript_light.Type_Reference(
+                                                                $,
+                                                                {
+                                                                    'schema': sh.identifier_raw("FIXME ITERATOR")
+                                                                }
+                                                            ))
+                                                            default: return p_.exhaustive($[0])
+                                                        }
+                                                    }
                                                 ),
                                             ]),
                                             p_.from.optional($.parameter).decide(
                                                 ($) => p_.literal.list([
-                                                    sh.t.type_reference(
-                                                        sh.identifier_escaped("FOOOOOOOOO"),
-                                                        p_.literal.list([]),
-                                                        p_.literal.list([
-                                                            sh.t.type_reference(
-                                                                sh.identifier_raw("s_parameters"),
-                                                                p_.literal.list([]),
-                                                                p_.literal.list([])
-                                                            )
-                                                        ])
+                                                    t_schema_reference_to_typescript_light.Type_Reference(
+                                                        $,
+                                                        {
+                                                            'schema': sh.identifier_raw("s_parameters")
+                                                        }
                                                     )
                                                 ]),
                                                 () => p_.literal.list([])
-                                            )
+                                            ),
                                         ])
                                     )
                                 )
@@ -136,6 +179,7 @@ export const Root: declarations.Root = ($) => {
                         ($) => $
                     )
                 ),
+                sh.s.empty_line(),
                 sh.s.line_comment("implementations"),
             ]),
             p_.from.list(

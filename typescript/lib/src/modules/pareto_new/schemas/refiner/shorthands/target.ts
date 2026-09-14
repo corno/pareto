@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
 import type * as s_out from "../schema.js"
-import type * as s_vr from "../../value_reference/schema.js"
+import type * as s_vr from "../../schema_reference/schema.js"
 
 
 export const root = (

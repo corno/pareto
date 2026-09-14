@@ -4,6 +4,7 @@ export type Schema_Reference =
     | ['sibling', string]
     | ['external', {
         'package': string
+        'module': string
         'schema': string
     }]
     | ['child', {
@@ -11,3 +12,24 @@ export type Schema_Reference =
         'schema': string
     }]
 
+export type Type_Reference = {
+    'type': string
+}
+
+export type Value_Reference = {
+    'type': string
+    'sub selection': p_.List<Value_Selection_Path>
+}
+
+
+
+export type Value_Selection_Path =
+    | ['dictionary', null]
+    | ['group', {
+        'property': string
+    }]
+    | ['list', null]
+    | ['optional', null]
+    | ['state', {
+        'option': string
+    }]

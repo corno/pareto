@@ -86,50 +86,31 @@ export const Root: declarations.Root = ($) => {
                                         ]),
                                         p_.literal.segmented_list([
                                             p_.literal.list([
-                                                sh.t.type_reference(
-                                                    sh.identifier_raw("s_source"),
-                                                    p_.literal.list([
-                                                        sh.identifier_escaped(id)
-                                                    ]),
-                                                    p_.literal.list([]),
+                                                t_schema_reference_to_typescript_light.Type_Reference(
+                                                    {
+                                                        'type': id
+                                                    },
+                                                    {
+                                                        'schema': sh.identifier_raw("s_source")
+                                                    }
                                                 ),
-                                                sh.t.type_reference(
-                                                    sh.identifier_raw("s_target"),
-                                                    p_.literal.segmented_list([
-                                                        p_.literal.list([
-                                                            sh.identifier_escaped($['target value'].type)
-                                                        ]),
-                                                        p_.from.list($['target value']['sub selection']).map(
-                                                            ($) => p_.from.state($).decide(
-                                                                ($) => {
-                                                                    switch ($[0]) {
-                                                                        case 'dictionary': return p_.option($, ($) => sh.identifier_raw("D"))
-                                                                        case 'group': return p_.option($, ($) => sh.identifier_escaped($.property))
-                                                                        case 'list': return p_.option($, ($) => sh.identifier_raw("L"))
-                                                                        case 'optional': return p_.option($, ($) => sh.identifier_raw("O"))
-                                                                        case 'state': return p_.option($, ($) => sh.identifier_escaped($.option))
-                                                                        default: return p_.exhaustive($[0])
-                                                                    }
-                                                                }
-                                                            )
-                                                        )
-                                                    ]),
-                                                    p_.literal.list([]),
+                                                t_schema_reference_to_typescript_light.Value_Reference(
+                                                    $['target value'],
+                                                    {
+                                                        'schema': sh.identifier_raw("s_target")
+                                                    }
                                                 ),
                                             ]),
                                             p_.from.optional($.parameter).decide(
                                                 ($) => p_.literal.list([
-                                                    sh.t.type_reference(
-                                                        sh.identifier_escaped("FOOOOOOOOO"),
-                                                        p_.literal.list([]),
-                                                        p_.literal.list([
-                                                            sh.t.type_reference(
-                                                                sh.identifier_raw("s_parameters"),
-                                                                p_.literal.list([]),
-                                                                p_.literal.list([])
-                                                            )
-                                                        ])
-                                                    )
+                                                    t_schema_reference_to_typescript_light.Type_Reference(
+                                                    {
+                                                        'type': id
+                                                    },
+                                                    {
+                                                        'schema': sh.identifier_raw("s_parameters")
+                                                    }
+                                                )
                                                 ]),
                                                 () => p_.literal.list([])
                                             )

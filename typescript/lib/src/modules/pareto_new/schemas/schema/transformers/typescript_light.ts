@@ -198,7 +198,7 @@ export const Value: p_i.Transformer_With_Parameter<
                             ($) => {
                                 switch ($[0]) {
                                     case 'import': return p_.option($, ($) => sh.t.type_reference(
-                                        sh.identifier_escaped("i " + $['schema']),
+                                        sh.identifier_escaped("s " + $['schema']),
                                         p_.literal.list([
                                             sh.identifier_escaped($.type)
                                         ]),
