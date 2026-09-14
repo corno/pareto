@@ -11,6 +11,8 @@ import * as sh_transformer from "lib/modules/pareto_new/schemas/transformer/shor
 import * as sh_serializer from "lib/modules/pareto_new/schemas/serializer/shorthands/target"
 import * as sh_deserializer from "lib/modules/pareto_new/schemas/deserializer/shorthands/target"
 import * as sh_value_reference from "lib/modules/pareto_new/schemas/value_reference/shorthands/target"
+import * as sh_schema_reference from "lib/modules/pareto_new/schemas/schema_reference/shorthands/target"
+import * as sh_type_reference from "lib/modules/pareto_new/schemas/type_reference/shorthands/target"
 
 export const $ = sh_module.module(
     p_.literal.dictionary({}),
@@ -30,20 +32,53 @@ export const $ = sh_module.module(
             ),
             p_.literal.dictionary({
                 "foo": sh_transformer.root(
-                    null,
+                    true,
+                    sh_schema_reference.sr.sibling("schema B"),
+                    p_.literal.not_set(),
+                    p_.literal.dictionary({
+                        "type A": sh_transformer.declaration(
+                            sh_value_reference.value_reference(
+                                "type B",
+                                p_.literal.list([])
+                            ),
+                            p_.literal.not_set(),
+                        )
+                    }),
                     p_.literal.dictionary({}),
-                    p_.literal.dictionary({}),
-                    p_.literal.dictionary({})
+                    p_.literal.dictionary({
+                        "type A": sh_transformer.implementation(
+                            sh_transformer.expr.implement_me("I MUST BE IMPLEMENTED")
+                        )
+                    })
                 ),
             }),
             sh_serializer.root(),
             p_.literal.dictionary({
-                 "foo": sh_refiner.root(
-                    null,
-                    null,
+                "foo": sh_refiner.root(
+                    true,
+                    sh_schema_reference.sr.sibling("schema B"),
+                    p_.literal.not_set(),
+                    p_.literal.not_set(),
+                    p_.literal.dictionary({
+
+                        "type A": sh_refiner.declaration.refiner(
+                            sh_value_reference.value_reference(
+                                "type B",
+                                p_.literal.list([])
+                            ),
+                            p_.literal.set(sh_type_reference.local(
+                                "type B",
+                            )),
+                            p_.literal.not_set(),
+                        )
+                    }),
                     p_.literal.dictionary({}),
-                    p_.literal.dictionary({}),
-                    p_.literal.dictionary({})
+                    p_.literal.dictionary({
+
+                        "type A": sh_refiner.implementation(
+                            sh_refiner.expr.implement_me("I MUST BE IMPLEMENTED")
+                        )
+                    })
                 ),
             }),
             sh_deserializer.root(),

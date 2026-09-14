@@ -71,8 +71,8 @@ export const Identifier: declarations.Identifier = ($) => {
 
 export const String_Literal_pseudo: declarations.String_Literal_pseudo = ($, $p) => {
     return sh.ph.text($p.delimiter === "quote"
-            ? ser_primitives.Quoted_Text($)
-            : ser_primitives.Apostrophed_Text($))
+        ? ser_primitives.Quoted_Text($)
+        : ser_primitives.Apostrophed_Text($))
 }
 
 export const String_Literal: declarations.String_Literal = ($) => {
@@ -87,7 +87,6 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
             ($): s_out.Paragraph => {
                 switch ($[0]) {
                     case 'block': return p_.option($, ($) => sh.pg.sentences([
-                        sh.sentence([]),
                         sh.sentence([
                             sh.ph.text("{"),
                             sh.ph.indent(
@@ -96,8 +95,10 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                             sh.ph.text("}"),
                         ])
                     ]))
-                    case 'export': return p_.option($, ($) => sh.pg.sentences([
+                    case 'empty line': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([]),
+                    ]))
+                    case 'export': return p_.option($, ($) => sh.pg.sentences([
                         sh.sentence([
                             sh.ph.text("export "),
                             p_.from.state($.type).decide(
@@ -146,7 +147,6 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                         )
                     ]))
                     case 'import': return p_.option($, ($) => sh.pg.sentences([
-                        sh.sentence([]),
                         sh.sentence([
                             sh.ph.text("import "),
                             p_.from.state($.type).decide(
@@ -184,8 +184,15 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                             String_Literal($.from),
                         ])
                     ]))
+                    case 'line comment': return p_.option($, ($) => sh.pg.sentences([
+                        sh.sentence([
+                            sh.ph.composed([
+                                sh.ph.text("// "),
+                                sh.ph.text($)
+                            ]),
+                        ])
+                    ]))
                     case 'module declaration': return p_.option($, ($) => sh.pg.sentences([
-                        sh.sentence([]),
                         sh.sentence([
                             $.export ?
                                 sh.ph.text("export ")
@@ -196,12 +203,8 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                             sh.ph.composed([
                                 sh.ph.text("{"),
                                 sh.ph.indent(
-                                    sh.pg.deprecated_composed([
-                                        Statements($.block, $p),
-                                        sh.pg.sentences([
-                                            sh.sentence([]),
-                                        ])
-                                    ])),
+                                    Statements($.block, $p)
+                                ),
                                 sh.ph.text("}"),
                             ])
                         ])
@@ -284,7 +287,6 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                         ])),
                     ]))
                     case 'type alias declaration': return p_.option($, ($) => sh.pg.sentences([
-                        sh.sentence([]),
                         sh.sentence([
                             $.export ? sh.ph.text("export ") : sh.ph.nothing(),
                             sh.ph.text("type "),
@@ -302,7 +304,6 @@ export const Statements: declarations.Statements = ($, $p) => sh.pg.deprecated_c
                         ])
                     ]))
                     case 'variable': return p_.option($, ($) => sh.pg.sentences([
-                        sh.sentence([]),
                         sh.sentence([
                             $.export ? sh.ph.text("export ") : sh.ph.nothing(),
                             $.const ? sh.ph.text("const ") : sh.ph.text("let "),
@@ -589,8 +590,8 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                 ])
             ]))
             case 'string literal': return p_.option($, ($) => p_.literal.list([
-                sh.ph.text($['delimiter'][0] === "quote" 
-                    ? ser_primitives.Quoted_Text($['value']) 
+                sh.ph.text($['delimiter'][0] === "quote"
+                    ? ser_primitives.Quoted_Text($['value'])
                     : ser_primitives.Apostrophed_Text($['value']))
             ]))
             case 'true': return p_.option($, ($) => p_.literal.list([

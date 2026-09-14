@@ -2,49 +2,42 @@ import * as p_ from 'pareto-core/schema'
 
 import * as i_value_reference from "../value_reference/schema.js"
 import * as i_type_reference from "../type_reference/schema.js"
-
+import * as i_schema_reference from "../schema_reference/schema.js"
 export type Root = {
-        'parameters schema': Root.parameters_schema
-        'declarations': Root.declarations
-        'implementations': Root.implementations
+    'development mode': boolean
+    'target schema': Root.target_schema
+    'parameters schema': Root.parameters_schema
+    'declarations': p_.Dictionary<Root.declarations_D>
+    'dependencies': p_.Dictionary<Root.dependencies_D>
+    'implementations': Root.implementations
 }
 
 export namespace Root {
+    export type target_schema = i_schema_reference.Schema_Reference
 
-        export type parameters_schema = p_.Optional_Value<string>
+    export type parameters_schema = p_.Optional_Value<i_schema_reference.Schema_Reference>
 
 
-        export type declarations = {
+    export type declarations_D = {
+        'target value': i_value_reference.Value_Reference
+        'parameter': p_.Optional_Value<i_type_reference.Type_Reference>
+    }
 
-            'types': p_.Dictionary<Root.declarations.types_D>
+    export type dependencies_D = {
+        'location':
+        | ['this module', null]
+        | ['external module', {
+            'module': string
+        }]
+        'source schema': string
+        'target schema': string
+    }
+    export type implementations = p_.Dictionary<Root.implementations_D>
 
-        }
 
-        export namespace declarations {
-            export type types_D = {
-                'target value': i_value_reference.Value_Reference
-                'parameter': p_.Optional_Value<i_type_reference.Type_Reference>
-            }
-        }
-        export type implementations = {
-            'dependencies': p_.Dictionary<Root.implementations.dependencies_D>
-            'types': p_.Dictionary<Root.implementations.types_D>
-        }
-
-        export namespace implementations {
-            export type types_D = {
-                'expression': Expression
-            }
-            export type dependencies_D = {
-                'location':
-                | ['this module', null]
-                | ['external module', {
-                    'module': string
-                }]
-                'source schema': string
-                'target schema': string
-            }
-        }
+    export type implementations_D = {
+        'expression': Expression
+    }
 }
 
 export type Expression =

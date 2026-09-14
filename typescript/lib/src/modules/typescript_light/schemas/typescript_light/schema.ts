@@ -271,10 +271,12 @@ export namespace Statements_ {
     }
 
     export type L =
+        | readonly ['empty line', null]
         | readonly ['block', L.block]
         | readonly ['export', L.export_]
         | readonly ['expression', L.expression]
         | readonly ['import', L.import_]
+        | readonly ['line comment', string]
         | readonly ['module declaration', L.module_declaration]
         | readonly ['return', L.return_]
         | readonly ['switch', L.switch_]

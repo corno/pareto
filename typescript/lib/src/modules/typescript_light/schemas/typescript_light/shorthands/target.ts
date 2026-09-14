@@ -128,6 +128,8 @@ export namespace s {
         statements: p_.Normal_List<s_target.Statements.L>
     ): s_target.Statements.L => ['block', p_.list(statements)]
 
+    export const empty_line = (): s_target.Statements.L => ['empty line', null]
+
     export const export_ = (
         specifiers: p_.Normal_List<s_target.Statements.L.export_.type_.named_exports.specifiers.L>,
         from: null | s_target.String_Literal,
@@ -170,6 +172,10 @@ export namespace s {
         'from': from,
 
     }]
+
+    export const line_comment = (
+        comment: string,
+    ): s_target.Statements.L => ['line comment', comment]
 
     export const namespace = (
         export_: boolean,

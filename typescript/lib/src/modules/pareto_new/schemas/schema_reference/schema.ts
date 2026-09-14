@@ -1,16 +1,13 @@
 import * as p_ from 'pareto-core/schema'
 
 export type Schema_Reference =
-    | ['local', {
-        'path': Path
+    | ['sibling', string]
+    | ['external', {
+        'package': string
+        'schema': string
     }]
-    | ['submodule', {
+    | ['child', {
         'module': string
-        'type set': string
+        'schema': string
     }]
 
-
-
-export type Path = {
-    //FIXME
-}

@@ -9,6 +9,7 @@ namespace declarations {
         s_in.Expression,
         s_out.Expression
     >
+
 }
 
 import * as s_in from "../schema.js"
@@ -18,112 +19,137 @@ import * as s_out from "../../../../typescript_light/schemas/typescript_light/sc
 import * as sh from "../../../../typescript_light/schemas/typescript_light/shorthands/target.js"
 
 //dependencies
+import * as t_schema_reference_to_typescript_light from "../../schema_reference/transformers/typescript_light.js"
+
 
 export const Root: declarations.Root = ($) => {
     return {
-        'statements': p_.literal.segmented_list([
+        'statements': p_.literal.segmented_list<s_out.Statements.L>([
             p_.literal.list([
                 sh.s.import_namespace(
                     sh.identifier_raw("p_"),
                     sh.string_literal("pareto-core/transformer", 'apostrophe')
                 ),
+            ]),
+            $['development mode']
+                ? p_.literal.list([
+                    sh.s.import_default(
+                        sh.identifier_raw("p_implement_me"),
+                        sh.string_literal("pareto-core-dev/implement_me", 'apostrophe')
+                    ),
+                ])
+                : p_.literal.list([]),
+            p_.literal.list([
+                sh.s.empty_line(),
+                sh.s.line_comment("schemas"),
                 sh.s.import_namespace(
                     sh.identifier_raw("s_source"),
                     sh.string_literal("../schema.js", 'quote')
                 ),
-                // sh.s.import_namespace(
-                //     sh.identifier_raw("s_target"),
-                //     sh.string_literal("../../../schemas/" + $v_target_schema_id + ".js", 'quote')
-                // ),
+                sh.s.import_namespace(
+                    sh.identifier_raw("s_target"),
+                    t_schema_reference_to_typescript_light.Schema_Reference($['target schema'])
+                ),
             ]),
             p_.from.optional($['parameters schema']).decide(
                 ($) => p_.literal.list([
                     sh.s.import_namespace(
                         sh.identifier_raw("s_parameters"),
-                        sh.string_literal("../../../schemas/" + $ + ".js", 'quote')
+                        t_schema_reference_to_typescript_light.Schema_Reference($)
                     )
                 ]),
                 () => p_.literal.list([])
             ),
-            p_.literal.list([
+            p_.literal.list<s_out.Statements.L>([
+                sh.s.empty_line(),
                 sh.s.namespace(
                     true,
                     sh.identifier_raw("declarations"),
-                    p_.from.dictionary($.declarations['types']).convert_to_list( //create a type alias for each Pareto type
-                        ($, id) => sh.s.type_alias(
-                            true,
-                            sh.identifier_escaped(id),
-                            p_.literal.list([]),
-                            sh.t.type_reference(
-                                sh.identifier_raw("p_"),
-                                p_.literal.list([
-                                    sh.identifier_raw(
-                                        "Transformer"
-                                        + p_.from.optional($.parameter).decide(
-                                            ($) => "_With_Parameter",
-                                            () => ""
-                                        )
-                                    )
-                                ]),
-                                p_.literal.segmented_list([
-                                    p_.literal.list([
-                                        sh.t.type_reference(
-                                            sh.identifier_raw("s_source"),
-                                            p_.literal.list([
-                                                sh.identifier_escaped(id)
-                                            ]),
-                                            p_.literal.list([]),
-                                        ),
-                                        sh.t.type_reference(
-                                            sh.identifier_raw("s_target"),
-                                            p_.literal.segmented_list([
-                                                p_.literal.list([
-                                                    sh.identifier_escaped($['target value'].type)
-                                                ]),
-                                                p_.from.list($['target value']['sub selection']).map(
-                                                    ($) => p_.from.state($).decide(
-                                                        ($) => {
-                                                            switch ($[0]) {
-                                                                case 'dictionary': return p_.option($, ($) => sh.identifier_raw("D"))
-                                                                case 'group': return p_.option($, ($) => sh.identifier_escaped($.property))
-                                                                case 'list': return p_.option($, ($) => sh.identifier_raw("L"))
-                                                                case 'optional': return p_.option($, ($) => sh.identifier_raw("O"))
-                                                                case 'state': return p_.option($, ($) => sh.identifier_escaped($.option))
-                                                                default: return p_.exhaustive($[0])
-                                                            }
-                                                        }
-                                                    )
+                    p_.from.list(
+                        p_.from.dictionary($.declarations).convert_to_list( //create a type alias for each Pareto type
+                            ($, id): s_out.Statements => p_.literal.list([
+                                sh.s.empty_line(),
+                                sh.s.type_alias(
+                                    true,
+                                    sh.identifier_escaped(id),
+                                    p_.literal.list([]),
+                                    sh.t.type_reference(
+                                        sh.identifier_raw("p_"),
+                                        p_.literal.list([
+                                            sh.identifier_raw(
+                                                "Transformer"
+                                                + p_.from.optional($.parameter).decide(
+                                                    ($) => "_With_Parameter",
+                                                    () => ""
                                                 )
-                                            ]),
-                                            p_.literal.list([]),
-                                        ),
-                                    ]),
-                                    p_.from.optional($.parameter).decide(
-                                        ($) => p_.literal.list([
-                                            sh.t.type_reference(
-                                                sh.identifier_escaped("FOOOOOOOOO"),
-                                                p_.literal.list([]),
-                                                p_.literal.list([
-                                                    sh.t.type_reference(
-                                                        sh.identifier_raw("s_parameters"),
-                                                        p_.literal.list([]),
-                                                        p_.literal.list([])
-                                                    )
-                                                ])
                                             )
                                         ]),
-                                        () => p_.literal.list([])
+                                        p_.literal.segmented_list([
+                                            p_.literal.list([
+                                                sh.t.type_reference(
+                                                    sh.identifier_raw("s_source"),
+                                                    p_.literal.list([
+                                                        sh.identifier_escaped(id)
+                                                    ]),
+                                                    p_.literal.list([]),
+                                                ),
+                                                sh.t.type_reference(
+                                                    sh.identifier_raw("s_target"),
+                                                    p_.literal.segmented_list([
+                                                        p_.literal.list([
+                                                            sh.identifier_escaped($['target value'].type)
+                                                        ]),
+                                                        p_.from.list($['target value']['sub selection']).map(
+                                                            ($) => p_.from.state($).decide(
+                                                                ($) => {
+                                                                    switch ($[0]) {
+                                                                        case 'dictionary': return p_.option($, ($) => sh.identifier_raw("D"))
+                                                                        case 'group': return p_.option($, ($) => sh.identifier_escaped($.property))
+                                                                        case 'list': return p_.option($, ($) => sh.identifier_raw("L"))
+                                                                        case 'optional': return p_.option($, ($) => sh.identifier_raw("O"))
+                                                                        case 'state': return p_.option($, ($) => sh.identifier_escaped($.option))
+                                                                        default: return p_.exhaustive($[0])
+                                                                    }
+                                                                }
+                                                            )
+                                                        )
+                                                    ]),
+                                                    p_.literal.list([]),
+                                                ),
+                                            ]),
+                                            p_.from.optional($.parameter).decide(
+                                                ($) => p_.literal.list([
+                                                    sh.t.type_reference(
+                                                        sh.identifier_escaped("FOOOOOOOOO"),
+                                                        p_.literal.list([]),
+                                                        p_.literal.list([
+                                                            sh.t.type_reference(
+                                                                sh.identifier_raw("s_parameters"),
+                                                                p_.literal.list([]),
+                                                                p_.literal.list([])
+                                                            )
+                                                        ])
+                                                    )
+                                                ]),
+                                                () => p_.literal.list([])
+                                            )
+                                        ])
                                     )
-                                ])
-                            )
+                                )
+                            ])
                         )
+                    ).flatten(
+                        ($) => $
                     )
                 ),
-                sh.s.namespace(
-                    true,
-                    sh.identifier_raw("implementations"),
-                    p_.from.dictionary($.implementations['types']).convert_to_list( //create a variable for each type transformer
-                        ($, id) => sh.s.variable(
+                sh.s.empty_line(),
+                sh.s.line_comment("implementations"),
+            ]),
+            p_.from.list(
+                p_.from.dictionary($.implementations).convert_to_list( //create a variable for each type transformer
+                    ($, id): s_out.Statements => p_.literal.list([
+                        sh.s.empty_line(),
+                        sh.s.variable(
                             true,
                             true,
                             sh.identifier_escaped(id),
@@ -137,11 +163,22 @@ export const Root: declarations.Root = ($) => {
                                 p_.literal.segmented_list([
                                 ])
                             ),
-                            Expresssion($.expression)
+                            sh.e.arrow_function_with_expression(
+                                p_.literal.list([
+                                    sh.parameter(
+                                        sh.identifier_raw("$"),
+                                        null
+                                    ),
+                                ]),
+                                null,
+                                Expresssion($.expression)
+                            )
                         )
-                    )
-                ),
-            ])
+                    ])
+                )
+            ).flatten(
+                ($) => $
+            ),
         ])
     }
 }
@@ -150,10 +187,7 @@ export const Expresssion: declarations.Expression = ($) => p_.from.state($).deci
     ($) => {
         switch ($[0]) {
             case 'implement me': return p_.option($, ($) => sh.e.call(
-                sh.e.property_access(
-                    sh.e.identifier_raw("p_dev"),
-                    sh.identifier_raw("implement_me")
-                ),
+                sh.e.identifier_raw("p_implement_me"),
                 p_.literal.list([
                     sh.e.string_literal(
                         sh.string_literal($.remark, 'quote'))
