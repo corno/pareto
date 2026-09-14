@@ -26,7 +26,7 @@ export type Module = {
 }
 
 export type Schema_Package = {
-    'schema': i_schema.schema
+    'schema': i_schema.Schema
     'transformers': p_.Dictionary<i_transformer.Root>
     'serializers': i_serializer.Root
     'refiners': p_.Dictionary<i_refiner.Root>

@@ -2,17 +2,18 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
 import type * as s_out from "../schema.js"
 
+
 export const schema = (
-    imports: p_.Normal_Dictionary<s_out.schema.imports_D>,
-    types: p_.Normal_Dictionary<s_out.schema.types_D>,
-): s_out.schema => ({
+    imports: p_.Normal_Dictionary<s_out.Schema.imports_D>,
+    types: p_.Normal_Dictionary<s_out.Schema.types_D>,
+): s_out.Schema => ({
     'imports': p_.dictionary(imports),
     'types': p_.dictionary(types),
 })
 
 export const type = (
     value: s_out.Value,
-): s_out.schema.types_D => ({
+): s_out.Schema.types_D => ({
     'root': value,
 })
 
@@ -130,4 +131,25 @@ export namespace v {
         return ['text', null]
     }
 
+}
+
+export namespace sub {
+    export const dictionary = (): s_out.Value.reference.sub_selection_L => ['dictionary', null]
+
+    export const list = (): s_out.Value.reference.sub_selection_L => {
+        return ['list', null]
+    }
+    export const state = (name: string): s_out.Value.reference.sub_selection_L => {
+        return ['state', {
+            'option': name
+        }]
+    }
+    export const group = (
+        name: string,
+    ): s_out.Value.reference.sub_selection_L => {
+        return ['group', {
+            'property': name
+        }]
+    }
+    export const optional = (): s_out.Value.reference.sub_selection_L => ['optional', null]
 }

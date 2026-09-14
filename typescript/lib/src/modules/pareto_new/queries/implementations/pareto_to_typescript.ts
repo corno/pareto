@@ -9,8 +9,7 @@ import type * as s_module from "../../schemas/module/schema.js"
 import type * as s_file_in_directory_out_query from "pareto-common/modules/file_in_directory_out/schemas/query/schema"
 
 //dependencies
-import * as t_typescript_to_directory_content from "../../../typescript_light/schemas/typescript_light/transformers/to_be_written_directory_content.js"
-import * as t_pareto_module_to_typescript from "../../schemas/module/transformers/typescript_light.js"
+import * as t_pareto_module_to_typescript_directory_content from "../../schemas/module/transformers/typescript_directory_content.js"
 
 
 
@@ -24,10 +23,8 @@ export const $$: p_.Query_Implementation<
 > = p_.query(
     (e, $s, $q) => e.transform(
         ($): s_file_in_directory_out_query.Result => ({
-            'data': t_typescript_to_directory_content.Directory(
-                t_pareto_module_to_typescript.Module(
-                    $s.module
-                ),
+            'data': t_pareto_module_to_typescript_directory_content.Module(
+                $s.module,
                 {
                     'file write parameters': {
                         'newline': '\n',

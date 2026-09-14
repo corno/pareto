@@ -8,13 +8,14 @@ import type * as s_out from "../../../../typescript_light/schemas/typescript_lig
 
 namespace declarations {
     export type Schema = p_.Transformer<
-        s_in.schema,
+        s_in.Schema,
         s_out.Source_File
     >
 }
 
 
 //dependencies
+import * as t_schema_reference_to_typescript_light from "../../schema_reference/transformers/typescript_light.js"
 
 //shorthands
 import * as sh from "../../../../typescript_light/schemas/typescript_light/shorthands/target.js"
@@ -28,6 +29,28 @@ export const Schema: declarations.Schema = ($) => ({
                 sh.string_literal("pareto-core/schema", 'apostrophe')
             ),
         ]),
+        p_.from.dictionary($.imports).on_has_entries(
+            ($) => p_.literal.list([
+                sh.s.empty_line(),
+                sh.s.line_comment("imports")
+            ]),
+            () => p_.literal.list([]),
+
+        ),
+        p_.from.dictionary($.imports).convert_to_list(
+            ($, id) => sh.s.import_namespace(
+                sh.identifier_escaped("s " + id),
+                t_schema_reference_to_typescript_light.Schema_Reference($)
+            )
+        ),
+        p_.from.dictionary($.types).on_has_entries(
+            ($) => p_.literal.list([
+                sh.s.empty_line(),
+                sh.s.line_comment("types")
+            ]),
+            () => p_.literal.list([]),
+
+        ),
         p_.from.dictionary($['types']).flatten_to_list( //create a variable for each type
             ($, id) => Value(
                 $.root,
@@ -41,6 +64,8 @@ export const Schema: declarations.Schema = ($) => ({
             )
         ),
         p_.literal.list([
+            sh.s.empty_line(),
+            sh.s.line_comment("exported root types"),
             //export the root types, with the trailing underscore removed
             sh.s.export_(
                 p_.from.dictionary($.types).convert_to_list(
@@ -73,6 +98,7 @@ export const Value: p_i.Transformer_With_Parameter<
                 case 'component': return p_.option($, ($) => p_.literal.list([
                 ]))
                 case 'dictionary': return p_.option($, ($) => p_.literal.list([
+                    sh.s.empty_line(),
                     sh.s.namespace(
                         $p.export,
                         sh.identifier_escaped($p.name),
@@ -86,6 +112,7 @@ export const Value: p_i.Transformer_With_Parameter<
                     ),
                 ]))
                 case 'group': return p_.option($, ($) => p_.literal.list([
+                    sh.s.empty_line(),
                     sh.s.namespace(
                         $p.export,
                         sh.identifier_escaped($p.name),
@@ -101,6 +128,7 @@ export const Value: p_i.Transformer_With_Parameter<
                     ),
                 ]))
                 case 'list': return p_.option($, ($) => p_.literal.list([
+                    sh.s.empty_line(),
                     sh.s.namespace(
                         $p.export,
                         sh.identifier_escaped($p.name),
@@ -118,6 +146,7 @@ export const Value: p_i.Transformer_With_Parameter<
                 case 'number': return p_.option($, ($) => p_.literal.list([
                 ]))
                 case 'optional': return p_.option($, ($) => p_.literal.list([
+                    sh.s.empty_line(),
                     sh.s.namespace(
                         $p.export,
                         sh.identifier_escaped($p.name),
@@ -133,6 +162,7 @@ export const Value: p_i.Transformer_With_Parameter<
                 case 'reference': return p_.option($, ($) => p_.literal.list([
                 ]))
                 case 'state': return p_.option($, ($) => p_.literal.list([
+                    sh.s.empty_line(),
                     sh.s.namespace(
                         $p.export,
                         sh.identifier_escaped($p.name),
@@ -155,6 +185,7 @@ export const Value: p_i.Transformer_With_Parameter<
     ),
     //then; create a type alias for the actual value
     p_.literal.list([
+        sh.s.empty_line(),
         sh.s.type_alias(
             $p.export,
             sh.identifier_escaped($p.name),

@@ -1,26 +1,21 @@
 import * as p_ from 'pareto-core/schema'
 
+//schemas
+import * as s_schema_reference from "../schema_reference/schema.js"
 
-export type schema = {
-    'imports': p_.Dictionary<schema.imports_D>
-    'types': p_.Dictionary<schema.types_D>
+
+export type Schema = {
+    'imports': p_.Dictionary<Schema.imports_D>
+    'types': p_.Dictionary<Schema.types_D>
 }
 
-export namespace schema {
+export namespace Schema {
 
     export type types_D = {
         'root': Value
     }
 
-    export type imports_D =
-        | ['module', {
-            'module': string
-            'type': string
-        }]
-        | ['external', {
-            'path': string
-            'type': string
-        }]
+    export type imports_D = s_schema_reference.Schema_Reference
 }
 
 export type Value =

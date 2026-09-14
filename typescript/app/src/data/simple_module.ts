@@ -19,7 +19,9 @@ export const $ = sh_module.module(
     p_.literal.dictionary({
         "schema A": sh_module.schema_package(
             sh_schema.schema(
-                p_.literal.dictionary({}),
+                p_.literal.dictionary({
+                    "schema B": sh_schema_reference.sr.sibling("schema B")
+                }),
                 p_.literal.dictionary({
                     "type A": sh_schema.type(
                         sh_schema.v.group(
@@ -30,7 +32,7 @@ export const $ = sh_module.module(
                     ),
                 }),
             ),
-            p_.literal.dictionary({
+            p_.literal.dictionary({ //transformers
                 "foo": sh_transformer.root(
                     true,
                     sh_schema_reference.sr.sibling("schema B"),
