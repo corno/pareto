@@ -5,6 +5,8 @@ import * as i_location from "astn-core/modules/deserialization/schemas/location/
 
 import * as i_imports_interface from "../../../interface_old/schemas/unresolved/schema.js"
 
+export * as interface_ from "../../../interface_old/schemas/unresolved/schema.js"
+
 export namespace Package_Set_ {
     
     export type l_location = i_location.Range

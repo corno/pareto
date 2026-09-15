@@ -205,7 +205,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                         p_.literal.list([])
                                     ))
                                     case 'this schema': return p_.option($, ($) => sh.t.type_reference(
-                                        sh.identifier_escaped($p.name),
+                                        sh.identifier_escaped($.type + " "),
                                         //tail
                                         p_.literal.list([]),
                                         p_.literal.list([])
@@ -295,7 +295,8 @@ export const Value: p_i.Transformer_With_Parameter<
                                                 case 'this schema': return p_.option($, ($) => p_.literal.list([]))
                                                 default: return p_.exhaustive($[0])
                                             }
-                                        }),
+                                        }
+                                    ),
                                     p_.from.list($['sub selection']).flatten(
                                         ($) => p_.from.state($).decide(
                                             ($) => {

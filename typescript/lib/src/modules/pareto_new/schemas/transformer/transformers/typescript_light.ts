@@ -20,7 +20,7 @@ import * as sh from "../../../../typescript_light/schemas/typescript_light/short
 
 //dependencies
 import * as t_schema_reference_to_typescript_light from "../../schema_reference/transformers/typescript_light.js"
-
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/helpers/schemas/path/serializers"
 
 export const Root: declarations.Root = ($) => {
     return {
@@ -56,6 +56,33 @@ export const Root: declarations.Root = ($) => {
                     sh.s.import_namespace(
                         sh.identifier_raw("s_parameters"),
                         t_schema_reference_to_typescript_light.Schema_Reference($)
+                    )
+                ]),
+                () => p_.literal.list([])
+            ),
+            p_.from.dictionary($.dependencies).on_has_entries(
+                ($) => p_.literal.segmented_list([
+                    p_.literal.list([
+                        sh.s.empty_line(),
+                        sh.s.line_comment("dependencies"),
+
+                    ]),
+                    p_.from.dictionary($).convert_to_list(
+                        ($, id) => sh.s.import_namespace(
+                            sh.identifier_escaped("r " + id),
+                            sh.string_literal(
+                                p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'sibling': return p_.option($, ($) => "./" + ser_path.Name($.source) + ".js")
+                                            case 'external': return p_.option($, ($) => ser_path.Name($.package) + "/modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/transformers/" + ser_path.Name($.transformer))
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ),
+                                'quote'
+                            )
+                        )
                     )
                 ]),
                 () => p_.literal.list([])
@@ -104,16 +131,14 @@ export const Root: declarations.Root = ($) => {
                                             p_.from.optional($.parameter).decide(
                                                 ($) => p_.literal.list([
                                                     t_schema_reference_to_typescript_light.Type_Reference(
-                                                    {
-                                                        'type': id
-                                                    },
-                                                    {
-                                                        'schema': sh.identifier_raw("s_parameters")
-                                                    }
-                                                )
+                                                        $,
+                                                        {
+                                                            'schema': sh.identifier_raw("s_parameters")
+                                                        }
+                                                    )
                                                 ]),
                                                 () => p_.literal.list([])
-                                            )
+                                            ),
                                         ])
                                     )
                                 )
@@ -145,11 +170,21 @@ export const Root: declarations.Root = ($) => {
                                 ])
                             ),
                             sh.e.arrow_function_with_expression(
-                                p_.literal.list([
-                                    sh.parameter(
-                                        sh.identifier_raw("$"),
-                                        null
-                                    ),
+                                p_.literal.segmented_list([
+                                    p_.literal.list([
+                                        sh.parameter(
+                                            sh.identifier_raw("$"),
+                                            null
+                                        ),
+                                    ]),
+                                    $['temp has parameters']
+                                        ? p_.literal.list([
+                                            sh.parameter(
+                                                sh.identifier_raw("$p"),
+                                                null
+                                            ),
+                                        ])
+                                        : p_.literal.list([])
                                 ]),
                                 null,
                                 Expresssion($.expression)

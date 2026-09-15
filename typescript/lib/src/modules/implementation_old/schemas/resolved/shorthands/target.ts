@@ -6,6 +6,8 @@ import type * as s_target from "../schema.js" //THIS IS NOT CORRECT! It should b
 import type * as s_target_interface from "../../../../interface_old/schemas/resolved/schema.js"
 
 
+export * as interface_ from "../../../../interface_old/schemas/resolved/shorthands/target.js"
+
 const wrap_state = <T>(value: T): T => value
 
 

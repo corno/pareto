@@ -3,12 +3,14 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
 import type * as s_out from "../schema.js"
 
+export * as schema_reference from "../../schema_reference/shorthands/target.js"
+
 export const root = (
     development_mode: boolean,
     target_schema: s_out.Root.target_schema,
     parameters_schema: s_out.Root.parameters_schema,
-    declarations: p_.Normal_Dictionary<s_out.Root.declarations_D>,
     dependencies: p_.Normal_Dictionary<s_out.Root.dependencies_D>,
+    declarations: p_.Normal_Dictionary<s_out.Root.declarations_D>,
     implementations: p_.Normal_Dictionary<s_out.Root.implementations_D>,
 ): s_out.Root => ({
     'development mode': development_mode,
@@ -26,6 +28,27 @@ export const root = (
 // })
 
 // export namespace decl {
+
+
+export namespace dependency {
+    export const sibling = (
+        source: string,
+    ): s_out.Root.dependencies_D => ['sibling', {
+        'source': source,
+    }]
+
+    export const external = (
+        pkg: string,
+        module: string,
+        schema: string,
+        transformer: string,
+    ): s_out.Root.dependencies_D => ['external', {
+        'package': pkg,
+        'module': module,
+        'schema': schema,
+        'transformer': transformer,
+    }]
+}
 
 export const declaration = (
     target_value: s_out.Root.declarations_D['target value'],
@@ -57,8 +80,10 @@ export const declaration = (
 // })
 
 export const implementation = (
+    temp_has_parameters: boolean,
     expression: s_out.Expression,
 ): s_out.Root.implementations_D => ({
+    'temp has parameters': temp_has_parameters,
     'expression': expression,
 })
 

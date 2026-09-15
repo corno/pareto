@@ -5,8 +5,8 @@ export type Root = {
     'development mode': boolean
     'target schema': Root.target_schema
     'parameters schema': Root.parameters_schema
-    'declarations': p_.Dictionary<Root.declarations_D>
     'dependencies': p_.Dictionary<Root.dependencies_D>
+    'declarations': p_.Dictionary<Root.declarations_D>
     'implementations': Root.implementations
 }
 
@@ -21,21 +21,23 @@ export namespace Root {
         'parameter': p_.Optional_Value<i_schema_reference.Type_Reference>
     }
 
-    export type dependencies_D = {
-        'location':
-        | ['this module', null]
-        | ['external module', {
-            'module': string
-        }]
-        'source schema': string
-        'target schema': string
-    }
     export type implementations = p_.Dictionary<Root.implementations_D>
 
 
     export type implementations_D = {
+        'temp has parameters': boolean
         'expression': Expression
     }
+    export type dependencies_D =
+        | ['sibling', {
+            'source': string
+        }]
+        | ['external', {
+            'package': string
+            'module': string
+            'schema': string
+            'transformer': string
+        }]
 }
 
 export type Expression =

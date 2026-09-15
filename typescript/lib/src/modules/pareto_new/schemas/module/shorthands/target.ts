@@ -2,6 +2,17 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
 import type * as s_out from "../schema.js"
 
+export * as refiner from "../../refiner/shorthands/target.js"
+export * as schema_reference from "../../schema_reference/shorthands/target.js"
+export * as schema from "../../schema/shorthands/target.js"
+export * as transformer from "../../transformer/shorthands/target.js"
+export * as serializer from "../../serializer/shorthands/target.js"
+export * as deserializer from "../../deserializer/shorthands/target.js"
+export * as command_implementation from "../../command_implementation/shorthands/target.js"
+export * as command_interface from "../../command_interface/shorthands/target.js"
+export * as query_implementation from "../../query_implementation/shorthands/target.js"
+export * as query_interface from "../../query_interface/shorthands/target.js"
+
 export const module = (
     submodules: s_out.Module['modules'],
     schema_packages: s_out.Module['schemas'],

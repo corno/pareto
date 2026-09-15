@@ -2,6 +2,8 @@ import * as p_ from 'pareto-core-shorthands/unconstrained_target'
 
 import type * as s_out from "../schema.js"
 
+export * as schema_reference from "../../schema_reference/shorthands/target.js"
+
 
 export const schema = (
     imports: p_.Normal_Dictionary<s_out.Schema.imports_D>,

@@ -4,6 +4,8 @@ import * as p_di from 'pareto-core/schema'
 
 import * as i_imports_interface from "../../../interface_old/schemas/resolved/schema.js"
 
+export * as interface_ from "../../../interface_old/schemas/resolved/schema.js"
+
 export namespace Package_Set_ {
     
     export namespace D {
