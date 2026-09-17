@@ -195,7 +195,9 @@ export namespace Statements_ {
 
                 export type L = {
                     readonly 'type': L.type_
-                    readonly 'statements': L.statements
+                    readonly 'body': 
+                    | ['statements', L.statements]
+                    | ['statement', Statements_.L]
                 }
 
             }
@@ -532,6 +534,7 @@ export namespace Expression_ {
 
     export type call = {
         readonly 'function selection': call.function_selection
+        readonly 'arguments on own line': boolean
         readonly 'arguments': call.arguments_
     }
 

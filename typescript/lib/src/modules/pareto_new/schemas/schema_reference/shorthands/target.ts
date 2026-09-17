@@ -6,13 +6,13 @@ import type * as s_out from "../schema.js"
 
 export namespace sr {
 
-    export const child = (
-        module: string,
-        schema: string,
-    ): s_out.Schema_Reference => ['child', {
-        'module': module,
-        'schema': schema,
-    }]
+    // export const child = (
+    //     module: string,
+    //     schema: string,
+    // ): s_out.Schema_Reference => ['child', {
+    //     'module': module,
+    //     'schema': schema,
+    // }]
 
     export const sibling = (
         schema: string,
@@ -39,29 +39,29 @@ export const type_reference = (
 
 export const value_reference = (
     type: string,
-    sub_selection: p_.Normal_List<s_out.Value_Selection_Path>,
+    sub_selection: p_.Normal_List<s_out.Value_Reference.subselection.L>,
 ): s_out.Value_Reference => ({
     'type': type,
-    'sub selection': p_.list(sub_selection),
+    'subselection': p_.list(sub_selection),
 })
 
 export namespace vsp {
 
-    export const dictionary = (): s_out.Value_Selection_Path => ['dictionary', null]
+    export const dictionary = (): s_out.Value_Reference.subselection.L => ['dictionary', null]
 
     export const group = (
         property: string,
-    ): s_out.Value_Selection_Path => ['group', {
+    ): s_out.Value_Reference.subselection.L => ['group', {
         'property': property,
     }]
 
-    export const list = (): s_out.Value_Selection_Path => ['list', null]
+    export const list = (): s_out.Value_Reference.subselection.L => ['list', null]
 
-    export const optional = (): s_out.Value_Selection_Path => ['optional', null]
+    export const optional = (): s_out.Value_Reference.subselection.L => ['optional', null]
 
     export const state = (
         option: string,
-    ): s_out.Value_Selection_Path => ['state', {
+    ): s_out.Value_Reference.subselection.L => ['state', {
         'option': option,
     }]
 

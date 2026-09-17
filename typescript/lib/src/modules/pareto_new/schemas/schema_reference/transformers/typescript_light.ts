@@ -38,7 +38,7 @@ export const Schema_Reference: declarations.Schema_Reference = ($) => ({
     'value': p_.from.state($).decide(
         ($) => {
             switch ($[0]) {
-                case 'child': return p_.option($, ($) => "../modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/schema.js")
+                // case 'child': return p_.option($, ($) => "../modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/schema.js")
                 case 'external': return p_.option($, ($) => ser_path.Name($.package) + "/modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/schema")
                 case 'sibling': return p_.option($, ($) => "../../" + ser_path.Name($) + "/schema.js")
                 default: return p_.exhaustive($[0])
@@ -63,7 +63,7 @@ export const Value_Reference: declarations.Value_Reference = ($, $p) => sh.t.typ
         p_.literal.list([
             sh.identifier_escaped($.type)
         ]),
-        p_.from.list($['sub selection']).map(
+        p_.from.list($['subselection']).map(
             ($) => p_.from.state($).decide(
                 ($): s_out.Type.type_reference.tail.L => {
                     switch ($[0]) {

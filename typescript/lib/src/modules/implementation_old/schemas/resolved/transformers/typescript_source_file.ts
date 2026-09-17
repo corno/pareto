@@ -234,6 +234,7 @@ export const Assign: p_i.Transformer<
                                         ),
                                         sh.identifier_raw("optional"),
                                     ),
+                                    true,
                                     p_.literal.list([
                                         Select_Value($v_source),
                                         sh.e.arrow_function_with_expression(
@@ -264,6 +265,7 @@ export const Assign: p_i.Transformer<
                                         ),
                                         sh.identifier_raw("state"),
                                     ),
+                                    true,
                                     p_.literal.list([
                                         Select_Value($v_source),
                                         sh.e.arrow_function_with_block(
@@ -292,7 +294,7 @@ export const Assign: p_i.Transformer<
                                                                 }
                                                             })
                                                         ).convert_to_list(
-                                                            ($, id) => sh.sw.case_(
+                                                            ($, id) => sh.sw.case_statements(
                                                                 sh.e.string_literal(
                                                                     sh.string_literal(id, 'apostrophe')),
                                                                 p_.literal.list([
@@ -302,6 +304,7 @@ export const Assign: p_i.Transformer<
                                                                                 sh.e.identifier_raw("pt"),
                                                                                 sh.identifier_raw('ss'),
                                                                             ),
+                                                                            true,
                                                                             p_.literal.list([
                                                                                 sh.e.identifier_raw("$"),
                                                                                 sh.e.arrow_function_with_expression(
@@ -317,7 +320,7 @@ export const Assign: p_i.Transformer<
                                                                 ])
                                                             )
                                                         ),
-                                                        sh.sw.default_(
+                                                        sh.sw.default_statements(
                                                             p_.literal.list([
                                                                 sh.s.return_(p_.from.state($.type).decide(
                                                                     ($) => {
@@ -328,6 +331,7 @@ export const Assign: p_i.Transformer<
                                                                                     sh.e.identifier_raw("pt"),
                                                                                     sh.identifier_raw('au'),
                                                                                 ),
+                                                                                true,
                                                                                 p_.literal.list([
                                                                                     sh.e.element_access(
                                                                                         sh.e.identifier_raw("$"),
@@ -356,6 +360,7 @@ export const Assign: p_i.Transformer<
                                         ),
                                         sh.identifier_raw("text"),
                                     ),
+                                    true,
                                     p_.literal.list([
                                         Select_Value($v_source),
                                         sh.e.arrow_function_with_block(
@@ -372,14 +377,14 @@ export const Assign: p_i.Transformer<
                                                     sh.e.identifier_raw("$t"),
                                                     p_.literal.chain(
                                                         p_.from.dictionary($.cases).convert_to_list(
-                                                            ($, id) => sh.sw.case_(
+                                                            ($, id) => sh.sw.case_statements(
                                                                 sh.e.string_literal(
                                                                     sh.string_literal(id, 'apostrophe')),
                                                                 p_.literal.list([
                                                                     sh.s.return_(Assign($))
                                                                 ])
                                                             )),
-                                                        sh.sw.default_(
+                                                        sh.sw.default_statements(
                                                             p_.literal.list([
                                                                 sh.s.return_(Assign($.default))
                                                             ])
@@ -455,6 +460,7 @@ export const Assign: p_i.Transformer<
                                             ),
                                             sh.identifier_raw("literal"),
                                         ),
+                                        true,
                                         p_.literal.list([
                                             sh.e.object_literal(p_.from.dictionary($).convert_to_list(
                                                 ($, id) => sh.object_property(
@@ -487,12 +493,14 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("dictionary"),
                                                                                 ),
+                                                                                true,
                                                                                 p_.literal.list([
                                                                                     Select_Value($v_selection),
                                                                                 ])
                                                                             ),
                                                                             sh.identifier_raw("map"),
                                                                         ),
+                                                                        true,
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
@@ -519,12 +527,14 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("dictionary"),
                                                                                 ),
+                                                                                true,
                                                                                 p_.literal.list([
                                                                                     Select_Value($v_selection),
                                                                                 ])
                                                                             ),
                                                                             sh.identifier_raw("resolve_refiner"),
                                                                         ),
+                                                                        true,
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
@@ -575,6 +585,7 @@ export const Assign: p_i.Transformer<
                                                     ),
                                                     sh.identifier_raw("resolve"),
                                                 ),
+                                                true,
                                                 p_.literal.list([
                                                     sh.e.arrow_function_with_block(
                                                         p_.literal.list([]),
@@ -627,6 +638,7 @@ export const Assign: p_i.Transformer<
                                             ),
                                             sh.identifier_raw("literal"),
                                         ),
+                                        true,
                                         p_.literal.list([
                                             sh.e.array_literal(p_.from.list($).map(
                                                 ($) => Assign($)))
@@ -662,12 +674,14 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("list"),
                                                                                 ),
+                                                                                true,
                                                                                 p_.literal.list([
                                                                                     $v_selection,
                                                                                 ])
                                                                             ),
                                                                             sh.identifier_raw("map"),
                                                                         ),
+                                                                        true,
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
@@ -687,6 +701,7 @@ export const Assign: p_i.Transformer<
                                                                             ),
                                                                             sh.identifier_raw("map_with_state"),
                                                                         ),
+                                                                        true,
                                                                         p_.literal.list([
                                                                             $v_selection,
                                                                             Assign($['initialize state']),
@@ -785,6 +800,7 @@ export const Assign: p_i.Transformer<
                                                         ),
                                                         sh.identifier_raw("not_set"),
                                                     ),
+                                                    true,
                                                     p_.literal.list([])
                                                 ))
                                                 case 'set': return p_.option($, ($) => sh.e.call(
@@ -798,6 +814,7 @@ export const Assign: p_i.Transformer<
                                                         ),
                                                         sh.identifier_raw("set"),
                                                     ),
+                                                    true,
                                                     p_.literal.list([
                                                         Assign($),
                                                     ])
@@ -834,12 +851,14 @@ export const Assign: p_i.Transformer<
                                                                                     ),
                                                                                     sh.identifier_raw("optional"),
                                                                                 ),
+                                                                                true,
                                                                                 p_.literal.list([
                                                                                     Select_Value($v_selection),
                                                                                 ])
                                                                             ),
                                                                             sh.identifier_raw("map"),
                                                                         ),
+                                                                        true,
                                                                         p_.literal.list([
                                                                             sh.e.arrow_function_with_expression(
                                                                                 p_.literal.list([
@@ -920,12 +939,14 @@ export const Assign: p_i.Transformer<
                         case 'assert': return p_.option($, ($) => p_implement_me("X22"))
                         case 'abort': return p_.option($, ($) => sh.e.call(
                             sh.e.identifier_raw("abort"),
+                            true,
                             p_.literal.list([
                                 Assign($)
                             ])
                         ))
                         case 'change context': return p_.option($, ($) => sh.e.call(
                             sh.e.identifier_raw("p_change_context"),
+                            true,
                             p_.literal.list([
                                 Select_Value($['new context']),
                                 sh.e.arrow_function_with_expression(
@@ -943,6 +964,7 @@ export const Assign: p_i.Transformer<
                                 sh.e.identifier_raw("_pdev"),
                                 sh.identifier_raw("implement_me")
                             ),
+                            true,
                             p_.literal.list([
                                 sh.e.string_literal(
                                     sh.string_literal($, 'quote'))
@@ -951,6 +973,7 @@ export const Assign: p_i.Transformer<
                         case 'iterate': return p_.option($, ($) => p_implement_me("X23"))
                         case 'unreachable': return p_.option($, ($) => sh.e.call(
                             sh.e.identifier_raw("p_unreachable_code_path"),
+                            true,
                             p_.literal.list([
                                 sh.e.string_literal(
                                     sh.string_literal($.explanation, 'quote'))
@@ -958,6 +981,7 @@ export const Assign: p_i.Transformer<
                         ))
                         case 'variables': return p_.option($, ($) => sh.e.call(
                             sh.e.identifier_raw("p_variables"),
+                            true,
                             p_.literal.list([
                                 sh.e.arrow_function_with_block(
                                     p_.literal.list([]),
@@ -998,6 +1022,7 @@ export const Select_Value = (
                     sh.e.identifier_raw("_pdev"),
                     sh.identifier_raw("implement_me")
                 ),
+                true,
                 p_.literal.list([
                     sh.e.string_literal(
                         sh.string_literal($, 'quote'))
@@ -1021,6 +1046,7 @@ export const Select_Value = (
                                             default: return p_.exhaustive($[0])
                                         }
                                     }),
+                                true,
                                 p_.literal.segmented_list([
                                     p_.literal.list([
                                         Assign($.context),
@@ -1035,6 +1061,7 @@ export const Select_Value = (
                                                 null,
                                                 sh.e.call(
                                                     sh.e.identifier_raw("abort"),
+                                                    true,
                                                     p_.literal.list([
                                                         Assign($)
                                                     ])
@@ -1106,6 +1133,7 @@ export const Select_Value = (
                                     Select_Value($.dictionary),
                                     sh.identifier_raw("__get_entry_deprecated")
                                 ),
+                                true,
                                 p_.literal.list([
                                     Assign($.id),
                                     sh.e.object_literal(
@@ -1123,6 +1151,7 @@ export const Select_Value = (
                                                     null,
                                                     sh.e.call(
                                                         sh.e.identifier_raw("abort"),
+                                                        true,
                                                         p_.literal.list([
                                                             Assign($['no such entry handler'])
                                                         ])
@@ -1135,6 +1164,7 @@ export const Select_Value = (
                             ))
                             case 'list from text': return p_.option($, ($) => sh.e.call(
                                 sh.e.identifier_raw("p_list_from_text"),
+                                true,
                                 p_.literal.list([
                                     Select_Value($.source),
                                     sh.e.arrow_function_with_expression(
@@ -1154,6 +1184,7 @@ export const Select_Value = (
                                     Select_Lookup($.lookup),
                                     sh.identifier_raw("get_entry")
                                 ),
+                                true,
                                 p_.literal.list([
                                     Assign($.id),
                                     p_.from.state($.type).decide(
@@ -1170,6 +1201,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['no such entry'])
                                                                     ])
@@ -1184,6 +1216,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['no context lookup'])
                                                                     ])
@@ -1198,6 +1231,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['cycle detected'])
                                                                     ])
@@ -1217,6 +1251,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['no such entry'])
                                                                     ])
@@ -1231,6 +1266,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['no context lookup'])
                                                                     ])
@@ -1245,6 +1281,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['accessing cyclic sibling before it is resolved'])
                                                                     ])
@@ -1264,6 +1301,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['no such entry'])
                                                                     ])
@@ -1278,6 +1316,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['no context lookup'])
                                                                     ])
@@ -1292,6 +1331,7 @@ export const Select_Value = (
                                                                 null,
                                                                 sh.e.call(
                                                                     sh.e.identifier_raw("abort"),
+                                                                    true,
                                                                     p_.literal.list([
                                                                         Assign($['abort handlers']['cycle detected'])
                                                                     ])
@@ -1310,6 +1350,7 @@ export const Select_Value = (
                                     Select_Lookup($.lookup),
                                     sh.identifier_raw("get_entry_depth")
                                 ),
+                                true,
                                 p_.literal.list([
                                     Assign($.id),
                                     sh.e.object_literal(
@@ -1322,6 +1363,7 @@ export const Select_Value = (
                                                     null,
                                                     sh.e.call(
                                                         sh.e.identifier_raw("abort"),
+                                                        true,
                                                         p_.literal.list([
                                                             Assign($['abort handlers']['no such entry'])
                                                         ])
@@ -1336,6 +1378,7 @@ export const Select_Value = (
                                                     null,
                                                     sh.e.call(
                                                         sh.e.identifier_raw("abort"),
+                                                        true,
                                                         p_.literal.list([
                                                             Assign($['abort handlers']['no context lookup'])
                                                         ])
@@ -1350,6 +1393,7 @@ export const Select_Value = (
                                                     null,
                                                     sh.e.call(
                                                         sh.e.identifier_raw("abort"),
+                                                        true,
                                                         p_.literal.list([
                                                             Assign($['abort handlers']['cycle detected'])
                                                         ])
@@ -1370,6 +1414,7 @@ export const Select_Value = (
                             case 'state': return p_.option($, ($) => sh.e.identifier_raw("state"))
                             case 'text from list': return p_.option($, ($) => sh.e.call(
                                 sh.e.identifier_raw("p_text_from_list"),
+                                true,
                                 p_.literal.list([
                                     Select_Value($.source),
                                     sh.e.arrow_function_with_expression(
@@ -1410,6 +1455,7 @@ export const Select_Lookup = (
                     sh.e.identifier_raw("_pdev"),
                     sh.identifier_raw("implement_me")
                 ),
+                true,
                 p_.literal.list([
                     sh.e.string_literal(
                         sh.string_literal($, 'quote'))
@@ -1426,6 +1472,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("not_set")
                             ),
+                            true,
                             p_.literal.list([])
                         ))
                         case 'siblings': return p_.option($, ($) => sh.e.identifier_raw("$a"))
@@ -1437,6 +1484,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("from_resolved_dictionary")
                             ),
+                            true,
                             p_.literal.list([
                                 Select_Value($)
                             ])
@@ -1460,6 +1508,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("empty")
                             ),
+                            true,
                             p_.literal.list([])
                         ))
                         case 'push': return p_.option($, ($) => sh.e.call(
@@ -1470,6 +1519,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("push")
                             ),
+                            true,
                             p_.literal.list([
                                 Select_Lookup($.stack),
                                 Select_Lookup($.acyclic)
@@ -1489,6 +1539,7 @@ export const Select_Lookup = (
                                 ),
                                 sh.identifier_raw("not_set")
                             ),
+                            true,
                             p_.literal.list([])
                         ))
                         case 'siblings': return p_.option($, ($) => sh.e.identifier_raw("$c"))

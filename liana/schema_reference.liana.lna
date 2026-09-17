@@ -1,0 +1,48 @@
+(
+    `schema`: | `schema` (
+        `schema imports`: {}
+        `resolver imports`: {}
+        `globals`: (
+            `complexity`: | `unconstrained` ~
+            `text types`: {
+                'message': < | `single line` ~ | `no` ~ >
+                'pseudo reference': < | `single line` ~ | `no` ~ >
+            }
+            `simple types`: {
+                'boolean': < | `boolean` ~ >
+            }
+        )
+        `modules`: {
+            'Schema Reference': < | `state` < {
+                'sibling': < _ _ | `text` | `global` 'pseudo reference' >
+                'external': < _ _ | `group` {
+                    'package': < _ | `text` | `global` 'pseudo reference' >
+                    'module': < _ | `text` | `global` 'pseudo reference' >
+                    'schema': < _ | `text` | `global` 'pseudo reference' >
+                } >
+            } _ > >
+            'Type Reference': < | `group` {
+                'type': < _ | `text` | `global` 'pseudo reference' >
+            } >
+            'Value Reference': < | `group` {
+                'type': < _ | `text` | `global` 'pseudo reference' >
+                'subselection': < _ | `list` < | `state` < {
+                    'dictionary': < _ _ | `nothing` ~ >
+                    'group': < _ _ | `group` {
+                        'property': < _ | `text` | `global` 'pseudo reference' >
+                    } >
+                    'list': < _ _ | `nothing` ~ >
+                    'optional': < _ _ | `nothing` ~ >
+                    'state': < _ _ | `group` {
+                        'option': < _ | `text` | `global` 'pseudo reference' >
+                    } >
+                } _ > _ > >
+            } >
+        }
+        `complexity`: | `unconstrained` ~
+    )
+    `schema path`: [ ]
+    `complexity`: | `unconstrained` (
+        `module`: "Root"
+    )
+)

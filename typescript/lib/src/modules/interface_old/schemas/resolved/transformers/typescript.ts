@@ -252,7 +252,7 @@ export const Package_Set: p_.Transformer<
                                                                                                     p_.from.dictionary($).convert_to_list(
                                                                                                         ($, id) => sh.tl_propery(
                                                                                                             id,
-                                                                                                            'apostrophized string literal',
+                                                                                                            'string literal with apostrophes',
                                                                                                             true,
                                                                                                             sh.t.type_reference(
                                                                                                                 sh.identifier_raw("p_"),
@@ -292,7 +292,7 @@ export const Package_Set: p_.Transformer<
                                                                                     p_.from.dictionary($).convert_to_list(
                                                                                         ($, id) => sh.tl_propery(
                                                                                             id,
-                                                                                            'apostrophized string literal',
+                                                                                            'string literal with apostrophes',
                                                                                             true,
                                                                                             sh.t.type_reference(
                                                                                                 sh.identifier_escaped(name), p_.literal.list([sh.identifier_raw("P"), sh.identifier_escaped(id)]), p_.literal.list([]))
@@ -448,7 +448,7 @@ export const Value: p_.Transformer_With_Parameter<
                         sh.t.type_literal(p_.from.dictionary($).convert_to_list(
                             ($, id) => sh.tl_propery(
                                 id,
-                                'apostrophized string literal',
+                                'string literal with apostrophes',
                                 true,
                                 sh.t.type_reference(
                                     sh.identifier_escaped($p.name),

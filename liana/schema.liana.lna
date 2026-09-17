@@ -1,0 +1,92 @@
+(
+    `schema`: | `schema` (
+        `schema imports`: {}
+        `resolver imports`: {}
+        `globals`: (
+            `complexity`: | `unconstrained` ~
+            `text types`: {
+                'message': < | `single line` ~ | `no` ~ >
+                'pseudo reference': < | `single line` ~ | `no` ~ >
+            }
+            `simple types`: {
+                'boolean': < | `boolean` ~ >
+            }
+        )
+        `modules`: {
+            'Schema': < | `group` {
+                'imports': < _ | `dictionary` < | `component` < | `internal acyclic` 'Schema Reference' _ > > >
+                'types': < _ | `dictionary` < | `group` {
+                    'root': < _ | `component` < | `internal acyclic` 'Value' _ > >
+                } > >
+            } >
+            'Schema Reference': < | `state` < {
+                'sibling': < _ _ | `text` | `global` 'pseudo reference' >
+                'external': < _ _ | `group` {
+                    'package': < _ | `text` | `global` 'pseudo reference' >
+                    'module': < _ | `text` | `global` 'pseudo reference' >
+                    'schema': < _ | `text` | `global` 'pseudo reference' >
+                } >
+            } _ > >
+            'Value': < | `state` < {
+                'boolean': < _ _ | `nothing` ~ >
+                'component': < _ _ | `group` {
+                    'type location': < _ | `state` < {
+                        'this schema': < _ _ | `group` {
+                            'type': < * "can be circular" | `text` | `global` 'pseudo reference' >
+                        } >
+                        'import': < _ _ | `group` {
+                            'schema': < _ | `text` | `global` 'pseudo reference' >
+                            'type': < _ | `text` | `global` 'pseudo reference' >
+                        } >
+                    } _ > >
+                } >
+                'dictionary': < _ _ | `component` < | `internal` 'Value' _ > >
+                'group': < _ _ | `group` {
+                    'properties': < _ | `dictionary` < | `component` < | `internal` 'Value' _ > > >
+                } >
+                'list': < _ _ | `component` < | `internal` 'Value' _ > >
+                'nothing': < _ _ | `nothing` ~ >
+                'number': < _ _ | `state` < {
+                    'approximation': < _ _ | `nothing` ~ >
+                    'exact': < _ _ | `state` < {
+                        'integer': < _ _ | `nothing` ~ >
+                        'natural': < _ _ | `nothing` ~ >
+                    } _ > >
+                } _ > >
+                'optional': < _ _ | `component` < | `internal` 'Value' _ > >
+                'reference': < _ _ | `group` {
+                    'type location': < _ | `state` < {
+                        'this schema': < _ _ | `group` {
+                            'type': < * "cannot be circularly dependent on the type that contains this reference" | `text` | `global` 'pseudo reference' >
+                        } >
+                        'import': < _ _ | `group` {
+                            'schema': < _ | `text` | `global` 'pseudo reference' >
+                            'type': < _ | `text` | `global` 'pseudo reference' >
+                        } >
+                    } _ > >
+                    'subselection': < _ | `list` < | `state` < {
+                        'dictionary': < _ _ | `nothing` ~ >
+                        'group': < _ _ | `group` {
+                            'property': < _ | `text` | `global` 'pseudo reference' >
+                        } >
+                        'list': < _ _ | `nothing` ~ >
+                        'optional': < _ _ | `nothing` ~ >
+                        'state': < _ _ | `group` {
+                            'option': < _ | `text` | `global` 'pseudo reference' >
+                        } >
+                    } _ > _ > >
+                    'cyclic': < _ | `simple` | `global` 'boolean' >
+                } >
+                'state': < _ _ | `group` {
+                    'options': < _ | `dictionary` < | `component` < | `internal` 'Value' _ > > >
+                } >
+                'text': < _ _ | `nothing` ~ >
+            } _ > >
+        }
+        `complexity`: | `unconstrained` ~
+    )
+    `schema path`: [ ]
+    `complexity`: | `unconstrained` (
+        `module`: "Schema"
+    )
+)

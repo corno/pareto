@@ -7,12 +7,12 @@ export * as schema_reference from "../../schema_reference/shorthands/target.js"
 
 export const root = (
     development_mode: boolean,
-    source_schema: s_out.Root['source schema'],
-    error_schema: s_out.Root['error schema'],
-    parameters_schema: s_out.Root['parameters schema'],
-    dependencies: p_.Normal_Dictionary<s_out.Root.dependencies_D>,
-    declarations: p_.Normal_Dictionary<s_out.Root.declarations_D>,
-    implementations: p_.Normal_Dictionary<s_out.Root.implementations_D>,
+    source_schema: s_out.Root.source_schema,
+    error_schema: s_out.Root.error_schema,
+    parameters_schema: s_out.Root.parameters_schema,
+    dependencies: p_.Normal_Dictionary<s_out.Root.dependencies.D>,
+    declarations: p_.Normal_Dictionary<s_out.Root.declarations.D>,
+    implementations: p_.Normal_Dictionary<s_out.Root.implementations.D>,
 ): s_out.Root => ({
     'development mode': development_mode,
     'source schema': source_schema,
@@ -27,10 +27,10 @@ export namespace dependency {
     
     export const cousin = (
         schema: string,
-        source: string,
-    ): s_out.Root.dependencies_D => ['cousin', {
+        refiner: string,
+    ): s_out.Root.dependencies.D => ['cousin', {
         'schema': schema,
-        'source': source,
+        'refiner': refiner,
     }]
 
     export const external = (
@@ -38,7 +38,7 @@ export namespace dependency {
         module: string,
         schema: string,
         refiner: string,
-    ): s_out.Root.dependencies_D => ['external', {
+    ): s_out.Root.dependencies.D => ['external', {
         'package': pkg,
         'module': module,
         'schema': schema,
@@ -46,31 +46,31 @@ export namespace dependency {
     }]
 
     export const sibling = (
-        source: string,
-    ): s_out.Root.dependencies_D => ['sibling', {
-        'source': source,
+        refiner: string,
+    ): s_out.Root.dependencies.D => ['sibling', {
+        'refiner': refiner,
     }]
 }
 
 export namespace declaration {
 
     export const production = (
-        source: s_schema_reference.Value_Reference,
-        error: s_out.Root.declarations_D['error'],
-        parameter: s_out.Root.declarations_D['parameter'],
-    ): s_out.Root.declarations_D => ({
+        source: s_out.Root.declarations.D.source.iterator,
+        error: s_out.Root.declarations.D.error,
+        parameters: s_out.Root.declarations.D.parameters,
+    ): s_out.Root.declarations.D => ({
         'source': ['iterator', source],
         'error': error,
-        'parameter': parameter,
+        'parameters': parameters,
     })
     export const refiner = (
-        source: s_schema_reference.Value_Reference,
-        error: s_out.Root.declarations_D['error'],
-        parameter: s_out.Root.declarations_D['parameter'],
-    ): s_out.Root.declarations_D => ({
+        source: s_out.Root.declarations.D.source.value,
+        error: s_out.Root.declarations.D.error,
+        parameters: s_out.Root.declarations.D.parameters,
+    ): s_out.Root.declarations.D => ({
         'source': ['value', source],
         'error': error,
-        'parameter': parameter,
+        'parameters': parameters,
     })
 
 }
@@ -79,7 +79,7 @@ export const implementation = (
     temp_has_error: boolean,
     temp_has_parameters: boolean,
     expression: s_out.Expression,
-): s_out.Root.implementations_D => ({
+): s_out.Root.implementations.D => ({
     'temp has error': temp_has_error,
     'temp has parameters': temp_has_parameters,
     'expression': expression,
@@ -96,10 +96,10 @@ export namespace expr {
     export namespace literal {
 
         export const state = (
-            name: string,
+            option: string,
             data: s_out.Expression,
         ): s_out.Expression => ['literal', ['state', {
-            'name': name,
+            'option': option,
             'data': data,
         }]]
 
@@ -114,7 +114,7 @@ export namespace expr {
 
 export namespace value_selection {
     export const context_value = (
-        tail: s_out.Value_Selection.tail,
+        tail: s_out.Value_Selection.context_value.tail,
     ): s_out.Value_Selection => ['context value', {
         'tail': tail
     }]
@@ -125,7 +125,7 @@ export namespace value_selection {
         context: s_out.Value_Selection,
         error: null | 'pass through' |  s_out.Expression,
         parameters: null | 'pass through' | s_out.Expression,
-        tail: s_out.Value_Selection.tail,
+        tail: s_out.Value_Selection.call.tail,
     ): s_out.Value_Selection => ['call', {
         'refiner': refiner,
         'type': type,

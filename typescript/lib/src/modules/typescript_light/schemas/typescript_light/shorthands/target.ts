@@ -108,17 +108,34 @@ export namespace sw {
 
     export const case_ = (
         expression: s_target.Expression,
-        statements: p_.Normal_List<s_target.Statements.L>,
+        statement: s_target.Statements.L,
     ): s_target.Statements.L.switch_.clauses.L => ({
         'type': ['case', expression],
-        'statements': p_.list(statements),
+       'body': ['statement', statement]
     })
 
     export const default_ = (
+        statement: s_target.Statements.L,
+    ): s_target.Statements.L.switch_.clauses.L => ({
+        'type': ['default', null],
+        'body': ['statement', statement],
+    })
+
+
+
+    export const case_statements = (
+        expression: s_target.Expression,
+        statements: p_.Normal_List<s_target.Statements.L>,
+    ): s_target.Statements.L.switch_.clauses.L => ({
+        'type': ['case', expression],
+        'body': ['statements', p_.list(statements)],
+    })
+
+    export const default_statements = (
         statements: p_.Normal_List<s_target.Statements.L>,
     ): s_target.Statements.L.switch_.clauses.L => ({
         'type': ['default', null],
-        'statements': p_.list(statements),
+        'body': ['statements', p_.list(statements)],
     })
 }
 
@@ -241,7 +258,7 @@ export const parameter = (
 
 export const tl_propery = (
     key: string,
-    key_type: 'identifier' | 'quoted string literal' | 'apostrophized string literal',
+    key_type: 'identifier' | 'string literal with quotes' | 'string literal with apostrophes',
     readonly: boolean,
     type: s_target.Type,
 ): s_target.Type.type_literal.properties.L => {
@@ -252,7 +269,7 @@ export const tl_propery = (
             }]
             : ['string literal', {
                 'value': key,
-                'delimiter': key_type === 'quoted string literal' ? ['quote', null] : ['apostrophe', null],
+                'delimiter': key_type === 'string literal with quotes' ? ['quote', null] : ['apostrophe', null],
             }],
         'readonly': readonly,
         'type': type,
@@ -383,10 +400,12 @@ export namespace e {
 
     export const call = (
         function_selection: s_target.Expression,
+        arguments_on_own_line: boolean,
         // type_arguments: p_.Normal_List<s_target.Type>,
         arguments_: p_.Normal_List<s_target.Expression>,
     ): s_target.Expression => ['call', {
         'function selection': function_selection,
+        'arguments on own line': arguments_on_own_line,
         'arguments': p_.list(arguments_),
     }]
 

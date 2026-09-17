@@ -116,7 +116,7 @@ export const Value: p_i.Transformer_With_Parameter<
                     sh.s.namespace(
                         $p.export,
                         sh.identifier_escaped($p.name),
-                        p_.from.dictionary($).flatten_to_list(
+                        p_.from.dictionary($.properties).flatten_to_list(
                             ($, id) => Value(
                                 $,
                                 {
@@ -228,10 +228,10 @@ export const Value: p_i.Transformer_With_Parameter<
                             ])
                         ))
                         case 'group': return p_.option($, ($) => sh.t.type_literal(
-                            p_.from.dictionary($).convert_to_list(
+                            p_.from.dictionary($.properties).convert_to_list(
                                 ($, id) => sh.tl_propery(
                                     id,
-                                    'apostrophized string literal',
+                                    'string literal with apostrophes',
                                     true,
                                     sh.t.type_reference(
                                         sh.identifier_escaped($p.name),
@@ -297,7 +297,7 @@ export const Value: p_i.Transformer_With_Parameter<
                                             }
                                         }
                                     ),
-                                    p_.from.list($['sub selection']).flatten(
+                                    p_.from.list($['subselection']).flatten(
                                         ($) => p_.from.state($).decide(
                                             ($) => {
                                                 switch ($[0]) {

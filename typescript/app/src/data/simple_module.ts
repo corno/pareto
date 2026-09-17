@@ -26,6 +26,7 @@ export const $ = sh.module(
                     sh.schema_reference.sr.sibling("schema B"),
                     p_.literal.not_set(),
                     p_.literal.dictionary({}),
+                    p_.literal.dictionary({}),
                     p_.literal.dictionary({
                         "type A": sh.transformer.declaration(
                             sh.schema_reference.value_reference(
