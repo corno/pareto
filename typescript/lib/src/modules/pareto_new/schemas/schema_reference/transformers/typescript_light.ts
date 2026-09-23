@@ -39,8 +39,8 @@ export const Schema_Reference: declarations.Schema_Reference = ($) => ({
         ($) => {
             switch ($[0]) {
                 // case 'child': return p_.option($, ($) => "../modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/schema.js")
-                case 'external': return p_.option($, ($) => ser_path.Name($.package) + "/modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/schema")
-                case 'sibling': return p_.option($, ($) => "../../" + ser_path.Name($) + "/schema.js")
+                case 'external': return p_.option($, ($) => ser_path.No_Space_Name($.package) + "/modules/" + ser_path.No_Space_Name($.module) + "/schemas/" + ser_path.No_Space_Name($.schema) + "/schema")
+                case 'sibling': return p_.option($, ($) => "../../" + ser_path.No_Space_Name($) + "/schema.js")
                 default: return p_.exhaustive($[0])
             }
         }

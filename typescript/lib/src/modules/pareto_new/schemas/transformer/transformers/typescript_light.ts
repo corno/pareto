@@ -608,8 +608,8 @@ export const Root: declarations.Root = ($) => {
                                 p_.from.state($).decide(
                                     ($) => {
                                         switch ($[0]) {
-                                            case 'external': return p_.option($, ($) => ser_path.Name($.package) + "/modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/serializers")
-                                            case 'cousin': return p_.option($, ($) => "../../" + ser_path.Name($.schema) + "/serializers.js")
+                                            case 'external': return p_.option($, ($) => ser_path.No_Space_Name($.package) + "/modules/" + ser_path.No_Space_Name($.module) + "/schemas/" + ser_path.No_Space_Name($.schema) + "/serializers")
+                                            case 'cousin': return p_.option($, ($) => "../../" + ser_path.No_Space_Name($.schema) + "/serializers.js")
                                             case 'this schema': return p_.option($, ($) => "../serializers.js")
                                             default: return p_.exhaustive($[0])
                                         }
@@ -636,9 +636,9 @@ export const Root: declarations.Root = ($) => {
                                 p_.from.state($).decide(
                                     ($) => {
                                         switch ($[0]) {
-                                            case 'external': return p_.option($, ($) => ser_path.Name($.package) + "/modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/transformers/" + ser_path.Name($.transformer))
-                                            case 'cousin': return p_.option($, ($) => "../../" + ser_path.Name($.schema) + "/transformers/" + ser_path.Name($.transformer) + ".js")
-                                            case 'sibling': return p_.option($, ($) => "./" + ser_path.Name($.transformer) + ".js")
+                                            case 'external': return p_.option($, ($) => ser_path.No_Space_Name($.package) + "/modules/" + ser_path.No_Space_Name($.module) + "/schemas/" + ser_path.No_Space_Name($.schema) + "/transformers/" + ser_path.No_Space_Name($.transformer))
+                                            case 'cousin': return p_.option($, ($) => "../../" + ser_path.No_Space_Name($.schema) + "/transformers/" + ser_path.No_Space_Name($.transformer) + ".js")
+                                            case 'sibling': return p_.option($, ($) => "./" + ser_path.No_Space_Name($.transformer) + ".js")
                                             default: return p_.exhaustive($[0])
                                         }
                                     }
