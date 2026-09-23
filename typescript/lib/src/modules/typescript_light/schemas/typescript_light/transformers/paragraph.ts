@@ -10,9 +10,18 @@ import type * as s_serialization from "../../serialization/schema.js"
 import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/shorthands/deprecated"
 
 //dependencies
-import * as ser_primitives from "../../primitives/serializers.js"
+import * as ser_primitives from "../serializers.js"
 
 namespace declarations {
+
+    export type Function_Declaration = p_i.Transformer_With_Parameter<
+        s_in.Function_Declaration,
+        s_out.Phrase,
+        {
+            'ts': s_serialization.TypeScript_Parameters,
+            'return token': s_out.Phrase,
+        }
+    >
 
     export type Identifier = p_i.Transformer<
         s_in.Identifier,
@@ -51,7 +60,7 @@ namespace declarations {
     >
 
     export type Expression = p_i.Transformer_With_Parameter<
-        s_in.Expression_,
+        s_in.Expression,
         s_out.Phrases,
         {
             'replace empty type literals by symbol': boolean
@@ -67,11 +76,47 @@ namespace declarations {
 
 }
 
+export const Function_Declaration: declarations.Function_Declaration = ($, $p) => sh.ph.composed([
+    sh.ph.rich_phrase(
+        p_.from.list($['type parameters']).map(
+            ($) => Type($, $p.ts)),
+        sh.ph.nothing(),
+        sh.ph.text("<"),
+        sh.ph.text(", "),
+        sh.ph.text(">"),
+    ),
+    sh.ph.text("("),
+    sh.ph.indent(
+        sh.pg.sentences(p_.from.list($['parameters']).map(
+            ($) => sh.sentence(p_.literal.list([
+                Identifier($.name),
+                p_.from.optional($.type).decide(
+                    ($) => sh.ph.composed([
+                        sh.ph.text(": "),
+                        Type($, $p.ts)
+                    ]),
+                    () => sh.ph.nothing(),
+                ),
+                sh.ph.text(",")
+            ])))
+        ),
+    ),
+    sh.ph.text(")"),
+    p_.from.optional($['return type']).decide(
+        ($) => sh.ph.composed([
+            $p['return token'],
+            sh.ph.text(" "),
+            Type($, $p.ts)
+        ]),
+        () => sh.ph.nothing(),
+    )
+])
+
 export const Source_File: declarations.Source_File = ($, $p) => Statements($.statements, $p)
 
 
 export const Identifier: declarations.Identifier = ($) => {
-    return sh.ph.text($.value)
+    return sh.ph.text(ser_primitives.Identifier($))
 }
 
 
@@ -184,7 +229,7 @@ export const Statement: declarations.Statement = ($, $p) => p_.from.state($).dec
                     sh.ph.text($)
                 ]),
             ]))
-            case 'module declaration': return p_.option($, ($) => sh.sentence([
+            case 'namespace': return p_.option($, ($) => sh.sentence([
                 $.export ?
                     sh.ph.text("export ")
                     : sh.ph.nothing(),
@@ -366,37 +411,11 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
             ]),)
             case 'arrow function': return p_.option($, ($) => p_.literal.segmented_list([
                 p_.literal.list([
-                    sh.ph.text("("),
-                    sh.ph.rich_phrase(
-                        p_.from.list($.parameters).map(
-                            ($) => sh.ph.composed([
-                                Identifier($.name),
-                                p_.from.optional($.type).decide(
-                                    ($) => sh.ph.composed([
-                                        sh.ph.text(": "),
-                                        Type($, $p)
-                                    ]),
-                                    () => sh.ph.nothing(),
-                                ),
-                            ])),
-                        sh.ph.nothing(),
-                        sh.ph.nothing(),
-                        sh.ph.text(", "),
-                        sh.ph.nothing(),
-                    ),
-                    sh.ph.text(")"),
+                    Function_Declaration($.declaration, {
+                        'return token': sh.ph.text(":"),
+                        'ts': $p,
+                    })
                 ]),
-                p_.from.optional($['return type']).decide(
-                    ($) => p_.literal.segmented_list([
-                        p_.literal.list([
-                            sh.ph.text(": "),
-                        ]),
-                        p_.literal.list([
-                            Type($, $p)
-                        ])
-                    ]),
-                    () => p_.literal.list([]),
-                ),
                 p_.literal.list([
                     sh.ph.text(" => "),
                 ]),
@@ -473,9 +492,9 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                     p_.from.state($.operator).decide(
                         ($) => {
                             switch ($[0]) {
-                                case 'loosely equal': return p_.option($, ($) => sh.ph.text("=="))
+                                // case 'loosely equal': return p_.option($, ($) => sh.ph.text("=="))
                                 case 'strictly equal': return p_.option($, ($) => sh.ph.text("==="))
-                                case 'loosely not equal': return p_.option($, ($) => sh.ph.text("!="))
+                                // case 'loosely not equal': return p_.option($, ($) => sh.ph.text("!="))
                                 case 'strictly not equal': return p_.option($, ($) => sh.ph.text("!=="))
                                 case 'smaller than': return p_.option($, ($) => sh.ph.text("<"))
                                 case 'smaller than or equal': return p_.option($, ($) => sh.ph.text("<="))
@@ -636,34 +655,10 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'boolean': return p_.option($, ($) => sh.ph.text("boolean"))
-            case 'function': return p_.option($, ($) => sh.ph.composed([
-                sh.ph.rich_phrase(
-                    p_.from.list($['type parameters']).map(
-                        ($) => Type($, $p)),
-                    sh.ph.nothing(),
-                    sh.ph.text("<"),
-                    sh.ph.text(", "),
-                    sh.ph.text(">"),
-                ),
-                sh.ph.text("("),
-                sh.ph.indent(
-                    sh.pg.sentences(p_.from.list($['parameters']).map(
-                        ($) => sh.sentence(p_.literal.list([
-                            Identifier($.name),
-                            p_.from.optional($.type).decide(
-                                ($) => sh.ph.composed([
-                                    sh.ph.text(": "),
-                                    Type($, $p)
-                                ]),
-                                () => sh.ph.nothing(),
-                            ),
-                            sh.ph.text(",")
-                        ])))
-                    ),
-                ),
-                sh.ph.text(") => "),
-                Type($['return'], $p)
-            ]))
+            case 'function': return p_.option($, ($) => Function_Declaration($.declaration, {
+                'return token': sh.ph.text(" =>"),
+                'ts': $p,
+            }))
             case 'literal type': return p_.option($, ($) => String_Literal($)) //FIX, implement a switch for the delimiter
             case 'never': return p_.option($, ($) => sh.ph.text("never"))
             case 'null': return p_.option($, ($) => sh.ph.text("null"))
@@ -713,6 +708,7 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
                     sh.ph.text("}")
                 ])
             )
+            case 'undefined': return p_.option($, ($) => sh.ph.text("undefined"))
             case 'type reference': return p_.option($, ($) => sh.ph.composed([
                 Identifier($['start']),
                 sh.ph.composed(p_.from.list($['tail']).map(

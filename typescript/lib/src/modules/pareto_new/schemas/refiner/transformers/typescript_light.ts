@@ -16,8 +16,8 @@ namespace declarations {
         s_out.Source_File
     >
 
-    export type Value_Selection = p_.Transformer<
-        s_in.Value_Selection,
+    export type Select_Value = p_.Transformer<
+        s_in.Select_Value,
         s_out.Expression
     >
 
@@ -88,11 +88,39 @@ export const Root: declarations.Root = ($) => {
                 ]),
                 () => p_.literal.list([])
             ),
-            p_.from.dictionary($.dependencies).on_has_entries(
+            p_.from.dictionary($.dependencies.deserializers).on_has_entries(
                 ($) => p_.literal.segmented_list([
                     p_.literal.list([
                         sh.s.empty_line(),
-                        sh.s.line_comment("dependencies"),
+                        sh.s.line_comment("deserializer dependencies"),
+
+                    ]),
+                    p_.from.dictionary($).convert_to_list(
+                        ($, id) => sh.s.import_namespace(
+                            sh.identifier_escaped("deser " + id),
+                            sh.string_literal(
+                                p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'external': return p_.option($, ($) => ser_path.Name($.package) + "/modules/" + ser_path.Name($.module) + "/schemas/" + ser_path.Name($.schema) + "/deserializers")
+                                            case 'cousin': return p_.option($, ($) => "../../" + ser_path.Name($.schema) + "/deserializers.js")
+                                            case 'this schema': return p_.option($, ($) => "../deserializers.js")
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ),
+                                'quote'
+                            )
+                        )
+                    )
+                ]),
+                () => p_.literal.list([])
+            ),
+            p_.from.dictionary($.dependencies.refiners).on_has_entries(
+                ($) => p_.literal.segmented_list([
+                    p_.literal.list([
+                        sh.s.empty_line(),
+                        sh.s.line_comment("refiner dependencies"),
 
                     ]),
                     p_.from.dictionary($).convert_to_list(
@@ -286,13 +314,480 @@ export const Root: declarations.Root = ($) => {
 export const Expresssion: declarations.Expression = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'from': return p_.option($, ($) => p_variables(
+            case 'abort': return p_.option($, ($) => sh.e.call(
+                sh.e.identifier_raw("abort"),
+                true,
+                p_.literal.list([
+                    Expresssion($)
+                ])
+            ))
+            case 'change context': return p_.option($, ($) => sh.e.call(
+                sh.e.property_access(
+                    sh.e.identifier_raw("p_"),
+                    sh.identifier_raw("change_context"),
+                ),
+                true,
+                p_.literal.list([
+                    Select_Value($.select),
+                    sh.e.arrow_function_with_expression(
+                        p_.literal.list([
+                            sh.parameter(
+                                sh.identifier_raw("$"), null)
+                        ]),
+                        null,
+                        Expresssion($.callback)
+                    )
+                ])
+            ))
+            case 'convert': return p_.option($, ($) => p_variables(
                 () => {
-                    const $v_selection = $.selection
+                    const $v_selection = $.select
                     return p_.from.state($.type).decide(
                         ($) => {
                             switch ($[0]) {
-                                case 'dictionary map': return sh.e.false_()
+                                case 'component': return p_.option($, ($) => p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'transform': return p_.option($, ($) => sh.e.call(
+                                                p_.from.state($.scope).decide(
+                                                    ($) => {
+                                                        switch ($[0]) {
+                                                            case 'external': return p_.option($, ($) => sh.e.property_access(
+                                                                sh.e.identifier_escaped("t " + $.refiner),
+                                                                sh.identifier_escaped($.function)
+                                                            ))
+                                                            case 'local': return p_.option($, ($) => sh.e.identifier_escaped($.function))
+                                                            default: return p_.exhaustive($[0])
+                                                        }
+                                                    }
+                                                ),
+                                                true,
+                                                p_.literal.segmented_list([
+                                                    p_.literal.list([
+                                                        Select_Value($v_selection),
+                                                    ]),
+                                                    p_.from.state($.error).decide(
+                                                        ($) => {
+                                                            switch ($[0]) {
+                                                                case 'omit': return p_.option($, ($) => p_.literal.list([]))
+                                                                case 'pass through': return p_.option($, ($) => p_.literal.list([
+                                                                    sh.e.identifier_raw("abort")
+                                                                ]))
+                                                                case 'handle': return p_.option($, ($) => p_.literal.list([
+                                                                    sh.e.arrow_function_with_expression(
+                                                                        p_.literal.list([
+                                                                            sh.parameter(
+                                                                                sh.identifier_raw("$"),
+                                                                                null
+                                                                            )
+                                                                        ]),
+                                                                        null,
+                                                                        sh.e.call(
+                                                                            sh.e.identifier_raw("abort"),
+                                                                            false,
+                                                                            p_.literal.list([
+                                                                                Expresssion($)
+                                                                            ]),
+                                                                        )
+                                                                    )
+                                                                ]))
+                                                                default: return p_.exhaustive($[0])
+                                                            }
+                                                        }
+                                                    ),
+                                                    p_.from.state($.arguments).decide(
+                                                        ($) => {
+                                                            switch ($[0]) {
+                                                                case 'omit': return p_.option($, ($) => p_.literal.list([]))
+                                                                case 'pass through': return p_.option($, ($) => p_.literal.list([
+                                                                    sh.e.identifier_raw("$p")
+                                                                ]))
+                                                                case 'initialize': return p_.option($, ($) => p_.literal.list([
+                                                                    Expresssion($)
+                                                                ]))
+                                                                default: return p_.exhaustive($[0])
+                                                            }
+                                                        }
+                                                    )
+                                                ])
+                                            ))
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ))
+                                case 'dictionary': return p_.option($, ($) => p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'map': return p_.option($, ($) => sh.e.call(
+                                                sh.e.property_access(
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.identifier_raw("p_"),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("dictionary"),
+                                                        ),
+                                                        false,
+                                                        p_.literal.list([
+                                                            Select_Value($v_selection),
+                                                        ])
+                                                    ),
+                                                    sh.identifier_raw("map"),
+                                                ),
+                                                true,
+                                                p_.literal.list([
+                                                    sh.e.arrow_function_with_expression(
+                                                        p_.literal.list([
+                                                            sh.parameter(
+                                                                sh.identifier_raw("$"), null),
+                                                            sh.parameter(
+                                                                sh.identifier_raw("id"), null),
+                                                        ]),
+                                                        null,
+                                                        Expresssion($['on entry'])
+                                                    )
+                                                ])
+                                            ))
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ))
+                                case 'list': return p_.option($, ($) => p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'map': return p_.option($, ($) => sh.e.call(
+                                                sh.e.property_access(
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.identifier_raw("p_"),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("list"),
+                                                        ),
+                                                        false,
+                                                        p_.literal.list([
+                                                            Select_Value($v_selection),
+                                                        ])
+                                                    ),
+                                                    sh.identifier_raw("map"),
+                                                ),
+                                                true,
+                                                p_.literal.list([
+                                                    sh.e.arrow_function_with_expression(
+                                                        p_.literal.list([
+                                                            sh.parameter(
+                                                                sh.identifier_raw("$"), null)
+                                                        ]),
+                                                        null,
+                                                        Expresssion($['on item'])
+                                                    )
+                                                ])
+                                            ))
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ))
+                                case 'optional': return p_.option($, ($) => p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'decide': return p_.option($, ($) => sh.e.call(
+                                                sh.e.property_access(
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.identifier_raw("p_"),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("optional"),
+                                                        ),
+                                                        false,
+                                                        p_.literal.list([
+                                                            Select_Value($v_selection),
+                                                        ])
+                                                    ),
+                                                    sh.identifier_raw("decide"),
+                                                ),
+                                                true,
+                                                p_.literal.list([
+                                                    sh.e.arrow_function_with_expression(
+                                                        p_.literal.list([
+                                                            sh.parameter(
+                                                                sh.identifier_raw("$"),
+                                                                null
+                                                            )
+                                                        ]),
+
+                                                        p_.from.optional($['temp return type']).decide(
+                                                            ($) => t_schema_reference_to_typescript_light.Value_Reference(
+                                                                $,
+                                                                {
+                                                                    'schema': sh.identifier_raw("s_target")
+                                                                }
+                                                            ),
+                                                            () => null
+                                                        ),
+                                                        Expresssion($['on set'])
+                                                    ),
+                                                    sh.e.arrow_function_with_expression(
+                                                        p_.literal.list([
+                                                        ]),
+                                                        p_.from.optional($['temp return type']).decide(
+                                                            ($) => t_schema_reference_to_typescript_light.Value_Reference(
+                                                                $,
+                                                                {
+                                                                    'schema': sh.identifier_raw("s_target")
+                                                                }
+                                                            ),
+                                                            () => null
+                                                        ),
+                                                        Expresssion($['on not set'])
+                                                    ),
+                                                ])
+                                            ))
+                                            case 'map': return p_.option($, ($) => sh.e.call(
+                                                sh.e.property_access(
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.identifier_raw("p_"),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("optional"),
+                                                        ),
+                                                        false,
+                                                        p_.literal.list([
+                                                            Select_Value($v_selection),
+                                                        ])
+                                                    ),
+                                                    sh.identifier_raw("map"),
+                                                ),
+                                                true,
+                                                p_.literal.list([
+                                                    sh.e.arrow_function_with_expression(
+                                                        p_.literal.list([
+                                                            sh.parameter(
+                                                                sh.identifier_raw("$"), null)
+                                                        ]),
+                                                        null,
+                                                        Expresssion($['on set'])
+                                                    ),
+                                                ])
+                                            ))
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ))
+                                case 'state': return p_.option($, ($) => p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'decide': return p_.option($, ($) => sh.e.call(
+                                                sh.e.property_access(
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.identifier_raw("p_"),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("state"),
+                                                        ),
+                                                        false,
+                                                        p_.literal.list([
+                                                            Select_Value($v_selection),
+                                                        ])
+                                                    ),
+                                                    sh.identifier_raw("decide"),
+                                                ),
+                                                true,
+                                                p_.literal.list([
+                                                    sh.e.arrow_function_with_block(
+                                                        p_.literal.list([
+                                                            sh.parameter(
+                                                                sh.identifier_raw("$"), null)
+                                                        ]),
+                                                        p_.from.optional($['temp return type']).decide(
+                                                            ($) => t_schema_reference_to_typescript_light.Value_Reference(
+                                                                $,
+                                                                {
+                                                                    'schema': sh.identifier_raw("s_target")
+                                                                }
+                                                            ),
+                                                            () => null
+                                                        ),
+                                                        p_.literal.list([
+                                                            sh.s.switch_(
+                                                                sh.e.element_access(
+                                                                    sh.e.identifier_raw("$"),
+                                                                    sh.e.number_literal(0)
+                                                                ),
+                                                                p_.literal.chain(
+                                                                    p_.from.dictionary(
+                                                                        $.options
+                                                                        // p_.from.state($.type).decide(
+                                                                        //     ($): s_in.Expression.from_source.type_.state.decide.options => {
+                                                                        //         switch ($[0]) {
+                                                                        //             case 'partial': return p_.option($, ($) => $.options)
+                                                                        //             case 'full': return p_.option($, ($) => $.options)
+                                                                        //             case 'single': return p_.option($, ($) => single_entry_dictionary($.option, $['if true']))
+                                                                        //             default: return p_.exhaustive($[0])
+                                                                        //         }
+                                                                        //     }
+                                                                        // )
+                                                                    ).convert_to_list(
+                                                                        ($, id) => sh.sw.case_(
+                                                                            sh.e.string_literal(
+                                                                                sh.string_literal(id, 'apostrophe')
+                                                                            ),
+                                                                            sh.s.return_(
+                                                                                sh.e.call(
+                                                                                    sh.e.property_access(
+                                                                                        sh.e.identifier_raw("p_"),
+                                                                                        sh.identifier_raw("option"),
+                                                                                    ),
+                                                                                    false,
+                                                                                    p_.literal.list([
+                                                                                        sh.e.identifier_raw("$"),
+                                                                                        sh.e.arrow_function_with_expression(
+                                                                                            p_.literal.list([
+                                                                                                sh.parameter(
+                                                                                                    sh.identifier_raw("$"), null)
+                                                                                            ]),
+                                                                                            null,
+                                                                                            Expresssion($)
+                                                                                        )
+                                                                                    ])
+                                                                                )
+                                                                            )
+                                                                        )
+                                                                    ),
+                                                                    sh.sw.default_(
+                                                                        // sh.s.return_(p_.from.state($.type).decide(
+                                                                        //     ($) => {
+                                                                        //         switch ($[0]) {
+                                                                        //             case 'partial': return p_.option($, ($) => Assign($.default))
+                                                                        //             case 'full': return p_.option($, ($) => sh.e.call(
+                                                                        //                 sh.e.property_access(
+                                                                        //                     sh.e.identifier_raw("pt"),
+                                                                        //                     sh.identifier_raw('au'),
+                                                                        //                 ),
+                                                                        //                 p_.literal.list([
+                                                                        //                     sh.e.element_access(
+                                                                        //                         sh.e.identifier_raw("$"),
+                                                                        //                         sh.e.number_literal(0)
+                                                                        //                     )
+                                                                        //                 ])
+                                                                        //             ))
+                                                                        //             case 'single': return p_.option($, ($) => Assign($['if false']))
+                                                                        //             default: return p_.exhaustive($[0])
+                                                                        //         }
+                                                                        //     }
+                                                                        // ))
+                                                                        sh.s.return_(
+                                                                            sh.e.call(
+                                                                                sh.e.property_access(
+                                                                                    sh.e.identifier_raw("p_"),
+                                                                                    sh.identifier_raw("exhaustive"),
+                                                                                ),
+                                                                                false,
+                                                                                p_.literal.list([
+                                                                                    sh.e.element_access(
+                                                                                        sh.e.identifier_raw("$"),
+                                                                                        sh.e.number_literal(0)
+                                                                                    )
+                                                                                ])
+                                                                            )
+                                                                        )
+                                                                    )
+                                                                )
+                                                            )
+                                                        ])
+                                                    )
+                                                ])
+                                            ))
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ))
+                                case 'text': return p_.option($, ($) => p_.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'decide': return p_.option($, ($) => sh.e.call(
+                                                sh.e.property_access(
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.identifier_raw("p_"),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("text"),
+                                                        ),
+                                                        false,
+                                                        p_.literal.list([
+                                                            Select_Value($v_selection),
+                                                        ])
+                                                    ),
+                                                    sh.identifier_raw("to_state"),
+                                                ),
+                                                true,
+                                                p_.literal.list([
+                                                    sh.e.arrow_function_with_block(
+                                                        p_.literal.list([
+                                                            sh.parameter(
+                                                                sh.identifier_raw("$text"),
+                                                                null
+                                                            )
+                                                        ]),
+                                                        p_.from.optional($['temp return type']).decide(
+                                                            ($) => t_schema_reference_to_typescript_light.Value_Reference(
+                                                                $,
+                                                                {
+                                                                    'schema': sh.identifier_raw("s_target")
+                                                                }
+                                                            ),
+                                                            () => null
+                                                        ),
+                                                        p_.literal.list([
+                                                            sh.s.switch_(
+                                                                sh.e.identifier_raw("$text"),
+                                                                p_.literal.chain(
+                                                                    p_.from.dictionary(
+                                                                        $.matches
+                                                                        // p_.from.state($.type).decide(
+                                                                        //     ($): s_in.Expression.from_source.type_.state.decide.options => {
+                                                                        //         switch ($[0]) {
+                                                                        //             case 'partial': return p_.option($, ($) => $.options)
+                                                                        //             case 'full': return p_.option($, ($) => $.options)
+                                                                        //             case 'single': return p_.option($, ($) => single_entry_dictionary($.option, $['if true']))
+                                                                        //             default: return p_.exhaustive($[0])
+                                                                        //         }
+                                                                        //     }
+                                                                        // )
+                                                                    ).convert_to_list(
+                                                                        ($, id) => sh.sw.case_(
+                                                                            sh.e.string_literal(
+                                                                                sh.string_literal(id, 'quote')
+                                                                            ),
+                                                                            sh.s.return_(
+                                                                                Expresssion($)
+                                                                            )
+                                                                        )
+                                                                    ),
+                                                                    sh.sw.default_(
+                                                                        sh.s.return_(
+                                                                            Expresssion($['no match'])
+                                                                        )
+                                                                    )
+                                                                )
+                                                            )
+                                                        ])
+                                                    )
+                                                ])
+                                            ))
+                                            default: return p_.exhaustive($[0])
+                                        }
+                                    }
+                                ))
                                 default: return p_.exhaustive($[0])
                             }
                         }
@@ -307,24 +802,107 @@ export const Expresssion: declarations.Expression = ($) => p_.from.state($).deci
                         sh.string_literal($.remark, 'quote'))
                 ])
             ))
-            case 'literal': return p_.option($, ($) => {
+            case 'initialize': return p_.option($, ($) => {
                 switch ($[0]) {
+                    case 'dictionary': return p_.option($, ($) => sh.e.call(
+                        sh.e.property_access(
+                            sh.e.property_access(
+                                sh.e.identifier_raw("p_"),
+                                sh.identifier_raw("literal"),
+                            ),
+                            sh.identifier_raw("dictionary"),
+                        ),
+                        false,
+                        p_.literal.list([
+                            sh.e.object_literal(p_.from.dictionary($).convert_to_list(
+                                ($, id) => ({
+                                    'key': ['string literal', sh.string_literal(id, 'quote')],
+                                    'value': Expresssion($)
+                                })
+                            ))
+                        ])
+                    ))
+                    case 'group': return p_.option($, ($) => sh.e.object_literal(p_.from.dictionary($).convert_to_list(
+                        ($, id) => ({
+                            'key': ['string literal', sh.string_literal(id, 'apostrophe')],
+                            'value': Expresssion($)
+                        })
+                    )))
+                    case 'list': return p_.option($, ($) => sh.e.array_literal(p_.from.list($).map(
+                        ($) => Expresssion($)
+                    )))
+                    case 'nothing': return p_.option($, ($) => sh.e.null_())
+                    case 'number': return p_.option($, ($) => p_.from.state($).decide(
+                        ($) => {
+                            switch ($[0]) {
+                                case 'natural': return p_.option($, ($) => sh.e.number_literal($))
+                                case 'integer': return p_.option($, ($) => sh.e.number_literal($))
+                                default: return p_.exhaustive($[0])
+                            }
+                        }
+                    ))
+                    case 'boolean': return p_.option($, ($) => p_.from.state($).decide(
+                        ($) => {
+                            switch ($[0]) {
+                                case 'false': return p_.option($, ($) => sh.e.false_())
+                                case 'true': return p_.option($, ($) => sh.e.true_())
+                                default: return p_.exhaustive($[0])
+                            }
+                        }
+                    ))
+                    case 'optional': return p_.option($, ($) => p_.from.state($).decide(
+                        ($) => {
+                            switch ($[0]) {
+                                case 'not set': return p_.option($, ($) => sh.e.call(
+                                    sh.e.property_access(
+                                        sh.e.property_access(
+                                            sh.e.identifier_raw("p_"),
+                                            sh.identifier_raw("literal"),
+                                        ),
+                                        sh.identifier_raw("not_set"),
+                                    ),
+                                    false,
+                                    p_.literal.list([])
+                                ))
+                                case 'set': return p_.option($, ($) => sh.e.call(
+                                    sh.e.property_access(
+                                        sh.e.property_access(
+                                            sh.e.identifier_raw("p_"),
+                                            sh.identifier_raw("literal"),
+                                        ),
+                                        sh.identifier_raw("set"),
+                                    ),
+                                    false,
+                                    p_.literal.list([
+                                        Expresssion($),
+                                    ])
+                                ))
+                                default: return p_.exhaustive($[0])
+                            }
+                        }
+                    ))
+                    case 'reference': return p_.option($, ($) => sh.e.string_literal(
+                        sh.string_literal($, 'apostrophe')
+                    ))
                     case 'state': return p_.option($, ($) => sh.e.array_literal(p_.literal.list([
                         sh.e.string_literal(
                             sh.string_literal($.option, 'apostrophe')
                         ),
                         Expresssion($.data),
                     ])))
+                    case 'text': return p_.option($, ($) => sh.e.string_literal(
+                        sh.string_literal($, 'quote')
+                    ))
                     default: return p_.exhaustive($[0])
                 }
             })
-            case 'selection': return p_.option($, ($) => Value_Selection($))
+            case 'select': return p_.option($, ($) => Select_Value($))
             default: return p_.exhaustive($[0])
         }
     }
 )
 
-export const Value_Selection: declarations.Value_Selection = ($) => p_.from.state($).decide(
+export const Select_Value: declarations.Select_Value = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'context value': return p_.option($, ($) => Value_Selection_Tail(
@@ -337,23 +915,31 @@ export const Value_Selection: declarations.Value_Selection = ($) => p_.from.stat
                 $.tail,
                 {
                     'start': sh.e.call(
-                        sh.e.property_access(
-                            sh.e.identifier_escaped("r " + $.refiner),
-                            sh.identifier_escaped($.type)
+                        p_.from.state($.scope).decide(
+                            ($) => {
+                                switch ($[0]) {
+                                    case 'external': return p_.option($, ($) => sh.e.property_access(
+                                        sh.e.identifier_escaped("r " + $.refiner),
+                                        sh.identifier_escaped($.function)
+                                    ))
+                                    case 'local': return p_.option($, ($) => sh.e.identifier_escaped($.function))
+                                    default: return p_.exhaustive($[0])
+                                }
+                            }
                         ),
-                        false,
+                        true,
                         p_.literal.segmented_list([
                             p_.literal.list([
-                                Value_Selection($.context),
+                                Select_Value($.context),
                             ]),
                             p_.from.state($.error).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'omitted': return p_.option($, ($) => p_.literal.list([]))
+                                        case 'omit': return p_.option($, ($) => p_.literal.list([]))
                                         case 'pass through': return p_.option($, ($) => p_.literal.list([
                                             sh.e.identifier_raw("abort")
                                         ]))
-                                        case 'handler': return p_.option($, ($) => p_.literal.list([
+                                        case 'handle': return p_.option($, ($) => p_.literal.list([
                                             sh.e.arrow_function_with_expression(
                                                 p_.literal.list([
                                                     sh.parameter(sh.identifier_raw("$"), null)
@@ -372,24 +958,15 @@ export const Value_Selection: declarations.Value_Selection = ($) => p_.from.stat
                                     }
                                 }
                             ),
-                            p_.from.state($.parameters).decide(
+                            p_.from.state($.arguments).decide(
                                 ($) => {
                                     switch ($[0]) {
-                                        case 'omitted': return p_.option($, ($) => p_.literal.list([]))
+                                        case 'omit': return p_.option($, ($) => p_.literal.list([]))
                                         case 'pass through': return p_.option($, ($) => p_.literal.list([
                                             sh.e.identifier_raw("$p")
                                         ]))
-                                        case 'handler': return p_.option($, ($) => p_.literal.list([
-                                            sh.e.arrow_function_with_expression(
-                                                p_.literal.list([
-                                                    sh.parameter(
-                                                        sh.identifier_raw("$"),
-                                                        null
-                                                    )
-                                                ]),
-                                                null,
-                                                Expresssion($.expression)
-                                            )
+                                        case 'initialize': return p_.option($, ($) => p_.literal.list([
+                                            Expresssion($.expression)
                                         ]))
                                         default: return p_.exhaustive($[0])
                                     }

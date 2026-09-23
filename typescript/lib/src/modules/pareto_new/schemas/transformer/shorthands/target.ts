@@ -95,57 +95,63 @@ export const implementation = (
 
 export namespace expr {
 
-    export const call = (
-        scope: s_out.Expression.call.scope,
-        context: s_out.Value_Selection,
-        arguments_: null | 'pass through' | s_out.Expression,
-    ): s_out.Expression => ['call', {
-        'scope': scope,
-        'context': context,
-        'arguments': arguments_ === null
-            ? ['omitted', null]
-            : arguments_ === 'pass through'
-                ? ['pass through', null]
-                : ['handler', {
-                    'expression': arguments_,
-                }],
-    }]
-
 
     export const change_context = (
-        selection: s_out.Expression.change_context.selection,
+        select: s_out.Expression.change_context.select,
         callback: s_out.Expression.change_context.callback,
     ): s_out.Expression => ['change context', {
-        'selection': selection,
+        'select': select,
         'callback': callback,
     }]
 
-    export namespace call_ {
+    export namespace convert {
 
-        export const external = (
-            transformer: string,
-            function_: string
-        ): s_out.Expression.call.scope => ['external', {
-            'transformer': transformer,
-            'function': function_,
-        }]
 
-        export const local = (
-            function_: string
-        ): s_out.Expression.call.scope => ['local', {
-            'function': function_,
-        }]
-    }
+        export namespace component {
 
-    export namespace from {
+            export const transform = (
+                select: s_out.Select_Value,
+                scope: s_out.Expression.convert.type_.component.transform.scope,
+                arguments_: null | 'pass through' | s_out.Expression,
+            ): s_out.Expression => ['convert', {
+                'select': select,
+                'type': ['component', ['transform', {
+                    'scope': scope,
+                    'arguments': arguments_ === null
+                        ? ['omit', null]
+                        : arguments_ === 'pass through'
+                            ? ['pass through', null]
+                            : ['initialize', {
+                                'expression': arguments_,
+                            }],
+                }]]
+            }]
+            export namespace transform_ {
+
+                export const external = (
+                    transformer: string,
+                    function_: string
+                ): s_out.Expression.convert.type_.component.transform.scope => ['external', {
+                    'transformer': transformer,
+                    'function': function_,
+                }]
+
+                export const local = (
+                    function_: string
+                ): s_out.Expression.convert.type_.component.transform.scope => ['local', {
+                    'function': function_,
+                }]
+            }
+        }
+
 
         export namespace dictionary {
 
             export const map = (
-                selection: s_out.Expression.from_source.selection,
-                on_entry: s_out.Expression.from_source.type_.dictionary.map.on_entry,
-            ): s_out.Expression => ['from source', {
-                'selection': selection,
+                select: s_out.Expression.convert.select,
+                on_entry: s_out.Expression.convert.type_.dictionary.map.on_entry,
+            ): s_out.Expression => ['convert', {
+                'select': select,
                 'type': ['dictionary', ['map', {
                     'on entry': on_entry,
                 }]]
@@ -157,10 +163,10 @@ export namespace expr {
         export namespace list {
 
             export const map = (
-                selection: s_out.Expression.from_source.selection,
-                on_item: s_out.Expression.from_source.type_.list.map.on_item,
-            ): s_out.Expression => ['from source', {
-                'selection': selection,
+                select: s_out.Expression.convert.select,
+                on_item: s_out.Expression.convert.type_.list.map.on_item,
+            ): s_out.Expression => ['convert', {
+                'select': select,
                 'type': ['list', ['map', {
                     'on item': on_item,
                 }]]
@@ -169,12 +175,12 @@ export namespace expr {
         export namespace optional {
 
             export const decide = (
-                selection: s_out.Expression.from_source.selection,
-                temp_return_value: s_out.Expression.from_source.type_.optional.decide.temp_return_type,
-                on_set: s_out.Expression.from_source.type_.optional.map.on_set,
-                on_not_set: s_out.Expression.from_source.type_.optional.map.on_set,
-            ): s_out.Expression => ['from source', {
-                'selection': selection,
+                select: s_out.Expression.convert.select,
+                temp_return_value: s_out.Expression.convert.type_.optional.decide.temp_return_type,
+                on_set: s_out.Expression.convert.type_.optional.map.on_set,
+                on_not_set: s_out.Expression.convert.type_.optional.map.on_set,
+            ): s_out.Expression => ['convert', {
+                'select': select,
                 'type': ['optional', ['decide', {
                     'temp return type': temp_return_value,
                     'on set': on_set,
@@ -182,10 +188,10 @@ export namespace expr {
                 }]]
             }]
             export const map = (
-                selection: s_out.Expression.from_source.selection,
-                on_set: s_out.Expression.from_source.type_.optional.map.on_set,
-            ): s_out.Expression => ['from source', {
-                'selection': selection,
+                select: s_out.Expression.convert.select,
+                on_set: s_out.Expression.convert.type_.optional.map.on_set,
+            ): s_out.Expression => ['convert', {
+                'select': select,
                 'type': ['optional', ['map', {
                     'on set': on_set,
                 }]]
@@ -194,11 +200,11 @@ export namespace expr {
         export namespace state {
 
             export const decide = (
-                selection: s_out.Expression.from_source.selection,
-                temp_return_value: s_out.Expression.from_source.type_.optional.decide.temp_return_type,
-                options: s_out.Expression.from_source.type_.state.decide.options
-            ): s_out.Expression => ['from source', {
-                'selection': selection,
+                select: s_out.Expression.convert.select,
+                temp_return_value: s_out.Expression.convert.type_.optional.decide.temp_return_type,
+                options: s_out.Expression.convert.type_.state.decide.options
+            ): s_out.Expression => ['convert', {
+                'select': select,
                 'type': ['state', ['decide', {
                     'temp return type': temp_return_value,
                     'options': options
@@ -214,77 +220,107 @@ export namespace expr {
         'remark': remark,
     }]
 
-    export namespace literal {
+    export namespace initialize {
 
         export const false_ = (
-        ): s_out.Expression => ['literal', ['boolean', ['false', null]]]
+        ): s_out.Expression => ['initialize', ['boolean', ['false', null]]]
 
         export const true_ = (
-        ): s_out.Expression => ['literal', ['boolean', ['true', null]]]
+        ): s_out.Expression => ['initialize', ['boolean', ['true', null]]]
 
         export const dictionary = (
-            dict: s_out.Expression.literal.dictionary
-        ): s_out.Expression => ['literal', ['dictionary', dict]]
+            dict: s_out.Expression.initialize.dictionary
+        ): s_out.Expression => ['initialize', ['dictionary', dict]]
 
         export const group = (
-            group: s_out.Expression.literal.group
-        ): s_out.Expression => ['literal', ['group', group]]
+            group: s_out.Expression.initialize.group
+        ): s_out.Expression => ['initialize', ['group', group]]
 
         export const list = (
-            list: s_out.Expression.literal.list
-        ): s_out.Expression => ['literal', ['list', list]]
+            list: s_out.Expression.initialize.list
+        ): s_out.Expression => ['initialize', ['list', list]]
 
         export const nothing = (
-        ): s_out.Expression => ['literal', ['nothing', null]]
+        ): s_out.Expression => ['initialize', ['nothing', null]]
 
         export const not_set = (
-        ): s_out.Expression => ['literal', ['optional', ['not set', null]]]
+        ): s_out.Expression => ['initialize', ['optional', ['not set', null]]]
 
         export const set = (
             value: s_out.Expression,
-        ): s_out.Expression => ['literal', ['optional', ['set', value]]]
+        ): s_out.Expression => ['initialize', ['optional', ['set', value]]]
 
         export const state = (
             option: string,
             data: s_out.Expression,
-        ): s_out.Expression => ['literal', ['state', {
+        ): s_out.Expression => ['initialize', ['state', {
             'option': option,
             'data': data,
         }]]
 
-        export const text = (
-            text: s_out.Expression.literal.text
-        ): s_out.Expression => ['literal', ['text', text]]
+
+            export const serialize = (
+                scope: s_out.Expression.initialize.text.serialize.scope,
+                context: s_out.Expression,
+                arguments_: null | 'pass through' | s_out.Expression,
+            ): s_out.Expression => ['initialize', ['text', ['serialize', {
+                'context': context,
+                'scope': scope,
+                'arguments': arguments_ === null
+                    ? ['omit', null]
+                    : arguments_ === 'pass through'
+                        ? ['pass through', null]
+                        : ['initialize', arguments_],
+            }]]]
+            export namespace serialize_ {
+
+                export const external = (
+                    serializer: string,
+                    function_: string
+                ): s_out.Expression.initialize.text.serialize.scope => ['external', {
+                    'serializer': serializer,
+                    'function': function_,
+                }]
+
+                export const local = (
+                    function_: string
+                ): s_out.Expression.initialize.text.serialize.scope => ['local', {
+                    'function': function_,
+                }]
+            }
+
+        export const text_literal = (
+            text: string
+        ): s_out.Expression => ['initialize', ['text', ['literal', text]]]
 
         export const reference = (
-            reference: s_out.Expression.literal.reference
-        ): s_out.Expression => ['literal', ['reference', reference]]
+            reference: s_out.Expression.initialize.reference
+        ): s_out.Expression => ['initialize', ['reference', reference]]
 
     }
 
-    export const selection = (
-        value_selection: s_out.Value_Selection,
-    ): s_out.Expression => ['selection', value_selection]
+    export const select = (
+        value_selection: s_out.Select_Value,
+    ): s_out.Expression => ['select', value_selection]
+
 
 }
 
 
-export namespace value_selection {
+export namespace select {
     export const call = (
-        scope: s_out.Value_Selection.call.scope,
-        context: s_out.Value_Selection,
+        scope: s_out.Select_Value.call.scope,
+        context: s_out.Select_Value,
         arguments_: null | 'pass through' | s_out.Expression,
-        tail: s_out.Value_Selection.call.tail,
-    ): s_out.Value_Selection => ['call', {
+        tail: s_out.Select_Value.call.tail,
+    ): s_out.Select_Value => ['call', {
         'scope': scope,
         'context': context,
         'arguments': arguments_ === null
-            ? ['omitted', null]
+            ? ['omit', null]
             : arguments_ === 'pass through'
                 ? ['pass through', null]
-                : ['handler', {
-                    'expression': arguments_,
-                }],
+                : ['initialize', arguments_],
         'tail': tail
     }]
 
@@ -293,22 +329,22 @@ export namespace value_selection {
         export const external = (
             transformer: string,
             function_: string
-        ): s_out.Value_Selection.call.scope => ['external', {
+        ): s_out.Select_Value.call.scope => ['external', {
             'transformer': transformer,
             'function': function_,
         }]
 
         export const local = (
             function_: string
-        ): s_out.Value_Selection.call.scope => ['local', {
+        ): s_out.Select_Value.call.scope => ['local', {
             'function': function_,
         }]
     }
 
 
     export const context_value = (
-        tail: s_out.Value_Selection.context_value.tail,
-    ): s_out.Value_Selection => ['context value', {
+        tail: s_out.Select_Value.context_value.tail,
+    ): s_out.Select_Value => ['context value', {
         'tail': tail
     }]
 

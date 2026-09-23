@@ -11,7 +11,7 @@ type Value_Selection_Tail_ = p_.List<
     Value_Selection_Tail_.L
 >
 
-namespace Value_Selection_ {
+namespace Select_Value_ {
     
     export namespace call {
         
@@ -43,28 +43,21 @@ namespace Value_Selection_ {
             | readonly ['external', scope.external]
             | readonly ['local', scope.local]
         
-        export type context = Value_Selection_
+        export type context = Select_Value_
         
         export namespace arguments_ {
             
-            export type omitted = null
+            export type omit = null
             
             export type pass_through = null
             
-            export namespace handler {
-                
-                export type expression = Expression_
-            }
-            
-            export type handler = {
-                readonly 'expression': handler.expression
-            }
+            export type initialize = Expression_
         }
         
         export type arguments_ = 
-            | readonly ['omitted', arguments_.omitted]
+            | readonly ['omit', arguments_.omit]
             | readonly ['pass through', arguments_.pass_through]
-            | readonly ['handler', arguments_.handler]
+            | readonly ['initialize', arguments_.initialize]
         
         export type tail = Value_Selection_Tail_
     }
@@ -86,9 +79,9 @@ namespace Value_Selection_ {
     }
 }
 
-type Value_Selection_ = 
-    | readonly ['call', Value_Selection_.call]
-    | readonly ['context value', Value_Selection_.context_value]
+type Select_Value_ = 
+    | readonly ['call', Select_Value_.call]
+    | readonly ['context value', Select_Value_.context_value]
 
 namespace Value_Reference_ {
     
@@ -143,83 +136,86 @@ type Value_Reference_ = {
 
 namespace Expression_ {
     
-    export namespace call {
-        
-        export namespace scope {
-            
-            export namespace external {
-                
-                export type transformer = string
-                
-                export type function_ = string
-            }
-            
-            export type external = {
-                readonly 'transformer': external.transformer
-                readonly 'function': external.function_
-            }
-            
-            export namespace local {
-                
-                export type function_ = string
-            }
-            
-            export type local = {
-                readonly 'function': local.function_
-            }
-        }
-        
-        export type scope = 
-            | readonly ['external', scope.external]
-            | readonly ['local', scope.local]
-        
-        export type context = Value_Selection_
-        
-        export namespace arguments_ {
-            
-            export type omitted = null
-            
-            export type pass_through = null
-            
-            export namespace handler {
-                
-                export type expression = Expression_
-            }
-            
-            export type handler = {
-                readonly 'expression': handler.expression
-            }
-        }
-        
-        export type arguments_ = 
-            | readonly ['omitted', arguments_.omitted]
-            | readonly ['pass through', arguments_.pass_through]
-            | readonly ['handler', arguments_.handler]
-    }
-    
-    export type call = {
-        readonly 'scope': call.scope
-        readonly 'context': call.context
-        readonly 'arguments': call.arguments_
-    }
-    
     export namespace change_context {
         
-        export type selection = Value_Selection_
+        export type select = Select_Value_
         
         export type callback = Expression_
     }
     
     export type change_context = {
-        readonly 'selection': change_context.selection
+        readonly 'select': change_context.select
         readonly 'callback': change_context.callback
     }
     
-    export namespace from_source {
+    export namespace convert {
         
-        export type selection = Value_Selection_
+        export type select = Select_Value_
         
         export namespace type_ {
+            
+            export namespace component {
+                
+                export namespace transform {
+                    
+                    export namespace scope {
+                        
+                        export namespace external {
+                            
+                            export type transformer = string
+                            
+                            export type function_ = string
+                        }
+                        
+                        export type external = {
+                            readonly 'transformer': external.transformer
+                            readonly 'function': external.function_
+                        }
+                        
+                        export namespace local {
+                            
+                            export type function_ = string
+                        }
+                        
+                        export type local = {
+                            readonly 'function': local.function_
+                        }
+                    }
+                    
+                    export type scope = 
+                        | readonly ['external', scope.external]
+                        | readonly ['local', scope.local]
+                    
+                    export namespace arguments_ {
+                        
+                        export type omit = null
+                        
+                        export type pass_through = null
+                        
+                        export namespace initialize {
+                            
+                            export type expression = Expression_
+                        }
+                        
+                        export type initialize = {
+                            readonly 'expression': initialize.expression
+                        }
+                    }
+                    
+                    export type arguments_ = 
+                        | readonly ['omit', arguments_.omit]
+                        | readonly ['pass through', arguments_.pass_through]
+                        | readonly ['initialize', arguments_.initialize]
+                }
+                
+                export type transform = {
+                    readonly 'scope': transform.scope
+                    readonly 'arguments': transform.arguments_
+                }
+            }
+            
+            export type component = 
+                | readonly ['transform', component.transform]
             
             export namespace dictionary {
                 
@@ -323,15 +319,16 @@ namespace Expression_ {
         }
         
         export type type_ = 
+            | readonly ['component', type_.component]
             | readonly ['dictionary', type_.dictionary]
             | readonly ['list', type_.list]
             | readonly ['optional', type_.optional]
             | readonly ['state', type_.state]
     }
     
-    export type from_source = {
-        readonly 'selection': from_source.selection
-        readonly 'type': from_source.type_
+    export type convert = {
+        readonly 'select': convert.select
+        readonly 'type': convert.type_
     }
     
     export namespace implement_me {
@@ -343,7 +340,7 @@ namespace Expression_ {
         readonly 'remark': implement_me.remark
     }
     
-    export namespace literal {
+    export namespace initialize {
         
         export namespace boolean_ {
             
@@ -387,11 +384,14 @@ namespace Expression_ {
         
         export namespace number_ {
             
-            export type zero = null
+            export type natural = number
+            
+            export type integer = number
         }
         
         export type number_ = 
-            | readonly ['zero', number_.zero]
+            | readonly ['natural', number_.natural]
+            | readonly ['integer', number_.integer]
         
         export namespace optional {
             
@@ -418,31 +418,90 @@ namespace Expression_ {
             readonly 'data': state.data
         }
         
-        export type text = string
+        export namespace text {
+            
+            export type literal = string
+            
+            export namespace serialize {
+                
+                export namespace scope {
+                    
+                    export namespace external {
+                        
+                        export type serializer = string
+                        
+                        export type function_ = string
+                    }
+                    
+                    export type external = {
+                        readonly 'serializer': external.serializer
+                        readonly 'function': external.function_
+                    }
+                    
+                    export namespace local {
+                        
+                        export type function_ = string
+                    }
+                    
+                    export type local = {
+                        readonly 'function': local.function_
+                    }
+                }
+                
+                export type scope = 
+                    | readonly ['external', scope.external]
+                    | readonly ['local', scope.local]
+                
+                export type context = Expression_
+                
+                export namespace arguments_ {
+                    
+                    export type omit = null
+                    
+                    export type pass_through = null
+                    
+                    export type initialize = Expression_
+                }
+                
+                export type arguments_ = 
+                    | readonly ['omit', arguments_.omit]
+                    | readonly ['pass through', arguments_.pass_through]
+                    | readonly ['initialize', arguments_.initialize]
+            }
+            
+            export type serialize = {
+                readonly 'scope': serialize.scope
+                readonly 'context': serialize.context
+                readonly 'arguments': serialize.arguments_
+            }
+        }
+        
+        export type text = 
+            | readonly ['literal', text.literal]
+            | readonly ['serialize', text.serialize]
     }
     
-    export type literal = 
-        | readonly ['boolean', literal.boolean_]
-        | readonly ['dictionary', literal.dictionary]
-        | readonly ['group', literal.group]
-        | readonly ['list', literal.list]
-        | readonly ['nothing', literal.nothing]
-        | readonly ['number', literal.number_]
-        | readonly ['optional', literal.optional]
-        | readonly ['reference', literal.reference]
-        | readonly ['state', literal.state]
-        | readonly ['text', literal.text]
+    export type initialize = 
+        | readonly ['boolean', initialize.boolean_]
+        | readonly ['dictionary', initialize.dictionary]
+        | readonly ['group', initialize.group]
+        | readonly ['list', initialize.list]
+        | readonly ['nothing', initialize.nothing]
+        | readonly ['number', initialize.number_]
+        | readonly ['optional', initialize.optional]
+        | readonly ['reference', initialize.reference]
+        | readonly ['state', initialize.state]
+        | readonly ['text', initialize.text]
     
-    export type selection = Value_Selection_
+    export type select = Select_Value_
 }
 
 type Expression_ = 
-    | readonly ['call', Expression_.call]
     | readonly ['change context', Expression_.change_context]
-    | readonly ['from source', Expression_.from_source]
+    | readonly ['convert', Expression_.convert]
     | readonly ['implement me', Expression_.implement_me]
-    | readonly ['literal', Expression_.literal]
-    | readonly ['selection', Expression_.selection]
+    | readonly ['initialize', Expression_.initialize]
+    | readonly ['select', Expression_.select]
 
 namespace Schema_Reference_ {
     
@@ -653,7 +712,7 @@ type Root_ = {
 // exported root types
 export { 
     type Value_Selection_Tail_ as Value_Selection_Tail, 
-    type Value_Selection_ as Value_Selection, 
+    type Select_Value_ as Select_Value, 
     type Value_Reference_ as Value_Reference, 
     type Expression_ as Expression, 
     type Schema_Reference_ as Schema_Reference, 

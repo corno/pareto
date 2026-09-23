@@ -12,36 +12,39 @@
             }
             `simple types`: {
                 'boolean': < | `boolean` ~ >
+                'natural literal': < | `number` < | `exact` < _ | `natural` ~ > > >
+                'integer literal': < | `number` < | `exact` < _ | `integer` ~ > > >
             }
         )
         `modules`: {
             'Expression': < | `state` < {
-                'call': < _ _ | `group` {
-                    'scope': < _ | `state` < {
-                        'external': < _ _ | `group` {
-                            'transformer': < _ | `text` | `global` 'pseudo reference' >
-                            'function': < _ | `text` | `global` 'pseudo reference' >
-                        } >
-                        'local': < _ _ | `group` {
-                            'function': < _ | `text` | `global` 'pseudo reference' >
-                        } >
-                    } _ > >
-                    'context': < _ | `component` < | `internal` 'Value Selection' _ > >
-                    'arguments': < _ | `state` < {
-                        'omitted': < _ _ | `nothing` ~ >
-                        'pass through': < _ _ | `nothing` ~ >
-                        'handler': < _ _ | `group` {
-                            'expression': < _ | `component` < | `internal` 'Expression' _ > >
-                        } >
-                    } _ > >
-                } >
                 'change context': < _ _ | `group` {
-                    'selection': < _ | `component` < | `internal acyclic` 'Value Selection' _ > >
+                    'select': < _ | `component` < | `internal acyclic` 'Select Value' _ > >
                     'callback': < _ | `component` < | `internal` 'Expression' _ > >
                 } >
-                'from source': < _ _ | `group` {
-                    'selection': < _ | `component` < | `internal acyclic` 'Value Selection' _ > >
+                'convert': < _ _ | `group` {
+                    'select': < _ | `component` < | `internal acyclic` 'Select Value' _ > >
                     'type': < _ | `state` < {
+                        'component': < _ _ | `state` < {
+                            'transform': < _ _ | `group` {
+                                'scope': < _ | `state` < {
+                                    'external': < _ _ | `group` {
+                                        'transformer': < _ | `text` | `global` 'pseudo reference' >
+                                        'function': < _ | `text` | `global` 'pseudo reference' >
+                                    } >
+                                    'local': < _ _ | `group` {
+                                        'function': < _ | `text` | `global` 'pseudo reference' >
+                                    } >
+                                } _ > >
+                                'arguments': < _ | `state` < {
+                                    'omit': < _ _ | `nothing` ~ >
+                                    'pass through': < _ _ | `nothing` ~ >
+                                    'initialize': < _ _ | `group` {
+                                        'expression': < _ | `component` < | `internal` 'Expression' _ > >
+                                    } >
+                                } _ > >
+                            } >
+                        } _ > >
                         'dictionary': < _ _ | `state` < {
                             'map': < _ _ | `group` {
                                 'on entry': < _ | `component` < | `internal` 'Expression' _ > >
@@ -73,7 +76,7 @@
                 'implement me': < _ _ | `group` {
                     'remark': < _ | `text` | `global` 'message' >
                 } >
-                'literal': < _ _ | `state` < {
+                'initialize': < _ _ | `state` < {
                     'boolean': < _ _ | `state` < {
                         'false': < _ _ | `nothing` ~ >
                         'true': < _ _ | `nothing` ~ >
@@ -83,7 +86,8 @@
                     'list': < _ _ | `list` < | `component` < | `internal` 'Expression' _ > _ > >
                     'nothing': < _ _ | `nothing` ~ >
                     'number': < _ _ | `state` < {
-                        'zero': < _ _ | `nothing` ~ >
+                        'natural': < _ _ | `simple` | `global` 'natural literal' >
+                        'integer': < _ _ | `simple` | `global` 'integer literal' >
                     } _ > >
                     'optional': < _ _ | `state` < {
                         'not set': < _ _ | `nothing` ~ >
@@ -94,9 +98,28 @@
                         'option': < _ | `text` | `global` 'pseudo reference' >
                         'data': < _ | `component` < | `internal` 'Expression' _ > >
                     } >
-                    'text': < _ _ | `text` | `global` 'text literal' >
+                    'text': < _ _ | `state` < {
+                        'literal': < _ _ | `text` | `global` 'text literal' >
+                        'serialize': < _ _ | `group` {
+                            'scope': < _ | `state` < {
+                                'external': < _ _ | `group` {
+                                    'serializer': < _ | `text` | `global` 'pseudo reference' >
+                                    'function': < _ | `text` | `global` 'pseudo reference' >
+                                } >
+                                'local': < _ _ | `group` {
+                                    'function': < _ | `text` | `global` 'pseudo reference' >
+                                } >
+                            } _ > >
+                            'context': < _ | `component` < | `internal` 'Expression' _ > >
+                            'arguments': < _ | `state` < {
+                                'omit': < _ _ | `nothing` ~ >
+                                'pass through': < _ _ | `nothing` ~ >
+                                'initialize': < _ _ | `component` < | `internal` 'Expression' _ > >
+                            } _ > >
+                        } >
+                    } _ > >
                 } _ > >
-                'selection': < _ _ | `component` < | `internal acyclic` 'Value Selection' _ > >
+                'select': < _ _ | `component` < | `internal acyclic` 'Select Value' _ > >
             } _ > >
             'Root': < | `group` {
                 'development mode': < _ | `simple` | `global` 'boolean' >
@@ -164,7 +187,7 @@
                     } >
                 } _ > _ > >
             } >
-            'Value Selection': < | `state` < {
+            'Select Value': < | `state` < {
                 'call': < _ * "this one should only be used to call functions that only select" | `group` {
                     'scope': < _ | `state` < {
                         'external': < _ _ | `group` {
@@ -175,13 +198,11 @@
                             'function': < _ | `text` | `global` 'pseudo reference' >
                         } >
                     } _ > >
-                    'context': < _ | `component` < | `internal` 'Value Selection' _ > >
+                    'context': < _ | `component` < | `internal` 'Select Value' _ > >
                     'arguments': < _ | `state` < {
-                        'omitted': < _ _ | `nothing` ~ >
+                        'omit': < _ _ | `nothing` ~ >
                         'pass through': < _ _ | `nothing` ~ >
-                        'handler': < _ _ | `group` {
-                            'expression': < _ | `component` < | `internal` 'Expression' _ > >
-                        } >
+                        'initialize': < _ _ | `component` < | `internal` 'Expression' _ > >
                     } _ > >
                     'tail': < _ | `component` < | `internal acyclic` 'Value Selection Tail' _ > >
                 } >

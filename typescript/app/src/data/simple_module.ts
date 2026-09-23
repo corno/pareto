@@ -52,6 +52,7 @@ export const $ = sh.module(
                     p_.literal.not_set(),
                     p_.literal.not_set(),
                     p_.literal.dictionary({}),
+                    p_.literal.dictionary({}),
                     p_.literal.dictionary({
 
                         "type A": sh.refiner.declaration.refiner(

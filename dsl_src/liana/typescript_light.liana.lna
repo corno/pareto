@@ -1,0 +1,240 @@
+(
+    `schema`: | `schema` (
+        `schema imports`: {}
+        `resolver imports`: {}
+        `globals`: (
+            `complexity`: | `unconstrained` ~
+            `text types`: {
+                'Identifier': (
+                    `type`: | `single line` ~
+                    `link`: | `no` ~
+                )
+                'Output': (
+                    `type`: | `single line` ~
+                    `link`: | `no` ~
+                )
+                'text': (
+                    `type`: | `single line` ~
+                    `link`: | `no` ~
+                )
+            }
+            `simple types`: {
+                'number': (
+                    `type`: | `number` (
+                        `precision`: | `approximation` (
+                            `significant digits`: 10
+                        )
+                    )
+                )
+                'boolean': (
+                    `type`: | `boolean` ~
+                )
+            }
+        )
+        `modules`: {
+            'Block': < | `component` < | `internal` 'Statements' _ > >
+            'Directory': < | `group` {
+                'content': < _ | `state` < {
+                    'directories': < _ _ | `dictionary` < | `component` < | `internal` 'Directory' _ > > >
+                    'files': < _ _ | `dictionary` < | `component` < | `internal acyclic` 'Source File' _ > > >
+                    'mixed': < _ _ | `dictionary` < | `component` < | `internal` 'Node' _ > > >
+                } _ > >
+            } >
+            'Expression': < | `state` < {
+                'array literal': < _ _ | `list` < | `component` < | `internal` 'Expression' _ > _ > >
+                'arrow function': < _ _ | `group` {
+                    'declaration': < _ | `component` < | `internal` 'Function Declaration' _ > >
+                    'body': < _ | `state` < {
+                        'block': < _ _ | `component` < | `internal` 'Block' _ > >
+                        'expression': < _ _ | `component` < | `internal` 'Expression' _ > >
+                    } _ > >
+                } >
+                'assignment': < _ _ | `group` {
+                    'left': < _ | `component` < | `internal` 'Expression' _ > >
+                    'right': < _ | `component` < | `internal` 'Expression' _ > >
+                } >
+                'call': < _ _ | `group` {
+                    'function selection': < _ | `component` < | `internal` 'Expression' _ > >
+                    'arguments on own line': < _ | `simple` | `global` 'boolean' >
+                    'arguments': < _ | `list` < | `component` < | `internal` 'Expression' _ > _ > >
+                } >
+                'compare': < _ _ | `group` {
+                    'left': < _ | `component` < | `internal` 'Expression' _ > >
+                    'operator': < _ | `state` < {
+                        'strictly equal': < _ _ | `nothing` ~ >
+                        'strictly not equal': < _ _ | `nothing` ~ >
+                        'smaller than': < _ _ | `nothing` ~ >
+                        'smaller than or equal': < _ _ | `nothing` ~ >
+                        'greater than': < _ _ | `nothing` ~ >
+                        'greater than or equal': < _ _ | `nothing` ~ >
+                    } _ > >
+                    'right': < _ | `component` < | `internal` 'Expression' _ > >
+                } >
+                'conditional': < _ _ | `group` {
+                    'condition': < _ | `component` < | `internal` 'Expression' _ > >
+                    'if true': < _ | `component` < | `internal` 'Expression' _ > >
+                    'if false': < _ | `component` < | `internal` 'Expression' _ > >
+                } >
+                'element access': < _ _ | `group` {
+                    'collection': < _ | `component` < | `internal` 'Expression' _ > >
+                    'index': < _ | `component` < | `internal` 'Expression' _ > >
+                } >
+                'identifier': < _ _ | `component` < | `internal` 'Identifier' _ > >
+                'false': < _ _ | `nothing` ~ >
+                'null': < _ _ | `nothing` ~ >
+                'number literal': < _ _ | `simple` | `global` 'number' >
+                'object literal': < _ _ | `group` {
+                    'properties': < _ | `list` < | `group` {
+                        'key': < _ | `state` < {
+                            'identifier': < _ _ | `component` < | `internal` 'Identifier' _ > >
+                            'string literal': < _ _ | `component` < | `internal` 'String Literal' _ > >
+                        } _ > >
+                        'value': < _ | `component` < | `internal` 'Expression' _ > >
+                    } _ > >
+                } >
+                'parenthesized': < _ _ | `component` < | `internal` 'Expression' _ > >
+                'property access': < _ _ | `group` {
+                    'object': < _ | `component` < | `internal` 'Expression' _ > >
+                    'property': < _ | `component` < | `internal` 'Identifier' _ > >
+                } >
+                'string literal': < _ _ | `component` < | `internal` 'String Literal' _ > >
+                'true': < _ _ | `nothing` ~ >
+                'unary operation': < _ _ | `group` {
+                    'operator': < _ | `state` < {
+                        'negation': < _ _ | `nothing` ~ >
+                        'logical not': < _ _ | `nothing` ~ >
+                    } _ > >
+                    'operand': < _ | `component` < | `internal` 'Expression' _ > >
+                } >
+            } _ > >
+            'Function Declaration': < | `group` {
+                'type parameters': < _ | `list` < | `component` < | `internal` 'Type' _ > _ > >
+                'parameters': < _ | `list` < | `group` {
+                    'name': < _ | `component` < | `internal` 'Identifier' _ > >
+                    'type': < _ | `optional` | `component` < | `internal` 'Type' _ > >
+                } _ > >
+                'return type': < _ | `optional` | `component` < | `internal` 'Type' _ > >
+            } >
+            'Identifier':  < | `state` < {
+                'raw': < _ _ | `text` | `global` 'text' >
+                'escaped': < _ _ | `text` | `global` 'text' >
+            } _ > >
+            'Node': < | `state` < {
+                'directory': < _ _ | `component` < | `internal` 'Directory' _ > >
+                'file': < _ _ | `component` < | `internal acyclic` 'Source File' _ > >
+            } _ > >
+            'Source File': < | `group` {
+                'statements': < _ | `component` < | `internal` 'Statements' _ > >
+            } >
+            'Statement': < | `state` < {
+                'block': < _ _ | `component` < | `internal` 'Block' _ > >
+                'empty line': < _ _ | `nothing` ~ >
+                'export': < _ _ | `group` {
+                    'type': < _ | `state` < {
+                        'named exports': < _ _ | `group` {
+                            'specifiers': < _ | `list` < | `group` {
+                                'type only': < _ | `simple` | `global` 'boolean' >
+                                'name': < _ | `component` < | `internal` 'Identifier' _ > >
+                                'as': < _ | `optional` | `component` < | `internal` 'Identifier' _ > >
+                            } _ > >
+                            'from': < _ | `optional` | `component` < | `internal` 'String Literal' _ > >
+                        } >
+                    } _ > >
+                } >
+                'expression': < _ _ | `component` < | `internal` 'Expression' _ > >
+                'import': < _ _ | `group` {
+                    'type': < _ | `state` < {
+                        'default': < _ _ | `component` < | `internal` 'Identifier' _ > >
+                        'namespace': < _ _ | `component` < | `internal` 'Identifier' _ > >
+                        'named': < _ _ | `group` {
+                            'specifiers': < _ | `list` < | `group` {
+                                'name': < _ | `component` < | `internal` 'Identifier' _ > >
+                                'as': < _ | `optional` | `component` < | `internal` 'Identifier' _ > >
+                            } _ > >
+                        } >
+                    } _ > >
+                    'from': < _ | `component` < | `internal` 'String Literal' _ > >
+                } >
+                'line comment': < _ _ | `text` | `global` 'text' >
+                'namespace': < _ _ | `group` {
+                    'export': < _ | `simple` | `global` 'boolean' >
+                    'name': < _ | `component` < | `internal` 'Identifier' _ > >
+                    'block': < _ | `component` < | `internal` 'Block' _ > >
+                } >
+                'return': < _ _ | `optional` | `component` < | `internal` 'Expression' _ > >
+                'switch': < _ _ | `group` {
+                    'expression': < _ | `component` < | `internal` 'Expression' _ > >
+                    'clauses': < _ | `list` < | `group` {
+                        'type': < _ | `state` < {
+                            'case': < _ _ | `component` < | `internal` 'Expression' _ > >
+                            'default': < _ _ | `nothing` ~ >
+                        } _ > >
+                        'body': < _ | `state` < {
+                            'statement': < _ _ | `component` < | `internal` 'Statement' _ > >
+                            'statements': < _ _ | `component` < | `internal` 'Statements' _ > >
+                        } _ > >
+                    } _ > >
+                } >
+                'type alias declaration': < _ _ | `group` {
+                    'export': < _ | `simple` | `global` 'boolean' >
+                    'name': < _ | `component` < | `internal` 'Identifier' _ > >
+                    'parameters': < _ | `list` < | `component` < | `internal` 'Identifier' _ > _ > >
+                    'type': < _ | `component` < | `internal` 'Type' _ > >
+                } >
+                'variable': < _ _ | `group` {
+                    'export': < _ | `simple` | `global` 'boolean' >
+                    'const': < _ | `simple` | `global` 'boolean' >
+                    'name': < _ | `component` < | `internal` 'Identifier' _ > >
+                    'type': < _ | `optional` | `component` < | `internal` 'Type' _ > >
+                    'expression': < _ | `optional` | `component` < | `internal` 'Expression' _ > >
+                } >
+            } _ > >
+            'Statements': < | `list` < | `component` < | `internal` 'Statement' _ > _ > >
+            'String Literal': < | `group` {
+                'delimiter': < _ | `state` < {
+                    'quote': < _ _ | `nothing` ~ >
+                    'apostrophe': < _ _ | `nothing` ~ >
+                } _ > >
+                'value': < _ | `text` | `global` 'text' >
+            } >
+            'Type': < | `state` < {
+                'boolean': < _ _ | `nothing` ~ >
+                'function': < _ _ | `group` {
+                    'declaration': < _ | `component` < | `internal` 'Function Declaration' _ > >
+                } >
+                'literal type': < _ _ | `component` < | `internal` 'String Literal' _ > >
+                'never': < _ _ | `nothing` ~ >
+                'null': < _ _ | `nothing` ~ >
+                'number': < _ _ | `nothing` ~ >
+                'string': < _ _ | `nothing` ~ >
+                'tuple': < _ _ | `group` {
+                    'readonly': < _ | `simple` | `global` 'boolean' >
+                    'elements': < _ | `list` < | `component` < | `internal` 'Type' _ > _ > >
+                } >
+                'type literal': < _ _ | `group` {
+                    'properties': < _ | `list` < | `group` {
+                        'key': < _ | `state` < {
+                            'identifier': < _ _ | `component` < | `internal` 'Identifier' _ > >
+                            'string literal': < _ _ | `component` < | `internal` 'String Literal' _ > >
+                        } _ > >
+                        'readonly': < _ | `simple` | `global` 'boolean' >
+                        'type': < _ | `component` < | `internal` 'Type' _ > >
+                    } _ > >
+                } >
+                'type reference': < _ _ | `group` {
+                    'start': < _ | `component` < | `internal` 'Identifier' _ > >
+                    'tail': < _ | `list` < | `component` < | `internal` 'Identifier' _ > _ > >
+                    'type arguments': < _ | `list` < | `component` < | `internal` 'Type' _ > _ > >
+                } >
+                'undefined': < _ _ | `nothing` ~ >
+                'union': < _ _ | `list` < | `component` < | `internal` 'Type' _ > _ > >
+                'void': < _ _ | `nothing` ~ >
+            } _ > >
+        }
+        `complexity`: | `unconstrained` ~
+    )
+    `schema path`: [ ]
+    `complexity`: | `unconstrained` (
+        `module`: "Root"
+    )
+)

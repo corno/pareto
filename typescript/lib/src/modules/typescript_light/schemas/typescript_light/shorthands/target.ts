@@ -1,11 +1,8 @@
 import * as p_ from 'pareto-core-shorthands/unconstrained_target'
+import * as p_temp from 'pareto-core/transformer'
 
 //schemas
 import type * as s_target from "../schema.js"
-
-//dependencies
-import * as ser_identifier from "../../identifier/serializers.js"
-
 
 export const xdirectory_of_files = (
     children: p_.Normal_Dictionary<s_target.Source_File>,
@@ -69,15 +66,11 @@ export const source_file = (
 
 export const identifier_raw = (
     name: string,
-): s_target.Identifier => ({
-    'value': name
-})
+): s_target.Identifier => ['raw', name]
 
 export const identifier_escaped = (
     name: string,
-): s_target.Identifier => ({
-    'value': ser_identifier.Identifier(name),
-})
+): s_target.Identifier => ['escaped', name]
 
 
 
@@ -95,7 +88,7 @@ export const specifier = (
     type_only: boolean,
     name: s_target.Identifier,
     as: null | s_target.Identifier,
-): s_target.Statements.L.export_.type_.named_exports.specifiers.L => {
+): s_target.Statement.export_.type_.named_exports.specifiers.L => {
     return {
         'type only': type_only,
         'name': name,
@@ -109,14 +102,14 @@ export namespace sw {
     export const case_ = (
         expression: s_target.Expression,
         statement: s_target.Statements.L,
-    ): s_target.Statements.L.switch_.clauses.L => ({
+    ): s_target.Statement.switch_.clauses.L => ({
         'type': ['case', expression],
        'body': ['statement', statement]
     })
 
     export const default_ = (
         statement: s_target.Statements.L,
-    ): s_target.Statements.L.switch_.clauses.L => ({
+    ): s_target.Statement.switch_.clauses.L => ({
         'type': ['default', null],
         'body': ['statement', statement],
     })
@@ -126,14 +119,14 @@ export namespace sw {
     export const case_statements = (
         expression: s_target.Expression,
         statements: p_.Normal_List<s_target.Statements.L>,
-    ): s_target.Statements.L.switch_.clauses.L => ({
+    ): s_target.Statement.switch_.clauses.L => ({
         'type': ['case', expression],
         'body': ['statements', p_.list(statements)],
     })
 
     export const default_statements = (
         statements: p_.Normal_List<s_target.Statements.L>,
-    ): s_target.Statements.L.switch_.clauses.L => ({
+    ): s_target.Statement.switch_.clauses.L => ({
         'type': ['default', null],
         'body': ['statements', p_.list(statements)],
     })
@@ -148,7 +141,7 @@ export namespace s {
     export const empty_line = (): s_target.Statements.L => ['empty line', null]
 
     export const export_ = (
-        specifiers: p_.Normal_List<s_target.Statements.L.export_.type_.named_exports.specifiers.L>,
+        specifiers: p_.Normal_List<s_target.Statement.export_.type_.named_exports.specifiers.L>,
         from: null | s_target.String_Literal,
     ): s_target.Statements.L => ['export', {
         'type': ['named exports', {
@@ -162,7 +155,7 @@ export namespace s {
     ): s_target.Statements.L => ['expression', expression]
 
     export const import_named = (
-        specifiers: p_.Normal_List<s_target.Statements.L.import_.type_.named.specifiers.L>,
+        specifiers: p_.Normal_List<s_target.Statement.import_.type_.named.specifiers.L>,
         from: s_target.String_Literal
     ): s_target.Statements.L => ['import', {
         'type': ['named', {
@@ -197,8 +190,8 @@ export namespace s {
     export const namespace = (
         export_: boolean,
         name: s_target.Identifier,
-        block: p_.Normal_List<s_target.Statements.L>,
-    ): s_target.Statements.L => ['module declaration', {
+        block: p_.Normal_List<s_target.Statement>,
+    ): s_target.Statements.L => ['namespace', {
         'export': export_,
         'name': name,
         'block': p_.list(block),
@@ -210,7 +203,7 @@ export namespace s {
 
     export const switch_ = (
         expression: s_target.Expression,
-        clauses: p_.Normal_List<s_target.Statements.L.switch_.clauses.L>,
+        clauses: p_.Normal_List<s_target.Statement.switch_.clauses.L>,
     ): s_target.Statements.L => ['switch', {
         'expression': expression,
         'clauses': p_.list(clauses),
@@ -247,7 +240,7 @@ export namespace s {
 export const parameter = (
     name: s_target.Identifier,
     type: s_target.Type | null,
-): s_target.Function_Parameters.L => {
+): s_target.Function_Declaration.parameters.L => {
     return {
         'name': name,
         'type': type === null
@@ -264,9 +257,7 @@ export const tl_propery = (
 ): s_target.Type.type_literal.properties.L => {
     return {
         'key': key_type === 'identifier'
-            ? ['identifier', {
-                'value': key,
-            }]
+            ? ['identifier', ['raw', key]]
             : ['string literal', {
                 'value': key,
                 'delimiter': key_type === 'string literal with quotes' ? ['quote', null] : ['apostrophe', null],
@@ -285,13 +276,15 @@ export namespace t {
 
     export const function_ = (
         type_parameters: p_.Normal_List<s_target.Type>,
-        parameters: p_.Normal_List<s_target.Function_Parameters.L>,
+        parameters: p_.Normal_List<s_target.Function_Declaration.parameters.L>,
         return_: s_target.Type,
     ): s_target.Type => {
         return ['function', {
-            'type parameters': p_.list(type_parameters),
-            'parameters': p_.list(parameters),
-            'return': return_,
+            'declaration': {
+                'type parameters': p_.list(type_parameters),
+                'parameters': p_.list(parameters),
+                'return type': p_.optional.set(return_),
+            },
         }]
     }
 
@@ -371,22 +364,28 @@ export namespace e {
     ): s_target.Expression => ['array literal', p_.list(elements)]
 
     export const arrow_function_with_expression = (
-        parameters: p_.Normal_List<s_target.Function_Parameters.L>,
+        parameters: p_.Normal_List<s_target.Function_Declaration.parameters.L>,
         return_type: null | s_target.Type,
         expression: s_target.Expression,
     ): s_target.Expression => ['arrow function', {
-        'parameters': p_.list(parameters),
-        'return type': return_type === null ? p_.optional.not_set() : p_.optional.set(return_type),
+        'declaration': {
+            'type parameters': p_.list(p_temp.literal.list([])),
+            'parameters': p_.list(parameters),
+            'return type': return_type === null ? p_.optional.not_set() : p_.optional.set(return_type),
+        },
         'body': ['expression', expression],
     }]
 
     export const arrow_function_with_block = (
-        parameters: p_.Normal_List<s_target.Function_Parameters.L>,
+        parameters: p_.Normal_List<s_target.Function_Declaration.parameters.L>,
         return_type: null | s_target.Type,
         block: p_.Normal_List<s_target.Statements.L>,
     ): s_target.Expression => ['arrow function', {
-        'parameters': p_.list(parameters),
-        'return type': return_type === null ? p_.optional.not_set() : p_.optional.set(return_type),
+        'declaration': {
+            'type parameters': p_.list(p_temp.literal.list([])),
+            'parameters': p_.list(parameters),
+            'return type': return_type === null ? p_.optional.not_set() : p_.optional.set(return_type),
+        },
         'body': ['block', p_.list(block)],
     }]
 
@@ -411,15 +410,13 @@ export namespace e {
 
     export const compare = (
         left: s_target.Expression,
-        operator: 'loosely equal' | 'strictly equal' | 'loosely not equal' | 'strictly not equal' | 'smaller than' | 'smaller than or equal' | 'greater than' | 'greater than or equal',
+        operator: 'strictly equal' | 'strictly not equal' | 'smaller than' | 'smaller than or equal' | 'greater than' | 'greater than or equal',
         right: s_target.Expression,
     ): s_target.Expression => ['compare', {
         'left': left,
         'operator': ((): s_target.Expression.compare.operator => {
             switch (operator) {
-                case 'loosely equal': return ['loosely equal', null]
                 case 'strictly equal': return ['strictly equal', null]
-                case 'loosely not equal': return ['loosely not equal', null]
                 case 'strictly not equal': return ['strictly not equal', null]
                 case 'smaller than': return ['smaller than', null]
                 case 'smaller than or equal': return ['smaller than or equal', null]
@@ -455,14 +452,10 @@ export namespace e {
 
     export const identifier_raw = (
         name: string,
-    ): s_target.Expression => ['identifier', {
-        'value': name,
-    }]
+    ): s_target.Expression => ['identifier', ['raw', name]]
     export const identifier_escaped = (
         name: string,
-    ): s_target.Expression => ['identifier', {
-        'value': ser_identifier.Identifier(name),
-    }]
+    ): s_target.Expression => ['identifier', ['escaped', name]]
 
     export const not = (
         operand: s_target.Expression,
@@ -518,9 +511,7 @@ export const object_property = (
 ): s_target.Expression.object_literal.properties.L => {
     return {
         'key': key_type === 'identifier'
-            ? ['identifier', {
-                'value': key,
-            }]
+            ? ['identifier', ['raw', key]]
             : ['string literal', {
                 'value': key,
                 'delimiter': key_type === 'quoted string literal' ? ['quote', null] : ['apostrophe', null],
