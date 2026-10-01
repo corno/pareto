@@ -63,7 +63,6 @@ namespace declarations {
         s_in.Expression,
         s_out.Phrases,
         {
-            'replace empty type literals by symbol': boolean
             'object literal needs parentheses': boolean
         }
     >
@@ -182,7 +181,6 @@ export const Statement: declarations.Statement = ($, $p) => p_.from.state($).dec
                 Expression(
                     $,
                     {
-                        'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                         'object literal needs parentheses': true,
                     }
                 )
@@ -253,7 +251,6 @@ export const Statement: declarations.Statement = ($, $p) => p_.from.state($).dec
                         ($) => Expression(
                             $,
                             {
-                                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                 'object literal needs parentheses': false,
                             }
                         ),
@@ -268,7 +265,6 @@ export const Statement: declarations.Statement = ($, $p) => p_.from.state($).dec
                 Expression(
                     $.expression,
                     {
-                        'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                         'object literal needs parentheses': false,
                     }
                 ),
@@ -289,7 +285,6 @@ export const Statement: declarations.Statement = ($, $p) => p_.from.state($).dec
                                                         Expression(
                                                             $,
                                                             {
-                                                                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                                                 'object literal needs parentheses': true,
                                                             }
                                                         ),
@@ -359,7 +354,6 @@ export const Statement: declarations.Statement = ($, $p) => p_.from.state($).dec
                         Expression(
                             $,
                             {
-                                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                 'object literal needs parentheses': false,
                             }
                         )
@@ -388,7 +382,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                 ]),
                 Expression($.right, {
                     'object literal needs parentheses': false,
-                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                 }),
             ]))
             case 'array literal': return p_.option($, ($) => p_.literal.list([
@@ -398,7 +391,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                         ($) => sh.ph.composed(
                             Expression($, {
                                 'object literal needs parentheses': false,
-                                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                             })
                         )
                     ),
@@ -433,7 +425,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                 $,
                                 {
                                     'object literal needs parentheses': true,
-                                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                 }
                             ))
                             default: return p_.exhaustive($[0])
@@ -454,7 +445,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                                 $,
                                                 {
                                                     'object literal needs parentheses': false,
-                                                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                                 }
                                             ),
                                             p_.literal.list([
@@ -472,7 +462,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                         $,
                                         {
                                             'object literal needs parentheses': false,
-                                            'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                         }
                                     )
                                 )
@@ -507,7 +496,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                 ]),
                 Expression($.right, {
                     'object literal needs parentheses': false,
-                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                 }),
             ]))
             case 'conditional': return p_.option($, ($) => p_.literal.segmented_list([
@@ -522,7 +510,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                     ]),
                                     Expression($['if true'],
                                         {
-                                            'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                             'object literal needs parentheses': false,
                                         }
                                     ),
@@ -532,7 +519,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                         sh.ph.text(": "),
                                     ]),
                                     Expression($['if false'], {
-                                        'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                         'object literal needs parentheses': false,
                                     }),
                                 ])),
@@ -588,7 +574,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                                     $.value,
                                     {
                                         'object literal needs parentheses': false,
-                                        'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                     }
                                 ),
                                 p_.literal.list([
@@ -607,7 +592,6 @@ export const Expression: declarations.Expression = ($, $p) => p_.from.state($).d
                     sh.ph.text("("),
                 ]),
                 Expression($, {
-                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                     'object literal needs parentheses': false,
                 }),
                 p_.literal.list([
@@ -677,37 +661,31 @@ export const Type: declarations.Type = ($, $p) => p_.from.state($).decide(
                 ),
                 sh.ph.text("]"),
             ]))
-            case 'type literal': return p_.option($, ($) => $p['replace empty type literals by symbol'] && p_.from.list($.properties).on_has_items(
-                () => false,
-                () => true,
-            )
-                ? sh.ph.text("symbol")
-                : sh.ph.composed([
-                    sh.ph.text("{"),
-                    sh.ph.indent(
-                        sh.pg.sentences(
-                            p_.from.list($.properties).map(
-                                ($) => sh.sentence([
-                                    sh.ph.composed([
-                                        $['readonly'] ? sh.ph.text("readonly ") : sh.ph.nothing(),
-                                        p_.from.state($.key).decide(
-                                            ($) => {
-                                                switch ($[0]) {
-                                                    case 'identifier': return p_.option($, ($) => Identifier($))
-                                                    case 'string literal': return p_.option($, ($) => String_Literal($))
-                                                    default: return p_.exhaustive($[0])
-                                                }
-                                            }),
-                                        sh.ph.text(": "),
-                                        Type($.type, $p),
-                                    ])
+            case 'type literal': return p_.option($, ($) => sh.ph.composed([
+                sh.ph.text("{"),
+                sh.ph.indent(
+                    sh.pg.sentences(
+                        p_.from.list($.properties).map(
+                            ($) => sh.sentence([
+                                sh.ph.composed([
+                                    $['readonly'] ? sh.ph.text("readonly ") : sh.ph.nothing(),
+                                    p_.from.state($.key).decide(
+                                        ($) => {
+                                            switch ($[0]) {
+                                                case 'identifier': return p_.option($, ($) => Identifier($))
+                                                case 'string literal': return p_.option($, ($) => String_Literal($))
+                                                default: return p_.exhaustive($[0])
+                                            }
+                                        }),
+                                    sh.ph.text(": "),
+                                    Type($.type, $p),
                                 ])
-                            )
-                        ),
+                            ])
+                        )
                     ),
-                    sh.ph.text("}")
-                ])
-            )
+                ),
+                sh.ph.text("}")
+            ]))
             case 'undefined': return p_.option($, ($) => sh.ph.text("undefined"))
             case 'type reference': return p_.option($, ($) => sh.ph.composed([
                 Identifier($['start']),
